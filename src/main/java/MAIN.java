@@ -12,7 +12,9 @@ public class MAIN {
         //new ProductCreator();
         //writeData();
 
-        new ManagerFrame(new Manager());
+        new MainFrame();
+
+        //new ManagerFrame(new Manager());
         //new EmployeeFrame(new Employee());
     }
 
