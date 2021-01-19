@@ -37,7 +37,8 @@ public class ManagerEmployees extends JPanel {
 
     private void readData() {
         try {
-            ObjectInputStream reader = new ObjectInputStream(new FileInputStream("data\\Employees.dat"));
+            ObjectInputStream reader = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Employees.dat"));
 
             allEmployee = (Employee[]) reader.readObject();
             Count = allEmployee.length;
@@ -170,7 +171,8 @@ public class ManagerEmployees extends JPanel {
             allEmployee[index].phoneNumber = phoneField.getText();
 
             try {
-                ObjectOutputStream reader = new ObjectOutputStream(new FileOutputStream("data\\Employees.dat"));
+                ObjectOutputStream reader = new ObjectOutputStream(
+                        new FileOutputStream(System.getProperty("user.dir") + "\\data\\Employees.dat"));
                 reader.writeObject(allEmployee);
                 reader.close();
             } catch (Exception E) {
@@ -303,7 +305,8 @@ public class ManagerEmployees extends JPanel {
 
     public void addToFile(Employee em) {
         try {
-            ObjectOutputStream reader = new ObjectOutputStream(new FileOutputStream("data\\Employees.dat"));
+            ObjectOutputStream reader = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Employees.dat"));
 
             Employee[] temp = new Employee[Count + 1];
 

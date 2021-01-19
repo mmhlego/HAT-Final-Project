@@ -48,7 +48,8 @@ public class ManagerCustomers extends JPanel {
         ImageIcon historyIcon = new CustomIcon(currentUser.theme.icon + "History", 28, 28);
 
         try {
-            ObjectInputStream reader = new ObjectInputStream(new FileInputStream("data\\Customers.dat"));
+            ObjectInputStream reader = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
 
             allCustomers = (Customer[]) reader.readObject();
             Count = allCustomers.length;

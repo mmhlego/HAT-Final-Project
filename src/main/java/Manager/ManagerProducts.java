@@ -28,7 +28,8 @@ public class ManagerProducts extends JPanel {
 
     private void readData() {
         try {
-            ObjectInputStream reader = new ObjectInputStream(new FileInputStream("data\\Products.dat"));
+            ObjectInputStream reader = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
 
             allProducts = (Product[]) reader.readObject();
             Count = allProducts.length;
@@ -192,7 +193,8 @@ public class ManagerProducts extends JPanel {
                 allProducts[index].amount = Long.parseLong(amountField.getText());
                 allProducts[index].price = Long.parseLong(priceField.getText());
 
-                ObjectOutputStream writer = new ObjectOutputStream(new FileOutputStream("data\\Products.dat"));
+                ObjectOutputStream writer = new ObjectOutputStream(
+                        new FileOutputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
                 writer.writeObject(allProducts);
                 writer.close();
 
