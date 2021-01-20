@@ -1,12 +1,10 @@
-import Manager.Manager;
-import Manager.ManagerFrame;
-
 public class MAIN {
     public static void main(String[] args) {
 
         //new CustomerCreator();
         //new EmployeeCreator();
         //new ProductCreator();
+        //new ManagerCreator();
 
         new MainFrame();
 

@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
 import General.*;
+import Manager.*;
 
 public class ManagerLogin extends JPanel {
     private static final long serialVersionUID = -1162705529960593804L;
@@ -17,8 +19,8 @@ public class ManagerLogin extends JPanel {
     MainFrame parent;
 
     public ManagerLogin(MainFrame p) {
-        ImageIcon ShowPasswords = new CustomIcon("Show Password", 28, 28);
-        ImageIcon HidePasswords = new CustomIcon("Hide Password", 28, 28);
+        ImageIcon ShowPasswords = new CustomIcon("Show_Password", 28, 28);
+        ImageIcon HidePasswords = new CustomIcon("Hide_Password", 28, 28);
         parent = p;
         setLayout(null);
         Title = new JLabel("Manager");
@@ -26,7 +28,7 @@ public class ManagerLogin extends JPanel {
         Title.setFont(new Font("Tahoma", Font.BOLD, 48));
         Title.setOpaque(true);
         Title.setBounds(320, 15, 344, 80);
-        this.add(Title);
+        add(Title);
 
         UserText = new JLabel("Username");
         UserText.setBounds(50, 160, 135, 68);
@@ -61,6 +63,7 @@ public class ManagerLogin extends JPanel {
         Login.setBounds(50, 585, 800, 62);
         Login.setBackground(new Color(111, 207, 151));
         Login.setFont(new Font("Tahoma", Font.BOLD, 24));
+        Login.addActionListener((e) -> check());
 
         ShowPassText = new JButton();
         ShowPassText.setIcon(ShowPasswords);
@@ -80,12 +83,32 @@ public class ManagerLogin extends JPanel {
             }
         });
 
-        this.add(UserText);
-        this.add(Passtext);
-        this.add(UserNameTF);
-        this.add(PassWordPF);
-        this.add(Login);
-        this.add(ShowPass);
-        this.add(ShowPassText);
+        add(UserText);
+        add(Passtext);
+        add(UserNameTF);
+        add(PassWordPF);
+        add(Login);
+        add(ShowPass);
+        add(ShowPassText);
+    }
+
+    public void check() {
+        try {
+            ObjectInputStream reader = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Manager.dat"));
+            Manager m = (Manager) reader.readObject();
+            reader.close();
+
+            if (m.password.equals(new String(PassWordPF.getPassword())) && m.username.equals(UserNameTF.getText())) {
+                parent.dispose();
+                new ManagerFrame(m);
+                return;
+            } else {
+                JOptionPane.showMessageDialog(this, "Wrong Username/Password.", "Error", 0);
+                return;
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 }
