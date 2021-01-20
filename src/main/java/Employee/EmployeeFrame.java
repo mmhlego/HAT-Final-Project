@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class EmployeeFrame extends JFrame {
+    private static final long serialVersionUID = -4792928874940825362L;
 
     JButton Customers, Products, Settings, Exit, Change;
     JPanel sidepanel, main;
@@ -27,7 +28,7 @@ public class EmployeeFrame extends JFrame {
         //===================================================================================
         sidepanel = new JPanel();
         sidepanel.setLayout(null);
-        sidepanel.setBackground(currentUser.theme.sidepanel);
+        sidepanel.setBackground(currentUser.theme.sidePanel.background);
         sidepanel.setBounds(0, 0, w, height);
         //===================================================================================
         Change = new JButton("Toggle SidePanel");
@@ -52,7 +53,7 @@ public class EmployeeFrame extends JFrame {
             repaint();
         });
         Change.setIconTextGap(-180);
-        Change.setIcon(new CustomIcon(currentUser.theme.icon + "menu", 40, 40));
+        Change.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "menu", 40, 40));
         reDesign(Change);
         sidepanel.add(Change);
         //===================================================================================
@@ -60,12 +61,12 @@ public class EmployeeFrame extends JFrame {
         Customers.setBounds(0, h, w, h);
         Customers.addActionListener((e) -> {
             resetColors();
-            Customers.setBackground(currentUser.theme.background);
+            Customers.setBackground(currentUser.theme.sidePanel.background);
 
             addPanel(new EmployeeCustomers(currentUser, parent));
         });
         Customers.setIconTextGap(-180);
-        Customers.setIcon(new CustomIcon(currentUser.theme.icon + "customers", 40, 40));
+        Customers.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "customers", 40, 40));
         reDesign(Customers);
         sidepanel.add(Customers);
         //===================================================================================
@@ -73,12 +74,12 @@ public class EmployeeFrame extends JFrame {
         Products.setBounds(0, 2 * h, w, h);
         Products.addActionListener((e) -> {
             resetColors();
-            Products.setBackground(currentUser.theme.background);
+            Products.setBackground(currentUser.theme.sidePanel.background);
 
             addPanel(new ProductsList(currentUser));
         });
         Products.setIconTextGap(-180);
-        Products.setIcon(new CustomIcon(currentUser.theme.icon + "products", 40, 40));
+        Products.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "products", 40, 40));
         reDesign(Products);
         sidepanel.add(Products);
         //===================================================================================
@@ -86,12 +87,12 @@ public class EmployeeFrame extends JFrame {
         Settings.setBounds(0, 3 * h, w, h);
         Settings.addActionListener((e) -> {
             resetColors();
-            Settings.setBackground(currentUser.theme.background);
+            Settings.setBackground(currentUser.theme.sidePanel.background);
 
-            addPanel(new SettingsFrame(currentUser));
+            addPanel(new SettingsFrame(this, currentUser));
         });
         Settings.setIconTextGap(-180);
-        Settings.setIcon(new CustomIcon(currentUser.theme.icon + "settings", 40, 40));
+        Settings.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "settings", 40, 40));
         reDesign(Settings);
         sidepanel.add(Settings);
         //===================================================================================
@@ -101,12 +102,12 @@ public class EmployeeFrame extends JFrame {
         Exit.setBorder(null);
         Exit.setBackground(new Color(250, 67, 67));
         Exit.setIconTextGap(-180);
-        Exit.setIcon(new CustomIcon(currentUser.theme.icon + "exit", 40, 40));
+        Exit.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "exit", 40, 40));
         sidepanel.add(Exit);
         //===================================================================================
         add(sidepanel);
-        setFont(currentUser.theme.font);
-        setBackground(currentUser.theme.background);
+        setFont(currentUser.theme.main.font);
+        setBackground(currentUser.theme.main.background);
         setSize(width + 13, height + 37);
         setDefaultCloseOperation(3);
         setResizable(false);
@@ -121,7 +122,7 @@ public class EmployeeFrame extends JFrame {
 
     public void reDesign(JButton b) {
         b.setBorder(null);
-        b.setBackground(currentUser.theme.sidepanel);
+        b.setBackground(currentUser.theme.sidePanel.background);
     }
 
     public void addPanel(JPanel panel) {

@@ -7,6 +7,8 @@ import Customer.*;
 import General.*;
 
 public class ManagerCustomers extends JPanel {
+    private static final long serialVersionUID = 5272739775090170034L;
+
     JPanel Info;
 
     int Count = 50;
@@ -23,29 +25,29 @@ public class ManagerCustomers extends JPanel {
         Info.setPreferredSize(new Dimension(660, Count * 40));
 
         setLayout(null);
-        Info.setBackground(currentUser.theme.background);
+        Info.setBackground(currentUser.theme.main.background);
 
         JScrollPane PanelScroll = new JScrollPane(Info);
         PanelScroll.setBorder(null);
         PanelScroll.setBounds(10, 10, 680, 680);
-        PanelScroll.getVerticalScrollBar().setBackground(currentUser.theme.background);
+        PanelScroll.getVerticalScrollBar().setBackground(currentUser.theme.main.background);
         PanelScroll.getVerticalScrollBar().setBorder(null);
         PanelScroll.getVerticalScrollBar().setUnitIncrement(10);
-        PanelScroll.setBackground(currentUser.theme.background);
+        PanelScroll.setBackground(currentUser.theme.main.background);
 
         add(PanelScroll);
 
         showData();
 
-        setBackground(currentUser.theme.background);
+        setBackground(currentUser.theme.main.background);
         setVisible(true);
     }
 
     private void showData() {
-        ImageIcon deleteIcon = new CustomIcon(currentUser.theme.icon + "Delete", 28, 28);
-        ImageIcon editIcon = new CustomIcon(currentUser.theme.icon + "Edit", 28, 28);
-        ImageIcon cartIcon = new CustomIcon(currentUser.theme.icon + "Cart", 28, 28);
-        ImageIcon historyIcon = new CustomIcon(currentUser.theme.icon + "History", 28, 28);
+        ImageIcon deleteIcon = new CustomIcon(currentUser.theme.main.icon + "Delete", 28, 28);
+        ImageIcon editIcon = new CustomIcon(currentUser.theme.main.icon + "Edit", 28, 28);
+        ImageIcon cartIcon = new CustomIcon(currentUser.theme.main.icon + "Cart", 28, 28);
+        ImageIcon historyIcon = new CustomIcon(currentUser.theme.main.icon + "History", 28, 28);
 
         try {
             ObjectInputStream reader = new ObjectInputStream(
@@ -103,8 +105,8 @@ public class ManagerCustomers extends JPanel {
                 Info.add(History);
 
                 JLabel Costumer = new JLabel(allCustomers[i].lastName + " " + allCustomers[i].name);
-                Costumer.setFont(currentUser.theme.font);
-                Costumer.setForeground(currentUser.theme.fontColor);
+                Costumer.setFont(currentUser.theme.main.font);
+                Costumer.setForeground(currentUser.theme.main.fontColor);
                 Costumer.setBounds(5, i * 40 + 5, m, 30);
                 Info.add(Costumer);
             }

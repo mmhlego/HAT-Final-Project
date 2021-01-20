@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CustomerFrame extends JFrame {
+    private static final long serialVersionUID = 1391165171893919981L;
 
     JButton History, Cart, Products, Settings, Exit, Change;
     JPanel sidepanel, main;
@@ -25,7 +26,7 @@ public class CustomerFrame extends JFrame {
 
         sidepanel = new JPanel();
         sidepanel.setLayout(null);
-        sidepanel.setBackground(currentUser.theme.sidepanel);
+        sidepanel.setBackground(currentUser.theme.sidePanel.background);
         sidepanel.setBounds(0, 0, w, height);
         //===================================================================================
         Change = new JButton("Toggle SidePanel");
@@ -50,59 +51,54 @@ public class CustomerFrame extends JFrame {
             repaint();
         });
         Change.setIconTextGap(-180);
-        Change.setIcon(new CustomIcon(currentUser.theme.icon + "menu", 40, 40));
+        Change.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "menu", 40, 40));
         reDesign(Change);
         sidepanel.add(Change);
         //===================================================================================
         History = new JButton("Order History");
         History.setBounds(0, h, w, h);
         History.addActionListener((e) -> {
-            resetColors();
-            History.setBackground(currentUser.theme.background);
+            selectButton(History);
 
             //addPanel(new ManagerCostumers());
         });
         History.setIconTextGap(-180);
-        History.setIcon(new CustomIcon(currentUser.theme.icon + "history", 40, 40));
+        History.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "history", 40, 40));
         reDesign(History);
         sidepanel.add(History);
         //===================================================================================
         Cart = new JButton("Cart");
         Cart.setBounds(0, 2 * h, w, h);
         Cart.addActionListener((e) -> {
-            resetColors();
-            Cart.setBackground(currentUser.theme.background);
+            selectButton(Cart);
 
             //addPanel(new ManagerEmployees());
         });
         Cart.setIconTextGap(-180);
-        Cart.setIcon(new CustomIcon(currentUser.theme.icon + "cart", 40, 40));
+        Cart.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "cart", 40, 40));
         reDesign(Cart);
         sidepanel.add(Cart);
         //===================================================================================
         Products = new JButton("Products");
         Products.setBounds(0, 3 * h, w, h);
         Products.addActionListener((e) -> {
-            resetColors();
-            Products.setBackground(currentUser.theme.background);
+            selectButton(Products);
 
             //addPanel(new ManagerProducts());
         });
         Products.setIconTextGap(-180);
-        Products.setIcon(new CustomIcon(currentUser.theme.icon + "products", 40, 40));
+        Products.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "products", 40, 40));
         reDesign(Products);
         sidepanel.add(Products);
         //===================================================================================
         Settings = new JButton("Settings");
         Settings.setBounds(0, 4 * h, w, h);
         Settings.addActionListener((e) -> {
-            resetColors();
-            Settings.setBackground(currentUser.theme.background);
-
-            addPanel(new SettingsFrame(currentUser));
+            selectButton(Settings);
+            addPanel(new SettingsFrame(this, currentUser));
         });
         Settings.setIconTextGap(-180);
-        Settings.setIcon(new CustomIcon(currentUser.theme.icon + "settings", 40, 40));
+        Settings.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "settings", 40, 40));
         reDesign(Settings);
         sidepanel.add(Settings);
         //===================================================================================
@@ -112,12 +108,12 @@ public class CustomerFrame extends JFrame {
         Exit.setBorder(null);
         Exit.setBackground(new Color(250, 67, 67));
         Exit.setIconTextGap(-180);
-        Exit.setIcon(new CustomIcon(currentUser.theme.icon + "exit", 40, 40));
+        Exit.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "exit", 40, 40));
         sidepanel.add(Exit);
         //===================================================================================
         add(sidepanel);
-        setFont(currentUser.theme.font);
-        setBackground(currentUser.theme.background);
+        setFont(currentUser.theme.main.font);
+        setBackground(currentUser.theme.main.background);
         setSize(width + 13, height + 37);
         setDefaultCloseOperation(3);
         setResizable(false);
@@ -133,7 +129,12 @@ public class CustomerFrame extends JFrame {
 
     public void reDesign(JButton b) {
         b.setBorder(null);
-        b.setBackground(currentUser.theme.sidepanel);
+        b.setBackground(currentUser.theme.sidePanel.background);
+    }
+
+    public void selectButton(JButton b) {
+        resetColors();
+        b.setBackground(currentUser.theme.main.background);
     }
 
     public void addPanel(JPanel panel) {

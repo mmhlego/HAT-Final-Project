@@ -6,6 +6,7 @@ import javax.imageio.*;
 import javax.swing.*;
 
 public class CustomIcon extends ImageIcon {
+    private static final long serialVersionUID = -1883807594813343773L;
 
     public CustomIcon(String name, int w, int h) {
         try {

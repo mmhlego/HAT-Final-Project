@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 public class SelectPage extends JPanel {
+	private static final long serialVersionUID = -6750123727488706316L;
 
 	JButton Manager;
 	JButton Employee;

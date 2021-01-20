@@ -2,9 +2,11 @@ package Customer;
 
 import javax.swing.*;
 import java.awt.*;
-import General.*;
+//import General.*;
 
 public class ProductPanel extends JPanel {
+    private static final long serialVersionUID = 499751707819600223L;
+
     JButton[] allProducts = new JButton[100];
     Customer currentUser;
 
@@ -27,7 +29,7 @@ public class ProductPanel extends JPanel {
         currentUser = user;
         setPreferredSize(new Dimension(680, height + 20));
         setLayout(null);
-        setBackground(currentUser.theme.background);
+        setBackground(currentUser.theme.main.background);
         setBorder(null);
         setAutoscrolls(true);
         setVisible(true);

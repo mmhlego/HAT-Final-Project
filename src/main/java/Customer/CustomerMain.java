@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CustomerMain extends JPanel {
+    private static final long serialVersionUID = -3479368756351822649L;
+
     JLabel label = new JLabel();
     JTextField[] fields = new JTextField[14];
 
@@ -14,7 +16,7 @@ public class CustomerMain extends JPanel {
 
         label.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Customer.png"));
         label.setBounds(250, 25, 200, 250);
-        label.setBackground(currentUser.theme.background);
+        label.setBackground(currentUser.theme.main.background);
 
         for (int i = 0; i < fields.length; i++)
             fields[i] = new JTextField();
@@ -46,7 +48,7 @@ public class CustomerMain extends JPanel {
 
                 fields[i].setBounds(351, hight - 55, 300, 35);
             }
-            fields[i].setFont(currentUser.theme.font);
+            fields[i].setFont(currentUser.theme.main.font);
             fields[i].setBorder(null);
             fields[i].setHorizontalAlignment(SwingConstants.CENTER);
             fields[i].setVisible(true);
@@ -58,7 +60,7 @@ public class CustomerMain extends JPanel {
         this.add(label);
         setLayout(null);
         this.setBounds(0, 0, 700, 700);
-        this.setBackground(currentUser.theme.background);
+        this.setBackground(currentUser.theme.main.background);
 
     }
 }

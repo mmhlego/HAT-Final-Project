@@ -4,6 +4,8 @@ import General.*;
 import java.io.Serializable;
 
 public class Employee extends User implements Serializable {
+    private static final long serialVersionUID = -7702904692029832336L;
+
     public Theme theme = new Theme();
     public String ID;
 

@@ -5,6 +5,8 @@ import javax.swing.*;
 import General.*;
 
 public class ProductsList extends JPanel {
+    private static final long serialVersionUID = -4095593549166913583L;
+
     JPanel Info;
     int Count = 50;
     Employee currentUser;
@@ -24,9 +26,9 @@ public class ProductsList extends JPanel {
 
         add(PanelScroll);
 
-        ImageIcon deleteIcon = new CustomIcon(currentUser.theme.icon + "Delete", 28, 28);
-        ImageIcon editIcon = new CustomIcon(currentUser.theme.icon + "Edit", 28, 28);
-        ImageIcon addIcon = new CustomIcon(currentUser.theme.icon + "Add", 28, 28);
+        ImageIcon deleteIcon = new CustomIcon(currentUser.theme.main.icon + "Delete", 28, 28);
+        ImageIcon editIcon = new CustomIcon(currentUser.theme.main.icon + "Edit", 28, 28);
+        ImageIcon addIcon = new CustomIcon(currentUser.theme.main.icon + "Add", 28, 28);
 
         for (int i = 0; i < Count; i++) {
             int m = 660 - 45;

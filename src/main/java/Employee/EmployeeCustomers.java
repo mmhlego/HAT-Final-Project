@@ -4,12 +4,12 @@ import java.awt.*;
 import javax.swing.*;
 import java.io.*;
 import Customer.*;
-import Manager.*;
 import General.*;
 
 public class EmployeeCustomers extends JPanel {
-    JPanel Info;
+    private static final long serialVersionUID = -8701518828823181704L;
 
+    JPanel Info;
     int Count = 50;
     Customer[] allCustomers;
     Employee currentUser;
@@ -37,15 +37,18 @@ public class EmployeeCustomers extends JPanel {
     }
 
     private void showData() {
-        ImageIcon deleteIcon = new CustomIcon(currentUser.theme.icon + "Delete", 28, 28);
-        ImageIcon editIcon = new CustomIcon(currentUser.theme.icon + "Edit", 28, 28);
-        ImageIcon cartIcon = new CustomIcon(currentUser.theme.icon + "Cart", 28, 28);
-        ImageIcon historyIcon = new CustomIcon(currentUser.theme.icon + "History", 28, 28);
+        ImageIcon deleteIcon = new CustomIcon(currentUser.theme.main.icon + "Delete", 28, 28);
+        ImageIcon editIcon = new CustomIcon(currentUser.theme.main.icon + "Edit", 28, 28);
+        ImageIcon cartIcon = new CustomIcon(currentUser.theme.main.icon + "Cart", 28, 28);
+        ImageIcon historyIcon = new CustomIcon(currentUser.theme.main.icon + "History", 28, 28);
 
         try {
             ObjectInputStream reader = new ObjectInputStream(new FileInputStream("data\\Customers.dat"));
 
             allCustomers = (Customer[]) reader.readObject();
+
+            reader.close();
+
             Count = allCustomers.length;
 
             for (int i = 0; i < Count; i++) {

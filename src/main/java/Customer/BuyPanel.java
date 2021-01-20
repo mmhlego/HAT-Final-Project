@@ -5,6 +5,8 @@ import java.awt.*;
 import General.*;
 
 public class BuyPanel extends JDialog {
+    private static final long serialVersionUID = -6769961606333376437L;
+
     JLabel productPicture = new JLabel(new ImageIcon("images1.jpg"));
     JTextField[] productsInformation = new JTextField[9];
     JTextArea description = new JTextArea();
@@ -25,7 +27,7 @@ public class BuyPanel extends JDialog {
         productPicture.setVisible(true);
 
         description.setText(product.description);
-        description.setBackground(currentUser.theme.background);
+        description.setBackground(currentUser.theme.main.background);
         description.setEditable(false);
         description.setForeground(Color.BLACK);
         description.setBounds(50, 365, 400, 50);
@@ -41,7 +43,7 @@ public class BuyPanel extends JDialog {
                 productsInformation[i].setBounds(250, height, 200, 25);
                 height += 30;
             }
-            productsInformation[i].setBackground(currentUser.theme.background);
+            productsInformation[i].setBackground(currentUser.theme.main.background);
             productsInformation[i].setForeground(Color.BLACK);
             productsInformation[i].setHorizontalAlignment(SwingConstants.CENTER);
             productsInformation[i].setBorder(null);
@@ -58,7 +60,7 @@ public class BuyPanel extends JDialog {
         productsInformation[6].setText("Remain amount:");
         productsInformation[8].setBounds(150, 440, 200, 25);
         productsInformation[8].setText(String.valueOf(count));
-        productsInformation[8].setBackground(currentUser.theme.sidepanel);
+        productsInformation[8].setBackground(currentUser.theme.sidePanel.background);
         productsInformation[8].setForeground(Color.BLACK);
         productsInformation[8].setEditable(false);
         productsInformation[8].setBorder(null);
@@ -79,7 +81,7 @@ public class BuyPanel extends JDialog {
         buy.setBorder(null);
         buy.setLayout(null);
         buy.setBounds(0, 0, 500, 500);
-        buy.setBackground(currentUser.theme.background);
+        buy.setBackground(currentUser.theme.main.background);
         buy.add(productPicture);
         buy.setVisible(true);
 
@@ -87,7 +89,7 @@ public class BuyPanel extends JDialog {
         add(buy);
         setBounds(100, 100, 506, 528);
         setLayout(null);
-        setBackground(currentUser.theme.background);
+        setBackground(currentUser.theme.main.background);
         setVisible(true);
         setResizable(false);
     }

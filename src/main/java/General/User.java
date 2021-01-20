@@ -3,11 +3,8 @@ package General;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    /*public String username = "username";
-    public String password = "password";
-    public String name = "first name";
-    public String lastName = "last name";
-    public String phoneNumber = "09123456789";*/
+    private static final long serialVersionUID = -3756741987571374368L;
+
     public String username;
     public String password;
     public String name;

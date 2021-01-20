@@ -7,9 +7,10 @@ import Employee.Employee;
 import General.*;
 
 public class ManagerEmployees extends JPanel {
+    private static final long serialVersionUID = -633045104537689790L;
+
     JPanel Info;
     int Count = 0;
-
     Manager currentUser;
     Employee[] allEmployee;
     ManagerFrame parent;
@@ -31,7 +32,7 @@ public class ManagerEmployees extends JPanel {
         });
         add(addNew);
 
-        setBackground(currentUser.theme.background);
+        setBackground(currentUser.theme.main.background);
         setVisible(true);
     }
 
@@ -57,8 +58,8 @@ public class ManagerEmployees extends JPanel {
         Info.setBackground(new Color(242, 242, 242));
         Info.setPreferredSize(new Dimension(660, Count * 40));
 
-        ImageIcon deleteIcon = new CustomIcon(currentUser.theme.icon + "Delete", 28, 28);
-        ImageIcon editIcon = new CustomIcon(currentUser.theme.icon + "Edit", 28, 28);
+        ImageIcon deleteIcon = new CustomIcon(currentUser.theme.main.icon + "Delete", 28, 28);
+        ImageIcon editIcon = new CustomIcon(currentUser.theme.main.icon + "Edit", 28, 28);
 
         for (int i = 0; i < Count; i++) {
             int m = 660 - 45;
@@ -85,21 +86,21 @@ public class ManagerEmployees extends JPanel {
             Info.add(Edit);
 
             JLabel Employee = new JLabel(allEmployee[i].lastName + " " + allEmployee[i].name);
-            Employee.setFont(currentUser.theme.font);
-            Employee.setForeground(currentUser.theme.fontColor);
+            Employee.setFont(currentUser.theme.main.font);
+            Employee.setForeground(currentUser.theme.main.fontColor);
             Employee.setBounds(5, i * 40 + 5, m, 30);
             Info.add(Employee);
         }
 
-        Info.setBackground(currentUser.theme.background);
+        Info.setBackground(currentUser.theme.main.background);
 
         JScrollPane PanelScroll = new JScrollPane(Info);
         PanelScroll.setBounds(10, 10, 680, 610);
         PanelScroll.setBorder(null);
-        PanelScroll.getVerticalScrollBar().setBackground(currentUser.theme.background);
+        PanelScroll.getVerticalScrollBar().setBackground(currentUser.theme.main.background);
         PanelScroll.getVerticalScrollBar().setBorder(null);
         PanelScroll.getVerticalScrollBar().setUnitIncrement(10);
-        PanelScroll.setBackground(currentUser.theme.background);
+        PanelScroll.setBackground(currentUser.theme.main.background);
 
         add(PanelScroll);
 

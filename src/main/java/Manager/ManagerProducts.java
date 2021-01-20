@@ -5,9 +5,10 @@ import java.io.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import General.*;
-import javax.swing.plaf.basic.BasicScrollBarUI;
 
 public class ManagerProducts extends JPanel {
+    private static final long serialVersionUID = 2252334754594356747L;
+
     JPanel Info;
     int Count;
     Manager currentUser;
@@ -22,7 +23,7 @@ public class ManagerProducts extends JPanel {
 
         showData();
 
-        setBackground(currentUser.theme.background);
+        setBackground(currentUser.theme.main.background);
         setVisible(true);
     }
 
@@ -48,9 +49,9 @@ public class ManagerProducts extends JPanel {
         Info.setBackground(new Color(242, 242, 242));
         Info.setPreferredSize(new Dimension(660, Count * 40));
 
-        ImageIcon deleteIcon = new CustomIcon(currentUser.theme.icon + "Delete", 28, 28);
-        ImageIcon editIcon = new CustomIcon(currentUser.theme.icon + "Edit", 28, 28);
-        ImageIcon addIcon = new CustomIcon(currentUser.theme.icon + "Add", 28, 28);
+        ImageIcon deleteIcon = new CustomIcon(currentUser.theme.main.icon + "Delete", 28, 28);
+        ImageIcon editIcon = new CustomIcon(currentUser.theme.main.icon + "Edit", 28, 28);
+        ImageIcon addIcon = new CustomIcon(currentUser.theme.main.icon + "Add", 28, 28);
 
         for (int i = 0; i < Count; i++) {
             int m = 660 - 45;
@@ -89,8 +90,8 @@ public class ManagerProducts extends JPanel {
             Info.add(Add);
 
             JLabel Product = new JLabel(allProducts[i].name);
-            Product.setFont(currentUser.theme.font);
-            Product.setForeground(currentUser.theme.fontColor);
+            Product.setFont(currentUser.theme.main.font);
+            Product.setForeground(currentUser.theme.main.fontColor);
             Product.setBounds(5, i * 40 + 5, m, 30);
             Info.add(Product);
         }
@@ -104,15 +105,15 @@ public class ManagerProducts extends JPanel {
         });
         add(addNew);
 
-        Info.setBackground(currentUser.theme.background);
+        Info.setBackground(currentUser.theme.main.background);
 
         JScrollPane PanelScroll = new JScrollPane(Info);
         PanelScroll.setBounds(10, 10, 680, 610);
         PanelScroll.setBorder(null);
-        PanelScroll.getVerticalScrollBar().setBackground(currentUser.theme.background);
+        PanelScroll.getVerticalScrollBar().setBackground(currentUser.theme.main.background);
         PanelScroll.getVerticalScrollBar().setBorder(null);
         PanelScroll.getVerticalScrollBar().setUnitIncrement(10);
-        PanelScroll.setBackground(currentUser.theme.background);
+        PanelScroll.setBackground(currentUser.theme.main.background);
 
         add(PanelScroll);
 

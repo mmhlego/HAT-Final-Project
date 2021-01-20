@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class InformationChangePanel extends JPanel {
+    private static final long serialVersionUID = 743221474354971601L;
+
     JLabel label = new JLabel();
     JTextField[] fields = new JTextField[10];
     ImageIcon managerIcon = new ImageIcon("images.jpg");
@@ -18,7 +20,7 @@ public class InformationChangePanel extends JPanel {
 
         label.setIcon(managerIcon);
         label.setBounds(220, 15, 300, 250);
-        label.setBackground(currentUser.theme.background);
+        label.setBackground(currentUser.theme.main.background);
 
         passwordField.setVisible(true);
         passwordField.setText(currentUser.password);
@@ -27,7 +29,7 @@ public class InformationChangePanel extends JPanel {
         btn.setBackground(new Color(111, 207, 151));
         //btn.setForeground(Color.BLACK);
         btn.setText("Edit Information");
-        btn.setFont(currentUser.theme.font);
+        btn.setFont(currentUser.theme.main.font);
         add(btn);
 
         for (int i = 0; i < 10; i++) {
@@ -47,9 +49,9 @@ public class InformationChangePanel extends JPanel {
 
         for (int i = 0; i < 10; i++) {
             if (i % 2 == 0) {
-                fields[i].setFont(currentUser.theme.font);
-                fields[i].setForeground(currentUser.theme.fontColor);
-                fields[i].setBackground(currentUser.theme.background);
+                fields[i].setFont(currentUser.theme.main.font);
+                fields[i].setForeground(currentUser.theme.main.fontColor);
+                fields[i].setBackground(currentUser.theme.main.background);
                 fields[i].setBounds(50, hight, 240, 35);
                 hight = hight + 60;
 
@@ -62,7 +64,7 @@ public class InformationChangePanel extends JPanel {
                 }
             }
 
-            fields[i].setFont(currentUser.theme.font);
+            fields[i].setFont(currentUser.theme.main.font);
             fields[i].setBorder(null);
             fields[i].setHorizontalAlignment(SwingConstants.CENTER);
             fields[i].setVisible(true);
@@ -97,7 +99,7 @@ public class InformationChangePanel extends JPanel {
         passwordField.setBorder(null);
         this.add(passwordField);
         this.add(label);
-        this.setBackground(currentUser.theme.background);
+        this.setBackground(currentUser.theme.main.background);
         this.setLayout(null);
         this.setVisible(true);
     }
