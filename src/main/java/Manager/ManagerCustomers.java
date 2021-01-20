@@ -177,7 +177,8 @@ public class ManagerCustomers extends JPanel {
             allCustomers[index].phoneNumber = phoneField.getText();
 
             try {
-                ObjectOutputStream reader = new ObjectOutputStream(new FileOutputStream("data\\Customers.dat"));
+                ObjectOutputStream reader = new ObjectOutputStream(
+                        new FileOutputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
                 reader.writeObject(allCustomers);
                 reader.close();
             } catch (Exception E) {
@@ -235,7 +236,8 @@ public class ManagerCustomers extends JPanel {
 
     private void readData() {
         try {
-            ObjectInputStream reader = new ObjectInputStream(new FileInputStream("data\\Customers.dat"));
+            ObjectInputStream reader = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
 
             allCustomers = (Customer[]) reader.readObject();
             Count = allCustomers.length;
@@ -248,7 +250,8 @@ public class ManagerCustomers extends JPanel {
 
     public void writeData(int remove) {
         try {
-            ObjectOutputStream reader = new ObjectOutputStream(new FileOutputStream("data\\Customers.dat"));
+            ObjectOutputStream reader = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\.data\\Customers.dat"));
 
             Customer[] temp = new Customer[Count - 1];
 

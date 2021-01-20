@@ -4,53 +4,65 @@ import java.awt.*;
 import java.io.Serializable;
 
 public class Theme implements Serializable {
+
+    private Color[] mainBackgrounds = { Hex("f2f2f2"), Hex("393e46"), Hex("363333"), Hex("393e46"), Hex("393e46") };
+
+    private Color[] sideBackgrounds = { Hex("ffffff"), Hex("222831"), Hex("272121"), Hex("00adb5"), Hex("79d70f") };
+
+    private Color[] fontColors = { Hex("000000"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("000000") };
+
+    private Font[] fonts = { new Font("Dialog", 0, 14), new Font("Dialog", 0, 16), new Font("Dialog", 0, 16),
+            new Font("Dialog", 0, 16), new Font("Dialog", 0, 16) };
+
+    private String[] icons = { "dark", "light", "light", "light", "dark" };
+
+    //=======================================================================================================================
+
     public Color background;
     public Color sidepanel;
     public Font font;
     public Color fontColor;
     public String icon;
 
-    private Color[] backgrounds = { new Color(242, 242, 242), new Color(57, 62, 70), new Color(54, 51, 51),
-            new Color(57, 62, 70), new Color(57, 62, 70) };
-    private Color[] sidepanels = { new Color(255, 255, 255), new Color(34, 40, 49), new Color(39, 33, 33),
-            new Color(0, 173, 181), new Color(121, 215, 15) };
-    private Font[] fonts = { new Font("Dialog", 0, 14), new Font("Dialog", 0, 16), new Font("Dialog", 0, 16),
-            new Font("Dialog", 0, 16), new Font("Dialog", 0, 16) };
-    private Color[] fontColors = { Color.black, new Color(200, 200, 200), new Color(200, 200, 200),
-            new Color(200, 200, 200), new Color(0, 0, 0) };
-    private String[] icons = { "dark", "light", "light", "light", "dark" };
+    public MainTheme main = new MainTheme();
+    public SidePanelTheme sidePanel = new SidePanelTheme();
+    public DialogTheme dialog = new DialogTheme();
 
     public Theme() {
-        set(1);
+        setAll(4);
     }
 
     public void setTheme(String type) {
         switch (type) {
             case "light":
             case "default":
-                set(0);
+                setAll(0);
                 break;
             case "dark":
-                set(1);
+                setAll(1);
                 break;
             case "classic":
-                set(2);
+                setAll(2);
                 break;
             case "modern":
-                set(2);
+                setAll(3);
                 break;
         }
     }
 
-    public void set(int i) {
-        background = backgrounds[i];
-        sidepanel = sidepanels[i];
+    public void setAll(int i) {
+        background = mainBackgrounds[i];
+        sidepanel = sideBackgrounds[i];
         font = fonts[i];
         fontColor = fontColors[i];
         icon = icons[i];
+
+        main.set(i);
+        sidePanel.set(i);
+        dialog.set(i);
     }
 
-    public Color HexColor(String s) {
+    public Color Hex(String s) {
 
         if (s.length() == 7) {
             s = s.substring(1);
@@ -72,5 +84,48 @@ public class Theme implements Serializable {
             num -= 55;
         }
         return num;
+    }
+
+    class SidePanelTheme {
+        public Color background, fontColor, textField, exit;
+        public Font font;
+        public String icon;
+
+        public void set(int i) {
+            this.background = sideBackgrounds[i];
+            this.fontColor = fontColors[i];
+            // this.textField = textFields[i];
+            // this.exit = exits[i];
+            this.font = fonts[i];
+            this.icon = icons[i];
+        }
+    }
+
+    class MainTheme {
+        public Color background, fontColor, textField;
+        public Font font;
+        public String icon;
+
+        public void set(int i) {
+            this.background = sideBackgrounds[i];
+            this.fontColor = fontColors[i];
+            // this.textField = textFields[i];
+            this.font = fonts[i];
+            this.icon = icons[i];
+        }
+    }
+
+    class DialogTheme {
+        public Color background, fontColor, textField;
+        public Font font;
+        public String icon;
+
+        public void set(int i) {
+            this.background = sideBackgrounds[i];
+            this.fontColor = fontColors[i];
+            // this.textField = textFields[i];
+            this.font = fonts[i];
+            this.icon = icons[i];
+        }
     }
 }

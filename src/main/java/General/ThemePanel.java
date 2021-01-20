@@ -1,13 +1,14 @@
 package General;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class ThemePanel extends JPanel {
     JButton[] themeButtons = new JButton[4];
     JSeparator separator = new JSeparator();
 
     User currentUser;
+
+    static int x = 0;
 
     ThemePanel(User u) {
 

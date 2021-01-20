@@ -1,8 +1,8 @@
 import javax.swing.JPanel;
 import java.awt.*;
 
-public class CostumerLogin extends JPanel {
-    public CostumerLogin() {
+public class CustomerLogin extends JPanel {
+    public CustomerLogin() {
         setBackground(Color.blue);
     }
 }

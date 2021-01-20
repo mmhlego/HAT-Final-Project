@@ -58,7 +58,7 @@ public class SelectPage extends JPanel {
 			}
 		});
 
-		Costumer.addActionListener((e) -> parent.addPanel(new CostumerLogin()));
+		Costumer.addActionListener((e) -> parent.addPanel(new CustomerLogin()));
 		Costumer.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent arg0) {
 				Costumer.setFont(new Font("Tahoma", Font.BOLD, 27));
