@@ -1,9 +1,8 @@
 package Employee;
 
 import General.*;
-import java.io.Serializable;
 
-public class Employee extends User implements Serializable {
+public class Employee extends User {
     private static final long serialVersionUID = -7702904692029832336L;
 
     public Theme theme = new Theme();

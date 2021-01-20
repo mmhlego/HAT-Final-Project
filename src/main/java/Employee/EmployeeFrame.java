@@ -60,8 +60,7 @@ public class EmployeeFrame extends JFrame {
         Customers = new JButton("Customers");
         Customers.setBounds(0, h, w, h);
         Customers.addActionListener((e) -> {
-            resetColors();
-            Customers.setBackground(currentUser.theme.sidePanel.background);
+            selectButton(Customers);
 
             addPanel(new EmployeeCustomers(currentUser, parent));
         });
@@ -73,10 +72,9 @@ public class EmployeeFrame extends JFrame {
         Products = new JButton("Products");
         Products.setBounds(0, 2 * h, w, h);
         Products.addActionListener((e) -> {
-            resetColors();
-            Products.setBackground(currentUser.theme.sidePanel.background);
+            selectButton(Products);
 
-            addPanel(new ProductsList(currentUser));
+            addPanel(new EmployeeProducts(currentUser));
         });
         Products.setIconTextGap(-180);
         Products.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "products", 40, 40));
@@ -86,8 +84,7 @@ public class EmployeeFrame extends JFrame {
         Settings = new JButton("Settings");
         Settings.setBounds(0, 3 * h, w, h);
         Settings.addActionListener((e) -> {
-            resetColors();
-            Settings.setBackground(currentUser.theme.sidePanel.background);
+            selectButton(Settings);
 
             addPanel(new SettingsFrame(this, currentUser));
         });
@@ -122,7 +119,17 @@ public class EmployeeFrame extends JFrame {
 
     public void reDesign(JButton b) {
         b.setBorder(null);
+        b.setForeground(currentUser.theme.sidePanel.fontColor);
         b.setBackground(currentUser.theme.sidePanel.background);
+        if (!b.getText().equals(new String("Toggle SidePanel")))
+            b.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + b.getText(), 40, 40));
+    }
+
+    public void selectButton(JButton b) {
+        resetColors();
+        b.setForeground(currentUser.theme.main.fontColor);
+        b.setBackground(currentUser.theme.main.background);
+        b.setIcon(new CustomIcon(currentUser.theme.main.icon + b.getText(), 40, 40));
     }
 
     public void addPanel(JPanel panel) {

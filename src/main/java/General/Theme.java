@@ -30,11 +30,11 @@ public class Theme implements Serializable {
     public SidePanelTheme sidePanel = new SidePanelTheme();
     public DialogTheme dialog = new DialogTheme();
 
+    public static final int LIGHT = 0, DARK = 1, CLASSIC = 2, MODERN = 3;
+
     public Theme() {
-        // setAll(1);
-        main.set(0);
-        sidePanel.set(1);
-        dialog.set(0);
+        //setAll(1);
+        setTheme("modern");
     }
 
     public void setTheme(String type) {
@@ -50,7 +50,10 @@ public class Theme implements Serializable {
                 setAll(2);
                 break;
             case "modern":
-                setAll(3);
+                main.set(0);
+                sidePanel.set(1);
+                dialog.set(0);
+                //setAll(3);
                 break;
         }
     }
@@ -98,7 +101,6 @@ public class Theme implements Serializable {
         private Color[] fontColors = { Hex("000000"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("000000") };
         private Font[] fonts = { new Font("Dialog", 0, 14), new Font("Dialog", 0, 16), new Font("Dialog", 0, 16),
                 new Font("Dialog", 0, 16), new Font("Dialog", 0, 16) };
-
         private String[] icons = { "dark", "light", "light", "light", "dark" };
 
         public Color background, fontColor, textField, exit;

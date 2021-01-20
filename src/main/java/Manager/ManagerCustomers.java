@@ -10,8 +10,7 @@ public class ManagerCustomers extends JPanel {
     private static final long serialVersionUID = 5272739775090170034L;
 
     JPanel Info;
-
-    int Count = 50;
+    int Count;
     Customer[] allCustomers;
     User currentUser;
     ManagerFrame parent;
@@ -54,6 +53,7 @@ public class ManagerCustomers extends JPanel {
                     new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
 
             allCustomers = (Customer[]) reader.readObject();
+
             Count = allCustomers.length;
 
             reader.close();
@@ -179,10 +179,10 @@ public class ManagerCustomers extends JPanel {
             allCustomers[index].phoneNumber = phoneField.getText();
 
             try {
-                ObjectOutputStream reader = new ObjectOutputStream(
+                ObjectOutputStream writer = new ObjectOutputStream(
                         new FileOutputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
-                reader.writeObject(allCustomers);
-                reader.close();
+                writer.writeObject(allCustomers);
+                writer.close();
             } catch (Exception E) {
 
             }
@@ -202,7 +202,8 @@ public class ManagerCustomers extends JPanel {
         editPanel.add(cancel);
 
         dialog.add(editPanel);
-        dialog.setBounds(500, 200, 3 * margin + 2 * w + 13, 7 * margin + 7 * h);
+        dialog.setSize(3 * margin + 2 * w + 13, 7 * margin + 7 * h);
+        dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
@@ -258,7 +259,6 @@ public class ManagerCustomers extends JPanel {
             Customer[] temp = new Customer[Count - 1];
 
             for (int i = 0; i < remove; i++) {
-                System.out.print(i);
                 temp[i] = allCustomers[i];
             }
 

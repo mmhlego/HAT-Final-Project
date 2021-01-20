@@ -1,9 +1,8 @@
 package Customer;
 
 import General.*;
-import java.io.Serializable;
 
-public class Customer extends User implements Serializable {
+public class Customer extends User {
     private static final long serialVersionUID = 3155784291214885674L;
 
     public String address = "address";

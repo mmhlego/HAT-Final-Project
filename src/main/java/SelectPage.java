@@ -33,7 +33,7 @@ public class SelectPage extends JPanel {
 		Costumer.setBounds(50, 482, 800, 166);
 		Costumer.setFont(new Font("Tahoma", Font.BOLD, 25));
 
-		Manager.addActionListener((e) -> parent.addPanel(new ManagerLogin()));
+		Manager.addActionListener((e) -> parent.addPanel(new ManagerLogin(parent)));
 		Manager.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent arg0) {
 				Manager.setFont(new Font("Tahoma", Font.BOLD, 27));
@@ -46,7 +46,7 @@ public class SelectPage extends JPanel {
 			}
 		});
 
-		Employee.addActionListener((e) -> parent.addPanel(new EmployeeLogin()));
+		Employee.addActionListener((e) -> parent.addPanel(new EmployeeLogin(parent)));
 		Employee.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent arg0) {
 				Employee.setFont(new Font("Tahoma", Font.BOLD, 27));
@@ -59,7 +59,7 @@ public class SelectPage extends JPanel {
 			}
 		});
 
-		Costumer.addActionListener((e) -> parent.addPanel(new CustomerLogin()));
+		Costumer.addActionListener((e) -> parent.addPanel(new CustomerLogin(parent)));
 		Costumer.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent arg0) {
 				Costumer.setFont(new Font("Tahoma", Font.BOLD, 27));

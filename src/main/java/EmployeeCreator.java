@@ -3,7 +3,7 @@ import java.io.*;
 
 public class EmployeeCreator {
     public EmployeeCreator() {
-
+        writeData();
     }
 
     public static void writeData() {

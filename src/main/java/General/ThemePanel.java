@@ -26,7 +26,7 @@ public class ThemePanel extends JPanel {
             JButton themeButton = new JButton();
             themeButton.setBounds(30, height, 230, 75);
             themeButton.addActionListener((e) -> {
-                change(themeButton);
+                changeTheme(themeButton);
             });
             add(themeButton);
             height += 150;
@@ -37,10 +37,10 @@ public class ThemePanel extends JPanel {
         this.setVisible(true);
     }
 
-    public void change(JButton b) {
+    public void changeTheme(JButton b) {
         int index = (b.getY() - 50) / 150;
 
-        currentUser.theme.setAll(index);
+        currentUser.theme.main.set(index);
         System.out.println(index);
 
         parent.revalidate();

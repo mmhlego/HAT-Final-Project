@@ -4,14 +4,14 @@ import java.awt.*;
 import javax.swing.*;
 import General.*;
 
-public class ProductsList extends JPanel {
+public class EmployeeProducts extends JPanel {
     private static final long serialVersionUID = -4095593549166913583L;
 
     JPanel Info;
     int Count = 50;
     Employee currentUser;
 
-    public ProductsList(Employee u) {
+    public EmployeeProducts(Employee u) {
         currentUser = u;
         Info = new JPanel();
         Info.setLayout(null);

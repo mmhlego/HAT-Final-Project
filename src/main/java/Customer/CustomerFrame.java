@@ -129,12 +129,17 @@ public class CustomerFrame extends JFrame {
 
     public void reDesign(JButton b) {
         b.setBorder(null);
+        b.setForeground(currentUser.theme.sidePanel.fontColor);
         b.setBackground(currentUser.theme.sidePanel.background);
+        if (!b.getText().equals(new String("Toggle SidePanel")))
+            b.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + b.getText(), 40, 40));
     }
 
     public void selectButton(JButton b) {
         resetColors();
+        b.setForeground(currentUser.theme.main.fontColor);
         b.setBackground(currentUser.theme.main.background);
+        b.setIcon(new CustomIcon(currentUser.theme.main.icon + b.getText(), 40, 40));
     }
 
     public void addPanel(JPanel panel) {

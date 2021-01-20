@@ -195,7 +195,8 @@ public class ManagerEmployees extends JPanel {
         editPanel.add(cancel);
 
         dialog.add(editPanel);
-        dialog.setBounds(500, 200, 3 * margin + 2 * w + 13, 7 * margin + 7 * h);
+        dialog.setSize(3 * margin + 2 * w + 13, 7 * margin + 7 * h);
+        dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
@@ -261,7 +262,6 @@ public class ManagerEmployees extends JPanel {
         JButton save = new JButton("Save");
         save.setBounds(margin, 7 * margin + 6 * h, w, h);
         save.addActionListener((e) -> {
-
             readData();
 
             addToFile(new Employee(nameField.getText(), lastNameField.getText(), usernameField.getText(),
@@ -280,7 +280,8 @@ public class ManagerEmployees extends JPanel {
         editPanel.add(cancel);
 
         dialog.add(editPanel);
-        dialog.setBounds(500, 200, 3 * margin + 2 * w + 13, 8 * margin + 8 * h);
+        dialog.setSize(3 * margin + 2 * w + 13, 8 * margin + 8 * h);
+        dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
@@ -312,7 +313,6 @@ public class ManagerEmployees extends JPanel {
             Employee[] temp = new Employee[Count + 1];
 
             for (int i = 0; i < Count; i++) {
-                System.out.print(i);
                 temp[i] = allEmployee[i];
             }
 
@@ -334,7 +334,6 @@ public class ManagerEmployees extends JPanel {
             Employee[] temp = new Employee[Count - 1];
 
             for (int i = 0; i < remove; i++) {
-                System.out.print(i);
                 temp[i] = allEmployee[i];
             }
 
@@ -354,5 +353,4 @@ public class ManagerEmployees extends JPanel {
     public void reloadPage() {
         parent.addPanel(new ManagerEmployees(currentUser, parent));
     }
-
 }

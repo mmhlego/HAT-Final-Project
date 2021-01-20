@@ -8,6 +8,7 @@ public class ManagerFrame extends JFrame {
     private static final long serialVersionUID = 6834405422053183009L;
 
     JButton Customers, Employees, Products, Settings, Exit, Change;
+
     JPanel sidepanel, main;
     Manager currentUser;
 
@@ -124,8 +125,8 @@ public class ManagerFrame extends JFrame {
         setFont(currentUser.theme.main.font);
         setForeground(currentUser.theme.main.fontColor);
         getContentPane().setBackground(currentUser.theme.main.background);
-        System.out.println(getBackground());
-        setBounds(300, 100, width + 5, height + 33);
+        setSize(width + 5, height + 33);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(3);
         setResizable(false);
         setVisible(true);
@@ -140,12 +141,17 @@ public class ManagerFrame extends JFrame {
 
     public void reDesign(JButton b) {
         b.setBorder(null);
+        b.setForeground(currentUser.theme.sidePanel.fontColor);
         b.setBackground(currentUser.theme.sidePanel.background);
+        if (!b.getText().equals(new String("Toggle SidePanel")))
+            b.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + b.getText(), 40, 40));
     }
 
     public void selectButton(JButton b) {
         resetColors();
+        b.setForeground(currentUser.theme.main.fontColor);
         b.setBackground(currentUser.theme.main.background);
+        b.setIcon(new CustomIcon(currentUser.theme.main.icon + b.getText(), 40, 40));
     }
 
     public void addPanel(JPanel panel) {

@@ -63,7 +63,6 @@ public class ManagerProducts extends JPanel {
             m -= 40;
             Delete.addActionListener((e) -> {
                 sure(Delete);
-                System.out.println((Delete.getY() - 5) / 40);
             });
             Info.add(Delete);
 
@@ -224,7 +223,8 @@ public class ManagerProducts extends JPanel {
         editPanel.add(cancel);
 
         dialog.add(editPanel);
-        dialog.setBounds(500, 200, 3 * margin + 2 * w + 13, 7 * margin + 7 * h + 13);
+        dialog.setSize(3 * margin + 2 * w + 13, 7 * margin + 7 * h + 13);
+        dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);

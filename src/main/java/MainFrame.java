@@ -8,6 +8,7 @@ public class MainFrame extends JFrame {
 
         public MainFrame() {
                 setSize(width + 13, height + 37);
+                setLocationRelativeTo(null);
                 addPanel(new SelectPage(this));
                 setDefaultCloseOperation(3);
                 setResizable(false);
