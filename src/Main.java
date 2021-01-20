@@ -1,4 +1,4 @@
-public class MAIN {
+public class Main {
     public static void main(String[] args) {
 
         //new CustomerCreator();
@@ -6,7 +6,7 @@ public class MAIN {
         //new ProductCreator();
         //new ManagerCreator();
 
-        new MainFrame();
+       // new MainFrame();
 
         //new ManagerFrame(new Manager("J.", "Tanha", "JTanha", "jtanha", "09142075023"));
     }
