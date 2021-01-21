@@ -75,7 +75,7 @@ public class EmployeeFrame extends JFrame {
         Products.setForeground(currentUser.theme.sidePanel.fontColor);
         Products.addActionListener((e) -> {
             selectButton(Products);
-            addPanel(new EmployeeProducts(currentUser));
+            addPanel(new EmployeeProducts(currentUser, this));
         });
         Products.setIconTextGap(-180);
         Products.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "products", 40, 40));
