@@ -10,10 +10,9 @@ public class EmployeeFrame extends JFrame {
     JButton Customers, Products, Settings, Exit, Change;
     JPanel sidepanel, main;
     Employee currentUser;
+    
+    int width = 900, height = 700 , w = 200, h = 60;
     boolean open = true;
-
-    int width = 900, height = 700;
-    int w = 200, h = 60;
 
     public EmployeeFrame(Employee e) {
         currentUser = e;
@@ -31,6 +30,8 @@ public class EmployeeFrame extends JFrame {
         //===================================================================================
         Change = new JButton("Toggle SidePanel");
         Change.setBounds(0, 0, w, h);
+        Change.setFont(currentUser.theme.sidePanel.font);
+        Change.setForeground(currentUser.theme.sidePanel.fontColor);
         Change.addActionListener((e) -> {
             if (open) {
                 sidepanel.setBounds(h - w, 0, w, height);
@@ -57,9 +58,10 @@ public class EmployeeFrame extends JFrame {
         //===================================================================================
         Customers = new JButton("Customers");
         Customers.setBounds(0, h, w, h);
+        Customers.setFont(currentUser.theme.sidePanel.font);
+        Customers.setForeground(currentUser.theme.sidePanel.fontColor);
         Customers.addActionListener((e) -> {
             selectButton(Customers);
-
             addPanel(new EmployeeCustomers(currentUser, this));
         });
         Customers.setIconTextGap(-180);
@@ -69,10 +71,11 @@ public class EmployeeFrame extends JFrame {
         //===================================================================================
         Products = new JButton("Products");
         Products.setBounds(0, 2 * h, w, h);
+        Products.setFont(currentUser.theme.sidePanel.font);
+        Products.setForeground(currentUser.theme.sidePanel.fontColor);
         Products.addActionListener((e) -> {
             selectButton(Products);
-
-            addPanel(new EmployeeProducts(currentUser));
+            addPanel(new EmployeeProducts(currentUser , this));
         });
         Products.setIconTextGap(-180);
         Products.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "products", 40, 40));
@@ -81,9 +84,10 @@ public class EmployeeFrame extends JFrame {
         //===================================================================================
         Settings = new JButton("Settings");
         Settings.setBounds(0, 3 * h, w, h);
+        Settings.setFont(currentUser.theme.sidePanel.font);
+        Settings.setForeground(currentUser.theme.sidePanel.fontColor);
         Settings.addActionListener((e) -> {
             selectButton(Settings);
-
             addPanel(new SettingsFrame(this, currentUser));
         });
         Settings.setIconTextGap(-180);
@@ -93,6 +97,8 @@ public class EmployeeFrame extends JFrame {
         //===================================================================================
         Exit = new JButton("Exit");
         Exit.setBounds(0, height - h, w, h);
+        Exit.setFont(currentUser.theme.sidePanel.font);
+        Exit.setForeground(currentUser.theme.sidePanel.fontColor);
         Exit.addActionListener((e) -> System.exit(0));
         Exit.setBorder(null);
         Exit.setBackground(new Color(250, 67, 67));
@@ -102,9 +108,11 @@ public class EmployeeFrame extends JFrame {
         //===================================================================================
         add(sidepanel);
         setFont(currentUser.theme.main.font);
-        setBackground(currentUser.theme.main.background);
+        setForeground(currentUser.theme.main.fontColor);
+        getContentPane().setBackground(currentUser.theme.main.background);
         setSize(width + 13, height + 37);
         setDefaultCloseOperation(3);
+        setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
     }

@@ -8,7 +8,6 @@ public class ManagerFrame extends JFrame {
     private static final long serialVersionUID = 6834405422053183009L;
 
     JButton Customers, Employees, Products, Settings, Exit, Change;
-
     JPanel sidepanel, main;
     Manager currentUser;
 
@@ -120,7 +119,6 @@ public class ManagerFrame extends JFrame {
         Exit.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "exit", 40, 40));
         sidepanel.add(Exit);
         //===================================================================================
-
         add(sidepanel);
         setFont(currentUser.theme.main.font);
         setForeground(currentUser.theme.main.fontColor);

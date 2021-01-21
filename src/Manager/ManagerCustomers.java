@@ -55,6 +55,7 @@ public class ManagerCustomers extends JPanel {
             allCustomers = (Customer[]) reader.readObject();
 
             Count = allCustomers.length;
+            Info.setPreferredSize(new Dimension(660, Count * 40));
 
             reader.close();
 

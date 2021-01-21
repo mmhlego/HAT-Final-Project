@@ -34,7 +34,7 @@ public class Theme implements Serializable {
 
     public Theme() {
         //setAll(1);
-        setTheme("modern");
+        setTheme("dark");
     }
 
     public void setTheme(String type) {
