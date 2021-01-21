@@ -221,7 +221,7 @@ public class ManagerProducts extends JPanel {
             dialog.dispose();
         });
         editPanel.add(cancel);
-        editPanel.setBorder(new LineBorder(Color.BLACK , 1));
+        editPanel.setBorder(new LineBorder(Color.BLACK, 1));
         dialog.add(editPanel);
         dialog.setUndecorated(true);
         dialog.setSize(3 * margin + 2 * w, 6 * margin + 7 * h);

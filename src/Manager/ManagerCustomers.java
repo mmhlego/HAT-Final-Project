@@ -55,6 +55,7 @@ public class ManagerCustomers extends JPanel {
             allCustomers = (Customer[]) reader.readObject();
 
             Count = allCustomers.length;
+            Info.setPreferredSize(new Dimension(660, Count * 40));
 
             reader.close();
 
@@ -159,7 +160,7 @@ public class ManagerCustomers extends JPanel {
         editPanel.add(usernameField);
 
         JTextArea addressField = new JTextArea(allCustomers[index].address);
-        addressField.setBounds(2 * margin + w, 4 * margin + 3 * h, w, 2*h);
+        addressField.setBounds(2 * margin + w, 4 * margin + 3 * h, w, 2 * h);
         addressField.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         addressField.setLineWrap(true);
         editPanel.add(addressField);
@@ -202,11 +203,11 @@ public class ManagerCustomers extends JPanel {
             dialog.dispose();
         });
         editPanel.add(cancel);
-        editPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK , 1));
+        editPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
         dialog.add(editPanel);
         dialog.setUndecorated(true);
-        dialog.setSize(3 * margin + 2 * w , 7 * margin + 7 * h);
+        dialog.setSize(3 * margin + 2 * w, 7 * margin + 7 * h);
         dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
         dialog.setVisible(true);

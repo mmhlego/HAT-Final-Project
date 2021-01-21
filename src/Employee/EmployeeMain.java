@@ -17,10 +17,8 @@ public class EmployeeMain extends JPanel {
     public EmployeeMain(Employee e, JFrame parent) {
         currentUser = e;
 
-        BufferedImage img;
         try {
-            //img = ImageIO.read(new File(System.getProperty("user.dir") + "\\Images\\Employee.png"));
-            img = ImageIO.read(new File("\\Images\\Employee.png"));
+            BufferedImage img = ImageIO.read(new File(System.getProperty("user.dir") + "\\Images\\Employee.png"));
             ImageIcon icon = new ImageIcon();
             icon.setImage(img.getScaledInstance(250, 242, 4));
             label.setIcon(icon);
