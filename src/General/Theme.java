@@ -18,7 +18,7 @@ public class Theme implements Serializable {
     
     //=======================================================================================================================
     
-    public Color background;
+    /*public Color background;
     public Color sidepanel;
     public Font font;
     public Color fontColor;
