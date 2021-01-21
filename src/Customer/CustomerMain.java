@@ -1,7 +1,6 @@
 package Customer;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class CustomerMain extends JPanel {
     private static final long serialVersionUID = -3479368756351822649L;
@@ -37,18 +36,17 @@ public class CustomerMain extends JPanel {
         fields[13].setText(currentUser.address);
 
         for (int i = 0; i < fields.length; i++) {
+            fields[i].setBackground(currentUser.theme.main.background);
             if (i % 2 == 0) {
-                fields[i].setBackground(Color.BLACK);
-                fields[i].setForeground(Color.white);
+        
                 fields[i].setBounds(50, hight, 300, 35);
                 hight = hight + 55;
             } else {
-                fields[i].setBackground(Color.cyan);
-                fields[i].setForeground(Color.BLACK);
-
+                
                 fields[i].setBounds(351, hight - 55, 300, 35);
             }
             fields[i].setFont(currentUser.theme.main.font);
+            fields[i].setForeground(currentUser.theme.main.fontColor);
             fields[i].setBorder(null);
             fields[i].setHorizontalAlignment(SwingConstants.CENTER);
             fields[i].setVisible(true);
@@ -57,10 +55,10 @@ public class CustomerMain extends JPanel {
             this.add(fields[i]);
         }
 
-        this.add(label);
+        add(label);
         setLayout(null);
-        this.setBounds(0, 0, 700, 700);
-        this.setBackground(currentUser.theme.main.background);
+        setBounds(0, 0, 700, 700);
+        setBackground(currentUser.theme.main.background);
 
     }
 }
