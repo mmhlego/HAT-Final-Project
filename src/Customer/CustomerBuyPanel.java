@@ -8,7 +8,7 @@ public class CustomerBuyPanel extends JDialog {
     private static final long serialVersionUID = -4766367936647229462L;
 
     JLabel productPicture = new JLabel(new ImageIcon("images1.jpg"));
-    JTextField[] productsInformation = new JTextField[9];
+
     JTextArea description = new JTextArea();
     JButton addButton, removeButton, buyButton;
     JPanel buy = new JPanel();
@@ -17,10 +17,58 @@ public class CustomerBuyPanel extends JDialog {
     long lastAmount = -1;
     JFrame parent;
 
-    CustomerBuyPanel(Customer user, Product currentProduct) {
-        productsInformation[8] = new JTextField();
 
+
+    CustomerBuyPanel(Customer user, Product currentProduct) {
         currentUser = user;
+        JLabel name = new JLabel();
+        JLabel nameShow = new JLabel();
+        JLabel discount = new JLabel();
+        JLabel discountShow = new JLabel();
+        JLabel price = new JLabel();
+        JLabel priceShow = new JLabel();
+        JLabel amount = new JLabel();
+        JLabel amountShow = new JLabel();
+        JLabel buyAmount = new JLabel();
+
+        name.setHorizontalTextPosition(SwingConstants.CENTER);
+        nameShow.setHorizontalTextPosition(SwingConstants.CENTER);
+        discount.setHorizontalTextPosition(SwingConstants.CENTER);
+        discountShow.setHorizontalTextPosition(SwingConstants.CENTER);
+        price.setHorizontalTextPosition(SwingConstants.CENTER);
+        priceShow.setHorizontalTextPosition(SwingConstants.CENTER);
+        amount.setHorizontalTextPosition(SwingConstants.CENTER);
+        amountShow.setHorizontalTextPosition(SwingConstants.CENTER);
+        buyAmount.setHorizontalTextPosition(SwingConstants.CENTER);
+
+        name.setForeground(currentUser.theme.main.fontColor);
+        nameShow.setForeground(currentUser.theme.main.fontColor);
+        discount.setForeground(currentUser.theme.main.fontColor);
+        discountShow.setForeground(currentUser.theme.main.fontColor);
+        price.setForeground(currentUser.theme.main.fontColor);
+        priceShow.setForeground(currentUser.theme.main.fontColor);
+        amount.setForeground(currentUser.theme.main.fontColor);
+        amountShow.setForeground(currentUser.theme.main.fontColor);
+        buyAmount.setForeground(currentUser.theme.main.fontColor);
+
+        name.setFont(currentUser.theme.main.font);
+        nameShow.setFont(currentUser.theme.main.font);
+        discount.setFont(currentUser.theme.main.font);
+        discountShow.setFont(currentUser.theme.main.font);
+        price.setFont(currentUser.theme.main.font);
+        priceShow.setFont(currentUser.theme.main.font);
+        amount.setFont(currentUser.theme.main.font);
+        amountShow.setFont(currentUser.theme.main.font);
+        buyAmount.setFont(currentUser.theme.main.font);
+
+        name.setBounds(50,240,200,25);
+        nameShow.setBounds(250,240,200,25);
+        discount.setBounds(50,270,200,25);
+        discountShow.setBounds(250,270,200,25);
+        price.setBounds(50,300,200,25);
+        priceShow.setBounds(250,300,200,25);
+        amount.setBounds(50,330,200,25);
+        amountShow.setBounds(250,330,200,25);
 
         productPicture.setBounds(145, 10, 205, 215);
         productPicture.setVisible(true);
@@ -32,53 +80,31 @@ public class CustomerBuyPanel extends JDialog {
         description.setBounds(50, 365, 400, 50);
         buy.add(description);
 
-        int height = 240;
-        for (int i = 0; i < 8; i++) {
-            productsInformation[i] = new JTextField();
-
-            productsInformation[i].setFont(currentUser.theme.main.font);
-            productsInformation[i].setForeground(currentUser.theme.main.fontColor);
-            if (i % 2 == 0) {
-                productsInformation[i].setBounds(50, height, 200, 25);
-
-            } else {
-                productsInformation[i].setBounds(250, height, 200, 25);
-                height += 30;
-            }
-            productsInformation[i].setBackground(currentUser.theme.main.background);
-            //productsInformation[i].setForeground(Color.BLACK);
-            productsInformation[i].setHorizontalAlignment(SwingConstants.CENTER);
-            productsInformation[i].setBorder(null);
-            productsInformation[i].setEditable(false);
-            buy.add(productsInformation[i]);
-        }
-
-        productsInformation[1].setText(currentProduct.name);
-        productsInformation[0].setText("Name:");
-        productsInformation[2].setText("Discount:");
-        productsInformation[5].setText(String.valueOf(currentProduct.price));
-        productsInformation[4].setText("Price:");
+        nameShow.setText(currentProduct.name);
+        name.setText("Name:");
+        discount.setText("Discount:");
+        priceShow.setText(String.valueOf(currentProduct.price));
+        price.setText("Price:");
         if (lastAmount == -1)
-            productsInformation[7].setText(String.valueOf(currentProduct.amount));
+            amountShow.setText(String.valueOf(currentProduct.amount));
         else
-            productsInformation[7].setText(String.valueOf(lastAmount));
-        productsInformation[6].setText("Remain amount:");
-        productsInformation[8].setBounds(100, 450, 75, 50);
-        productsInformation[8].setText(String.valueOf(count));
+            amountShow.setText(String.valueOf(lastAmount));
+        amount.setText("Remain amount:");
+        buyAmount.setBounds(100, 450, 75, 50);
+        buyAmount.setText(String.valueOf(count));
         //productsInformation[8].setBackground(currentUser.theme.sidepanel);
-        productsInformation[8].setForeground(Color.BLACK);
-        productsInformation[8].setEditable(false);
-        productsInformation[8].setBorder(null);
-        productsInformation[8].setHorizontalAlignment(SwingConstants.CENTER);
+        buyAmount.setForeground(Color.BLACK);
+        buyAmount.setBorder(null);
+        buyAmount.setHorizontalAlignment(SwingConstants.CENTER);
 
-        buy.add(productsInformation[8]);
+        buy.add(buyAmount);
 
         removeButton = new JButton("+");
         removeButton.setBounds(175, 450, 50, 50);
         removeButton.addActionListener(e -> {
-            long tempCount = Integer.parseInt(productsInformation[8].getText());
-            productsInformation[8].setText(String.valueOf(++tempCount));
-            removeButton.setEnabled(tempCount != Long.parseLong(productsInformation[7].getText()));
+            long tempCount = Integer.parseInt(buyAmount.getText());
+            buyAmount.setText(String.valueOf(++tempCount));
+            removeButton.setEnabled(tempCount != Long.parseLong(buyAmount.getText()));
             addButton.setEnabled(true);
         });
 
@@ -86,18 +112,18 @@ public class CustomerBuyPanel extends JDialog {
         addButton.setBounds(50, 450, 50, 50);
         addButton.setEnabled(false);
         addButton.addActionListener(e -> {
-            int tempCount = Integer.parseInt(productsInformation[8].getText());
-            productsInformation[8].setText(String.valueOf(--tempCount));
-            addButton.setEnabled(Long.parseLong(productsInformation[8].getText()) != 0);
-            removeButton.setEnabled(tempCount != Long.parseLong(productsInformation[7].getText()));
+            int tempCount = Integer.parseInt(buyAmount.getText());
+            buyAmount.setText(String.valueOf(--tempCount));
+            addButton.setEnabled(Long.parseLong(buyAmount.getText()) != 0);
+            removeButton.setEnabled(tempCount != Long.parseLong(amountShow.getText()));
             removeButton.setEnabled(true);
         });
 
         buyButton = new JButton("Buy");
         buyButton.setBounds(275, 450, 175, 50);
         buyButton.addActionListener(e -> {
-            lastAmount = currentProduct.amount - Long.parseLong(productsInformation[8].getText());
-            productsInformation[7].setText(String.valueOf(lastAmount));
+            lastAmount = currentProduct.amount - Long.parseLong(buyAmount.getText());
+            amountShow.setText(String.valueOf(lastAmount));
         });
 
         buy.add(removeButton);
@@ -107,6 +133,15 @@ public class CustomerBuyPanel extends JDialog {
         buy.setBackground(currentUser.theme.main.background);
         buy.add(productPicture);
         buy.setVisible(true);
+        buy.add(name);
+        buy.add(nameShow);
+        buy.add(discount);
+        buy.add(discountShow);
+        buy.add(amount);
+        buy.add(amountShow);
+        buy.add(price);
+        buy.add(priceShow);
+        buy.add(buyAmount);
 
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         add(buy);
