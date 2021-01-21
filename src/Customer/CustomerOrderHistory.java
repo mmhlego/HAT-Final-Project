@@ -2,18 +2,15 @@ package Customer;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.*;
-import Customer.*;
 import General.*;
 
-public class CustomerOrderHistory extends JPanel
-{
-    JPanel Info; 
+public class CustomerOrderHistory extends JPanel {
+    JPanel Info;
     int Count = 50;
     User currentUser;
     JFrame parrent;
-    public CustomerOrderHistory(Customer u , CustomerFrame p) 
-    {
+
+    public CustomerOrderHistory(Customer u, CustomerFrame p) {
         currentUser = u;
         parrent = p;
         Info = new JPanel();

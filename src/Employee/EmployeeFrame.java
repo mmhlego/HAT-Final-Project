@@ -10,8 +10,8 @@ public class EmployeeFrame extends JFrame {
     JButton Customers, Products, Settings, Exit, Change;
     JPanel sidepanel, main;
     Employee currentUser;
-    
-    int width = 900, height = 700 , w = 200, h = 60;
+
+    int width = 900, height = 700, w = 200, h = 60;
     boolean open = true;
 
     public EmployeeFrame(Employee e) {
@@ -75,7 +75,7 @@ public class EmployeeFrame extends JFrame {
         Products.setForeground(currentUser.theme.sidePanel.fontColor);
         Products.addActionListener((e) -> {
             selectButton(Products);
-            addPanel(new EmployeeProducts(currentUser , this));
+            addPanel(new EmployeeProducts(currentUser));
         });
         Products.setIconTextGap(-180);
         Products.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "products", 40, 40));
