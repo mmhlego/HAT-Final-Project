@@ -10,10 +10,9 @@ public class CustomerFrame extends JFrame {
     JButton History, Cart, Products, Settings, Exit, Change;
     JPanel sidepanel, main;
     Customer currentUser;
+    
+    int width = 900, height = 700 , w = 200, h = 60;
     boolean open = true;
-
-    int width = 900, height = 700;
-    int w = 200, h = 60;
 
     public CustomerFrame(Customer c) {
         currentUser = c;
@@ -23,7 +22,7 @@ public class CustomerFrame extends JFrame {
 
     public void design() {
         setLayout(null);
-
+        //===================================================================================
         sidepanel = new JPanel();
         sidepanel.setLayout(null);
         sidepanel.setBackground(currentUser.theme.sidePanel.background);
@@ -31,6 +30,8 @@ public class CustomerFrame extends JFrame {
         //===================================================================================
         Change = new JButton("Toggle SidePanel");
         Change.setBounds(0, 0, w, h);
+        Change.setFont(currentUser.theme.sidePanel.font);
+        Change.setForeground(currentUser.theme.sidePanel.fontColor);
         Change.addActionListener((e) -> {
             if (open) {
                 sidepanel.setBounds(h - w, 0, w, height);
@@ -57,6 +58,8 @@ public class CustomerFrame extends JFrame {
         //===================================================================================
         History = new JButton("Order History");
         History.setBounds(0, h, w, h);
+        History.setFont(currentUser.theme.sidePanel.font);
+        History.setForeground(currentUser.theme.sidePanel.fontColor);
         History.addActionListener((e) -> {
             selectButton(History);
 
@@ -69,6 +72,8 @@ public class CustomerFrame extends JFrame {
         //===================================================================================
         Cart = new JButton("Cart");
         Cart.setBounds(0, 2 * h, w, h);
+        Cart.setFont(currentUser.theme.sidePanel.font);
+        Cart.setForeground(currentUser.theme.sidePanel.fontColor);
         Cart.addActionListener((e) -> {
             selectButton(Cart);
 
@@ -81,10 +86,17 @@ public class CustomerFrame extends JFrame {
         //===================================================================================
         Products = new JButton("Products");
         Products.setBounds(0, 3 * h, w, h);
-        Products.addActionListener((e) -> {
+        Products.setFont(currentUser.theme.sidePanel.font);
+        Products.setForeground(currentUser.theme.sidePanel.fontColor);
+        Products.addActionListener((e) -> 
+        {
+            selectButton(Settings);
+            addPanel(new SettingsFrame(this, currentUser));
+        });
+        Products.addActionListener((e) -> 
+        {
             selectButton(Products);
-
-            //addPanel(new ManagerProducts());
+            //addPanel(new CustomerProducts(currentUser , this));
         });
         Products.setIconTextGap(-180);
         Products.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "products", 40, 40));
@@ -93,6 +105,8 @@ public class CustomerFrame extends JFrame {
         //===================================================================================
         Settings = new JButton("Settings");
         Settings.setBounds(0, 4 * h, w, h);
+        Settings.setFont(currentUser.theme.sidePanel.font);
+        Settings.setForeground(currentUser.theme.sidePanel.fontColor);
         Settings.addActionListener((e) -> {
             selectButton(Settings);
             addPanel(new SettingsFrame(this, currentUser));
@@ -104,6 +118,8 @@ public class CustomerFrame extends JFrame {
         //===================================================================================
         Exit = new JButton("Exit");
         Exit.setBounds(0, height - h, w, h);
+        Exit.setFont(currentUser.theme.sidePanel.font);
+        Exit.setForeground(currentUser.theme.sidePanel.fontColor);
         Exit.addActionListener((e) -> System.exit(0));
         Exit.setBorder(null);
         Exit.setBackground(new Color(250, 67, 67));
@@ -113,8 +129,10 @@ public class CustomerFrame extends JFrame {
         //===================================================================================
         add(sidepanel);
         setFont(currentUser.theme.main.font);
-        setBackground(currentUser.theme.main.background);
-        setSize(width + 13, height + 37);
+        setForeground(currentUser.theme.main.fontColor);
+        getContentPane().setBackground(currentUser.theme.main.background);
+        setSize(width + 5, height + 33);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(3);
         setResizable(false);
         setVisible(true);
@@ -139,7 +157,6 @@ public class CustomerFrame extends JFrame {
         resetColors();
         b.setForeground(currentUser.theme.main.fontColor);
         b.setBackground(currentUser.theme.main.background);
-
         b.setIcon(new CustomIcon(currentUser.theme.main.icon + b.getText(), 40, 40));
     }
 
