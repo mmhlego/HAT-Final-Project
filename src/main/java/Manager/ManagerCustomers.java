@@ -206,7 +206,7 @@ public class ManagerCustomers extends JPanel {
 
         dialog.add(editPanel);
         dialog.setUndecorated(true);
-        dialog.setSize(3 * margin + 2 * w + 13, 7 * margin + 7 * h);
+        dialog.setSize(3 * margin + 2 * w , 7 * margin + 7 * h);
         dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
         dialog.setVisible(true);
