@@ -10,14 +10,12 @@ public class EmployeeFrame extends JFrame {
     JButton Customers, Products, Settings, Exit, Change;
     JPanel sidepanel, main;
     Employee currentUser;
-    EmployeeFrame parent;
     boolean open = true;
 
     int width = 900, height = 700;
     int w = 200, h = 60;
 
-    public EmployeeFrame(Employee e, EmployeeFrame f) {
-        parent = f;
+    public EmployeeFrame(Employee e) {
         currentUser = e;
         design();
         addPanel(new EmployeeMain(currentUser, this));
@@ -62,7 +60,7 @@ public class EmployeeFrame extends JFrame {
         Customers.addActionListener((e) -> {
             selectButton(Customers);
 
-            addPanel(new EmployeeCustomers(currentUser, parent));
+            addPanel(new EmployeeCustomers(currentUser, this));
         });
         Customers.setIconTextGap(-180);
         Customers.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "customers", 40, 40));
