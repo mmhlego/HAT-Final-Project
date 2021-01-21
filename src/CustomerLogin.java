@@ -176,7 +176,7 @@ public class CustomerLogin extends JPanel {
         save.setBounds(margin, 7 * margin + 7 * h, w, h);
         save.addActionListener((e) -> {
             if (nameField.getText().equals("") || lastNameField.getText().equals("")
-                    || usernameField.getText().equals("") || passwordField.getPassword().equals("")
+                    || usernameField.getText().equals("") || new String(passwordField.getPassword()).equals("")
                     || AddressField.getText().equals("") || phoneField.getText().equals("")) {
                 JOptionPane.showMessageDialog(dialog, "Some Of The Fields Are Empty !", "Incomplete Credentials",
                         JOptionPane.ERROR_MESSAGE);
