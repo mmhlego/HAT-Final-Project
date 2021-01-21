@@ -12,7 +12,7 @@ public class EmployeeMain extends JPanel {
 
     public EmployeeMain(Employee e, JFrame parent) {
         currentUser = e;
-        
+
         label.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Employee.png"));
         label.setBounds(225, 25, 250, 250);
         label.setBackground(currentUser.theme.main.background);
@@ -36,11 +36,11 @@ public class EmployeeMain extends JPanel {
         for (int i = 0; i < fields.length; i++) {
             fields[i].setBackground(currentUser.theme.main.background);
             if (i % 2 == 0) {
-                
+
                 fields[i].setBounds(50, hight, 300, 35);
                 hight = hight + 60;
             } else {
-                
+
                 fields[i].setBounds(351, hight - 60, 300, 35);
             }
             fields[i].setFont(currentUser.theme.main.font);

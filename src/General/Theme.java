@@ -4,26 +4,6 @@ import java.awt.*;
 import java.io.Serializable;
 
 public class Theme implements Serializable {
-
-    /*private Color[] mainBackgrounds = { Hex("f2f2f2"), Hex("393e46"), Hex("363333"), Hex("393e46"), Hex("393e46") };
-    
-    private Color[] sideBackgrounds = { Hex("ffffff"), Hex("222831"), Hex("272121"), Hex("00adb5"), Hex("79d70f") };
-    
-    private Color[] fontColors = { Hex("000000"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("000000") };
-    
-    private Font[] fonts = { new Font("Dialog", 0, 14), new Font("Dialog", 0, 16), new Font("Dialog", 0, 16),
-            new Font("Dialog", 0, 16), new Font("Dialog", 0, 16) };
-    
-    private String[] icons = { "dark", "light", "light", "light", "dark" };
-    
-    //=======================================================================================================================
-    
-    public Color background;
-    public Color sidepanel;
-    public Font font;
-    public Color fontColor;
-    public String icon;*/
-
     private static final long serialVersionUID = -4097480035409892164L;
 
     public MainTheme main = new MainTheme();
@@ -38,7 +18,7 @@ public class Theme implements Serializable {
     }
 
     public void setTheme(String type) {
-        switch (type) {
+        switch (type.toLowerCase()) {
             case "light":
             case "default":
                 setAll(0);
@@ -59,12 +39,6 @@ public class Theme implements Serializable {
     }
 
     public void setAll(int i) {
-        /*background = mainBackgrounds[i];
-        sidepanel = sideBackgrounds[i];
-        font = fonts[i];
-        fontColor = fontColors[i];
-        icon = icons[i];*/
-
         main.set(i);
         sidePanel.set(i);
         dialog.set(i);
