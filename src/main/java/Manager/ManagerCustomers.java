@@ -143,7 +143,7 @@ public class ManagerCustomers extends JPanel {
         editPanel.add(addressLabel);
 
         JLabel phoneLabel = new JLabel("Phone Number:", 4);
-        phoneLabel.setBounds(margin, 5 * margin + 4 * h, w, h);
+        phoneLabel.setBounds(margin, 5 * margin + 4 * h + 30, w, h);
         editPanel.add(phoneLabel);
 
         JTextField nameField = new JTextField(allCustomers[index].name, 4);
@@ -158,16 +158,18 @@ public class ManagerCustomers extends JPanel {
         usernameField.setBounds(2 * margin + w, 3 * margin + 2 * h, w, h);
         editPanel.add(usernameField);
 
-        JTextField addressField = new JTextField(allCustomers[index].address, 4);
-        addressField.setBounds(2 * margin + w, 4 * margin + 3 * h, w, h);
+        JTextArea addressField = new JTextArea(allCustomers[index].address);
+        addressField.setBounds(2 * margin + w, 4 * margin + 3 * h, w, 2*h);
+        addressField.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+        addressField.setLineWrap(true);
         editPanel.add(addressField);
 
         JTextField phoneField = new JTextField(allCustomers[index].phoneNumber, 4);
-        phoneField.setBounds(2 * margin + w, 5 * margin + 4 * h, w, h);
+        phoneField.setBounds(2 * margin + w, 5 * margin + 4 * h + 30, w, h);
         editPanel.add(phoneField);
 
         JButton save = new JButton("Save");
-        save.setBounds(margin, 6 * margin + 5 * h, w, h);
+        save.setBounds(margin, 6 * margin + 5 * h + 30, w, h);
         save.addActionListener((e) -> {
 
             readData();
@@ -195,17 +197,18 @@ public class ManagerCustomers extends JPanel {
         editPanel.add(save);
 
         JButton cancel = new JButton("Cancel");
-        cancel.setBounds(2 * margin + w, 6 * margin + 5 * h, w, h);
+        cancel.setBounds(2 * margin + w, 6 * margin + 5 * h + 30, w, h);
         cancel.addActionListener((e) -> {
             dialog.dispose();
         });
         editPanel.add(cancel);
+        editPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK , 1));
 
         dialog.add(editPanel);
+        dialog.setUndecorated(true);
         dialog.setSize(3 * margin + 2 * w + 13, 7 * margin + 7 * h);
         dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
-        dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
 
