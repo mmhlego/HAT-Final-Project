@@ -63,7 +63,7 @@ public class CustomerFrame extends JFrame {
         History.addActionListener((e) -> {
             selectButton(History);
 
-            //addPanel(new ManagerCostumers());
+            addPanel(new CustomerOrderHistory(currentUser, this));
         });
         History.setIconTextGap(-180);
         History.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "history", 40, 40));
