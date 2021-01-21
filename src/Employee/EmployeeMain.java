@@ -1,10 +1,6 @@
 package Employee;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.image.*;
-import java.io.*;
-import javax.imageio.*;
 
 public class EmployeeMain extends JPanel {
     private static final long serialVersionUID = -7149595577088884301L;
@@ -17,16 +13,8 @@ public class EmployeeMain extends JPanel {
     public EmployeeMain(Employee e, JFrame parent) {
         currentUser = e;
 
-        try {
-            BufferedImage img = ImageIO.read(new File(System.getProperty("user.dir") + "\\Images\\Employee.png"));
-            ImageIcon icon = new ImageIcon();
-            icon.setImage(img.getScaledInstance(250, 242, 4));
-            label.setIcon(icon);
-        } catch (Exception ee) {
-
-        }
-
-        label.setBounds(250, 25, 200, 250);
+        label.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Employee.png"));
+        label.setBounds(225, 25, 250, 250);
         label.setBackground(currentUser.theme.main.background);
 
         for (int i = 0; i < fields.length; i++)
@@ -46,18 +34,17 @@ public class EmployeeMain extends JPanel {
         fields[11].setText(currentUser.ID);
 
         for (int i = 0; i < fields.length; i++) {
+            fields[i].setBackground(currentUser.theme.main.background);
             if (i % 2 == 0) {
-                fields[i].setBackground(Color.BLACK);
-                fields[i].setForeground(Color.white);
+
                 fields[i].setBounds(50, hight, 300, 35);
                 hight = hight + 60;
             } else {
-                fields[i].setBackground(Color.cyan);
-                fields[i].setForeground(Color.BLACK);
 
                 fields[i].setBounds(351, hight - 60, 300, 35);
             }
             fields[i].setFont(currentUser.theme.main.font);
+            fields[i].setForeground(currentUser.theme.main.fontColor);
             fields[i].setBorder(null);
             fields[i].setHorizontalAlignment(SwingConstants.CENTER);
             fields[i].setVisible(true);
@@ -66,10 +53,10 @@ public class EmployeeMain extends JPanel {
             this.add(fields[i]);
         }
 
-        this.add(label);
+        add(label);
         setLayout(null);
-        this.setBounds(0, 0, 700, 700);
-        this.setBackground(currentUser.theme.main.background);
+        setBounds(0, 0, 700, 700);
+        setBackground(currentUser.theme.main.background);
 
     }
 }
