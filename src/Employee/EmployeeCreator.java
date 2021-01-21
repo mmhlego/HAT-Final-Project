@@ -1,4 +1,5 @@
-import Employee.*;
+package Employee;
+
 import java.io.*;
 
 public class EmployeeCreator {

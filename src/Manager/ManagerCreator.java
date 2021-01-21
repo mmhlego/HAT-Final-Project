@@ -1,5 +1,6 @@
+package Manager;
+
 import java.io.*;
-import Manager.*;
 
 public class ManagerCreator {
     ManagerCreator() {

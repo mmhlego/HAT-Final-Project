@@ -1,39 +1,35 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
 import General.*;
+import Employee.*;
 
 public class EmployeeLogin extends JPanel {
     private static final long serialVersionUID = 6637516719468314848L;
 
     JTextField UserNameTF;
     JPasswordField PassWordPF;
-    JLabel ShowPass;
-    JLabel Title;
-    JLabel UserText;
-    JLabel Passtext;
-    JButton Login;
-    JButton ShowPassText;
     MainFrame parent;
 
     public EmployeeLogin(MainFrame p) {
-        ImageIcon ShowPasswords = new CustomIcon("Show Password", 28, 28);
-        ImageIcon HidePasswords = new CustomIcon("Hide Password", 28, 28);
+        ImageIcon ShowPasswords = new CustomIcon("Show_Password", 28, 28);
+        ImageIcon HidePasswords = new CustomIcon("Hide_Password", 28, 28);
         parent = p;
         setLayout(null);
-        Title = new JLabel("Employee");
+        JLabel Title = new JLabel("Employee");
         Title.setBackground(new Color(238, 238, 238));
         Title.setFont(new Font("Tahoma", Font.BOLD, 48));
         Title.setOpaque(true);
         Title.setBounds(320, 15, 344, 80);
         this.add(Title);
 
-        UserText = new JLabel("Username");
+        JLabel UserText = new JLabel("Username");
         UserText.setBounds(50, 160, 135, 68);
         UserText.setFont(new Font("Tahoam", Font.BOLD, 24));
         UserText.setBackground(new Color(238, 238, 238));
         UserText.setOpaque(true);
 
-        Passtext = new JLabel("Password");
+        JLabel Passtext = new JLabel("Password");
         Passtext.setBounds(50, 270, 135, 68);
         Passtext.setFont(new Font("Tahoma", Font.BOLD, 24));
         Passtext.setBackground(new Color(238, 238, 238));
@@ -53,15 +49,16 @@ public class EmployeeLogin extends JPanel {
         PassWordPF.setBackground(new Color(238, 238, 238));
         PassWordPF.setDocument(new Limitter(16));
 
-        ShowPass = new JLabel();
+        JLabel ShowPass = new JLabel();
         ShowPass.setBounds(195, 343, 595, 30);
 
-        Login = new JButton("Login");
+        JButton Login = new JButton("Login");
         Login.setBounds(50, 585, 800, 62);
         Login.setBackground(new Color(111, 207, 151));
         Login.setFont(new Font("Tahoma", Font.BOLD, 24));
+        Login.addActionListener((e) -> check());
 
-        ShowPassText = new JButton();
+        JButton ShowPassText = new JButton();
         ShowPassText.setIcon(ShowPasswords);
         ShowPassText.setBorder(null);
         ShowPassText.setFocusable(false);
@@ -86,5 +83,39 @@ public class EmployeeLogin extends JPanel {
         this.add(Login);
         this.add(ShowPass);
         this.add(ShowPassText);
+    }
+
+    public void check() {
+        try {
+            ObjectInputStream reader = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Employees.dat"));
+            Employee[] allEmployees = (Employee[]) reader.readObject();
+            reader.close();
+
+            String username = UserNameTF.getText();
+            String password = new String(PassWordPF.getPassword());
+            boolean hasAccount = false;
+
+            int length = allEmployees.length;
+            for (int i = 0; i < length; i++) {
+                if (allEmployees[i].username.equals(username)) {
+                    hasAccount = true;
+                    if (allEmployees[i].password.equals(password)) {
+                        parent.dispose();
+                        new EmployeeFrame(allEmployees[i]);
+                        return;
+                    }
+                }
+            }
+
+            if (hasAccount) {
+                JOptionPane.showMessageDialog(this, "Wrong password.", "Error", 0);
+            } else {
+                JOptionPane.showMessageDialog(this, "No account has been found.", "Error", 0);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 }

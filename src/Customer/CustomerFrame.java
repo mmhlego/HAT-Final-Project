@@ -139,6 +139,7 @@ public class CustomerFrame extends JFrame {
         resetColors();
         b.setForeground(currentUser.theme.main.fontColor);
         b.setBackground(currentUser.theme.main.background);
+
         b.setIcon(new CustomIcon(currentUser.theme.main.icon + b.getText(), 40, 40));
     }
 

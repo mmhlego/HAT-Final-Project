@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
+import Customer.*;
 import General.*;
 
 public class CustomerLogin extends JPanel {
@@ -9,10 +11,10 @@ public class CustomerLogin extends JPanel {
     JPasswordField PassWordPF;
     JButton Login;
     MainFrame parent;
+    ImageIcon ShowPasswords = new CustomIcon("Show_Password", 28, 28);
+    ImageIcon HidePasswords = new CustomIcon("Hide_Password", 28, 28);
 
     public CustomerLogin(MainFrame p) {
-        ImageIcon ShowPasswords = new CustomIcon("Show Password", 28, 28);
-        ImageIcon HidePasswords = new CustomIcon("Hide Password", 28, 28);
         parent = p;
         setLayout(null);
         JLabel Title = new JLabel("Customer");
@@ -59,7 +61,6 @@ public class CustomerLogin extends JPanel {
         NewCustomer.setFont(new Font("Tahoma", Font.BOLD, 17));
         NewCustomer.setForeground(new Color(47, 128, 237));
         NewCustomer.setBackground(new Color(238, 238, 238));
-
         NewCustomer.addActionListener((e) -> {
             UserNameTF.setEditable(false);
             PassWordPF.setEditable(false);
@@ -72,6 +73,7 @@ public class CustomerLogin extends JPanel {
         Login.setBackground(new Color(111, 207, 151));
         Login.setFont(new Font("Tahoma", Font.BOLD, 24));
         Login.setEnabled(true);
+        Login.addActionListener((e) -> check());
 
         JButton ShowPassText = new JButton();
         ShowPassText.setIcon(ShowPasswords);
@@ -103,8 +105,8 @@ public class CustomerLogin extends JPanel {
 
     public void addNew() {
         int h = 40, w = 200, margin = 40;
-        ImageIcon ShowPasswords = new CustomIcon("Show Password", 20, 20);
-        ImageIcon HidePasswords = new CustomIcon("Hide Password", 20, 20);
+        //ImageIcon ShowPasswords = new CustomIcon("Show_Password", 20, 20);
+        //ImageIcon HidePasswords = new CustomIcon("Hide_Password", 20, 20);
 
         JDialog dialog = new JDialog(parent, "Edit Information");
 
@@ -221,5 +223,39 @@ public class CustomerLogin extends JPanel {
         dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
         dialog.setVisible(true);
+    }
+
+    public void check() {
+        try {
+            ObjectInputStream reader = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
+            Customer[] allCustomers = (Customer[]) reader.readObject();
+            reader.close();
+
+            String username = UserNameTF.getText();
+            String password = new String(PassWordPF.getPassword());
+            boolean hasAccount = false;
+
+            int length = allCustomers.length;
+            for (int i = 0; i < length; i++) {
+                if (allCustomers[i].username.equals(username)) {
+                    hasAccount = true;
+                    if (allCustomers[i].password.equals(password)) {
+                        parent.dispose();
+                        new CustomerFrame(allCustomers[i]);
+                        return;
+                    }
+                }
+            }
+
+            if (hasAccount) {
+                JOptionPane.showMessageDialog(this, "Wrong password.", "Error", 0);
+            } else {
+                JOptionPane.showMessageDialog(this, "No account has been found.", "Error", 0);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 }

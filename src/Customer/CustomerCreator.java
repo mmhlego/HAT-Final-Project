@@ -1,6 +1,7 @@
+package Customer;
+
 import java.util.*;
 import java.io.*;
-import Customer.*;
 
 public class CustomerCreator {
     public CustomerCreator() {
