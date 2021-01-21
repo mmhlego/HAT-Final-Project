@@ -63,7 +63,7 @@ public class CustomerFrame extends JFrame {
         History.addActionListener((e) -> {
             selectButton(History);
 
-            //addPanel(new ManagerCostumers());
+            addPanel(new CustomerOrderHistory(currentUser , this));
         });
         History.setIconTextGap(-180);
         History.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "history", 40, 40));
@@ -88,11 +88,6 @@ public class CustomerFrame extends JFrame {
         Products.setBounds(0, 3 * h, w, h);
         Products.setFont(currentUser.theme.sidePanel.font);
         Products.setForeground(currentUser.theme.sidePanel.fontColor);
-        Products.addActionListener((e) -> 
-        {
-            selectButton(Settings);
-            addPanel(new SettingsFrame(this, currentUser));
-        });
         Products.addActionListener((e) -> 
         {
             selectButton(Products);
