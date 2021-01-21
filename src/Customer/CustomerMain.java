@@ -38,11 +38,11 @@ public class CustomerMain extends JPanel {
         for (int i = 0; i < fields.length; i++) {
             fields[i].setBackground(currentUser.theme.main.background);
             if (i % 2 == 0) {
-        
+
                 fields[i].setBounds(50, hight, 300, 35);
                 hight = hight + 55;
             } else {
-                
+
                 fields[i].setBounds(351, hight - 55, 300, 35);
             }
             fields[i].setFont(currentUser.theme.main.font);
