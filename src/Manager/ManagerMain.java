@@ -34,11 +34,11 @@ public class ManagerMain extends JPanel {
         for (int i = 0; i < fields.length; i++) {
             fields[i].setBackground(currentUser.theme.main.background);
             if (i % 2 == 0) {
-                
+
                 fields[i].setBounds(50, hight, 300, 35);
                 hight = hight + 60;
             } else {
-                
+
                 fields[i].setBounds(351, hight - 60, 300, 35);
             }
             fields[i].setFont(currentUser.theme.main.font);
