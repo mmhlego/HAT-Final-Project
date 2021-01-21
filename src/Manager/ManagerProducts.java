@@ -171,7 +171,7 @@ public class ManagerProducts extends JPanel {
 
         JTextArea descriptionField = new JTextArea(allProducts[index].description);
         descriptionField.setLineWrap(true);
-        descriptionField.setBorder(new LineBorder(Color.BLACK, 1));
+        descriptionField.setBorder(new LineBorder(Color.GRAY, 1));
         descriptionField.setBounds(2 * margin + w, 2 * margin + h, w, 3 * h);
         editPanel.add(descriptionField);
 
@@ -221,12 +221,12 @@ public class ManagerProducts extends JPanel {
             dialog.dispose();
         });
         editPanel.add(cancel);
-
+        editPanel.setBorder(new LineBorder(Color.BLACK , 1));
         dialog.add(editPanel);
-        dialog.setSize(3 * margin + 2 * w + 13, 7 * margin + 7 * h + 13);
+        dialog.setUndecorated(true);
+        dialog.setSize(3 * margin + 2 * w, 6 * margin + 7 * h);
         dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
-        dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
 
@@ -261,7 +261,7 @@ public class ManagerProducts extends JPanel {
 
         JTextArea descriptionField = new JTextArea("");
         descriptionField.setLineWrap(true);
-        descriptionField.setBorder(new LineBorder(Color.BLACK, 1));
+        descriptionField.setBorder(new LineBorder(Color.GRAY, 1));
         descriptionField.setBounds(2 * margin + w, 2 * margin + h, w, 3 * h);
         editPanel.add(descriptionField);
 
@@ -299,11 +299,11 @@ public class ManagerProducts extends JPanel {
             dialog.dispose();
         });
         editPanel.add(cancel);
-
+        editPanel.setBorder(new LineBorder(Color.BLACK, 1));
+        dialog.setUndecorated(true);
         dialog.add(editPanel);
-        dialog.setBounds(500, 200, 3 * margin + 2 * w + 13, 8 * margin + 8 * h);
+        dialog.setBounds(500, 200, 3 * margin + 2 * w, 8 * margin + 7 * h);
         dialog.setResizable(false);
-        dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
 
