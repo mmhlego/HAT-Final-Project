@@ -10,8 +10,8 @@ public class CustomerFrame extends JFrame {
     JButton History, Cart, Products, Settings, Exit, Change;
     JPanel sidepanel, main;
     Customer currentUser;
-    
-    int width = 900, height = 700 , w = 200, h = 60;
+
+    int width = 900, height = 700, w = 200, h = 60;
     boolean open = true;
 
     public CustomerFrame(Customer c) {
@@ -88,15 +88,9 @@ public class CustomerFrame extends JFrame {
         Products.setBounds(0, 3 * h, w, h);
         Products.setFont(currentUser.theme.sidePanel.font);
         Products.setForeground(currentUser.theme.sidePanel.fontColor);
-        Products.addActionListener((e) -> 
-        {
-            selectButton(Settings);
-            addPanel(new SettingsFrame(this, currentUser));
-        });
-        Products.addActionListener((e) -> 
-        {
+        Products.addActionListener((e) -> {
             selectButton(Products);
-            //addPanel(new CustomerProducts(currentUser , this));
+            addPanel(new CustomerProducts(currentUser, this));
         });
         Products.setIconTextGap(-180);
         Products.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "products", 40, 40));
