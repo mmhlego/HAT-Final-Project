@@ -10,7 +10,8 @@ public class CustomerCreator {
 
     public void writeData() {
         try {
-            ObjectOutputStream x = new ObjectOutputStream(new FileOutputStream("data\\Customers.dat"));
+            ObjectOutputStream x = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
             Random r = new Random();
 
             String[] firstnames = { "Mahdi", "Arash", "Pouya", "Fatemeh", "Sanaz", "Behnam", "Kamyab", "Sahand",
@@ -58,7 +59,8 @@ public class CustomerCreator {
 
     public void readData() {
         try {
-            ObjectInputStream x = new ObjectInputStream(new FileInputStream("data\\Customers.dat"));
+            ObjectInputStream x = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
 
             Customer[] c = (Customer[]) x.readObject();
 

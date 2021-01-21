@@ -323,7 +323,8 @@ public class ManagerProducts extends JPanel {
 
             allProducts[index].amount += amount;
 
-            ObjectOutputStream writer = new ObjectOutputStream(new FileOutputStream("data\\Products.dat"));
+            ObjectOutputStream writer = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
             writer.writeObject(allProducts);
             writer.close();
 
@@ -339,7 +340,8 @@ public class ManagerProducts extends JPanel {
 
     public void addToFile(Product em) {
         try {
-            ObjectOutputStream reader = new ObjectOutputStream(new FileOutputStream("data\\Products.dat"));
+            ObjectOutputStream reader = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
 
             Product[] temp = new Product[Count + 1];
 
@@ -360,7 +362,8 @@ public class ManagerProducts extends JPanel {
 
     public void writeData(int remove) {
         try {
-            ObjectOutputStream reader = new ObjectOutputStream(new FileOutputStream("data\\Products.dat"));
+            ObjectOutputStream reader = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
 
             Product[] temp = new Product[Count - 1];
 

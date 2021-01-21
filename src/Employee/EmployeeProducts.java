@@ -221,7 +221,7 @@ public class EmployeeProducts extends JPanel {
             dialog.dispose();
         });
         editPanel.add(cancel);
-        editPanel.setBorder(new LineBorder(Color.BLACK , 1));
+        editPanel.setBorder(new LineBorder(Color.BLACK, 1));
         dialog.add(editPanel);
         dialog.setUndecorated(true);
         dialog.setSize(3 * margin + 2 * w, 6 * margin + 7 * h);
@@ -323,7 +323,8 @@ public class EmployeeProducts extends JPanel {
 
             allProducts[index].amount += amount;
 
-            ObjectOutputStream writer = new ObjectOutputStream(new FileOutputStream("data\\Products.dat"));
+            ObjectOutputStream writer = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
             writer.writeObject(allProducts);
             writer.close();
 
@@ -339,7 +340,8 @@ public class EmployeeProducts extends JPanel {
 
     public void addToFile(Product em) {
         try {
-            ObjectOutputStream reader = new ObjectOutputStream(new FileOutputStream("data\\Products.dat"));
+            ObjectOutputStream reader = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
 
             Product[] temp = new Product[Count + 1];
 
@@ -360,7 +362,8 @@ public class EmployeeProducts extends JPanel {
 
     public void writeData(int remove) {
         try {
-            ObjectOutputStream reader = new ObjectOutputStream(new FileOutputStream("data\\Products.dat"));
+            ObjectOutputStream reader = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
 
             Product[] temp = new Product[Count - 1];
 

@@ -193,11 +193,11 @@ public class ManagerEmployees extends JPanel {
             dialog.dispose();
         });
         editPanel.add(cancel);
-        editPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK ,1));
+        editPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
         dialog.setUndecorated(true);
         dialog.add(editPanel);
-        dialog.setSize(3 * margin + 2 * w , 7 * margin + 6 * h);
+        dialog.setSize(3 * margin + 2 * w, 7 * margin + 6 * h);
         dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
         dialog.setVisible(true);
@@ -279,11 +279,10 @@ public class ManagerEmployees extends JPanel {
             dialog.dispose();
         });
         editPanel.add(cancel);
-        editPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK ,1));
-
+        editPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
         dialog.add(editPanel);
-        dialog.setSize(3 * margin + 2 * w, 8 * margin + 7* h);
+        dialog.setSize(3 * margin + 2 * w, 8 * margin + 7 * h);
         dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
         dialog.setUndecorated(true);
@@ -332,7 +331,8 @@ public class ManagerEmployees extends JPanel {
 
     public void writeData(int remove) {
         try {
-            ObjectOutputStream reader = new ObjectOutputStream(new FileOutputStream("data\\Employees.dat"));
+            ObjectOutputStream reader = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Employees.dat"));
 
             Employee[] temp = new Employee[Count - 1];
 

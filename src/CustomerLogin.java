@@ -183,8 +183,32 @@ public class CustomerLogin extends JPanel {
                 JOptionPane.showMessageDialog(dialog, "Some Of The Fields Are Empty !", "Incomplete Credentials",
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                //readData();
-                //addToFile(new Employee(nameField.getText(), lastNameField.getText(), usernameField.getText(),passwordField.getText(), phoneField.getText(), IDField.getText()));
+                try {
+                    ObjectInputStream reader = new ObjectInputStream(
+                            new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
+
+                    Customer[] allCustomers = (Customer[]) reader.readObject();
+                    int length = allCustomers.length;
+                    reader.close();
+
+                    Customer[] newList = new Customer[length + 1];
+                    for (int i = 0; i < length; i++) {
+                        newList[i] = allCustomers[i];
+                    }
+                    newList[length] = new Customer(nameField.getText(), lastNameField.getText(),
+                            usernameField.getText(), new String(passwordField.getPassword()), phoneField.getText(),
+                            AddressField.getText(), 0);
+
+                    ObjectOutputStream writer = new ObjectOutputStream(
+                            new FileOutputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
+                    writer.writeObject(newList);
+                    writer.flush();
+                    writer.close();
+
+                } catch (Exception er) {
+                    System.out.println(er.toString());
+                }
+
                 UserNameTF.setEditable(true);
                 PassWordPF.setEditable(true);
                 Login.setEnabled(true);
