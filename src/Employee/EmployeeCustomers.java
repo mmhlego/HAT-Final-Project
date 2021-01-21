@@ -50,7 +50,7 @@ public class EmployeeCustomers extends JPanel {
 
         try {
             ObjectInputStream reader = new ObjectInputStream(
-                    new FileInputStream("data\\Customers.dat"));
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
 
             allCustomers = (Customer[]) reader.readObject();
 
@@ -160,7 +160,7 @@ public class EmployeeCustomers extends JPanel {
         editPanel.add(usernameField);
 
         JTextArea addressField = new JTextArea(allCustomers[index].address);
-        addressField.setBounds(2 * margin + w, 4 * margin + 3 * h, w, 2*h);
+        addressField.setBounds(2 * margin + w, 4 * margin + 3 * h, w, 2 * h);
         addressField.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         addressField.setLineWrap(true);
         editPanel.add(addressField);
@@ -203,11 +203,11 @@ public class EmployeeCustomers extends JPanel {
             dialog.dispose();
         });
         editPanel.add(cancel);
-        editPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK , 1));
+        editPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
         dialog.add(editPanel);
         dialog.setUndecorated(true);
-        dialog.setSize(3 * margin + 2 * w , 7 * margin + 7 * h);
+        dialog.setSize(3 * margin + 2 * w, 7 * margin + 7 * h);
         dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
         dialog.setVisible(true);
@@ -222,7 +222,7 @@ public class EmployeeCustomers extends JPanel {
         int index = (b.getY() - 5) / 40;
         System.out.println("history " + index);
     }
-    
+
     public void sure(JButton b) {
         int index = (b.getY() - 5) / 40;
 
@@ -257,7 +257,8 @@ public class EmployeeCustomers extends JPanel {
 
     public void writeData(int remove) {
         try {
-            ObjectOutputStream reader = new ObjectOutputStream(new FileOutputStream("data\\Customers.dat"));
+            ObjectOutputStream reader = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
 
             Customer[] temp = new Customer[Count - 1];
 

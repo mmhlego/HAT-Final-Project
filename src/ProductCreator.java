@@ -10,7 +10,8 @@ public class ProductCreator {
 
     public void writeData() {
         try {
-            ObjectOutputStream x = new ObjectOutputStream(new FileOutputStream("data\\Products.dat"));
+            ObjectOutputStream x = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
 
             Random r = new Random();
 
@@ -34,7 +35,8 @@ public class ProductCreator {
 
     public void readData() {
         try {
-            ObjectInputStream x = new ObjectInputStream(new FileInputStream("data\\Products.dat"));
+            ObjectInputStream x = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
 
             Product[] c = (Product[]) x.readObject();
 

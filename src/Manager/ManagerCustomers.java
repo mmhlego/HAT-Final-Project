@@ -258,7 +258,7 @@ public class ManagerCustomers extends JPanel {
     public void writeData(int remove) {
         try {
             ObjectOutputStream reader = new ObjectOutputStream(
-                    new FileOutputStream(System.getProperty("user.dir") + "\\.data\\Customers.dat"));
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
 
             Customer[] temp = new Customer[Count - 1];
 

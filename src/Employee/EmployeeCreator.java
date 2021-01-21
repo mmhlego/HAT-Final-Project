@@ -9,7 +9,8 @@ public class EmployeeCreator {
 
     public static void writeData() {
         try {
-            ObjectOutputStream x = new ObjectOutputStream(new FileOutputStream("data\\Employees.dat"));
+            ObjectOutputStream x = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Employees.dat"));
 
             Employee[] stus = new Employee[3];
 
@@ -29,7 +30,8 @@ public class EmployeeCreator {
 
     public static void readData() {
         try {
-            ObjectInputStream x = new ObjectInputStream(new FileInputStream("data\\Employees.dat"));
+            ObjectInputStream x = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Employees.dat"));
 
             Employee[] stus = (Employee[]) x.readObject();
 
