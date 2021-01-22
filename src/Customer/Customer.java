@@ -6,8 +6,8 @@ public class Customer extends User {
     private static final long serialVersionUID = 3155784291214885674L;
 
     public String address = "address";
-    public Order order;
-    public Order[] lastOrders;
+    public Order order = null;
+    public Order[] pastOrders = null;
     public long balance;
 
     public Customer(String fname, String lname, String user, String pass, String phone, String ad, long bal) {

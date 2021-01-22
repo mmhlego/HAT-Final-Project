@@ -215,12 +215,27 @@ public class ManagerCustomers extends JPanel {
 
     public void showCart(JButton b) {
         int index = (b.getY() - 5) / 40;
-        System.out.println("cart " + index);
+        try {
+            System.out.println("======================================================");
+            System.out.println(allCustomers[index].name + " " + allCustomers[index].lastName);
+            allCustomers[index].order.printData();
+        } catch (NullPointerException n) {
+
+        }
+
     }
 
     public void showHistory(JButton b) {
         int index = (b.getY() - 5) / 40;
-        System.out.println("history " + index);
+        try {
+            System.out.println("======================================================");
+            System.out.println(allCustomers[index].name + " " + allCustomers[index].lastName);
+            for (int i = 0; i < allCustomers[index].pastOrders.length; i++) {
+                allCustomers[index].pastOrders[i].printData();
+            }
+        } catch (NullPointerException n) {
+
+        }
     }
 
     public void sure(JButton b) {

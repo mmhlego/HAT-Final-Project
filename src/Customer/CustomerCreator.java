@@ -1,6 +1,7 @@
 package Customer;
 
 import java.util.*;
+import General.*;
 import java.io.*;
 
 public class CustomerCreator {
@@ -11,7 +12,13 @@ public class CustomerCreator {
 
     public void writeData() {
         try {
-            ObjectOutputStream x = new ObjectOutputStream(new FileOutputStream("data\\Customers.dat"));
+            ObjectInputStream reader = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
+            Product[] allProducts = (Product[]) reader.readObject();
+            reader.close();
+
+            ObjectOutputStream x = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
             Random r = new Random();
 
             String[] firstnames = { "Mahdi", "Arash", "Pouya", "Fatemeh", "Sanaz", "Behnam", "Kamyab", "Sahand",
@@ -28,6 +35,32 @@ public class CustomerCreator {
                 c[i] = new Customer(firstnames[r.nextInt(firstnames.length)], lastnames[r.nextInt(lastnames.length)],
                         "Customer" + i, "Customer" + i, randPhone(), randAdress(), (long) r.nextInt(100) * 100000);
 
+                int count = r.nextInt(5);
+                c[i].pastOrders = new Order[count];
+
+                for (int j = 0; j < count; j++) {
+                    c[i].pastOrders[j] = new Order();
+                    int m = r.nextInt(3);
+                    c[i].pastOrders[j].status = Order.RECIVED;
+                    c[i].pastOrders[j].products = new Product[m];
+                    c[i].pastOrders[j].count = new int[m];
+                    for (int k = 0; k < m; k++) {
+                        c[i].pastOrders[j].products[k] = allProducts[r.nextInt(allProducts.length)];
+                        c[i].pastOrders[j].count[k] = r.nextInt(3);
+                    }
+                }
+
+                if (r.nextInt(3) == 0) {
+                    c[i].order = new Order();
+                    c[i].order.status = Order.IN_PROGRESS;
+                    int m = r.nextInt(3);
+                    c[i].order.products = new Product[m];
+                    c[i].order.count = new int[m];
+                    for (int k = 0; k < m; k++) {
+                        c[i].order.products[k] = allProducts[r.nextInt(allProducts.length)];
+                        c[i].order.count[k] = r.nextInt(3);
+                    }
+                }
             }
 
             x.writeObject(c);
