@@ -27,7 +27,6 @@ public class ManagerProducts extends JPanel {
         setVisible(true);
     }
 
-    
     private void readData() {
         try {
             ObjectInputStream reader = new ObjectInputStream(
@@ -303,7 +302,8 @@ public class ManagerProducts extends JPanel {
         editPanel.setBorder(new LineBorder(Color.BLACK, 1));
         dialog.setUndecorated(true);
         dialog.add(editPanel);
-        dialog.setBounds(500, 200, 3 * margin + 2 * w, 6 * margin + 7 * h);
+        dialog.setSize(3 * margin + 2 * w, 6 * margin + 7 * h);
+        dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
         dialog.setVisible(true);
     }

@@ -1,9 +1,9 @@
 import Customer.*;
-import General.ProductCreator;
+//import General.ProductCreator;
 
 public class Main {
     public static void main(String[] args) {
-        new ProductCreator();
+        //new ProductCreator();
         new CustomerCreator();
         new MainFrame();
     }

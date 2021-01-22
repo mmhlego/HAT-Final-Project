@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 import javax.swing.*;
 
@@ -15,12 +14,13 @@ public class SelectPage extends JPanel {
 
 	public SelectPage(MainFrame p) {
 		parent = p;
-		parent.setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Select.png").getImage());
+		parent.setIconImage(
+				new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Select.png").getImage());
 		design();
 	}
 
 	public void design() {
-		
+
 		setLayout(null);
 		Manager = new JButton("Login As Manager");
 		Manager.setBounds(50, 50, 800, 166);

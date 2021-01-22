@@ -119,18 +119,15 @@ public class Theme implements Serializable {
         private Color[] fontColors = { Hex("000000"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("000000") };
         private Font[] fonts = { new Font("Dialog", 0, 14), new Font("Dialog", 0, 16), new Font("Dialog", 0, 16),
                 new Font("Dialog", 0, 16), new Font("Dialog", 0, 16) };
-        //private String[] icons = { "dark", "light", "light", "light", "dark" };
 
         public Color background, fontColor, textField;
         public Font font;
-        //public String icon;
 
         public void set(int i) {
             this.background = backgrounds[i];
             this.fontColor = fontColors[i];
             // this.textField = textFields[i];
             this.font = fonts[i];
-            //this.icon = icons[i];
         }
     }
 }

@@ -68,6 +68,11 @@ public class CustomerProducts extends JPanel {
 
     public void openProduct(JButton b) {
         int index = (b.getX() / 325) + 2 * (b.getY() / 120);
-        new CustomerBuyPanel(currentUser, allProducts[index]);
+        new CustomerBuyPanel(currentUser, allProducts[index], this);
     }
+
+    public void updateData() {
+
+    }
+
 }

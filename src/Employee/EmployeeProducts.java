@@ -294,7 +294,7 @@ public class EmployeeProducts extends JPanel {
         editPanel.add(save);
 
         JButton cancel = new JButton("Cancel");
-        cancel.setBounds(2 * margin + w, 5* margin + 6 * h, w, h);
+        cancel.setBounds(2 * margin + w, 5 * margin + 6 * h, w, h);
         cancel.addActionListener((e) -> {
             dialog.dispose();
         });
@@ -302,7 +302,8 @@ public class EmployeeProducts extends JPanel {
         editPanel.setBorder(new LineBorder(Color.BLACK, 1));
         dialog.setUndecorated(true);
         dialog.add(editPanel);
-        dialog.setBounds(500, 200, 3 * margin + 2 * w, 6 * margin + 7 * h);
+        dialog.setSize(3 * margin + 2 * w, 6 * margin + 7 * h);
+        dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
         dialog.setVisible(true);
     }

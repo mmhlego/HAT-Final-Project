@@ -13,31 +13,22 @@ public class CustomerBuyPanel extends JDialog {
     JButton addButton, removeButton, buyButton;
     JPanel buy = new JPanel();
     Customer currentUser;
+    CustomerProducts parent;
     int count = 0;
     long lastAmount = -1;
-    JFrame parent;
 
-    CustomerBuyPanel(Customer user, Product currentProduct) {
+    CustomerBuyPanel(Customer user, Product currentProduct, CustomerProducts p) {
+        parent = p;
         currentUser = user;
-        JLabel name = new JLabel();
-        JLabel nameShow = new JLabel();
-        JLabel discount = new JLabel();
-        JLabel discountShow = new JLabel();
-        JLabel price = new JLabel();
-        JLabel priceShow = new JLabel();
-        JLabel amount = new JLabel();
-        JLabel amountShow = new JLabel();
-        JLabel buyAmount = new JLabel();
-
-        name.setHorizontalTextPosition(SwingConstants.CENTER);
-        nameShow.setHorizontalTextPosition(SwingConstants.CENTER);
-        discount.setHorizontalTextPosition(SwingConstants.CENTER);
-        discountShow.setHorizontalTextPosition(SwingConstants.CENTER);
-        price.setHorizontalTextPosition(SwingConstants.CENTER);
-        priceShow.setHorizontalTextPosition(SwingConstants.CENTER);
-        amount.setHorizontalTextPosition(SwingConstants.CENTER);
-        amountShow.setHorizontalTextPosition(SwingConstants.CENTER);
-        buyAmount.setHorizontalTextPosition(SwingConstants.CENTER);
+        JLabel name = new JLabel("", 0);
+        JLabel nameShow = new JLabel("", 0);
+        JLabel discount = new JLabel("", 0);
+        JLabel discountShow = new JLabel("", 0);
+        JLabel price = new JLabel("", 0);
+        JLabel priceShow = new JLabel("", 0);
+        JLabel amount = new JLabel("", 0);
+        JLabel amountShow = new JLabel("", 0);
+        JLabel buyAmount = new JLabel("", 0);
 
         name.setForeground(currentUser.theme.main.fontColor);
         nameShow.setForeground(currentUser.theme.main.fontColor);
@@ -59,14 +50,14 @@ public class CustomerBuyPanel extends JDialog {
         amountShow.setFont(currentUser.theme.main.font);
         buyAmount.setFont(currentUser.theme.main.font);
 
-        name.setBounds(50, 240, 200, 25);
-        nameShow.setBounds(250, 240, 200, 25);
-        discount.setBounds(50, 270, 200, 25);
-        discountShow.setBounds(250, 270, 200, 25);
-        price.setBounds(50, 300, 200, 25);
-        priceShow.setBounds(250, 300, 200, 25);
-        amount.setBounds(50, 330, 200, 25);
-        amountShow.setBounds(250, 330, 200, 25);
+        name.setBounds(50, 240, 120, 25);
+        nameShow.setBounds(170, 240, 280, 25);
+        discount.setBounds(50, 270, 120, 25);
+        discountShow.setBounds(170, 270, 280, 25);
+        price.setBounds(50, 300, 120, 25);
+        priceShow.setBounds(170, 300, 280, 25);
+        amount.setBounds(50, 330, 120, 25);
+        amountShow.setBounds(170, 330, 280, 25);
 
         productPicture.setBounds(145, 10, 205, 215);
         productPicture.setVisible(true);
@@ -97,24 +88,23 @@ public class CustomerBuyPanel extends JDialog {
 
         buy.add(buyAmount);
 
-        removeButton = new JButton("+");
-        removeButton.setBounds(175, 450, 50, 50);
-        removeButton.addActionListener(e -> {
+        addButton = new JButton("+");
+        addButton.setBounds(175, 450, 50, 50);
+        addButton.addActionListener(e -> {
             long tempCount = Integer.parseInt(buyAmount.getText());
             buyAmount.setText(String.valueOf(++tempCount));
-            removeButton.setEnabled(tempCount != Long.parseLong(buyAmount.getText()));
-            addButton.setEnabled(true);
+            removeButton.setEnabled(Long.parseLong(buyAmount.getText()) != 0);
+            addButton.setEnabled(tempCount != currentProduct.amount);
         });
 
-        addButton = new JButton("-");
-        addButton.setBounds(50, 450, 50, 50);
-        addButton.setEnabled(false);
-        addButton.addActionListener(e -> {
+        removeButton = new JButton("-");
+        removeButton.setBounds(50, 450, 50, 50);
+        removeButton.setEnabled(false);
+        removeButton.addActionListener(e -> {
             int tempCount = Integer.parseInt(buyAmount.getText());
             buyAmount.setText(String.valueOf(--tempCount));
-            addButton.setEnabled(Long.parseLong(buyAmount.getText()) != 0);
-            removeButton.setEnabled(tempCount != Long.parseLong(amountShow.getText()));
-            removeButton.setEnabled(true);
+            removeButton.setEnabled(Long.parseLong(buyAmount.getText()) != 0);
+            addButton.setEnabled(tempCount != currentProduct.amount);
         });
 
         buyButton = new JButton("Buy");
