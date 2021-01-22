@@ -35,12 +35,12 @@ public class CustomerCreator {
                 c[i] = new Customer(firstnames[r.nextInt(firstnames.length)], lastnames[r.nextInt(lastnames.length)],
                         "Customer" + i, "Customer" + i, randPhone(), randAdress(), (long) r.nextInt(100) * 100000);
 
-                int count = 1 + r.nextInt(9);
+                int count = 1 + r.nextInt(3);
                 c[i].pastOrders = new Order[count];
 
                 for (int j = 0; j < count; j++) {
                     c[i].pastOrders[j] = new Order();
-                    int m = r.nextInt(10) + 1;
+                    int m = r.nextInt(3) + 1;
                     c[i].pastOrders[j].status = Order.RECIVED;
                     c[i].pastOrders[j].products = new Product[m];
                     c[i].pastOrders[j].count = new int[m];
@@ -50,10 +50,10 @@ public class CustomerCreator {
                     }
                 }
 
-                if (r.nextInt(3) > 0) {
+                if (r.nextInt(3) >= 0) {
                     c[i].order = new Order();
                     c[i].order.status = Order.IN_PROGRESS;
-                    int m = r.nextInt(6) + 1;
+                    int m = r.nextInt(3) + 1;
                     c[i].order.products = new Product[m];
                     c[i].order.count = new int[m];
                     for (int k = 0; k < m; k++) {

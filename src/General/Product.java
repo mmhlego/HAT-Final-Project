@@ -11,6 +11,7 @@ public class Product implements Serializable {
     public String description = "description";
     public long amount = 0;
     public long price = 1000;
+    static Random r = new Random(System.currentTimeMillis());
 
     public Product(String n, String dis, long a, long p) {
         name = n;
@@ -18,9 +19,8 @@ public class Product implements Serializable {
         amount = a;
         price = p;
 
-        Random r = new Random();
-        if (r.nextInt(4) == 0) {
-            this.discount = (1 + r.nextInt(10)) * 5;
+        if (r.nextInt(3) == 0) {
+            this.discount = (1 + r.nextInt(12)) * 5;
         }
     }
 }

@@ -93,7 +93,7 @@ public class CustomerProducts extends JPanel {
             for (int i = 0; i < allCustomer.length; i++) {
                 if (allCustomer[i].equals(currentUser)) {
                     System.out.println(i);
-                    allCustomer[i] = currentUser;
+                    allCustomer[i].order = currentUser.order;
                     break;
                 }
             }

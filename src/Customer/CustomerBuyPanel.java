@@ -120,7 +120,10 @@ public class CustomerBuyPanel extends JDialog {
         buyButton.addActionListener(e -> {
             lastAmount = currentProduct.amount - Long.parseLong(buyAmount.getText());
             amountShow.setText(String.valueOf(lastAmount));
-            parent.updateData(index, Long.parseLong(buyAmount.getText()));
+
+            if (Long.parseLong(buyAmount.getText()) > 0) {
+                parent.updateData(index, Long.parseLong(buyAmount.getText()));
+            }
             dispose();
         });
 

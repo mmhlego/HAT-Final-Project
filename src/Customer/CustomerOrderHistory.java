@@ -11,11 +11,11 @@ public class CustomerOrderHistory extends JPanel {
     JPanel Info;
     int Count;
     Customer currentUser;
-    JFrame parrent;
+    CustomerFrame parent;
 
-    public CustomerOrderHistory(Customer u, CustomerFrame p) {
-        currentUser = u;
-        parrent = p;
+    public CustomerOrderHistory(Customer c, CustomerFrame p) {
+        currentUser = c;
+        parent = p;
         Info = new JPanel();
         Info.setLayout(null);
         Info.setBackground(new Color(242, 242, 242));
