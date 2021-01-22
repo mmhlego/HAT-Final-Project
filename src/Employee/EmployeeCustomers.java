@@ -2,22 +2,22 @@ package Employee;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 
+import General.*;
 import java.io.*;
 import Customer.*;
-import General.*;
 
 public class EmployeeCustomers extends JPanel {
-    private static final long serialVersionUID = -8701518828823181704L;
+    private static final long serialVersionUID = 5272739775090170034L;
 
     JPanel Info;
     int Count;
     Customer[] allCustomers;
-    Employee currentUser;
+    User currentUser;
     EmployeeFrame parent;
 
-    public EmployeeCustomers(Employee u, EmployeeFrame p) {
+    public EmployeeCustomers(User u, EmployeeFrame p) {
         parent = p;
         currentUser = u;
         Info = new JPanel();
@@ -91,9 +91,7 @@ public class EmployeeCustomers extends JPanel {
                 Cart.setBackground(null);
                 Cart.setBorder(null);
                 m -= 40;
-                Cart.addActionListener((e) -> {
-                    showCart(Cart);
-                });
+                Cart.addActionListener((e) -> showCart(Cart));
                 Info.add(Cart);
 
                 JButton History = new JButton();
@@ -215,63 +213,70 @@ public class EmployeeCustomers extends JPanel {
         dialog.setVisible(true);
     }
 
-    public void showCart(JButton b) {
+    private void showCart(JButton b) {
         int index = (b.getY() - 5) / 40;
-        System.out.println("cart " + index);
+        showOrder(allCustomers[index].order);
     }
 
-    private void ShowOrderData(JButton b)
-    {
-        int index = (b.getY()-20)/50;
+    private void ShowOrderData(Customer c, JButton b) {
+        int index = (b.getY() - 20) / 50;
+        showOrder(c.pastOrders[index]);
     }
 
-    public void ShowHistory(JButton b) 
-    {
-        Count = 8;
-        int w = 420;
-        JDialog dialog = new JDialog(parent);
-        dialog.setLayout(null);
-        dialog.setSize(460, 400);
+    private void showOrder(Order o) {
+        try {
+            int length = o.products.length + 2;
+            long totalPrice = 0;
+            CustomScrollDialog dialog = new CustomScrollDialog(length);
 
-        JPanel ProductPanel = new JPanel();
-        ProductPanel.setLayout(null);
+            JLabel productLabel = new JLabel("Product", 0);
+            productLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
+            dialog.addLabel(productLabel, 0, 0);
 
-        ProductPanel.setPreferredSize(new Dimension(440 , 350));
+            JLabel amountLabel = new JLabel("Amount", 0);
+            amountLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
+            dialog.addLabel(amountLabel, 0, 1);
 
-        if (Count > 7 ) 
-        {
-            w = 400;
-            ProductPanel.setPreferredSize(new Dimension(440 , Count*50 + 20));
+            JLabel priceLabel = new JLabel("Price", 0);
+            priceLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
+            dialog.addLabel(priceLabel, 0, 2);
+
+            for (int i = 0; i < length - 2; i++) {
+                long p = o.products[i].price;
+                int c = o.count[i];
+                dialog.addLabel(new JLabel(o.products[i].name, 0), 1 + i, 0);
+                dialog.addLabel(new JLabel(Integer.toString(c), 0), 1 + i, 1);
+                dialog.addLabel(new JLabel(c + "*" + Long.toString(p), 0), 1 + i, 2);
+                totalPrice += c * p;
+            }
+            JLabel empty = new JLabel("", 0);
+            empty.setBorder(new MatteBorder(1, 0, 0, 0, Color.gray));
+            dialog.addLabel(empty, length - 1, 0);
+
+            JLabel tpl = new JLabel("Total price: ", 0);
+            tpl.setBorder(new MatteBorder(1, 0, 0, 0, Color.gray));
+            dialog.addLabel(tpl, length - 1, 1);
+
+            JLabel tp = new JLabel(Long.toString(totalPrice), 0);
+            tp.setBorder(new MatteBorder(1, 0, 0, 0, Color.gray));
+            dialog.addLabel(tp, length - 1, 2);
+
+        } catch (NullPointerException n) {
+            System.out.println("null");
+            CustomScrollDialog dialog = new CustomScrollDialog(1);
+            dialog.addLabel(new JLabel("Cart is empty.", 0), 0, 1);
         }
+    }
 
-        JButton Return = new JButton("Return");
-        Return.setBounds(10, 360, 440, 30);
-        
-        for(int i = 0; i <Count ;i++)
-        {
-            JButton jb = new JButton("Product" + i);
-            jb.setBounds(20, 20 + i*50, w, 30);
-            ProductPanel.add(jb);
-            //jb.addActionListener((e) -> ShowOrderData(jb));
+    public void ShowHistory(JButton b) {
+        int index = (b.getY() - 5) / 40;
+        CustomScrollDialog dialog = new CustomScrollDialog(allCustomers[index].pastOrders.length);
+
+        for (int i = 0; i < allCustomers[index].pastOrders.length; i++) {
+            JButton jb = new JButton("Order #" + (i + 1) + " - " + allCustomers[index].pastOrders[i].status);
+            dialog.addButton(jb);
+            jb.addActionListener((e) -> ShowOrderData(allCustomers[index], jb));
         }
-
-        JScrollPane Scroller = new JScrollPane(ProductPanel , JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED , JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        Scroller.setBounds(0, 0, 460, 350);
-        Scroller.setBorder(null);
-        Scroller.getVerticalScrollBar().setBorder(null);
-        Scroller.getVerticalScrollBar().setUnitIncrement(10);
-
-        Return.addActionListener((e) -> dialog.dispose());
-
-        dialog.getRootPane().setBorder(new LineBorder(Color.BLACK, 1));
-        dialog.add(Return);
-        dialog.add(Scroller);
-        dialog.setLocationRelativeTo(null);
-        dialog.setUndecorated(true);
-        dialog.setResizable(false);
-        dialog.setVisible(true);
-        revalidate();
-        repaint();
     }
 
     public void sure(JButton b) {
@@ -285,9 +290,7 @@ public class EmployeeCustomers extends JPanel {
 
         if (ans == 0) {
             writeData(index);
-
-            JOptionPane.showMessageDialog(this, "Employee removed successfully.", "Customer Rmoved", 1);
-
+            JOptionPane.showMessageDialog(this, "Customer removed successfully.", "Customer Rmoved", 1);
             reloadPage();
         }
     }
@@ -299,7 +302,6 @@ public class EmployeeCustomers extends JPanel {
 
             allCustomers = (Customer[]) reader.readObject();
             Count = allCustomers.length;
-
             reader.close();
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -314,7 +316,6 @@ public class EmployeeCustomers extends JPanel {
             Customer[] temp = new Customer[Count - 1];
 
             for (int i = 0; i < remove; i++) {
-                System.out.print(i);
                 temp[i] = allCustomers[i];
             }
 
@@ -323,9 +324,7 @@ public class EmployeeCustomers extends JPanel {
             }
 
             reader.writeObject(temp);
-
             reader.close();
-
         } catch (Exception e) {
             System.out.println(e.toString());
         }

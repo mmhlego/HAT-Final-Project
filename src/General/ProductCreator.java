@@ -1,6 +1,7 @@
+package General;
+
 import java.io.*;
 import java.util.*;
-import General.Product;
 
 public class ProductCreator {
     public ProductCreator() {

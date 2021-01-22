@@ -274,7 +274,7 @@ public class EmployeeProducts extends JPanel {
         editPanel.add(priceField);
 
         JButton save = new JButton("Save");
-        save.setBounds(margin, 7 * margin + 6 * h, w, h);
+        save.setBounds(margin, 5 * margin + 6 * h, w, h);
         save.addActionListener((e) -> {
 
             try {
@@ -294,7 +294,7 @@ public class EmployeeProducts extends JPanel {
         editPanel.add(save);
 
         JButton cancel = new JButton("Cancel");
-        cancel.setBounds(2 * margin + w, 7 * margin + 6 * h, w, h);
+        cancel.setBounds(2 * margin + w, 5* margin + 6 * h, w, h);
         cancel.addActionListener((e) -> {
             dialog.dispose();
         });
@@ -302,7 +302,7 @@ public class EmployeeProducts extends JPanel {
         editPanel.setBorder(new LineBorder(Color.BLACK, 1));
         dialog.setUndecorated(true);
         dialog.add(editPanel);
-        dialog.setBounds(500, 200, 3 * margin + 2 * w, 8 * margin + 7 * h);
+        dialog.setBounds(500, 200, 3 * margin + 2 * w, 6 * margin + 7 * h);
         dialog.setResizable(false);
         dialog.setVisible(true);
     }
