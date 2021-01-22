@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.io.*;
 import General.*;
 import Manager.*;
@@ -31,7 +32,7 @@ public class ManagerLogin extends JPanel {
         Title.setOpaque(true);
         Title.setBounds(320, 15, 344, 80);
         add(Title);
-
+        
         UserText = new JLabel("Username");
         UserText.setBounds(50, 160, 135, 68);
         UserText.setFont(new Font("Tahoam", Font.BOLD, 24));
@@ -50,6 +51,26 @@ public class ManagerLogin extends JPanel {
         UserNameTF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
         UserNameTF.setBackground(new Color(238, 238, 238));
         UserNameTF.setDocument(new Limitter(20));
+        UserNameTF.addKeyListener(new KeyListener() 
+        {
+            @Override
+            public void keyPressed(KeyEvent e) 
+            {
+                int key = e.getKeyCode();
+                if (key == KeyEvent.VK_ENTER) 
+                {
+                    check();
+                }
+                if (key == KeyEvent.VK_ESCAPE) 
+                {
+                    parent.addPanel(new SelectPage(parent));
+                }
+
+            }
+
+            @Override public void keyReleased(KeyEvent e) {}
+            @Override public void keyTyped(KeyEvent e){}
+        });
 
         PassWordPF = new JPasswordField();
         PassWordPF.setBounds(195, 270, 595, 60);
@@ -57,6 +78,21 @@ public class ManagerLogin extends JPanel {
         PassWordPF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
         PassWordPF.setBackground(new Color(238, 238, 238));
         PassWordPF.setDocument(new Limitter(16));
+        PassWordPF.addKeyListener(new KeyListener() 
+        {
+            @Override
+            public void keyPressed(KeyEvent e) 
+            {
+                int key = e.getKeyCode();
+                if (key == KeyEvent.VK_ENTER) 
+                {
+                    check();
+                }
+
+            }
+            @Override public void keyReleased(KeyEvent e) {}
+            @Override public void keyTyped(KeyEvent e){}
+        });
 
         ShowPass = new JLabel();
         ShowPass.setBounds(195, 343, 595, 30);
@@ -102,6 +138,7 @@ public class ManagerLogin extends JPanel {
             reader.close();
 
             if (m.password.equals(new String(PassWordPF.getPassword())) && m.username.equals(UserNameTF.getText())) {
+                int man;
                 parent.dispose();
                 new ManagerFrame(m);
                 return;

@@ -3,18 +3,24 @@ import java.awt.*;
 import java.io.*;
 import General.*;
 import Employee.*;
+import java.awt.*;
+import java.awt.event.*;
 
-public class EmployeeLogin extends JPanel {
+public class EmployeeLogin extends JPanel
+{
+    
     private static final long serialVersionUID = 6637516719468314848L;
 
     JTextField UserNameTF;
     JPasswordField PassWordPF;
     MainFrame parent;
 
-    public EmployeeLogin(MainFrame p) {
+    public EmployeeLogin(MainFrame p) 
+    {
         ImageIcon ShowPasswords = new CustomIcon("Show_Password", 28, 28);
         ImageIcon HidePasswords = new CustomIcon("Hide_Password", 28, 28);
         parent = p;
+
         parent.setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Employee.png").getImage());
         parent.setTitle("Employee");
         setLayout(null);
@@ -43,6 +49,26 @@ public class EmployeeLogin extends JPanel {
         UserNameTF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
         UserNameTF.setBackground(new Color(238, 238, 238));
         UserNameTF.setDocument(new Limitter(20));
+        UserNameTF.addKeyListener(new KeyListener() 
+        {
+            @Override
+            public void keyPressed(KeyEvent e) 
+            {
+                int key = e.getKeyCode();
+                if (key == KeyEvent.VK_ENTER) 
+                {
+                    check();
+                }
+                if (key == KeyEvent.VK_ESCAPE) 
+                {
+                    parent.addPanel(new SelectPage(parent));
+                }
+
+            }
+
+            @Override public void keyReleased(KeyEvent e) {}
+            @Override public void keyTyped(KeyEvent e){}
+        });
 
         PassWordPF = new JPasswordField();
         PassWordPF.setBounds(195, 270, 595, 60);
@@ -50,6 +76,21 @@ public class EmployeeLogin extends JPanel {
         PassWordPF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
         PassWordPF.setBackground(new Color(238, 238, 238));
         PassWordPF.setDocument(new Limitter(16));
+        PassWordPF.addKeyListener(new KeyListener() 
+        {
+            @Override
+            public void keyPressed(KeyEvent e) 
+            {
+                int key = e.getKeyCode();
+                if (key == KeyEvent.VK_ENTER) 
+                {
+                    check();
+                }
+            }
+
+            @Override public void keyReleased(KeyEvent e) {}
+            @Override public void keyTyped(KeyEvent e){}
+        });
 
         JLabel ShowPass = new JLabel();
         ShowPass.setBounds(195, 343, 595, 30);
@@ -120,4 +161,8 @@ public class EmployeeLogin extends JPanel {
             System.out.println(e.toString());
         }
     }
+ 
+    
+    
+    
 }
