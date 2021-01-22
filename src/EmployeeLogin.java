@@ -15,6 +15,8 @@ public class EmployeeLogin extends JPanel {
         ImageIcon ShowPasswords = new CustomIcon("Show_Password", 28, 28);
         ImageIcon HidePasswords = new CustomIcon("Hide_Password", 28, 28);
         parent = p;
+        parent.setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Employee.png").getImage());
+        parent.setTitle("Employee");
         setLayout(null);
         JLabel Title = new JLabel("Employee");
         Title.setBackground(new Color(238, 238, 238));

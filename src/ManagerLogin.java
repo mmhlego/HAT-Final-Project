@@ -22,6 +22,8 @@ public class ManagerLogin extends JPanel {
         ImageIcon ShowPasswords = new CustomIcon("Show_Password", 28, 28);
         ImageIcon HidePasswords = new CustomIcon("Hide_Password", 28, 28);
         parent = p;
+        parent.setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Manager.png").getImage());
+        parent.setTitle("Manager");
         setLayout(null);
         Title = new JLabel("Manager");
         Title.setBackground(new Color(238, 238, 238));

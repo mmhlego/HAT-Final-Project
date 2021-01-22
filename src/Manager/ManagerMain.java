@@ -12,7 +12,8 @@ public class ManagerMain extends JPanel {
 
     public ManagerMain(Manager m, JFrame parent) {
         currentUser = m;
-
+        parent.setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Manager.png").getImage());
+        parent.setTitle("Manager");
         label.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Manager.png"));
         label.setBounds(250, 25, 200, 250);
         label.setBackground(currentUser.theme.main.background);
