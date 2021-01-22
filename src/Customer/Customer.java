@@ -7,7 +7,7 @@ public class Customer extends User {
 
     public String address = "address";
     public Order order = null;
-    public Order[] pastOrders = null;
+    public Order[] pastOrders = new Order[0];
     public long balance;
 
     public Customer(String fname, String lname, String user, String pass, String phone, String ad, long bal) {
