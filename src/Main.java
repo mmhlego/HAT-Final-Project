@@ -1,7 +1,6 @@
 import Customer.*;
-import Manager.*;
 
-public class MAIN {
+public class Main {
     public static void main(String[] args) {
         new CustomerCreator();
         new MainFrame();
