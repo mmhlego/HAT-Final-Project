@@ -6,6 +6,6 @@ public class Main {
         new ProductCreator();
         new CustomerCreator();
         new MainFrame();
-        //new ManagerFrame(new Manager("J.", "Tanha", "JTanha", "jtanha", "09142075023"));
     }
+
 }

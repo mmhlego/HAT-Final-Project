@@ -12,7 +12,8 @@ public class EmployeeMain extends JPanel {
 
     public EmployeeMain(Employee e, JFrame parent) {
         currentUser = e;
-
+        parent.setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Employee.png").getImage());
+        parent.setTitle("Employee");
         label.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Employee.png"));
         label.setBounds(225, 25, 250, 250);
         label.setBackground(currentUser.theme.main.background);

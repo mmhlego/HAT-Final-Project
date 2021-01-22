@@ -16,6 +16,8 @@ public class CustomerLogin extends JPanel {
 
     public CustomerLogin(MainFrame p) {
         parent = p;
+        parent.setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Customer.png").getImage());
+        parent.setTitle("Customer");
         setLayout(null);
         JLabel Title = new JLabel("Customer");
         Title.setBackground(new Color(238, 238, 238));
