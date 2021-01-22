@@ -92,7 +92,8 @@ public class CustomerCreator {
 
     public void readData() {
         try {
-            ObjectInputStream x = new ObjectInputStream(new FileInputStream("data\\Customers.dat"));
+            ObjectInputStream x = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
 
             Customer[] c = (Customer[]) x.readObject();
 
