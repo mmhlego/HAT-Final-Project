@@ -3,6 +3,7 @@ import java.awt.*;
 import java.io.*;
 import Customer.*;
 import General.*;
+import java.awt.event.*;
 
 public class CustomerLogin extends JPanel {
     private static final long serialVersionUID = 8713185903009843822L;
@@ -16,9 +17,11 @@ public class CustomerLogin extends JPanel {
 
     public CustomerLogin(MainFrame p) {
         parent = p;
-        parent.setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Customer.png").getImage());
+        parent.setIconImage(
+                new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Customer.png").getImage());
         parent.setTitle("Customer");
         setLayout(null);
+
         JLabel Title = new JLabel("Customer");
         Title.setBackground(new Color(238, 238, 238));
         Title.setFont(new Font("Tahoma", Font.BOLD, 48));
@@ -44,6 +47,27 @@ public class CustomerLogin extends JPanel {
         UserNameTF.setDocument(new Limitter(20));
         UserNameTF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
         UserNameTF.setBackground(new Color(238, 238, 238));
+        UserNameTF.addKeyListener(new KeyListener() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int key = e.getKeyCode();
+                if (key == KeyEvent.VK_ENTER) {
+                    check();
+                }
+                if (key == KeyEvent.VK_ESCAPE) {
+                    parent.addPanel(new SelectPage(parent));
+                }
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+        });
 
         PassWordPF = new JPasswordField();
         PassWordPF.setBounds(195, 270, 595, 60);
@@ -51,6 +75,23 @@ public class CustomerLogin extends JPanel {
         PassWordPF.setDocument(new Limitter(16));
         PassWordPF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
         PassWordPF.setBackground(new Color(238, 238, 238));
+        PassWordPF.addKeyListener(new KeyListener() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int key = e.getKeyCode();
+                if (key == KeyEvent.VK_ENTER) {
+                    check();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+        });
 
         JLabel Createnew = new JLabel("Don’t have An Account ?");
         Createnew.setBounds(50, 524, 320, 51);
@@ -284,4 +325,5 @@ public class CustomerLogin extends JPanel {
             System.out.println(e.toString());
         }
     }
+
 }

@@ -246,8 +246,14 @@ public class ManagerCustomers extends JPanel {
                 int c = o.count[i];
                 dialog.addLabel(new JLabel(o.products[i].name, 0), 1 + i, 0);
                 dialog.addLabel(new JLabel(Integer.toString(c), 0), 1 + i, 1);
-                dialog.addLabel(new JLabel(c + "*" + Long.toString(p), 0), 1 + i, 2);
-                totalPrice += c * p;
+                if (o.products[i].discount > 0) {
+                    int dis = 100 - o.products[i].discount;
+                    dialog.addLabel(new JLabel(c + "*" + Long.toString(p) + "*" + dis + "%", 0), 1 + i, 2);
+                    totalPrice += c * p * dis / 100;
+                } else {
+                    dialog.addLabel(new JLabel(c + "*" + Long.toString(p), 0), 1 + i, 2);
+                    totalPrice += c * p;
+                }
             }
             JLabel empty = new JLabel("", 0);
             empty.setBorder(new MatteBorder(1, 0, 0, 0, Color.gray));
