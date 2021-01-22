@@ -68,11 +68,85 @@ public class CustomerProducts extends JPanel {
 
     public void openProduct(JButton b) {
         int index = (b.getX() / 325) + 2 * (b.getY() / 120);
-        new CustomerBuyPanel(currentUser, allProducts[index], this);
+        new CustomerBuyPanel(currentUser, allProducts[index], this, index);
     }
 
-    public void updateData() {
-
+    public void writeProducts() {
+        try {
+            ObjectOutputStream writer = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
+            writer.writeObject(allProducts);
+            writer.close();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
+    public void writeCustomers() {
+        try {
+            ObjectInputStream reader = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
+
+            Customer[] allCustomer = (Customer[]) reader.readObject();
+            reader.close();
+
+            for (int i = 0; i < allCustomer.length; i++) {
+                if (allCustomer[i].equals(currentUser)) {
+                    System.out.println(i);
+                    allCustomer[i] = currentUser;
+                    break;
+                }
+            }
+
+            ObjectOutputStream writer = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
+            writer.writeObject(allCustomer);
+            writer.close();
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    public void updateUser(Product p, int amount) {
+        try {
+            int length = currentUser.order.products.length;
+            Order temp = currentUser.order;
+
+            currentUser.order = new Order();
+            currentUser.order.status = Order.IN_PROGRESS;
+            currentUser.order.products = new Product[length + 1];
+            currentUser.order.count = new int[length + 1];
+
+            for (int i = 0; i < length; i++) {
+                currentUser.order.products[i] = temp.products[i];
+                currentUser.order.count[i] = temp.count[i];
+            }
+            currentUser.order.products[length] = p;
+            currentUser.order.count[length] = amount;
+        } catch (NullPointerException n) {
+            Order temp = new Order();
+            temp.status = Order.IN_PROGRESS;
+
+            temp.products = new Product[1];
+            temp.products[0] = p;
+
+            temp.count = new int[1];
+            temp.count[0] = amount;
+
+            currentUser.order = temp;
+        }
+    }
+
+    public void updateData(int index, long amount) {
+        allProducts[index].amount -= amount;
+        updateUser(allProducts[index], (int) amount);
+        writeProducts();
+        writeCustomers();
+        reloadPage();
+    }
+
+    public void reloadPage() {
+        parent.addPanel(new CustomerProducts(currentUser, parent));
+    }
 }

@@ -43,9 +43,7 @@ public class CustomerFrame extends JFrame {
             } else {
                 w += (w - h);
                 addPanel(main);
-
                 sidepanel.setBounds(0, 0, w, height);
-
                 open = true;
             }
             revalidate();
@@ -77,7 +75,7 @@ public class CustomerFrame extends JFrame {
         Cart.addActionListener((e) -> {
             selectButton(Cart);
 
-            //addPanel(new ManagerEmployees());
+            addPanel(new CustomerCart(currentUser, this));
         });
         Cart.setIconTextGap(-180);
         Cart.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "cart", 40, 40));

@@ -14,10 +14,11 @@ public class CustomerBuyPanel extends JDialog {
     JPanel buy = new JPanel();
     Customer currentUser;
     CustomerProducts parent;
-    int count = 0;
+    int count = 0, index;
     long lastAmount = -1;
 
-    CustomerBuyPanel(Customer user, Product currentProduct, CustomerProducts p) {
+    CustomerBuyPanel(Customer user, Product currentProduct, CustomerProducts p, int i) {
+        index = i;
         parent = p;
         currentUser = user;
         JLabel name = new JLabel("", 0);
@@ -112,6 +113,9 @@ public class CustomerBuyPanel extends JDialog {
         buyButton.addActionListener(e -> {
             lastAmount = currentProduct.amount - Long.parseLong(buyAmount.getText());
             amountShow.setText(String.valueOf(lastAmount));
+
+            parent.updateData(index, Long.parseLong(buyAmount.getText()));
+            dispose();
         });
 
         buy.add(removeButton);

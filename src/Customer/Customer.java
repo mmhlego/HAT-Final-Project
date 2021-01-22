@@ -19,4 +19,13 @@ public class Customer extends User {
         this.address = ad;
         this.balance = bal;
     }
+
+    public boolean equals(Customer c) {
+        if (this.name.equals(c.name) && this.lastName.equals(c.lastName) && this.username.equals(c.username)
+                && this.password.equals(c.password) && this.phoneNumber.equals(c.phoneNumber)
+                && this.address.equals(c.address) && this.balance == c.balance) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -2,14 +2,13 @@ package Customer;
 
 import javax.swing.*;
 import java.awt.*;
-import General.*;
 
 public class CustomerOrderHistory extends JPanel {
     private static final long serialVersionUID = 1804560967908766564L;
 
     JPanel Info;
     int Count = 50;
-    User currentUser;
+    Customer currentUser;
     JFrame parrent;
 
     public CustomerOrderHistory(Customer u, CustomerFrame p) {
@@ -19,6 +18,10 @@ public class CustomerOrderHistory extends JPanel {
         Info.setLayout(null);
         Info.setBackground(new Color(242, 242, 242));
         Info.setPreferredSize(new Dimension(660, Count * 40));
+
+        for (int i = 0; i < currentUser.pastOrders.length; i++) {
+            currentUser.pastOrders[i].printData();
+        }
 
         setLayout(null);
         Info.setBackground(currentUser.theme.main.background);
