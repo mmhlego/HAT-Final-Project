@@ -53,10 +53,10 @@ public class CustomerBuyPanel extends JDialog {
 
         name.setBounds(50, 240, 120, 25);
         nameShow.setBounds(170, 240, 280, 25);
-        discount.setBounds(50, 270, 120, 25);
-        discountShow.setBounds(170, 270, 280, 25);
-        price.setBounds(50, 300, 120, 25);
-        priceShow.setBounds(170, 300, 280, 25);
+        discount.setBounds(50, 300, 120, 25);
+        discountShow.setBounds(170, 300, 280, 25);
+        price.setBounds(50, 270, 120, 25);
+        priceShow.setBounds(170, 270, 280, 25);
         amount.setBounds(50, 330, 120, 25);
         amountShow.setBounds(170, 330, 280, 25);
 
@@ -114,7 +114,7 @@ public class CustomerBuyPanel extends JDialog {
             addButton.setEnabled(tempCount != currentProduct.amount);
         });
 
-        buyButton = new JButton("Buy");
+        buyButton = new JButton("Add to cart");
         buyButton.setBounds(50, 490, 400, 50);
         buyButton.setBackground(new Color(111, 207, 151));
         buyButton.addActionListener(e -> {

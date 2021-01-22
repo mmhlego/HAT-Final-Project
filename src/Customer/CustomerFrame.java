@@ -3,6 +3,7 @@ package Customer;
 import General.*;
 import javax.swing.*;
 import java.awt.*;
+import Login.*;
 
 public class CustomerFrame extends JFrame {
     private static final long serialVersionUID = 1391165171893919981L;
@@ -112,7 +113,7 @@ public class CustomerFrame extends JFrame {
         Exit.setBounds(0, height - h, w, h);
         Exit.setFont(currentUser.theme.sidePanel.font);
         Exit.setForeground(currentUser.theme.sidePanel.fontColor);
-        Exit.addActionListener((e) -> System.exit(0));
+        Exit.addActionListener((e) -> selectExit());
         Exit.setBorder(null);
         Exit.setBackground(new Color(250, 67, 67));
         Exit.setIconTextGap(-180);
@@ -163,4 +164,17 @@ public class CustomerFrame extends JFrame {
         repaint();
     }
 
+    public void selectExit() {
+        Object[] options = { "Log Out", "Exit" };
+
+        int ans = JOptionPane.showOptionDialog(null, "Log out or Exit ?", "", JOptionPane.YES_NO_OPTION,
+                JOptionPane.PLAIN_MESSAGE, null, options, null);
+
+        if (ans == 0) {
+            dispose();
+            new MainFrame();
+        } else {
+            System.exit(0);
+        }
+    }
 }

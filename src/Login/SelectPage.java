@@ -1,7 +1,8 @@
+package Login;
+
 import java.awt.*;
 import java.awt.Font;
 import java.awt.event.*;
-
 import javax.swing.*;
 
 public class SelectPage extends JPanel {
