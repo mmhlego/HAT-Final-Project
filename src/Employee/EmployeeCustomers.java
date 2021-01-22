@@ -2,6 +2,8 @@ package Employee;
 
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+
 import java.io.*;
 import Customer.*;
 import General.*;
@@ -101,7 +103,7 @@ public class EmployeeCustomers extends JPanel {
                 History.setBorder(null);
                 m -= 15;
                 History.addActionListener((e) -> {
-                    showHistory(History);
+                    ShowHistory(History);
                 });
                 Info.add(History);
 
@@ -218,9 +220,58 @@ public class EmployeeCustomers extends JPanel {
         System.out.println("cart " + index);
     }
 
-    public void showHistory(JButton b) {
-        int index = (b.getY() - 5) / 40;
-        System.out.println("history " + index);
+    private void ShowOrderData(JButton b)
+    {
+        int index = (b.getY()-20)/50;
+    }
+
+    public void ShowHistory(JButton b) 
+    {
+        Count = 8;
+        int w = 420;
+        JDialog dialog = new JDialog(parent);
+        dialog.setLayout(null);
+        dialog.setSize(460, 400);
+
+        JPanel ProductPanel = new JPanel();
+        ProductPanel.setLayout(null);
+
+        ProductPanel.setPreferredSize(new Dimension(440 , 350));
+
+        if (Count > 7 ) 
+        {
+            w = 400;
+            ProductPanel.setPreferredSize(new Dimension(440 , Count*50 + 20));
+        }
+
+        JButton Return = new JButton("Return");
+        Return.setBounds(10, 360, 440, 30);
+        
+        for(int i = 0; i <Count ;i++)
+        {
+            JButton jb = new JButton("Product" + i);
+            jb.setBounds(20, 20 + i*50, w, 30);
+            ProductPanel.add(jb);
+            //jb.addActionListener((e) -> ShowOrderData(jb));
+        }
+
+        JScrollPane Scroller = new JScrollPane(ProductPanel , JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED , JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        Scroller.setBounds(0, 0, 460, 350);
+        Scroller.setBorder(null);
+        Scroller.getVerticalScrollBar().setBorder(null);
+        Scroller.getVerticalScrollBar().setUnitIncrement(10);
+
+        Return.addActionListener((e) -> dialog.dispose());
+
+        dialog.getRootPane().setBorder(new LineBorder(Color.BLACK, 1));
+        dialog.add(Return);
+        dialog.add(Scroller);
+        dialog.setLocationRelativeTo(null);
+        dialog.setUndecorated(true);
+        dialog.setResizable(false);
+        dialog.setVisible(true);
+        revalidate();
+        repaint();
     }
 
     public void sure(JButton b) {
