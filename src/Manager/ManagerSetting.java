@@ -1,14 +1,16 @@
-package General;
+package Manager;
 
 import javax.swing.*;
 
-public class SettingsFrame extends JPanel {
-    private static final long serialVersionUID = 2541312498453723523L;
+import General.*;
 
-    User currentUser;
-    JFrame parent;
+public class ManagerSetting extends JPanel {
+	private static final long serialVersionUID = -566165075426378234L;
+	
+	Manager currentUser;
+    ManagerFrame parent;
 
-    public SettingsFrame(JFrame p, User u) {
+        public ManagerSetting(ManagerFrame p, Manager u) {
         parent = p;
         currentUser = u;
 
