@@ -9,7 +9,6 @@ public class MainFrame extends JFrame {
         JPanel main;
 
         public MainFrame() {
-                setTitle("Select Role");
                 setSize(width + 13, height + 37);
                 setLocationRelativeTo(null);
                 addPanel(new SelectPage(this));

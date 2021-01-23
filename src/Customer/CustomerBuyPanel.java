@@ -60,10 +60,11 @@ public class CustomerBuyPanel extends JDialog {
         amount.setBounds(50, 330, 120, 25);
         amountShow.setBounds(170, 330, 280, 25);
 
-        ProductPicture.setBounds(150, 10, 190, 190);
+        ProductPicture.setBounds(135, 10, 220, 220);
         ProductPicture
-                .setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Product Icon.png"));
+                .setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Products Icons\\" + currentProduct.name + ".png"));
         ProductPicture.setVisible(true);
+        
 
         description.setText(currentProduct.description);
         description.setBackground(currentUser.theme.main.background);

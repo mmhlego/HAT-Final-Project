@@ -8,7 +8,6 @@ public class InformationChangePanel extends JPanel {
 
     JLabel label = new JLabel();
     JTextField[] fields = new JTextField[10];
-    ImageIcon managerIcon = new ImageIcon("images.jpg");
     JButton btn = new JButton();
     JPasswordField passwordField = new JPasswordField();
 
@@ -18,8 +17,8 @@ public class InformationChangePanel extends JPanel {
 
         currentUser = u;
 
-        label.setIcon(managerIcon);
-        label.setBounds(220, 15, 300, 250);
+        label.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\EditSettings.png"));
+        label.setBounds(220, 7, 300, 250);
         label.setBackground(currentUser.theme.main.background);
 
         passwordField.setVisible(true);

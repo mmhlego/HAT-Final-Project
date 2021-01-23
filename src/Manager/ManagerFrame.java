@@ -3,6 +3,7 @@ package Manager;
 import General.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import Login.*;
 
 public class ManagerFrame extends JFrame {
@@ -19,6 +20,7 @@ public class ManagerFrame extends JFrame {
         currentUser = m;
         design();
         addPanel(new ManagerMain(currentUser, this));
+        RightClick();
     }
 
     public void design() {
@@ -185,4 +187,49 @@ public class ManagerFrame extends JFrame {
             System.exit(0);
         }
     }
+
+    public void RightClick() {
+        JPopupMenu RightClicked = new JPopupMenu();
+        JMenuItem RightItemCustomers = new JMenuItem("Customers");
+        RightItemCustomers.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Customer.png"));
+        JMenuItem RightItemEmployees = new JMenuItem("Employees");
+        RightItemEmployees.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Employee.png"));
+        JMenuItem RightItemProducts = new JMenuItem("Products");
+        RightItemProducts.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Product.png"));
+        JMenuItem RightItemSettings = new JMenuItem("Settings");
+        RightItemSettings.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Settings.png"));
+        JMenuItem RightItemLogOutExit = new JMenuItem("LogOut / Exit                  ");
+        RightItemLogOutExit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Logout.png"));
+        this.addMouseListener(new MouseAdapter() {
+            public void mouseReleased(MouseEvent ME) {
+                if (SwingUtilities.isRightMouseButton(ME)) {
+                    RightClicked.show(ME.getComponent(), ME.getX(), ME.getY());
+                }
+            }
+        });
+        RightItemCustomers.addActionListener((e) -> {
+            selectButton(Customers);
+            addPanel(new ManagerCustomers(currentUser, this));
+        });
+        RightItemEmployees.addActionListener((e) -> {
+            selectButton(Employees);
+            addPanel(new ManagerEmployees(currentUser, this));
+        });
+        RightItemProducts.addActionListener((e) -> {
+            selectButton(Products);
+            addPanel(new ManagerProducts(currentUser, this));
+        });
+        RightItemSettings.addActionListener((e) -> {
+            selectButton(Settings);
+            addPanel(new SettingsFrame(this, currentUser));
+        });
+        RightItemLogOutExit.addActionListener((e) -> selectExit());
+        RightClicked.add(RightItemCustomers);
+        RightClicked.add(RightItemEmployees);
+        RightClicked.add(RightItemProducts);
+        RightClicked.add(RightItemSettings);
+        RightClicked.add(RightItemLogOutExit);
+        this.add(RightClicked);
+    }
+
 }

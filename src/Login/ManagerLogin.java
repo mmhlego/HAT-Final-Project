@@ -22,10 +22,11 @@ public class ManagerLogin extends JPanel {
 
     public ManagerLogin(MainFrame p) {
         ImageIcon ShowPasswords = new ImageIcon(
-                System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + "Show_Password");
+                System.getProperty("user.dir") + "\\Images\\Icons\\Login\\Show_Password.png");
         ImageIcon HidePasswords = new ImageIcon(
-                System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + "Hide_Password");
+                System.getProperty("user.dir") + "\\Images\\Icons\\Login\\Hide_Password.png");
         parent = p;
+        RightClick();
         parent.setIconImage(
                 new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Manager.png").getImage());
         parent.setTitle("Manager");
@@ -157,4 +158,25 @@ public class ManagerLogin extends JPanel {
             System.out.println(e.toString());
         }
     }
+
+    public void RightClick() {
+        JPopupMenu RightClicked = new JPopupMenu();
+        JMenuItem RightItemReturn = new JMenuItem("Return To Previous Page");
+        RightItemReturn.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Return.png"));
+        JMenuItem RightItemExit = new JMenuItem("Exit                  ");
+        RightItemExit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Logout.png"));
+        this.addMouseListener(new MouseAdapter() {
+            public void mouseReleased(MouseEvent ME) {
+                if (SwingUtilities.isRightMouseButton(ME)) {
+                    RightClicked.show(ME.getComponent(), ME.getX(), ME.getY());
+                }
+            }
+        });
+        RightItemExit.addActionListener((e) -> System.exit(0));
+        RightItemReturn.addActionListener((e) -> parent.addPanel(new SelectPage(parent)));
+        RightClicked.add(RightItemReturn);
+        RightClicked.add(RightItemExit);
+        this.add(RightClicked);
+    }
+
 }

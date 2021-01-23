@@ -14,12 +14,13 @@ public class CustomerLogin extends JPanel {
     JButton Login;
     MainFrame parent;
     ImageIcon ShowPasswords = new ImageIcon(
-            System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + "Show_Password");
+            System.getProperty("user.dir") + "\\Images\\Icons\\Login\\" + "Show_Password.png");
     ImageIcon HidePasswords = new ImageIcon(
-            System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + "Hide_Password");
+            System.getProperty("user.dir") + "\\Images\\Icons\\Login\\" + "Hide_Password.png");
 
     public CustomerLogin(MainFrame p) {
         parent = p;
+        RightClick();
         parent.setIconImage(
                 new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Customer.png").getImage());
         parent.setTitle("Customer");
@@ -152,9 +153,9 @@ public class CustomerLogin extends JPanel {
     public void addNew() {
         int h = 40, w = 200, margin = 40;
         ImageIcon ShowPasswords = new ImageIcon(
-                System.getProperty("user.dir") + "\\Images\\Icons\\Main\\" + "Show_Password");
+                System.getProperty("user.dir") + "\\Images\\Icons\\Login\\" + "Show_Password.png");
         ImageIcon HidePasswords = new ImageIcon(
-                System.getProperty("user.dir") + "\\Images\\Icons\\Main\\" + "Hide_Password");
+                System.getProperty("user.dir") + "\\Images\\Icons\\Login\\" + "Hide_Password.png");
 
         JDialog dialog = new JDialog(parent, "Edit Information");
 
@@ -323,6 +324,26 @@ public class CustomerLogin extends JPanel {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
+    }
+
+    public void RightClick() {
+        JPopupMenu RightClicked = new JPopupMenu();
+        JMenuItem RightItemReturn = new JMenuItem("Return To Previous Page");
+        RightItemReturn.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Return.png"));
+        JMenuItem RightItemExit = new JMenuItem("Exit                  ");
+        RightItemExit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Logout.png"));
+        this.addMouseListener(new MouseAdapter() {
+            public void mouseReleased(MouseEvent ME) {
+                if (SwingUtilities.isRightMouseButton(ME)) {
+                    RightClicked.show(ME.getComponent(), ME.getX(), ME.getY());
+                }
+            }
+        });
+        RightItemExit.addActionListener((e) -> System.exit(0));
+        RightItemReturn.addActionListener((e) -> parent.addPanel(new SelectPage(parent)));
+        RightClicked.add(RightItemReturn);
+        RightClicked.add(RightItemExit);
+        this.add(RightClicked);
     }
 
 }
