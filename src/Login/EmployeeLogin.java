@@ -140,12 +140,10 @@ public class EmployeeLogin extends JPanel {
 
             String username = UserNameTF.getText();
             String password = new String(PassWordPF.getPassword());
-            boolean hasAccount = false;
 
             int length = allEmployees.length;
             for (int i = 0; i < length; i++) {
                 if (allEmployees[i].username.equals(username)) {
-                    hasAccount = true;
                     if (allEmployees[i].password.equals(password)) {
                         parent.dispose();
                         new EmployeeFrame(allEmployees[i]);
@@ -154,11 +152,7 @@ public class EmployeeLogin extends JPanel {
                 }
             }
 
-            if (hasAccount) {
-                JOptionPane.showMessageDialog(this, "Wrong password.", "Error", 0);
-            } else {
-                JOptionPane.showMessageDialog(this, "No account has been found.", "Error", 0);
-            }
+            JOptionPane.showMessageDialog(this, "Wrong Username/Password.", "Error", 0);
 
         } catch (Exception e) {
             System.out.println(e.toString());

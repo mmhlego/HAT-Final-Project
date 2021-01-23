@@ -303,12 +303,10 @@ public class CustomerLogin extends JPanel {
 
             String username = UserNameTF.getText();
             String password = new String(PassWordPF.getPassword());
-            boolean hasAccount = false;
 
             int length = allCustomers.length;
             for (int i = 0; i < length; i++) {
                 if (allCustomers[i].username.equals(username)) {
-                    hasAccount = true;
                     if (allCustomers[i].password.equals(password)) {
                         parent.dispose();
                         new CustomerFrame(allCustomers[i]);
@@ -317,11 +315,7 @@ public class CustomerLogin extends JPanel {
                 }
             }
 
-            if (hasAccount) {
-                JOptionPane.showMessageDialog(this, "Wrong password.", "Error", 0);
-            } else {
-                JOptionPane.showMessageDialog(this, "No account has been found.", "Error", 0);
-            }
+            JOptionPane.showMessageDialog(this, "Wrong Username/Password.", "Error", 0);
 
         } catch (Exception e) {
             System.out.println(e.toString());
