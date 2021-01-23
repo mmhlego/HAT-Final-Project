@@ -3,6 +3,8 @@ package Customer;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.io.File;
+
 import General.*;
 
 public class CustomerBuyPanel extends JDialog {
@@ -61,10 +63,13 @@ public class CustomerBuyPanel extends JDialog {
         amountShow.setBounds(170, 330, 280, 25);
 
         ProductPicture.setBounds(135, 10, 220, 220);
-        ProductPicture
-                .setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Products Icons\\" + currentProduct.name + ".png"));
-        ProductPicture.setVisible(true);
+        ProductPicture.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Products Icons\\" + currentProduct.name + ".png"));
         
+        if(!(new File(System.getProperty("user.dir") + "\\Images\\Products Icons\\" + currentProduct.name + ".png").exists()))
+        {
+            ProductPicture.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Product Icon.png"));
+        }
+        ProductPicture.setVisible(true);
 
         description.setText(currentProduct.description);
         description.setBackground(currentUser.theme.main.background);
