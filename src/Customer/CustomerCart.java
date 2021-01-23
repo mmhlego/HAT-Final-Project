@@ -138,8 +138,6 @@ public class CustomerCart extends JPanel {
                 amountLabel.setBorder(null);
                 Info.add(amountLabel);
 
-                //Customer0
-
                 JButton addButton = new JButton();
                 addButton.setIcon(addImage);
                 addButton.setBounds(430, 60 + 50 * i, 30, 30);
