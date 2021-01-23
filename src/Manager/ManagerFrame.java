@@ -25,12 +25,12 @@ public class ManagerFrame extends JFrame {
 
     public void design() {
         setLayout(null);
-        //===================================================================================
+        // ===================================================================================
         sidepanel = new JPanel();
         sidepanel.setLayout(null);
         sidepanel.setBackground(currentUser.theme.sidePanel.background);
         sidepanel.setBounds(0, 0, w, height);
-        //===================================================================================
+        // ===================================================================================
         Change = new JButton("Toggle SidePanel");
         Change.setBounds(0, 0, w, h);
         Change.setFont(currentUser.theme.sidePanel.font);
@@ -59,7 +59,7 @@ public class ManagerFrame extends JFrame {
                 + currentUser.theme.sidePanel.icon + "Menu.png"));
         reDesign(Change);
         sidepanel.add(Change);
-        //===================================================================================
+        // ===================================================================================
         Customers = new JButton("Customers");
         Customers.setBounds(0, h, w, h);
         Customers.setFont(currentUser.theme.sidePanel.font);
@@ -73,7 +73,7 @@ public class ManagerFrame extends JFrame {
                 + currentUser.theme.sidePanel.icon + "Customers.png"));
         reDesign(Customers);
         sidepanel.add(Customers);
-        //===================================================================================
+        // ===================================================================================
         Employees = new JButton("Employees");
         Employees.setBounds(0, 2 * h, w, h);
         Employees.setFont(currentUser.theme.sidePanel.font);
@@ -87,7 +87,7 @@ public class ManagerFrame extends JFrame {
                 + currentUser.theme.sidePanel.icon + "Employees.png"));
         reDesign(Employees);
         sidepanel.add(Employees);
-        //===================================================================================
+        // ===================================================================================
         Products = new JButton("Products");
         Products.setBounds(0, 3 * h, w, h);
         Products.setFont(currentUser.theme.sidePanel.font);
@@ -101,7 +101,7 @@ public class ManagerFrame extends JFrame {
                 + currentUser.theme.sidePanel.icon + "Products.png"));
         reDesign(Products);
         sidepanel.add(Products);
-        //===================================================================================
+        // ===================================================================================
         Settings = new JButton("Settings");
         Settings.setBounds(0, 4 * h, w, h);
         Settings.setFont(currentUser.theme.sidePanel.font);
@@ -115,7 +115,7 @@ public class ManagerFrame extends JFrame {
                 + currentUser.theme.sidePanel.icon + "Settings.png"));
         reDesign(Settings);
         sidepanel.add(Settings);
-        //===================================================================================
+        // ===================================================================================
         Exit = new JButton("Log Out / Exit");
         Exit.setBounds(0, height - h, w, h);
         Exit.setFont(currentUser.theme.sidePanel.font);
@@ -127,7 +127,7 @@ public class ManagerFrame extends JFrame {
         Exit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
                 + currentUser.theme.sidePanel.icon + "Exit.png"));
         sidepanel.add(Exit);
-        //===================================================================================
+        // ===================================================================================
         add(sidepanel);
         setFont(currentUser.theme.main.font);
         setForeground(currentUser.theme.main.fontColor);
@@ -175,17 +175,36 @@ public class ManagerFrame extends JFrame {
     }
 
     public void selectExit() {
-        Object[] options = { "Log Out", "Exit" };
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Exit / LogOut");
+        dialog.setLayout(null);
+        dialog.setSize(265, 168);
+        dialog.setLocationRelativeTo(null);
+        dialog.setResizable(false);
 
-        int ans = JOptionPane.showOptionDialog(null, "Log out or Exit ?", "", JOptionPane.YES_NO_OPTION,
-                JOptionPane.PLAIN_MESSAGE, null, options, null);
-
-        if (ans == 0) {
+        JButton Exit = new JButton("Exit");
+        Exit.setBounds(0, 0, 125, 130);
+        Exit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Exit.png"));
+        Exit.setBackground(new Color (215 , 38 , 61));
+        Exit.setFont(new Font("Arial", Font.BOLD, 15));
+        JButton LogOut = new JButton("Log out");
+        LogOut.setBounds(125, 0, 125, 130);
+        LogOut.setBackground(new Color (255 , 177 , 61));
+        LogOut.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\LogOut.png"));
+        LogOut.setFont(new Font("Arial", Font.BOLD, 15));
+        Exit.addActionListener((e) -> {
+            dialog.dispose();
+            System.exit(0);
+        });
+        LogOut.addActionListener((e) -> {
+            dialog.dispose();
             dispose();
             new MainFrame();
-        } else {
-            System.exit(0);
-        }
+        });
+
+        dialog.add(LogOut);
+        dialog.add(Exit);
+        dialog.setVisible(true);
     }
 
     public void RightClick() {
