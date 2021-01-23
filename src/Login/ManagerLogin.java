@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-import General.*;
 import Manager.*;
 
 public class ManagerLogin extends JPanel {
@@ -22,8 +21,10 @@ public class ManagerLogin extends JPanel {
     MainFrame parent;
 
     public ManagerLogin(MainFrame p) {
-        ImageIcon ShowPasswords = new CustomIcon("Show_Password", 28, 28);
-        ImageIcon HidePasswords = new CustomIcon("Hide_Password", 28, 28);
+        ImageIcon ShowPasswords = new ImageIcon(
+                System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + "Show_Password");
+        ImageIcon HidePasswords = new ImageIcon(
+                System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + "Hide_Password");
         parent = p;
         parent.setIconImage(
                 new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Manager.png").getImage());

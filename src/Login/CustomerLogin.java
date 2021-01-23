@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import Customer.*;
-import General.*;
 import java.awt.event.*;
 
 public class CustomerLogin extends JPanel {
@@ -14,8 +13,10 @@ public class CustomerLogin extends JPanel {
     JPasswordField PassWordPF;
     JButton Login;
     MainFrame parent;
-    ImageIcon ShowPasswords = new CustomIcon("Show_Password", 28, 28);
-    ImageIcon HidePasswords = new CustomIcon("Hide_Password", 28, 28);
+    ImageIcon ShowPasswords = new ImageIcon(
+            System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + "Show_Password");
+    ImageIcon HidePasswords = new ImageIcon(
+            System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + "Hide_Password");
 
     public CustomerLogin(MainFrame p) {
         parent = p;
@@ -150,8 +151,10 @@ public class CustomerLogin extends JPanel {
 
     public void addNew() {
         int h = 40, w = 200, margin = 40;
-        //ImageIcon ShowPasswords = new CustomIcon("Show_Password", 20, 20);
-        //ImageIcon HidePasswords = new CustomIcon("Hide_Password", 20, 20);
+        ImageIcon ShowPasswords = new ImageIcon(
+                System.getProperty("user.dir") + "\\Images\\Icons\\Main\\" + "Show_Password");
+        ImageIcon HidePasswords = new ImageIcon(
+                System.getProperty("user.dir") + "\\Images\\Icons\\Main\\" + "Hide_Password");
 
         JDialog dialog = new JDialog(parent, "Edit Information");
 

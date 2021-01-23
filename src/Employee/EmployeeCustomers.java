@@ -45,10 +45,14 @@ public class EmployeeCustomers extends JPanel {
     }
 
     private void showData() {
-        ImageIcon deleteIcon = new CustomIcon(currentUser.theme.main.icon + "Delete", 28, 28);
-        ImageIcon editIcon = new CustomIcon(currentUser.theme.main.icon + "Edit", 28, 28);
-        ImageIcon cartIcon = new CustomIcon(currentUser.theme.main.icon + "Cart", 28, 28);
-        ImageIcon historyIcon = new CustomIcon(currentUser.theme.main.icon + "History", 28, 28);
+        ImageIcon deleteIcon = new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.main.icon + "Delete.png");
+        ImageIcon editIcon = new ImageIcon(
+                System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + currentUser.theme.main.icon + "Edit.png");
+        ImageIcon cartIcon = new ImageIcon(
+                System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + currentUser.theme.main.icon + "Cart.png");
+        ImageIcon historyIcon = new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.main.icon + "Order History.png");
 
         try {
             ObjectInputStream reader = new ObjectInputStream(

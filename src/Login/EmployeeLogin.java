@@ -3,7 +3,6 @@ package Login;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
-import General.*;
 import Employee.*;
 import java.awt.event.*;
 
@@ -16,8 +15,10 @@ public class EmployeeLogin extends JPanel {
     MainFrame parent;
 
     public EmployeeLogin(MainFrame p) {
-        ImageIcon ShowPasswords = new CustomIcon("Show_Password", 28, 28);
-        ImageIcon HidePasswords = new CustomIcon("Hide_Password", 28, 28);
+        ImageIcon ShowPasswords = new ImageIcon(
+                System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + "Show_Password");
+        ImageIcon HidePasswords = new ImageIcon(
+                System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + "Hide_Password");
         parent = p;
 
         parent.setIconImage(

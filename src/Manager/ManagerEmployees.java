@@ -3,8 +3,7 @@ package Manager;
 import java.awt.*;
 import javax.swing.*;
 import java.io.*;
-import Employee.Employee;
-import General.*;
+import Employee.*;
 
 public class ManagerEmployees extends JPanel {
     private static final long serialVersionUID = -633045104537689790L;
@@ -58,8 +57,10 @@ public class ManagerEmployees extends JPanel {
         Info.setBackground(new Color(242, 242, 242));
         Info.setPreferredSize(new Dimension(660, Count * 40));
 
-        ImageIcon deleteIcon = new CustomIcon(currentUser.theme.main.icon + "Delete", 28, 28);
-        ImageIcon editIcon = new CustomIcon(currentUser.theme.main.icon + "Edit", 28, 28);
+        ImageIcon deleteIcon = new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.main.icon + "Delete.png");
+        ImageIcon editIcon = new ImageIcon(
+                System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + currentUser.theme.main.icon + "Edit.png");
 
         for (int i = 0; i < Count; i++) {
             int m = 660 - 45;

@@ -51,7 +51,8 @@ public class CustomerFrame extends JFrame {
             repaint();
         });
         Change.setIconTextGap(-180);
-        Change.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "menu", 40, 40));
+        Change.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.sidePanel.icon + "Menu.png"));
         reDesign(Change);
         sidepanel.add(Change);
         //===================================================================================
@@ -65,7 +66,8 @@ public class CustomerFrame extends JFrame {
             addPanel(new CustomerOrderHistory(currentUser, this));
         });
         History.setIconTextGap(-180);
-        History.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "history", 40, 40));
+        History.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.sidePanel.icon + "Order History.png"));
         reDesign(History);
         sidepanel.add(History);
         //===================================================================================
@@ -79,7 +81,8 @@ public class CustomerFrame extends JFrame {
             addPanel(new CustomerCart(currentUser, this));
         });
         Cart.setIconTextGap(-180);
-        Cart.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "cart", 40, 40));
+        Cart.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.sidePanel.icon + "Cart.png"));
         reDesign(Cart);
         sidepanel.add(Cart);
         //===================================================================================
@@ -92,7 +95,8 @@ public class CustomerFrame extends JFrame {
             addPanel(new CustomerProducts(currentUser, this));
         });
         Products.setIconTextGap(-180);
-        Products.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "products", 40, 40));
+        Products.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.sidePanel.icon + "Products.png"));
         reDesign(Products);
         sidepanel.add(Products);
         //===================================================================================
@@ -105,7 +109,8 @@ public class CustomerFrame extends JFrame {
             addPanel(new SettingsFrame(this, currentUser));
         });
         Settings.setIconTextGap(-180);
-        Settings.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "settings", 40, 40));
+        Settings.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.sidePanel.icon + "Settings.png"));
         reDesign(Settings);
         sidepanel.add(Settings);
         //===================================================================================
@@ -117,7 +122,8 @@ public class CustomerFrame extends JFrame {
         Exit.setBorder(null);
         Exit.setBackground(new Color(250, 67, 67));
         Exit.setIconTextGap(-180);
-        Exit.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "exit", 40, 40));
+        Exit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.sidePanel.icon + "Exit.png"));
         sidepanel.add(Exit);
         //===================================================================================
         add(sidepanel);
@@ -143,14 +149,16 @@ public class CustomerFrame extends JFrame {
         b.setForeground(currentUser.theme.sidePanel.fontColor);
         b.setBackground(currentUser.theme.sidePanel.background);
         if (!b.getText().equals(new String("Toggle SidePanel")))
-            b.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + b.getText(), 40, 40));
+            b.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                    + currentUser.theme.sidePanel.icon + b.getText() + ".png"));
     }
 
     public void selectButton(JButton b) {
         resetColors();
         b.setForeground(currentUser.theme.main.fontColor);
         b.setBackground(currentUser.theme.main.background);
-        b.setIcon(new CustomIcon(currentUser.theme.main.icon + b.getText(), 40, 40));
+        b.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + currentUser.theme.main.icon
+                + b.getText() + ".png"));
     }
 
     public void addPanel(JPanel panel) {

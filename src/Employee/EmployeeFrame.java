@@ -53,7 +53,8 @@ public class EmployeeFrame extends JFrame {
             repaint();
         });
         Change.setIconTextGap(-180);
-        Change.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "menu", 40, 40));
+        Change.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.sidePanel.icon + "menu"));
         reDesign(Change);
         sidepanel.add(Change);
         //===================================================================================
@@ -66,7 +67,8 @@ public class EmployeeFrame extends JFrame {
             addPanel(new EmployeeCustomers(currentUser, this));
         });
         Customers.setIconTextGap(-180);
-        Customers.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "customers", 40, 40));
+        Customers.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.sidePanel.icon + "customers"));
         reDesign(Customers);
         sidepanel.add(Customers);
         //===================================================================================
@@ -79,7 +81,8 @@ public class EmployeeFrame extends JFrame {
             addPanel(new EmployeeProducts(currentUser, this));
         });
         Products.setIconTextGap(-180);
-        Products.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "products", 40, 40));
+        Products.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.sidePanel.icon + "products"));
         reDesign(Products);
         sidepanel.add(Products);
         //===================================================================================
@@ -92,7 +95,8 @@ public class EmployeeFrame extends JFrame {
             addPanel(new SettingsFrame(this, currentUser));
         });
         Settings.setIconTextGap(-180);
-        Settings.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "settings", 40, 40));
+        Settings.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.sidePanel.icon + "Settings.png"));
         reDesign(Settings);
         sidepanel.add(Settings);
         //===================================================================================
@@ -104,7 +108,8 @@ public class EmployeeFrame extends JFrame {
         Exit.setBorder(null);
         Exit.setBackground(new Color(250, 67, 67));
         Exit.setIconTextGap(-180);
-        Exit.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + "exit", 40, 40));
+        Exit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.sidePanel.icon + "Exit.png"));
         sidepanel.add(Exit);
         //===================================================================================
         add(sidepanel);
@@ -129,14 +134,16 @@ public class EmployeeFrame extends JFrame {
         b.setForeground(currentUser.theme.sidePanel.fontColor);
         b.setBackground(currentUser.theme.sidePanel.background);
         if (!b.getText().equals(new String("Toggle SidePanel")))
-            b.setIcon(new CustomIcon(currentUser.theme.sidePanel.icon + b.getText(), 40, 40));
+            b.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                    + currentUser.theme.sidePanel.icon + b.getText() + ".png"));
     }
 
     public void selectButton(JButton b) {
         resetColors();
         b.setForeground(currentUser.theme.main.fontColor);
         b.setBackground(currentUser.theme.main.background);
-        b.setIcon(new CustomIcon(currentUser.theme.main.icon + b.getText(), 40, 40));
+        b.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + currentUser.theme.main.icon
+                + b.getText() + ".png"));
     }
 
     public void addPanel(JPanel panel) {
