@@ -21,12 +21,12 @@ public class SettingsFrame extends JPanel {
         tabs.setForeground(currentUser.theme.main.fontColor);
         tabs.setBackground(currentUser.theme.main.background);
         tabs.setVisible(true);
-        tabs.add("Informations", changePanel);
-        tabs.add("Theme", themePanel);
+        tabs.add("                                  Informations                                  ", changePanel);
+        tabs.add("                                  Theme                                  ", themePanel);
 
         setLayout(null);
         tabs.setBorder(null);
-        tabs.setBounds(0, 0, 700, 700);
+        tabs.setBounds(-3, 0, 800, 700);
         add(tabs);
 
         setBackground(currentUser.theme.main.background);

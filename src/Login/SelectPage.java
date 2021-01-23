@@ -15,13 +15,14 @@ public class SelectPage extends JPanel {
 
 	public SelectPage(MainFrame p) {
 		parent = p;
+		parent.setTitle("Select Role");
 		parent.setIconImage(
 				new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Select.png").getImage());
+		RightClick();
 		design();
 	}
 
 	public void design() {
-
 		setLayout(null);
 		Manager = new JButton("Login As Manager");
 		Manager.setBounds(50, 50, 800, 166);
@@ -79,4 +80,35 @@ public class SelectPage extends JPanel {
 		add(Costumer);
 	}
 
+	public void RightClick() {
+		JPopupMenu RightClicked = new JPopupMenu();
+		JMenuItem RightItemLoginManager = new JMenuItem("Login As Manager");
+		RightItemLoginManager
+				.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Manager.png"));
+		JMenuItem RightItemLoginEmployee = new JMenuItem("Login As Employee");
+		RightItemLoginEmployee
+				.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Employee.png"));
+		JMenuItem RightItemLoginCustomer = new JMenuItem("Login As Customer");
+		RightItemLoginCustomer
+				.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Customer.png"));
+		JMenuItem RightItemExit = new JMenuItem("Exit                           ");
+		RightItemExit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Logout.png"));
+		this.addMouseListener(new MouseAdapter() {
+			public void mouseReleased(MouseEvent ME) {
+				if (SwingUtilities.isRightMouseButton(ME)) {
+					RightClicked.show(ME.getComponent(), ME.getX(), ME.getY());
+				}
+			}
+		});
+		RightItemExit.addActionListener((e) -> parent.dispose());
+		RightItemLoginManager.addActionListener((e) -> parent.addPanel(new ManagerLogin(parent)));
+		RightItemLoginEmployee.addActionListener((e) -> parent.addPanel(new EmployeeLogin(parent)));
+		RightItemLoginCustomer.addActionListener((e) -> parent.addPanel(new CustomerLogin(parent)));
+
+		RightClicked.add(RightItemLoginManager);
+		RightClicked.add(RightItemLoginEmployee);
+		RightClicked.add(RightItemLoginCustomer);
+		RightClicked.add(RightItemExit);
+		this.add(RightClicked);
+	}
 }

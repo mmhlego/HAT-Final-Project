@@ -14,12 +14,13 @@ public class CustomerLogin extends JPanel {
     JButton Login;
     MainFrame parent;
     ImageIcon ShowPasswords = new ImageIcon(
-            System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + "Show_Password");
+            System.getProperty("user.dir") + "\\Images\\Icons\\Login\\" + "Show_Password.png");
     ImageIcon HidePasswords = new ImageIcon(
-            System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + "Hide_Password");
+            System.getProperty("user.dir") + "\\Images\\Icons\\Login\\" + "Hide_Password.png");
 
     public CustomerLogin(MainFrame p) {
         parent = p;
+        RightClick();
         parent.setIconImage(
                 new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Customer.png").getImage());
         parent.setTitle("Customer");
@@ -50,17 +51,27 @@ public class CustomerLogin extends JPanel {
         UserNameTF.setDocument(new Limitter(20));
         UserNameTF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
         UserNameTF.setBackground(new Color(238, 238, 238));
+        UserNameTF.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent fe) {
+                UserNameTF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLUE));
+            }
+
+            @Override
+            public void focusLost(FocusEvent fe) {
+                UserNameTF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+            }
+        });
+
         UserNameTF.addKeyListener(new KeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {
                 int key = e.getKeyCode();
                 if (key == KeyEvent.VK_ENTER) {
                     check();
-                }
-                if (key == KeyEvent.VK_ESCAPE) {
+                } else if (key == KeyEvent.VK_ESCAPE) {
                     parent.addPanel(new SelectPage(parent));
                 }
-
             }
 
             @Override
@@ -78,12 +89,25 @@ public class CustomerLogin extends JPanel {
         PassWordPF.setDocument(new Limitter(16));
         PassWordPF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
         PassWordPF.setBackground(new Color(238, 238, 238));
+        PassWordPF.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent fe) {
+                PassWordPF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLUE));
+            }
+
+            @Override
+            public void focusLost(FocusEvent fe) {
+                PassWordPF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+            }
+        });
         PassWordPF.addKeyListener(new KeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {
                 int key = e.getKeyCode();
                 if (key == KeyEvent.VK_ENTER) {
                     check();
+                } else if (key == KeyEvent.VK_ESCAPE) {
+                    parent.addPanel(new SelectPage(parent));
                 }
             }
 
@@ -120,6 +144,25 @@ public class CustomerLogin extends JPanel {
         Login.setFont(new Font("Tahoma", Font.BOLD, 24));
         Login.setEnabled(true);
         Login.addActionListener((e) -> check());
+        Login.addKeyListener(new KeyListener() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int key = e.getKeyCode();
+                if (key == KeyEvent.VK_ENTER) {
+                    check();
+                } else if (key == KeyEvent.VK_ESCAPE) {
+                    parent.addPanel(new SelectPage(parent));
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+        });
 
         JButton ShowPassText = new JButton();
         ShowPassText.setIcon(ShowPasswords);
@@ -152,9 +195,9 @@ public class CustomerLogin extends JPanel {
     public void addNew() {
         int h = 40, w = 200, margin = 40;
         ImageIcon ShowPasswords = new ImageIcon(
-                System.getProperty("user.dir") + "\\Images\\Icons\\Main\\" + "Show_Password");
+                System.getProperty("user.dir") + "\\Images\\Icons\\Login\\" + "Show_Password.png");
         ImageIcon HidePasswords = new ImageIcon(
-                System.getProperty("user.dir") + "\\Images\\Icons\\Main\\" + "Hide_Password");
+                System.getProperty("user.dir") + "\\Images\\Icons\\Login\\" + "Hide_Password.png");
 
         JDialog dialog = new JDialog(parent, "Edit Information");
 
@@ -323,6 +366,26 @@ public class CustomerLogin extends JPanel {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
+    }
+
+    public void RightClick() {
+        JPopupMenu RightClicked = new JPopupMenu();
+        JMenuItem RightItemReturn = new JMenuItem("Return To Previous Page");
+        RightItemReturn.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Return.png"));
+        JMenuItem RightItemExit = new JMenuItem("Exit                  ");
+        RightItemExit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Logout.png"));
+        this.addMouseListener(new MouseAdapter() {
+            public void mouseReleased(MouseEvent ME) {
+                if (SwingUtilities.isRightMouseButton(ME)) {
+                    RightClicked.show(ME.getComponent(), ME.getX(), ME.getY());
+                }
+            }
+        });
+        RightItemExit.addActionListener((e) -> System.exit(0));
+        RightItemReturn.addActionListener((e) -> parent.addPanel(new SelectPage(parent)));
+        RightClicked.add(RightItemReturn);
+        RightClicked.add(RightItemExit);
+        this.add(RightClicked);
     }
 
 }

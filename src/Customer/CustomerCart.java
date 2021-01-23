@@ -1,8 +1,10 @@
 package Customer;
 
 import java.awt.*;
+import java.io.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import General.*;
 
 public class CustomerCart extends JPanel {
     private static final long serialVersionUID = 5679015742552960498L;
@@ -107,7 +109,7 @@ public class CustomerCart extends JPanel {
                     + currentUser.theme.main.icon + "Add.png");
 
             ImageIcon removeImage = new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Main\\"
-                    + currentUser.theme.main.icon + "Remove.png");
+                    + currentUser.theme.main.icon + "Substract.png");
 
             ImageIcon deleteImage = new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Main\\"
                     + currentUser.theme.main.icon + "Delete.png");
@@ -130,6 +132,8 @@ public class CustomerCart extends JPanel {
                 removeButton.setIcon(removeImage);
                 removeButton.setBounds(370, 60 + 50 * i, 30, 30);
                 removeButton.setBorder(null);
+                removeButton.setBackground(null);
+                removeButton.addActionListener((e) -> removeFromProduct(removeButton));
                 Info.add(removeButton);
 
                 int amount = currentUser.order.count[i];
@@ -142,6 +146,9 @@ public class CustomerCart extends JPanel {
                 addButton.setIcon(addImage);
                 addButton.setBounds(430, 60 + 50 * i, 30, 30);
                 addButton.setBorder(null);
+                addButton.setBackground(null);
+                checkAvailability(addButton);
+                addButton.addActionListener((e) -> addToProduct(addButton));
                 Info.add(addButton);
 
                 int discount = currentUser.order.products[i].discount;
@@ -160,14 +167,20 @@ public class CustomerCart extends JPanel {
                 deleteButton.setIcon(deleteImage);
                 deleteButton.setBounds(630, 60 + 50 * i, 30, 30);
                 deleteButton.setBorder(null);
+                deleteButton.setBackground(null);
+                deleteButton.addActionListener((e) -> deleteProduct(deleteButton));
                 Info.add(deleteButton);
 
                 totalDiscount += amount * price * discount / 100;
                 total += totalPrice;
             }
 
-            calculatedTotalDiscount.setText(Long.toString(totalDiscount) + " ("
-                    + Long.toString(totalDiscount / (totalDiscount + total)) + "%)");
+            if ((totalDiscount + total) > 0) {
+                calculatedTotalDiscount.setText(Long.toString(totalDiscount) + " ("
+                        + Long.toString(totalDiscount / (totalDiscount + total)) + " %)");
+            } else {
+                calculatedTotalDiscount.setText(Long.toString(totalDiscount) + " (0 %)");
+            }
 
             calculatedTotalPrice.setText(Long.toString(total));
 
@@ -202,5 +215,131 @@ public class CustomerCart extends JPanel {
 
         setBackground(currentUser.theme.main.background);
         setVisible(true);
+    }
+
+    private void deleteProduct(JButton b) {
+        int index = (b.getY() - 60) / 50;
+        Product p = currentUser.order.products[index];
+        Product[] allProducts;
+
+        try {
+            ObjectInputStream reader = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
+            allProducts = (Product[]) reader.readObject();
+            reader.close();
+
+            int length = allProducts.length;
+
+            for (int i = 0; i < length; i++) {
+                if (p.equals(allProducts[i])) {
+                    allProducts[i].amount += currentUser.order.count[index];
+                }
+                break;
+            }
+
+            ObjectOutputStream writer = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
+            writer.writeObject(allProducts);
+            writer.close();
+
+            for (int i = 0; i < currentUser.order.products.length; i++) {
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    private void addToProduct(JButton b) {
+        int index = (b.getY() - 60) / 50;
+        Product p = currentUser.order.products[index];
+        Product[] allProducts;
+
+        try {
+            ObjectInputStream reader = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
+            allProducts = (Product[]) reader.readObject();
+            reader.close();
+
+            int length = allProducts.length;
+            for (int i = 0; i < length; i++) {
+                if (p.equals(allProducts[i])) {
+                    allProducts[i].amount -= 1;
+
+                    if (allProducts[i].amount == 0) {
+                        b.setEnabled(false);
+                    }
+                    break;
+                }
+            }
+
+            ObjectOutputStream writer = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
+            writer.writeObject(allProducts);
+            writer.close();
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    public void removeFromProduct(JButton b) {
+        int index = (b.getY() - 60) / 50;
+        Product p = currentUser.order.products[index];
+        Product[] allProducts;
+
+        try {
+            ObjectInputStream reader = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
+            allProducts = (Product[]) reader.readObject();
+            reader.close();
+
+            int length = allProducts.length;
+
+            for (int i = 0; i < length; i++) {
+                if (p.equals(allProducts[i])) {
+                    allProducts[i].amount += currentUser.order.count[index];
+                }
+                break;
+            }
+
+            ObjectOutputStream writer = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
+            writer.writeObject(allProducts);
+            writer.close();
+
+            for (int i = 0; i < currentUser.order.products.length; i++) {
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    public void checkAvailability(JButton addButton) {
+        int index = (addButton.getY() - 60) / 50;
+        addButton.setEnabled(false);
+        Product p = currentUser.order.products[index];
+
+        try {
+            ObjectInputStream reader = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
+            Product[] allProducts = (Product[]) reader.readObject();
+            reader.close();
+
+            int length = allProducts.length;
+            for (int i = 0; i < length; i++) {
+                if (p.equals(allProducts[i])) {
+                    if (allProducts[i].amount > 0) {
+                        addButton.setEnabled(true);
+                    }
+                    return;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 }
