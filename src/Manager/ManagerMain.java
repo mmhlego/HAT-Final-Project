@@ -7,12 +7,14 @@ public class ManagerMain extends JPanel {
 
     JLabel label = new JLabel();
     JTextField[] fields = new JTextField[10];
-
+    ManagerFrame parent;
     Manager currentUser;
 
-    public ManagerMain(Manager m, JFrame parent) {
+    public ManagerMain(Manager m, ManagerFrame p) {
+        parent = p;
         currentUser = m;
-        parent.setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Manager.png").getImage());
+        parent.setIconImage(
+                new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Manager.png").getImage());
         parent.setTitle("Manager");
         label.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Manager.png"));
         label.setBounds(250, 25, 200, 250);
