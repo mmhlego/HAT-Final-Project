@@ -23,4 +23,11 @@ public class Product implements Serializable {
             this.discount = (1 + r.nextInt(12)) * 5;
         }
     }
+
+    public boolean equals(Product p) {
+        if (this.name.equals(p.name)) {
+            return true;
+        }
+        return false;
+    }
 }

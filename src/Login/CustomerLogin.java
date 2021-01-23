@@ -51,17 +51,27 @@ public class CustomerLogin extends JPanel {
         UserNameTF.setDocument(new Limitter(20));
         UserNameTF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
         UserNameTF.setBackground(new Color(238, 238, 238));
+        UserNameTF.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent fe) {
+                UserNameTF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLUE));
+            }
+
+            @Override
+            public void focusLost(FocusEvent fe) {
+                UserNameTF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+            }
+        });
+
         UserNameTF.addKeyListener(new KeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {
                 int key = e.getKeyCode();
                 if (key == KeyEvent.VK_ENTER) {
                     check();
-                }
-                if (key == KeyEvent.VK_ESCAPE) {
+                } else if (key == KeyEvent.VK_ESCAPE) {
                     parent.addPanel(new SelectPage(parent));
                 }
-
             }
 
             @Override
@@ -79,12 +89,25 @@ public class CustomerLogin extends JPanel {
         PassWordPF.setDocument(new Limitter(16));
         PassWordPF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
         PassWordPF.setBackground(new Color(238, 238, 238));
+        PassWordPF.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent fe) {
+                PassWordPF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLUE));
+            }
+
+            @Override
+            public void focusLost(FocusEvent fe) {
+                PassWordPF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+            }
+        });
         PassWordPF.addKeyListener(new KeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {
                 int key = e.getKeyCode();
                 if (key == KeyEvent.VK_ENTER) {
                     check();
+                } else if (key == KeyEvent.VK_ESCAPE) {
+                    parent.addPanel(new SelectPage(parent));
                 }
             }
 
@@ -121,6 +144,25 @@ public class CustomerLogin extends JPanel {
         Login.setFont(new Font("Tahoma", Font.BOLD, 24));
         Login.setEnabled(true);
         Login.addActionListener((e) -> check());
+        Login.addKeyListener(new KeyListener() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int key = e.getKeyCode();
+                if (key == KeyEvent.VK_ENTER) {
+                    check();
+                } else if (key == KeyEvent.VK_ESCAPE) {
+                    parent.addPanel(new SelectPage(parent));
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+        });
 
         JButton ShowPassText = new JButton();
         ShowPassText.setIcon(ShowPasswords);

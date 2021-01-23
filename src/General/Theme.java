@@ -70,11 +70,12 @@ public class Theme implements Serializable {
     public class SidePanelTheme implements Serializable {
         private static final long serialVersionUID = 6949296710053557788L;
 
-        private Color[] backgrounds = { Hex("ffffff"), Hex("222831"), Hex("272121"), Hex("00adb5"), Hex("79d70f") };
-        private Color[] fontColors = { Hex("000000"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("000000") };
-        private Font[] fonts = { new Font("Dialog", 0, 14), new Font("Dialog", 0, 16), new Font("Dialog", 0, 16),
-                new Font("Dialog", 0, 16), new Font("Dialog", 0, 16) };
+        private Color[] backgrounds = { Hex("ffffff"), Hex("222831"), Hex("272121"), Hex("ffffff") };
+        private Color[] fontColors = { Hex("000000"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("c8c8c8") };
+        private Font[] fonts = { new Font("Dialog", 0, 16), new Font("Dialog", 0, 16), new Font("Dialog", 0, 16),
+                new Font("Dialog", 0, 16) };
         private String[] icons = { "dark", "light", "light", "light", "dark" };
+        //private Border[] buttonBorders = {};
 
         public Color background, fontColor, textField, exit;
         public Font font;
