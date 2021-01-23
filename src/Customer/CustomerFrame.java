@@ -108,7 +108,7 @@ public class CustomerFrame extends JFrame {
         Settings.setForeground(currentUser.theme.sidePanel.fontColor);
         Settings.addActionListener((e) -> {
             selectButton(Settings);
-            addPanel(new SettingsFrame(this, currentUser));
+            addPanel(new CustomerSetting(this, currentUser));
         });
         Settings.setIconTextGap(-180);
         Settings.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
@@ -157,10 +157,10 @@ public class CustomerFrame extends JFrame {
 
     public void selectButton(JButton b) {
         resetColors();
-        b.setForeground(currentUser.theme.sidePanel.fontColor);
-        b.setBackground(currentUser.theme.sidePanel.background);
+        b.setForeground(currentUser.theme.main.fontColor);
+        b.setBackground(currentUser.theme.main.background);
         b.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
-                + currentUser.theme.sidePanel.icon + b.getText() + ".png"));
+                + currentUser.theme.main.icon + b.getText() + ".png"));
     }
 
     public void addPanel(JPanel panel) {
@@ -168,7 +168,8 @@ public class CustomerFrame extends JFrame {
             remove(main);
         }
         main = panel;
-        main.setBounds(w, 0, width - w, height);
+        main.setBounds(w, 0, 700, height);
+       // main.setBounds(w, 0, width - w, height);
         add(main);
         revalidate();
         repaint();
@@ -222,7 +223,7 @@ public class CustomerFrame extends JFrame {
         });
         RightItemSettings.addActionListener((e) -> {
             selectButton(Settings);
-            addPanel(new SettingsFrame(this, currentUser));
+            addPanel(new CustomerSetting(this, currentUser));
         });
         RightItemLogOutExit.addActionListener((e) -> selectExit());
         RightClicked.add(RightItemOrderHistory);

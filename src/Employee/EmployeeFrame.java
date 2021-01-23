@@ -94,7 +94,7 @@ public class EmployeeFrame extends JFrame {
         Settings.setForeground(currentUser.theme.sidePanel.fontColor);
         Settings.addActionListener((e) -> {
             selectButton(Settings);
-            addPanel(new SettingsFrame(this, currentUser));
+            addPanel(new EmployeeSetting(this, currentUser));
         });
         Settings.setIconTextGap(-180);
         Settings.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
@@ -154,7 +154,8 @@ public class EmployeeFrame extends JFrame {
             remove(main);
         }
         main = panel;
-        main.setBounds(w, 0, width - w, height);
+        main.setBounds(w, 0, 700, height);
+        //main.setBounds(w, 0, width - w, height);
         add(main);
         revalidate();
         repaint();
@@ -201,7 +202,7 @@ public class EmployeeFrame extends JFrame {
         });
         RightItemSettings.addActionListener((e) -> {
             selectButton(Settings);
-            addPanel(new SettingsFrame(this, currentUser));
+            addPanel(new EmployeeSetting(this, currentUser));
         });
         RightItemLogOutExit.addActionListener((e) -> selectExit());
         RightClicked.add(RightItemCustomers);

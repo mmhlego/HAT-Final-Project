@@ -10,7 +10,7 @@ public class ThemePanel extends JPanel {
     User currentUser;
     JFrame parent;
 
-    ThemePanel(JFrame p, User u) {
+    public ThemePanel(JFrame p, User u) {
         parent = p;
         currentUser = u;
 
