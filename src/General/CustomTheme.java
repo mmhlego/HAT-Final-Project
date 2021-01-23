@@ -55,8 +55,8 @@ public class CustomTheme extends JDialog {
         add(apply);
 
         JButton save = new JButton("Save");
-        apply.setBounds(250, 400, 200, 25);
-        add(apply);
+        save.setBounds(250, 400, 200, 25);
+        add(save);
 
         add(sidePanelTheme);
         add(backgroundTheme);
