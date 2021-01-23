@@ -7,13 +7,12 @@ public class InformationChangePanel extends JPanel {
     private static final long serialVersionUID = 743221474354971601L;
 
     JLabel label = new JLabel();
-    JTextField[] fields = new JTextField[10];
     JButton btn = new JButton();
     JPasswordField passwordField = new JPasswordField();
 
     User currentUser;
 
-    InformationChangePanel(User u) {
+    public InformationChangePanel(User u) {
 
         currentUser = u;
 
@@ -30,65 +29,106 @@ public class InformationChangePanel extends JPanel {
         btn.setText("Edit Information");
         btn.setFont(currentUser.theme.main.font);
         add(btn);
+        
+        JLabel userName = new JLabel("Username:",0);
+        JTextField userNameShow = new JTextField(currentUser.username);
+        JLabel password = new JLabel("Password:",0);
+        JTextField showPassword = new JTextField(currentUser.password);
+        JLabel firstName = new JLabel("First Name:",0);
+        JTextField firstNameShow = new JTextField(currentUser.name);
+        JLabel lastName = new JLabel("Last Name:",0);
+        JTextField lastNameShow = new JTextField(currentUser.lastName);
+        JLabel phoneNumber = new JLabel("Phone Number:",0);
+        JTextField phoneNumberShow = new JTextField(currentUser.phoneNumber);
+        
+        userName.setFont(currentUser.theme.main.font);
+        userNameShow.setFont(currentUser.theme.main.font);
+        password.setFont(currentUser.theme.main.font);
+        showPassword.setFont(currentUser.theme.main.font);
+        firstName.setFont(currentUser.theme.main.font);
+        firstNameShow.setFont(currentUser.theme.main.font);
+        lastName.setFont(currentUser.theme.main.font);
+        lastNameShow.setFont(currentUser.theme.main.font);
+        phoneNumber.setFont(currentUser.theme.main.font);
+        phoneNumberShow.setFont(currentUser.theme.main.font);
+        
+        userName.setForeground(currentUser.theme.main.fontColor);
+        userNameShow.setForeground(currentUser.theme.main.fontColor);
+        password.setForeground(currentUser.theme.main.fontColor);
+        showPassword.setForeground(currentUser.theme.main.fontColor);
+        firstName.setForeground(currentUser.theme.main.fontColor);
+        firstNameShow.setForeground(currentUser.theme.main.fontColor);
+        lastName.setForeground(currentUser.theme.main.fontColor);
+        lastNameShow.setForeground(currentUser.theme.main.fontColor);
+        phoneNumber.setForeground(currentUser.theme.main.fontColor);
+        phoneNumberShow.setForeground(currentUser.theme.main.fontColor);
+        
+        userNameShow.setBackground(currentUser.theme.main.background);
+        showPassword.setBackground(currentUser.theme.main.background);
+        firstNameShow.setBackground(currentUser.theme.main.background);
+        lastNameShow.setBackground(currentUser.theme.main.background);
+        phoneNumberShow.setBackground(currentUser.theme.main.background);
+        
+        userNameShow.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
+        showPassword.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
+        firstNameShow.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
+        lastNameShow.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
+        phoneNumberShow.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
+        
+        userName.setBounds(50, 270, 240, 35);
+        userNameShow.setBounds(291, 270, 320, 35);
+        password.setBounds(50, 330, 240, 35);
+        showPassword.setBounds(291, 330, 320, 35);
+        firstName.setBounds(50, 390, 240, 35);
+        firstNameShow.setBounds(291, 390, 320, 35);
+        lastName.setBounds(50, 450, 240, 35);
+        lastNameShow.setBounds(291, 450, 320, 35);
+        phoneNumber.setBounds(50, 510, 240, 35);
+        phoneNumberShow.setBounds(291, 510, 320, 35);
 
-        for (int i = 0; i < 10; i++) {
-            fields[i] = new JTextField();
-        }
-        int hight = 270;
-        fields[0].setText("Username:");
-        fields[1].setText(currentUser.username);
-        fields[2].setText("Password:");
-        fields[3].setText(currentUser.password);
-        fields[4].setText("First Name:");
-        fields[5].setText(currentUser.name);
-        fields[6].setText("Last Name:");
-        fields[7].setText(currentUser.lastName);
-        fields[8].setText("Phone Number:");
-        fields[9].setText(currentUser.phoneNumber);
+        passwordField.setBackground(Color.white);
+        passwordField.setBounds(291, 330, 320, 35);
 
-        for (int i = 0; i < 10; i++) {
-            if (i % 2 == 0) {
-                fields[i].setFont(currentUser.theme.main.font);
-                fields[i].setForeground(currentUser.theme.main.fontColor);
-                fields[i].setBackground(currentUser.theme.main.background);
-                fields[i].setBounds(50, hight, 240, 35);
-                hight = hight + 60;
+        userNameShow.setHorizontalAlignment(SwingConstants.CENTER);
+        showPassword.setHorizontalAlignment(SwingConstants.CENTER);
+        firstNameShow.setHorizontalAlignment(SwingConstants.CENTER);
+        lastNameShow.setHorizontalAlignment(SwingConstants.CENTER);
+        phoneNumberShow.setHorizontalAlignment(SwingConstants.CENTER);
+            
+        userName.setVisible(true);
+        userNameShow.setVisible(true);
+        password.setVisible(true);
+        showPassword.setVisible(false);
+        firstName.setVisible(true);
+        firstNameShow.setVisible(true);
+        lastName.setVisible(true);
+        lastNameShow.setVisible(true);
+        phoneNumber.setVisible(true);
+        phoneNumberShow.setVisible(true);
+        
+        userNameShow.setEditable(false);
+        showPassword.setEditable(false);
+        firstNameShow.setEditable(false);
+        lastNameShow.setEditable(false);
+        phoneNumberShow.setEditable(false);
 
-            } else {
-                fields[i].setBounds(291, hight - 60, 320, 35);
-                fields[i].setBackground(Color.white);
-                if (i == 3) {
-                    passwordField.setBackground(Color.white);
-                    passwordField.setBounds(291, hight - 60, 320, 35);
-                }
-            }
-
-            fields[i].setFont(currentUser.theme.main.font);
-            fields[i].setBorder(null);
-            fields[i].setHorizontalAlignment(SwingConstants.CENTER);
-            fields[i].setVisible(true);
-            fields[i].setEditable(false);
-
-            this.add(fields[i]);
-        }
-        fields[3].setVisible(false);
         btn.addActionListener(e -> {
             if (btn.getText().equals("Edit Information")) {
-                fields[1].setEditable(true);
-                fields[3].setEditable(true);
-                fields[5].setEditable(true);
-                fields[7].setEditable(true);
-                fields[9].setEditable(true);
-                fields[3].setVisible(true);
+                userNameShow.setEditable(true);
+                showPassword.setEditable(true);
+                firstNameShow.setEditable(true);
+                lastNameShow.setEditable(true);
+                phoneNumberShow.setEditable(true);
+                showPassword.setVisible(true);
                 passwordField.setVisible(false);
                 btn.setText("Save Information");
             } else {
-                fields[1].setEditable(false);
-                fields[3].setEditable(false);
-                fields[5].setEditable(false);
-                fields[7].setEditable(false);
-                fields[9].setEditable(false);
-                fields[3].setVisible(false);
+                userNameShow.setEditable(false);
+                showPassword.setEditable(false);
+                firstNameShow.setEditable(false);
+                lastNameShow.setEditable(false);
+                phoneNumberShow.setEditable(false);
+                showPassword.setVisible(false);
                 passwordField.setVisible(true);
                 btn.setText("Edit Information");
             }
@@ -96,6 +136,16 @@ public class InformationChangePanel extends JPanel {
         passwordField.setEditable(false);
         passwordField.setHorizontalAlignment(SwingConstants.CENTER);
         passwordField.setBorder(null);
+        this.add(userName);
+        this.add(userNameShow);
+        this.add(password);
+        this.add(showPassword);
+        this.add(firstName);
+        this.add(firstNameShow);
+        this.add(lastName);
+        this.add(lastNameShow);
+        this.add(phoneNumber);
+        this.add(phoneNumberShow);
         this.add(passwordField);
         this.add(label);
         this.setBackground(currentUser.theme.main.background);

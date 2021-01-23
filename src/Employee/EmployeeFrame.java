@@ -1,6 +1,5 @@
 package Employee;
 
-import General.*;
 import javax.swing.*;
 import java.awt.*;
 import Login.*;
@@ -94,7 +93,7 @@ public class EmployeeFrame extends JFrame {
         Settings.setForeground(currentUser.theme.sidePanel.fontColor);
         Settings.addActionListener((e) -> {
             selectButton(Settings);
-            addPanel(new SettingsFrame(this, currentUser));
+            addPanel(new EmployeeSetting(this, currentUser));
         });
         Settings.setIconTextGap(-180);
         Settings.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
@@ -154,7 +153,8 @@ public class EmployeeFrame extends JFrame {
             remove(main);
         }
         main = panel;
-        main.setBounds(w, 0, width - w, height);
+        main.setBounds(w, 0, 700, height);
+        //main.setBounds(w, 0, width - w, height);
         add(main);
         revalidate();
         repaint();
@@ -171,11 +171,11 @@ public class EmployeeFrame extends JFrame {
         JButton Exit = new JButton("Exit");
         Exit.setBounds(0, 0, 125, 130);
         Exit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Exit.png"));
-        Exit.setBackground(new Color (215 , 38 , 61));
+        Exit.setBackground(new Color(215, 38, 61));
         Exit.setFont(new Font("Arial", Font.BOLD, 15));
         JButton LogOut = new JButton("Log out");
         LogOut.setBounds(125, 0, 125, 130);
-        LogOut.setBackground(new Color (255 , 177 , 61));
+        LogOut.setBackground(new Color(255, 177, 61));
         LogOut.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\LogOut.png"));
         LogOut.setFont(new Font("Arial", Font.BOLD, 15));
         Exit.addActionListener((e) -> {
@@ -220,7 +220,7 @@ public class EmployeeFrame extends JFrame {
         });
         RightItemSettings.addActionListener((e) -> {
             selectButton(Settings);
-            addPanel(new SettingsFrame(this, currentUser));
+            addPanel(new EmployeeSetting(this, currentUser));
         });
         RightItemLogOutExit.addActionListener((e) -> selectExit());
         RightClicked.add(RightItemCustomers);
