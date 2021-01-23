@@ -24,7 +24,7 @@ public class ProductCreator {
                 c[i] = new Product("Product " + i, "Description of product " + i, (long) r.nextInt(20),
                         (long) r.nextInt(100) * 10000);
             }*/
-
+            
             final int dollar = 220000;
             c[0] = new Product("Asus ROG Gaming Phone 3",
                     "Dual-SIM 512 ROM ,16 GB RAM Factory Unlocked 5G Smartphone\n(BLACK)", 5, 2799 * dollar);

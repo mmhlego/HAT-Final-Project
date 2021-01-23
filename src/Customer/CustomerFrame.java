@@ -3,6 +3,8 @@ package Customer;
 import General.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
+import Login.*;
 
 public class CustomerFrame extends JFrame {
     private static final long serialVersionUID = 1391165171893919981L;
@@ -18,6 +20,7 @@ public class CustomerFrame extends JFrame {
         currentUser = c;
         design();
         addPanel(new CustomerMain(currentUser, this));
+        RightClick();
     }
 
     public void design() {
@@ -162,5 +165,41 @@ public class CustomerFrame extends JFrame {
         revalidate();
         repaint();
     }
+
+    public void RightClick()
+	{
+        JPopupMenu RightClicked = new JPopupMenu();
+        JMenuItem RightItemOrderHistory = new JMenuItem("Order History");
+        RightItemOrderHistory.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\History.png"));
+        JMenuItem RightItemCart = new JMenuItem("Cart");
+        RightItemCart.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Cart.png"));
+        JMenuItem RightItemProducts = new JMenuItem("Products");
+        RightItemProducts.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Product.png"));
+        JMenuItem RightItemSettings = new JMenuItem("Settings");
+        RightItemSettings.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Settings.png"));
+        JMenuItem RightItemLogOutExit = new JMenuItem("LogOut / Exit                  ");
+        RightItemLogOutExit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Logout.png"));
+		this.addMouseListener(new MouseAdapter() 
+		{
+			public void mouseReleased(MouseEvent ME)
+			{
+				if (SwingUtilities.isRightMouseButton(ME)) 
+				{
+					RightClicked.show(ME.getComponent(), ME.getX(), ME.getY());
+				}
+			}
+        });
+        RightItemOrderHistory.addActionListener((e) -> {selectButton(History); addPanel(new CustomerOrderHistory(currentUser, this));});
+        RightItemCart.addActionListener((e) -> {selectButton(Cart); addPanel(new CustomerCart(currentUser, this));});
+        RightItemProducts.addActionListener((e) -> {selectButton(Products); addPanel(new CustomerProducts(currentUser, this));});
+        RightItemSettings.addActionListener((e) -> {selectButton(Settings); addPanel(new SettingsFrame(this, currentUser));});
+        //RightItemLogOutExit.addActionListener((e) ->selectExit());
+        RightClicked.add(RightItemOrderHistory);
+        RightClicked.add(RightItemCart);
+        RightClicked.add(RightItemProducts);
+		RightClicked.add(RightItemSettings);
+		RightClicked.add(RightItemLogOutExit);
+		this.add(RightClicked);
+	}
 
 }

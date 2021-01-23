@@ -15,7 +15,7 @@ public class CustomerMain extends JPanel {
         parent.setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Customer.png").getImage());
         parent.setTitle("Customer");
         label.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Customer.png"));
-        label.setBounds(250, 25, 200, 250);
+        label.setBounds(225, 25, 250, 250);
         label.setBackground(currentUser.theme.main.background);
 
         for (int i = 0; i < fields.length; i++)
