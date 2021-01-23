@@ -155,10 +155,10 @@ public class CustomerFrame extends JFrame {
 
     public void selectButton(JButton b) {
         resetColors();
-        b.setForeground(currentUser.theme.main.fontColor);
-        b.setBackground(currentUser.theme.main.background);
-        b.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + currentUser.theme.main.icon
-                + b.getText() + ".png"));
+        b.setForeground(currentUser.theme.sidePanel.fontColor);
+        b.setBackground(currentUser.theme.sidePanel.background);
+        b.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.sidePanel.icon + b.getText() + ".png"));
     }
 
     public void addPanel(JPanel panel) {

@@ -54,7 +54,7 @@ public class EmployeeFrame extends JFrame {
         });
         Change.setIconTextGap(-180);
         Change.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
-                + currentUser.theme.sidePanel.icon + "menu"));
+                + currentUser.theme.sidePanel.icon + "Menu.png"));
         reDesign(Change);
         sidepanel.add(Change);
         //===================================================================================
@@ -68,7 +68,7 @@ public class EmployeeFrame extends JFrame {
         });
         Customers.setIconTextGap(-180);
         Customers.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
-                + currentUser.theme.sidePanel.icon + "customers"));
+                + currentUser.theme.sidePanel.icon + "Customers.png"));
         reDesign(Customers);
         sidepanel.add(Customers);
         //===================================================================================
@@ -82,7 +82,7 @@ public class EmployeeFrame extends JFrame {
         });
         Products.setIconTextGap(-180);
         Products.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
-                + currentUser.theme.sidePanel.icon + "products"));
+                + currentUser.theme.sidePanel.icon + "Products.png"));
         reDesign(Products);
         sidepanel.add(Products);
         //===================================================================================
@@ -133,9 +133,10 @@ public class EmployeeFrame extends JFrame {
         b.setBorder(null);
         b.setForeground(currentUser.theme.sidePanel.fontColor);
         b.setBackground(currentUser.theme.sidePanel.background);
-        if (!b.getText().equals(new String("Toggle SidePanel")))
+        if (!b.getText().equals(new String("Toggle SidePanel"))) {
             b.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
                     + currentUser.theme.sidePanel.icon + b.getText() + ".png"));
+        }
     }
 
     public void selectButton(JButton b) {

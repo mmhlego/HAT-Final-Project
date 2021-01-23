@@ -68,7 +68,7 @@ public class ManagerFrame extends JFrame {
         });
         Customers.setIconTextGap(-180);
         Customers.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
-                + currentUser.theme.sidePanel.icon + "customers"));
+                + currentUser.theme.sidePanel.icon + "Customers.png"));
         reDesign(Customers);
         sidepanel.add(Customers);
         //===================================================================================
@@ -82,7 +82,7 @@ public class ManagerFrame extends JFrame {
         });
         Employees.setIconTextGap(-180);
         Employees.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
-                + currentUser.theme.sidePanel.icon + "employees"));
+                + currentUser.theme.sidePanel.icon + "Employees.png"));
         reDesign(Employees);
         sidepanel.add(Employees);
         //===================================================================================
@@ -96,7 +96,7 @@ public class ManagerFrame extends JFrame {
         });
         Products.setIconTextGap(-180);
         Products.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
-                + currentUser.theme.sidePanel.icon + "products"));
+                + currentUser.theme.sidePanel.icon + "Products.png"));
         reDesign(Products);
         sidepanel.add(Products);
         //===================================================================================
@@ -110,7 +110,7 @@ public class ManagerFrame extends JFrame {
         });
         Settings.setIconTextGap(-180);
         Settings.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
-                + currentUser.theme.sidePanel.icon + "settings"));
+                + currentUser.theme.sidePanel.icon + "Settings.png"));
         reDesign(Settings);
         sidepanel.add(Settings);
         //===================================================================================
@@ -150,7 +150,7 @@ public class ManagerFrame extends JFrame {
         b.setBackground(currentUser.theme.sidePanel.background);
         if (!b.getText().equals(new String("Toggle SidePanel")))
             b.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
-                    + currentUser.theme.sidePanel.icon + b.getText()));
+                    + currentUser.theme.sidePanel.icon + b.getText() + ".png"));
     }
 
     public void selectButton(JButton b) {

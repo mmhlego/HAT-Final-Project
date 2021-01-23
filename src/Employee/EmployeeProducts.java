@@ -49,12 +49,12 @@ public class EmployeeProducts extends JPanel {
         Info.setBackground(new Color(242, 242, 242));
         Info.setPreferredSize(new Dimension(660, Count * 40));
 
-        ImageIcon deleteIcon = new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+        ImageIcon deleteIcon = new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Main\\"
                 + currentUser.theme.main.icon + "Delete.png");
         ImageIcon editIcon = new ImageIcon(
-                System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + currentUser.theme.main.icon + "Edit.png");
+                System.getProperty("user.dir") + "\\Images\\Icons\\Main\\" + currentUser.theme.main.icon + "Edit.png");
         ImageIcon addIcon = new ImageIcon(
-                System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + currentUser.theme.main.icon + "Add.png");
+                System.getProperty("user.dir") + "\\Images\\Icons\\Main\\" + currentUser.theme.main.icon + "Add.png");
 
         for (int i = 0; i < Count; i++) {
             int m = 660 - 45;

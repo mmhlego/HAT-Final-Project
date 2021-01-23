@@ -45,13 +45,13 @@ public class EmployeeCustomers extends JPanel {
     }
 
     private void showData() {
-        ImageIcon deleteIcon = new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+        ImageIcon deleteIcon = new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Main\\"
                 + currentUser.theme.main.icon + "Delete.png");
         ImageIcon editIcon = new ImageIcon(
-                System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + currentUser.theme.main.icon + "Edit.png");
+                System.getProperty("user.dir") + "\\Images\\Icons\\Main\\" + currentUser.theme.main.icon + "Edit.png");
         ImageIcon cartIcon = new ImageIcon(
-                System.getProperty("user.dir") + "\\Images\\Icons\\Side\\" + currentUser.theme.main.icon + "Cart.png");
-        ImageIcon historyIcon = new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                System.getProperty("user.dir") + "\\Images\\Icons\\Main\\" + currentUser.theme.main.icon + "Cart.png");
+        ImageIcon historyIcon = new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Main\\"
                 + currentUser.theme.main.icon + "Order History.png");
 
         try {
