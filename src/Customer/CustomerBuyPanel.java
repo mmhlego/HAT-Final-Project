@@ -95,7 +95,7 @@ public class CustomerBuyPanel extends JDialog {
                     System.getProperty("user.dir") + "\\Images\\Products Icons\\Events\\Out Of Stock.png"));
             JLabel LowAmount = new JLabel("Out Of Stock !", 0);
             LowAmount.setFont(new Font("Dialog", Font.BOLD, 16));
-            LowAmount.setForeground(currentUser.theme.main.fontColor);
+            LowAmount.setForeground(currentUser.theme.dialog.fontColor);
             LowAmount.setBounds(365, 148, 128, 30);
             buy.add(LowAmount);
         } else if (currentProduct.discount >= 15) {
@@ -103,7 +103,7 @@ public class CustomerBuyPanel extends JDialog {
                     new ImageIcon(System.getProperty("user.dir") + "\\Images\\Products Icons\\Events\\Hot Sale.png"));
             JLabel LowAmount = new JLabel("Special Offer !", 0);
             LowAmount.setFont(new Font("Dialog", Font.BOLD, 16));
-            LowAmount.setForeground(currentUser.theme.main.fontColor);
+            LowAmount.setForeground(currentUser.theme.dialog.fontColor);
             LowAmount.setBounds(365, 148, 128, 30);
             buy.add(LowAmount);
         } else if (currentProduct.amount <= 10) {
@@ -114,14 +114,14 @@ public class CustomerBuyPanel extends JDialog {
         if (currentProduct.amount >= 1 && currentProduct.amount <= 10) {
             JLabel LowAmount = new JLabel("Only " + currentProduct.amount + " Left !", 0);
             LowAmount.setFont(new Font("Dialog", Font.BOLD, 16));
-            LowAmount.setForeground(currentUser.theme.main.fontColor);
+            LowAmount.setForeground(currentUser.theme.dialog.fontColor);
             LowAmount.setBounds(365, 148, 128, 30);
             buy.add(LowAmount);
         }
 
         description.setText(currentProduct.description);
         description.setBackground(currentUser.theme.dialog.background);
-        description.setBackground(currentUser.theme.dialog.background);
+        description.setForeground(currentUser.theme.dialog.fontColor);
         description.setEditable(false);
         description.setLineWrap(true);
         description.setBounds(50, 335, 400, 50);
@@ -144,14 +144,18 @@ public class CustomerBuyPanel extends JDialog {
 
         buyAmount.setBounds(225, 420, 50, 50);
         buyAmount.setText(String.valueOf(count));
-        //productsInformation[8].setBackground(currentUser.theme.sidepanel);
-        buyAmount.setForeground(Color.BLACK);
+        buyAmount.setForeground(currentUser.theme.dialog.fontColor);
+        buyAmount.setBackground(currentUser.theme.dialog.background);
+        buyAmount.setFont(currentUser.theme.dialog.font);
         buyAmount.setBorder(null);
         buyAmount.setHorizontalAlignment(SwingConstants.CENTER);
         buy.add(buyAmount);
 
         addButton = new JButton("+");
         addButton.setBounds(275, 420, 50, 50);
+        addButton.setBackground(currentUser.theme.dialog.buttonBackground);
+        addButton.setForeground(currentUser.theme.dialog.fontColor);
+        addButton.setFont(currentUser.theme.dialog.font);
         if (currentProduct.amount <= 0) {
             addButton.setEnabled(false);
         }
@@ -165,6 +169,9 @@ public class CustomerBuyPanel extends JDialog {
         removeButton = new JButton("-");
         removeButton.setBounds(175, 420, 50, 50);
         removeButton.setEnabled(false);
+        removeButton.setBackground(currentUser.theme.dialog.buttonBackground);
+        removeButton.setForeground(currentUser.theme.dialog.fontColor);
+        removeButton.setFont(currentUser.theme.dialog.font);
         removeButton.addActionListener(e -> {
             int tempCount = Integer.parseInt(buyAmount.getText());
             buyAmount.setText(String.valueOf(--tempCount));
@@ -174,11 +181,10 @@ public class CustomerBuyPanel extends JDialog {
 
         buyButton = new JButton("Add to cart");
         buyButton.setBounds(50, 490, 400, 50);
-        buyButton.setBackground(new Color(111, 207, 151));
+        buyButton.setBackground(currentUser.theme.submitColor);
         buyButton.addActionListener(e -> {
             lastAmount = currentProduct.amount - Long.parseLong(buyAmount.getText());
             amountShow.setText(String.valueOf(lastAmount));
-
             if (Long.parseLong(buyAmount.getText()) > 0) {
                 addToCart(Long.parseLong(buyAmount.getText()));
             }
@@ -188,6 +194,9 @@ public class CustomerBuyPanel extends JDialog {
 
         Cancel = new JButton("Back");
         Cancel.setBounds(25, 25, 75, 40);
+        Cancel.setBackground(currentUser.theme.dialog.buttonBackground);
+        Cancel.setForeground(currentUser.theme.dialog.fontColor);
+        Cancel.setFont(currentUser.theme.dialog.font);
         Cancel.addActionListener((e) -> {
             dispose();
         });
@@ -200,7 +209,7 @@ public class CustomerBuyPanel extends JDialog {
         buy.add(addButton);
         buy.add(buyButton);
         buy.setLayout(null);
-        buy.setBackground(currentUser.theme.main.background);
+        buy.setBackground(currentUser.theme.dialog.background);
         buy.add(ProductPicture);
         buy.add(DiscountShow);
         buy.setVisible(true);
@@ -222,7 +231,7 @@ public class CustomerBuyPanel extends JDialog {
         add(buy);
         setSize(500, 590);
         setLocationRelativeTo(null);
-        setBackground(currentUser.theme.main.background);
+        setBackground(currentUser.theme.dialog.background);
         setUndecorated(true);
         setVisible(true);
         setResizable(false);
