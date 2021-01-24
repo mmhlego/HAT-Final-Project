@@ -1,18 +1,18 @@
-package General;
+package Manager;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class InformationChangePanel extends JPanel {
-    private static final long serialVersionUID = 743221474354971601L;
+public class ManagerInformation extends JPanel {
+    private static final long serialVersionUID = 654865263305089388L;
 
     JLabel label = new JLabel();
     JButton btn = new JButton();
     JPasswordField passwordField = new JPasswordField();
 
-    User currentUser;
+    Manager currentUser;
 
-    public InformationChangePanel(User u) {
+    public ManagerInformation(Manager u) {
 
         currentUser = u;
 
@@ -29,18 +29,18 @@ public class InformationChangePanel extends JPanel {
         btn.setText("Edit Information");
         btn.setFont(currentUser.theme.main.font);
         add(btn);
-        
-        JLabel userName = new JLabel("Username:",0);
+
+        JLabel userName = new JLabel("Username:", 0);
         JTextField userNameShow = new JTextField(currentUser.username);
-        JLabel password = new JLabel("Password:",0);
+        JLabel password = new JLabel("Password:", 0);
         JTextField showPassword = new JTextField(currentUser.password);
-        JLabel firstName = new JLabel("First Name:",0);
+        JLabel firstName = new JLabel("First Name:", 0);
         JTextField firstNameShow = new JTextField(currentUser.name);
-        JLabel lastName = new JLabel("Last Name:",0);
+        JLabel lastName = new JLabel("Last Name:", 0);
         JTextField lastNameShow = new JTextField(currentUser.lastName);
-        JLabel phoneNumber = new JLabel("Phone Number:",0);
+        JLabel phoneNumber = new JLabel("Phone Number:", 0);
         JTextField phoneNumberShow = new JTextField(currentUser.phoneNumber);
-        
+
         userName.setFont(currentUser.theme.main.font);
         userNameShow.setFont(currentUser.theme.main.font);
         password.setFont(currentUser.theme.main.font);
@@ -51,7 +51,7 @@ public class InformationChangePanel extends JPanel {
         lastNameShow.setFont(currentUser.theme.main.font);
         phoneNumber.setFont(currentUser.theme.main.font);
         phoneNumberShow.setFont(currentUser.theme.main.font);
-        
+
         userName.setForeground(currentUser.theme.main.fontColor);
         userNameShow.setForeground(currentUser.theme.main.fontColor);
         password.setForeground(currentUser.theme.main.fontColor);
@@ -62,19 +62,19 @@ public class InformationChangePanel extends JPanel {
         lastNameShow.setForeground(currentUser.theme.main.fontColor);
         phoneNumber.setForeground(currentUser.theme.main.fontColor);
         phoneNumberShow.setForeground(currentUser.theme.main.fontColor);
-        
+
         userNameShow.setBackground(currentUser.theme.main.background);
         showPassword.setBackground(currentUser.theme.main.background);
         firstNameShow.setBackground(currentUser.theme.main.background);
         lastNameShow.setBackground(currentUser.theme.main.background);
         phoneNumberShow.setBackground(currentUser.theme.main.background);
-        
+
         userNameShow.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         showPassword.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         firstNameShow.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         lastNameShow.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         phoneNumberShow.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
-        
+
         userName.setBounds(50, 270, 240, 35);
         userNameShow.setBounds(291, 270, 320, 35);
         password.setBounds(50, 330, 240, 35);
@@ -86,7 +86,10 @@ public class InformationChangePanel extends JPanel {
         phoneNumber.setBounds(50, 510, 240, 35);
         phoneNumberShow.setBounds(291, 510, 320, 35);
 
-        passwordField.setBackground(Color.white);
+        passwordField.setBackground(currentUser.theme.main.background);
+        passwordField.setFont(currentUser.theme.main.font);
+        passwordField.setForeground(currentUser.theme.main.fontColor);
+        passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.black));
         passwordField.setBounds(291, 330, 320, 35);
 
         userNameShow.setHorizontalAlignment(SwingConstants.CENTER);
@@ -94,7 +97,7 @@ public class InformationChangePanel extends JPanel {
         firstNameShow.setHorizontalAlignment(SwingConstants.CENTER);
         lastNameShow.setHorizontalAlignment(SwingConstants.CENTER);
         phoneNumberShow.setHorizontalAlignment(SwingConstants.CENTER);
-            
+
         userName.setVisible(true);
         userNameShow.setVisible(true);
         password.setVisible(true);
@@ -105,7 +108,7 @@ public class InformationChangePanel extends JPanel {
         lastNameShow.setVisible(true);
         phoneNumber.setVisible(true);
         phoneNumberShow.setVisible(true);
-        
+
         userNameShow.setEditable(false);
         showPassword.setEditable(false);
         firstNameShow.setEditable(false);
@@ -135,7 +138,7 @@ public class InformationChangePanel extends JPanel {
         });
         passwordField.setEditable(false);
         passwordField.setHorizontalAlignment(SwingConstants.CENTER);
-        passwordField.setBorder(null);
+
         this.add(userName);
         this.add(userNameShow);
         this.add(password);
