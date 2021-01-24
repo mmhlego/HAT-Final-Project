@@ -13,7 +13,7 @@ public class Theme implements Serializable {
     public static final int LIGHT = 0, DARK = 1, CLASSIC = 2, MODERN = 3;
 
     public Theme() {
-        setTheme("default");
+        setTheme("light");
     }
 
     public void setTheme(String type) {
