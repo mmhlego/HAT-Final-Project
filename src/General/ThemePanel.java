@@ -62,7 +62,6 @@ public class ThemePanel extends JPanel {
         int index = (b.getY() - 60) / 120;
 
         currentUser.theme.main.set(index);
-        System.out.println(index);
 
         parent.revalidate();
         parent.repaint();

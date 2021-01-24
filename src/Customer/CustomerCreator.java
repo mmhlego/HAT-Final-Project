@@ -50,7 +50,7 @@ public class CustomerCreator {
                     }
                 }
 
-                if (r.nextInt(3) >= 0) {
+                if (r.nextInt(3) > 0) {
                     c[i].order = new Order();
                     c[i].order.status = Order.IN_PROGRESS;
                     int m = r.nextInt(3) + 1;

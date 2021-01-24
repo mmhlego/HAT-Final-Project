@@ -233,6 +233,11 @@ public class ManagerCustomers extends JPanel {
             long totalPrice = 0;
             CustomScrollDialog dialog = new CustomScrollDialog(length);
 
+            if (length == 2) {
+                dialog.addLabel(new JLabel("Cart is empty.", 0), 0, 1);
+                return;
+            }
+
             JLabel productLabel = new JLabel("Product", 0);
             productLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
             dialog.addLabel(productLabel, 0, 0);
@@ -272,7 +277,6 @@ public class ManagerCustomers extends JPanel {
             dialog.addLabel(tp, length - 1, 2);
 
         } catch (NullPointerException n) {
-            System.out.println("null");
             CustomScrollDialog dialog = new CustomScrollDialog(1);
             dialog.addLabel(new JLabel("Cart is empty.", 0), 0, 1);
         }

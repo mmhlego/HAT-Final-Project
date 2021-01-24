@@ -21,10 +21,9 @@ public class CustomerOrderHistory extends JPanel {
         Info.setBackground(new Color(242, 242, 242));
 
         Count = currentUser.pastOrders.length;
-        System.out.println(Count);
 
         for (int i = 0; i < Count; i++) {
-            JButton button = new JButton("Order #" + (i + 1));
+            JButton button = new JButton("Order #" + (Count - i));
             button.setBorder(null);
             button.setBounds(50, 50 + i * 60, 560, 40);
             button.addActionListener((e) -> show(button));
@@ -102,7 +101,6 @@ public class CustomerOrderHistory extends JPanel {
             dialog.addLabel(tp, length - 1, 2);
 
         } catch (NullPointerException n) {
-            System.out.println("null");
             CustomScrollDialog dialog = new CustomScrollDialog(1);
             dialog.addLabel(new JLabel("Cart is empty.", 0), 0, 1);
         }
