@@ -22,7 +22,7 @@ public class ManagerCustomers extends JPanel {
         currentUser = u;
         Info = new JPanel();
         Info.setLayout(null);
-        Info.setBackground(new Color(242, 242, 242));
+        Info.setBackground(currentUser.theme.main.background);
         Info.setPreferredSize(new Dimension(660, Count * 40));
 
         setLayout(null);
@@ -210,6 +210,7 @@ public class ManagerCustomers extends JPanel {
         editPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
         dialog.add(editPanel);
+        dialog.setBackground(currentUser.theme.main.background);
         dialog.setUndecorated(true);
         dialog.setSize(3 * margin + 2 * w, 7 * margin + 7 * h);
         dialog.setLocationRelativeTo(null);
@@ -231,7 +232,7 @@ public class ManagerCustomers extends JPanel {
         try {
             int length = o.products.length + 2;
             long totalPrice = 0;
-            CustomScrollDialog dialog = new CustomScrollDialog(length);
+            CustomScrollDialog dialog = new CustomScrollDialog(length,currentUser);
 
             if (length == 2) {
                 dialog.addLabel(new JLabel("Cart is empty.", 0), 0, 1);
@@ -277,14 +278,14 @@ public class ManagerCustomers extends JPanel {
             dialog.addLabel(tp, length - 1, 2);
 
         } catch (NullPointerException n) {
-            CustomScrollDialog dialog = new CustomScrollDialog(1);
+            CustomScrollDialog dialog = new CustomScrollDialog(1,currentUser);
             dialog.addLabel(new JLabel("Cart is empty.", 0), 0, 1);
         }
     }
 
     public void ShowHistory(JButton b) {
         int index = (b.getY() - 5) / 40;
-        CustomScrollDialog dialog = new CustomScrollDialog(allCustomers[index].pastOrders.length);
+        CustomScrollDialog dialog = new CustomScrollDialog(allCustomers[index].pastOrders.length,currentUser);
 
         for (int i = 0; i < allCustomers[index].pastOrders.length; i++) {
             JButton jb = new JButton("Order #" + (i + 1) + " - " + allCustomers[index].pastOrders[i].status);
