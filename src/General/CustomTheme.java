@@ -155,10 +155,6 @@ public class CustomTheme extends JDialog {
                     dlgc = Color.magenta;
                     break;
             }
-            //    currentUser.theme.sidePanel.setTheme();
-            System.out.println(spc);
-            System.out.println(dlgc);
-            System.out.println(bcgc);
 
             example[0].setBackground(spc);
             example[1].setBackground(currentUser.theme.sidePanel.exit);

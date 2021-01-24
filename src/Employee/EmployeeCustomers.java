@@ -272,7 +272,6 @@ public class EmployeeCustomers extends JPanel {
             dialog.addLabel(tp, length - 1, 2);
 
         } catch (NullPointerException n) {
-            System.out.println("null");
             CustomScrollDialog dialog = new CustomScrollDialog(1);
             dialog.addLabel(new JLabel("Cart is empty.", 0), 0, 1);
         }

@@ -122,8 +122,6 @@ public class CustomerCart extends JPanel {
         Info.setPreferredSize(new Dimension(660, 60 + Count * 50));
 
         for (int i = 0; i < Count; i++) {
-            System.out.println(currentUser.order.products[i].index);
-
             nameLabel = new JLabel(currentUser.order.products[i].name, 0);
             nameLabel.setBounds(10, 60 + 50 * i, 250, 30);
             nameLabel.setBorder(null);
@@ -239,8 +237,6 @@ public class CustomerCart extends JPanel {
 
         updateCurrentUser();
 
-        System.out.println(allProducts[p.index].amount);
-
         checkAvailability(addButton, removeButton);
         updatePrice();
     }
@@ -253,8 +249,6 @@ public class CustomerCart extends JPanel {
         l.setText(Integer.toString(currentUser.order.count[index]));
 
         updateCurrentUser();
-
-        System.out.println(allProducts[p.index].amount);
 
         checkAvailability(addButton, removeButton);
         updatePrice();
