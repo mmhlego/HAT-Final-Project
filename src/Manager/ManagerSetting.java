@@ -93,7 +93,7 @@ class ThemePanel extends JPanel {
                     break;
                 case 4:
                     themeButton.setText("Custom Theme");
-                    themeButton.addActionListener(e -> new ManagerTheme(root, currentUser));
+                    themeButton.addActionListener(e -> new ManagerTheme(parent, root, currentUser));
                     break;
             }
 
@@ -105,6 +105,9 @@ class ThemePanel extends JPanel {
         apply.setBounds(365, 540, 300, 60);
         apply.addActionListener((e) -> {
             currentUser.theme.setAll(index);
+            root.openAndSaveData(currentUser);
+            parent.dispose();
+            new ManagerFrame(currentUser);
         });
         add(apply);
 
@@ -121,7 +124,7 @@ class ThemePanel extends JPanel {
             return;
         }
 
-        String[] names = { "LightTheme.png", "DarkTheme.png", "ClassicThemee.png", "ModernTheme.png" };
+        String[] names = { "LightTheme.png", "DarkTheme.png", "ClassicTheme.png", "ModernTheme.png" };
 
         sample.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Themes\\" + names[index]));
 

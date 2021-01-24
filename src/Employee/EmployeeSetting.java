@@ -100,7 +100,7 @@ class ThemePanel extends JPanel {
                     break;
                 case 4:
                     themeButton.setText("Custom Theme");
-                    themeButton.addActionListener(e -> new EmployeeTheme(root, currentUser));
+                    themeButton.addActionListener(e -> new EmployeeTheme(parent, root, currentUser));
                     break;
             }
 
@@ -112,6 +112,9 @@ class ThemePanel extends JPanel {
         apply.setBounds(365, 540, 300, 60);
         apply.addActionListener((e) -> {
             currentUser.theme.setAll(index);
+            root.openAndSaveData(currentUser);
+            parent.dispose();
+            new EmployeeFrame(currentUser);
         });
         add(apply);
 
