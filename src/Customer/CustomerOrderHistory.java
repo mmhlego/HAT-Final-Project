@@ -24,7 +24,7 @@ public class CustomerOrderHistory extends JPanel {
         System.out.println(Count);
 
         for (int i = 0; i < Count; i++) {
-            JButton button = new JButton("Order #" + (i + 1));
+            JButton button = new JButton("Order #" + (Count - i));
             button.setBorder(null);
             button.setBounds(50, 50 + i * 60, 560, 40);
             button.addActionListener((e) -> show(button));

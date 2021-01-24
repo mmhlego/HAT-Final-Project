@@ -106,6 +106,9 @@ public class CustomerBuyPanel extends JDialog {
 
         addButton = new JButton("+");
         addButton.setBounds(275, 420, 50, 50);
+        if (currentProduct.amount == 0) {
+            addButton.setEnabled(false);
+        }
         addButton.addActionListener(e -> {
             int tempCount = Integer.parseInt(buyAmount.getText());
             buyAmount.setText(String.valueOf(++tempCount));
