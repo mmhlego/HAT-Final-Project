@@ -48,6 +48,16 @@ public class ManagerTheme extends JDialog {
         String[] dialogCombos = { "Light(default)", "Dark", "Classic", "Modern", "Cyan", "Silver", "Lime", "Orange",
                 "Brown", "Magenta" };
 
+        JLabel sideColorLabel = new JLabel("Side Panel Theme:", 0);
+        sideColorLabel.setBounds(20, 320, 140, 30);
+        add(sideColorLabel);
+        JLabel mainColorLabel = new JLabel("Main Panel Theme:", 0);
+        mainColorLabel.setBounds(180, 320, 140, 30);
+        add(mainColorLabel);
+        JLabel dialogColorLabel = new JLabel("Dialog Theme:", 0);
+        dialogColorLabel.setBounds(340, 320, 140, 30);
+        add(dialogColorLabel);
+
         JComboBox<String> sidePanelTheme = new JComboBox<>(sidePanelCombos);
         JComboBox<String> backgroundTheme = new JComboBox<>(backgroundCombos);
         JComboBox<String> dialogTheme = new JComboBox<>(dialogCombos);
