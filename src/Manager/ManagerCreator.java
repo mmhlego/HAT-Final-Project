@@ -3,7 +3,7 @@ package Manager;
 import java.io.*;
 
 public class ManagerCreator {
-    ManagerCreator() {
+    public ManagerCreator() {
         try {
             ObjectOutputStream x = new ObjectOutputStream(
                     new FileOutputStream(System.getProperty("user.dir") + "\\data\\Manager.dat"));

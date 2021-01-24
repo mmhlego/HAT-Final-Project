@@ -44,7 +44,7 @@ public class EmployeeCustomers extends JPanel {
         setVisible(true);
     }
 
-    private void showData() {
+    public void showData() {
         ImageIcon deleteIcon = new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Main\\"
                 + currentUser.theme.main.icon + "Delete.png");
         ImageIcon editIcon = new ImageIcon(
@@ -217,17 +217,17 @@ public class EmployeeCustomers extends JPanel {
         dialog.setVisible(true);
     }
 
-    private void showCart(JButton b) {
+    public void showCart(JButton b) {
         int index = (b.getY() - 5) / 40;
         showOrder(allCustomers[index].order);
     }
 
-    private void ShowOrderData(Customer c, JButton b) {
+    public void ShowOrderData(Customer c, JButton b) {
         int index = (b.getY() - 20) / 50;
         showOrder(c.pastOrders[index]);
     }
 
-    private void showOrder(Order o) {
+    public void showOrder(Order o) {
         try {
             int length = o.products.length + 2;
             long totalPrice = 0;
@@ -305,7 +305,7 @@ public class EmployeeCustomers extends JPanel {
         }
     }
 
-    private void readData() {
+    public void readData() {
         try {
             ObjectInputStream reader = new ObjectInputStream(
                     new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));

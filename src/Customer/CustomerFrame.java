@@ -216,6 +216,12 @@ public class CustomerFrame extends JFrame {
         dialog.setVisible(true);
     }
 
+    public void UpdateBalance() {
+        BalanceLabel.setText("  Balance : " + Long.toString(currentUser.balance) + " Rials");
+        revalidate();
+        repaint();
+    }
+
     public void RightClick() {
         JPopupMenu RightClicked = new JPopupMenu();
         JMenuItem RightItemOrderHistory = new JMenuItem("Order History");
@@ -259,10 +265,6 @@ public class CustomerFrame extends JFrame {
         RightClicked.add(RightItemSettings);
         RightClicked.add(RightItemLogOutExit);
         this.add(RightClicked);
-    }
-
-    public void UpdateBalance() {
-        BalanceLabel.setText("  Balance : " + Long.toString(currentUser.balance) + " Rials");
     }
 
 }

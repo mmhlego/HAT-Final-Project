@@ -35,7 +35,7 @@ public class ManagerEmployees extends JPanel {
         setVisible(true);
     }
 
-    private void readData() {
+    public void readData() {
         try {
             ObjectInputStream reader = new ObjectInputStream(
                     new FileInputStream(System.getProperty("user.dir") + "\\data\\Employees.dat"));
@@ -49,7 +49,7 @@ public class ManagerEmployees extends JPanel {
         }
     }
 
-    private void showData() {
+    public void showData() {
         readData();
 
         Info = new JPanel();

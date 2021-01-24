@@ -1,10 +1,9 @@
 package Customer;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
+import javax.swing.border.*;
 import java.awt.*;
-import java.io.File;
-
+import java.io.*;
 import General.*;
 
 public class CustomerBuyPanel extends JDialog {
@@ -14,13 +13,15 @@ public class CustomerBuyPanel extends JDialog {
     JButton addButton, removeButton, buyButton, Cancel;
     JPanel buy = new JPanel();
     Customer currentUser;
-    CustomerProducts parent;
-    int count = 0, index;
+    int count = 0;
     long lastAmount = -1;
+    Product[] allProducts;
+    Product currentProduct;
 
-    CustomerBuyPanel(Customer user, Product currentProduct, CustomerProducts p, int i) {
-        index = i;
-        parent = p;
+    CustomerBuyPanel(Customer user, Product p) {
+        readProductsFromFile();
+
+        currentProduct = p;
         currentUser = user;
         JLabel name = new JLabel("", 0);
         JLabel nameShow = new JLabel("", 0);
@@ -63,11 +64,13 @@ public class CustomerBuyPanel extends JDialog {
         amountShow.setBounds(170, 330, 280, 25);
 
         ProductPicture.setBounds(135, 10, 220, 220);
-        ProductPicture.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Products Icons\\" + currentProduct.name + ".png"));
-        
-        if(!(new File(System.getProperty("user.dir") + "\\Images\\Products Icons\\" + currentProduct.name + ".png").exists()))
-        {
-            ProductPicture.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Product Icon.png"));
+        ProductPicture.setIcon(new ImageIcon(
+                System.getProperty("user.dir") + "\\Images\\Products Icons\\" + currentProduct.name + ".png"));
+
+        if (!(new File(System.getProperty("user.dir") + "\\Images\\Products Icons\\" + currentProduct.name + ".png")
+                .exists())) {
+            ProductPicture
+                    .setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Product Icon.png"));
         }
         ProductPicture.setVisible(true);
 
@@ -92,19 +95,19 @@ public class CustomerBuyPanel extends JDialog {
             amountShow.setText(String.valueOf(lastAmount));
         }
         amount.setText("Remain amount:");
+
         buyAmount.setBounds(225, 420, 50, 50);
         buyAmount.setText(String.valueOf(count));
         //productsInformation[8].setBackground(currentUser.theme.sidepanel);
         buyAmount.setForeground(Color.BLACK);
         buyAmount.setBorder(null);
         buyAmount.setHorizontalAlignment(SwingConstants.CENTER);
-
         buy.add(buyAmount);
 
         addButton = new JButton("+");
         addButton.setBounds(275, 420, 50, 50);
         addButton.addActionListener(e -> {
-            long tempCount = Integer.parseInt(buyAmount.getText());
+            int tempCount = Integer.parseInt(buyAmount.getText());
             buyAmount.setText(String.valueOf(++tempCount));
             removeButton.setEnabled(Long.parseLong(buyAmount.getText()) != 0);
             addButton.setEnabled(tempCount != currentProduct.amount);
@@ -128,7 +131,7 @@ public class CustomerBuyPanel extends JDialog {
             amountShow.setText(String.valueOf(lastAmount));
 
             if (Long.parseLong(buyAmount.getText()) > 0) {
-                parent.updateData(index, Long.parseLong(buyAmount.getText()));
+                addToCart(Long.parseLong(buyAmount.getText()));
             }
             dispose();
         });
@@ -168,5 +171,67 @@ public class CustomerBuyPanel extends JDialog {
         setUndecorated(true);
         setVisible(true);
         setResizable(false);
+    }
+
+    public void readProductsFromFile() {
+        try {
+            ObjectInputStream reader = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
+            allProducts = (Product[]) reader.readObject();
+            reader.close();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    public void writeProductsToFile() {
+        try {
+            ObjectOutputStream writer = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Products.dat"));
+            writer.writeObject(allProducts);
+            writer.close();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    public void addToCart(long c) {
+        int length = currentUser.order.products.length;
+        Order temp = currentUser.order;
+
+        currentUser.order = new Order();
+        currentUser.order.status = Order.IN_PROGRESS;
+        currentUser.order.products = new Product[length + 1];
+        currentUser.order.count = new int[length + 1];
+
+        for (int i = 0; i < length; i++) {
+            currentUser.order.products[i] = temp.products[i];
+            currentUser.order.count[i] = temp.count[i];
+        }
+
+        currentUser.order.products[length] = currentProduct;
+        currentUser.order.count[length] = (int) c;
+
+        allProducts[currentProduct.index].amount -= c;
+        writeProductsToFile();
+        updateCurrentUser();
+    }
+
+    public void updateCurrentUser() {
+        try {
+            ObjectInputStream reader = new ObjectInputStream(
+                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
+            Customer[] allCustomers = (Customer[]) reader.readObject();
+            reader.close();
+
+            allCustomers[currentUser.index] = currentUser;
+
+            ObjectOutputStream writer = new ObjectOutputStream(
+                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
+            writer.writeObject(allCustomers);
+            writer.close();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 }
