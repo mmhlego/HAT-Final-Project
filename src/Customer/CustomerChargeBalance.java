@@ -9,6 +9,8 @@ public class CustomerChargeBalance extends JDialog {
 
     CustomerFrame parent;
     Customer currentUser;
+    JPanel captchaPanel;
+    String captchaAnswer;
 
     public CustomerChargeBalance(CustomerFrame p, Customer c) {
         parent = p;
@@ -59,6 +61,7 @@ public class CustomerChargeBalance extends JDialog {
         Refresh.setBackground(new Color(238, 238, 238));
         Refresh.setBorder(null);
         Refresh.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Refresh.png"));
+        Refresh.addActionListener((e) -> createCaptcha());
 
         JLabel CardNumber = new JLabel("Card Number");
         CardNumber.setBounds(20, 30, 90, 30);
@@ -84,8 +87,6 @@ public class CustomerChargeBalance extends JDialog {
                     || CardNumber3.getText().length() != 4 || CardNumber4.getText().length() != 4) {
                 JOptionPane.showMessageDialog(null, "Check Your Card Details !", "Warning",
                         JOptionPane.INFORMATION_MESSAGE);
-                //! CHECK THE CAPTCHA //
-                //! CHECK THE CVV //
             } else if (CVV2TF.getText().length() == 0) {
                 JOptionPane.showMessageDialog(null, "CVV2 Field is empty !", "Warning",
                         JOptionPane.INFORMATION_MESSAGE);
@@ -123,5 +124,23 @@ public class CustomerChargeBalance extends JDialog {
         add(CardNumber4);
         add(CardNumber);
         setVisible(true);
+
+        createCaptcha();
+    }
+
+    public void createCaptcha() {
+        if (captchaPanel != null) {
+            remove(captchaPanel);
+        }
+
+        captchaPanel = new Captcha(currentUser);
+        captchaAnswer = captchaPanel.getName();
+        System.out.println(captchaAnswer);
+        captchaPanel.setBounds(220, 130, 136, 30);
+        add(captchaPanel);
+        captchaPanel.revalidate();
+        captchaPanel.repaint();
+        revalidate();
+        repaint();
     }
 }
