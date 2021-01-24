@@ -1,9 +1,6 @@
 package Customer;
 
 import javax.swing.*;
-
-import org.omg.PortableServer.POAPackage.AdapterAlreadyExists;
-
 import java.awt.*;
 import Login.*;
 

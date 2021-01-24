@@ -134,7 +134,7 @@ class RotateLabel extends JLabel {
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D gx = (Graphics2D) g;
-		gx.rotate((r.nextInt(19) - 9) * Math.PI * 5 / 180, getX() + getWidth() / 2, getY() + getHeight() / 2);
+		gx.rotate((r.nextInt(15) - 7) * Math.PI * 5 / 180, getX() + getWidth() / 2, getY() + getHeight() / 2);
 		super.paintComponent(g);
 	}
 }
