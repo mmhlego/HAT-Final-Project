@@ -2,18 +2,17 @@ package Customer;
 
 import javax.swing.*;
 import java.awt.*;
-import General.User;
 import Login.*;
 
 public class CustomerChargeBalance extends JDialog {
     private static final long serialVersionUID = -6587387237451064081L;
 
-    User currentUser;
-    JFrame parent;
+    CustomerFrame parent;
+    Customer currentUser;
 
-    public CustomerChargeBalance(/*User u , JFrame p*/) {
-        //parent = p;
-        //currentUser = u;
+    public CustomerChargeBalance(CustomerFrame p, Customer c) {
+        parent = p;
+        currentUser = c;
         setLayout(null);
         setSize(420, 390);
         setLocationRelativeTo(null);
@@ -37,7 +36,7 @@ public class CustomerChargeBalance extends JDialog {
         CVV2TF.setDocument(new Limitter(4));
         JTextField ValidateTF = new JTextField();
         ValidateTF.setBounds(130, 130, 70, 30);
-        ValidateTF.setDocument(new Limitter(5));
+        ValidateTF.setDocument(new Limitter(4));
         JTextField CVVTF = new JTextField();
         CVVTF.setBounds(130, 180, 70, 30);
         CVVTF.setDocument(new Limitter(7));
@@ -46,7 +45,7 @@ public class CustomerChargeBalance extends JDialog {
 
         JButton SendOTP = new JButton("Request SMS OTP ");
         SendOTP.setBounds(220, 180, 160, 30);
-        SendOTP.setBackground(new Color (238, 186, 11));
+        SendOTP.setBackground(new Color(238, 186, 11));
         SendOTP.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\OTP.png"));
         SendOTP.setBorder(null);
         JButton Proceed = new JButton("Proceed");
@@ -54,10 +53,10 @@ public class CustomerChargeBalance extends JDialog {
         Proceed.setBackground(new Color(111, 207, 151));
         JButton Cancel = new JButton("Cancel");
         Cancel.setBounds(20, 300, 160, 30);
-        Cancel.setBackground(new Color (250, 67, 67));
+        Cancel.setBackground(new Color(250, 67, 67));
         JButton Refresh = new JButton();
         Refresh.setBounds(360, 135, 20, 20);
-        Refresh.setBackground(new Color (238 , 238 , 238));
+        Refresh.setBackground(new Color(238, 238, 238));
         Refresh.setBorder(null);
         Refresh.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Refresh.png"));
 
@@ -80,24 +79,31 @@ public class CustomerChargeBalance extends JDialog {
             x += 70;
         }
 
-        Proceed.addActionListener((e) -> 
-        {
-            if (CardNumber1.getText().length() !=4 || CardNumber2.getText().length() !=4 || CardNumber3.getText().length() !=4 || CardNumber4.getText().length() !=4 || CVV2TF.equals("")) 
-            {
+        Proceed.addActionListener((e) -> {
+            if (CardNumber1.getText().length() != 4 || CardNumber2.getText().length() != 4
+                    || CardNumber3.getText().length() != 4 || CardNumber4.getText().length() != 4) {
+                JOptionPane.showMessageDialog(null, "Check Your Card Details !", "Warning",
+                        JOptionPane.INFORMATION_MESSAGE);
                 //! CHECK THE CAPTCHA //
                 //! CHECK THE CVV //
-                JOptionPane.showMessageDialog(null, "Check Your Card Details !", "Warning", JOptionPane.INFORMATION_MESSAGE);
+            } else if (CVV2TF.getText().length() == 0) {
+                JOptionPane.showMessageDialog(null, "CVV2 Field is empty !", "Warning",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else if (ValidateTF.getText().length() == 0) {
+                JOptionPane.showMessageDialog(null, "Captch Field is empty !", "Warning",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else if (CVVTF.getText().length() == 0) {
+                JOptionPane.showMessageDialog(null, "CVV Field is empty !", "Warning", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+
             }
         });
-        Cancel.addActionListener((e) -> 
-        {
+        Cancel.addActionListener((e) -> {
             dispose();
         });
-        SendOTP.addActionListener((e) -> 
-        {
+        SendOTP.addActionListener((e) -> {
 
         });
-
 
         add(Refresh);
         add(Proceed);
