@@ -6,14 +6,15 @@ import java.io.Serializable;
 public class Theme implements Serializable {
     private static final long serialVersionUID = -4097480035409892164L;
 
+    public static final int DEFAULT = 0, LIGHT = 0, DARK = 1, CLASSIC = 2, MODERN = 3, CYAN = 4, SILVER = 5, LIME = 6,
+            ORANGE = 7, BROWN = 8, MAGENTA = 9;
+
     public MainTheme main = new MainTheme();
     public SidePanelTheme sidePanel = new SidePanelTheme();
     public DialogTheme dialog = new DialogTheme();
 
-    public static final int LIGHT = 0, DARK = 1, CLASSIC = 2, MODERN = 3;
-
     public Theme() {
-        setTheme("light");
+        setTheme("default");
     }
 
     public void setTheme(String type) {
@@ -29,11 +30,27 @@ public class Theme implements Serializable {
                 setAll(2);
                 break;
             case "modern":
-                main.set(0);
-                sidePanel.set(1);
-                dialog.set(0);
-                //setAll(3);
+                setAll(3);
                 break;
+            case "cyan":
+                setAll(4);
+                break;
+            case "silver":
+                setAll(5);
+                break;
+            case "lime":
+                setAll(6);
+                break;
+            case "orange":
+                setAll(7);
+                break;
+            case "brown":
+                setAll(8);
+                break;
+            case "magenta":
+                setAll(9);
+                break;
+
         }
     }
 
@@ -44,7 +61,6 @@ public class Theme implements Serializable {
     }
 
     public Color Hex(String s) {
-
         if (s.length() == 7) {
             s = s.substring(1);
         }
@@ -70,23 +86,22 @@ public class Theme implements Serializable {
     public class SidePanelTheme implements Serializable {
         private static final long serialVersionUID = 6949296710053557788L;
 
-        private Color[] backgrounds = { Hex("ffffff"), Hex("222831"), Hex("272121"), Hex("ffffff") };
-        private Color[] fontColors = { Hex("000000"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("c8c8c8") };
-        private Font[] fonts = { new Font("Dialog", 0, 16), new Font("Dialog", 0, 16), new Font("Dialog", 0, 16),
-                new Font("Dialog", 0, 16) };
-        private String[] icons = { "dark", "light", "light", "light", "dark" };
-        //private Border[] buttonBorders = {};
+        private Color[] backgrounds = { Hex("ffffff"), Hex("222831"), Hex("272121"), Hex("222831"), Hex("3ae7ec"),
+                Hex("c0c0c0"), Hex("32cd32"), Hex("ffa500"), Hex("a0522d"), Hex("ff00ff") };
 
-        public Color background, fontColor, textField, exit;
+        private Color[] fontColors = { Hex("000000"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("000000"),
+                Hex("000000"), Hex("000000"), Hex("000000"), Hex("000000"), Hex("c8c8c8") };
+
+        private String[] icons = { "dark", "light", "light", "light", "dark", "dark", "dark", "dark", "dark", "light" };
+
+        public Color background, fontColor, exitColor = Hex("fa4343");
         public Font font;
         public String icon;
 
         public void set(int i) {
             this.background = backgrounds[i];
             this.fontColor = fontColors[i];
-            // this.textField = textFields[i];
-            // this.exit = exits[i];
-            this.font = fonts[i];
+            this.font = new Font("Dialog", 0, 16);
             this.icon = icons[i];
         }
     }
@@ -94,21 +109,25 @@ public class Theme implements Serializable {
     public class MainTheme implements Serializable {
         private static final long serialVersionUID = -7064679101758987269L;
 
-        private Color[] backgrounds = { Hex("f2f2f2"), Hex("393e46"), Hex("363333"), Hex("393e46"), Hex("393e46") };
-        private Color[] fontColors = { Hex("000000"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("000000") };
-        private Font[] fonts = { new Font("Dialog", 0, 14), new Font("Dialog", 0, 16), new Font("Dialog", 0, 16),
-                new Font("Dialog", 0, 16), new Font("Dialog", 0, 16) };
-        private String[] icons = { "dark", "light", "light", "light", "dark" };
+        private Color[] backgrounds = { Hex("f2f2f2"), Hex("393e46"), Hex("363333"), Hex("f2f2f2"), Hex("00ffff"),
+                Hex("8f8f8f"), Hex("3bf53b"), Hex("ffb900"), Hex("c76538"), Hex("FF6BFF") };
 
-        public Color background, fontColor, textField;
-        public Font font;
+        private Color[] fontColors = { Hex("000000"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("000000"), Hex("000000"),
+                Hex("000000"), Hex("000000"), Hex("000000"), Hex("000000"), Hex("000000") };
+
+        private String[] icons = { "dark", "light", "light", "dark", "dark", "dark", "dark", "dark", "dark", "dark" };
+
+        private Color[] buttonColors = { Hex("E0E0E0"), Hex("E0E0E0"), Hex("E0E0E0"), Hex("E0E0E0"), Hex("20b2aa"),
+                Hex("a9a9a9"), Hex("58c743"), Hex("ff8C00"), Hex("8b4513"), Hex("c300e3") };
+
+        public Color background, fontColor, buttonColor;
+        public Font font = new Font("Dialog", 0, 16);
         public String icon;
 
         public void set(int i) {
             this.background = backgrounds[i];
             this.fontColor = fontColors[i];
-            // this.textField = textFields[i];
-            this.font = fonts[i];
+            this.buttonColor = buttonColors[i];
             this.icon = icons[i];
         }
     }
@@ -116,19 +135,18 @@ public class Theme implements Serializable {
     public class DialogTheme implements Serializable {
         private static final long serialVersionUID = -7640849422464760478L;
 
-        private Color[] backgrounds = { Hex("f2f2f2"), Hex("393e46"), Hex("363333"), Hex("393e46"), Hex("393e46") };
-        private Color[] fontColors = { Hex("000000"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("000000") };
-        private Font[] fonts = { new Font("Dialog", 0, 14), new Font("Dialog", 0, 16), new Font("Dialog", 0, 16),
-                new Font("Dialog", 0, 16), new Font("Dialog", 0, 16) };
+        private Color[] backgrounds = { Hex("ffffff"), Hex("222831"), Hex("272121"), Hex("222831"), Hex("3ae7ec"),
+                Hex("c0c0c0"), Hex("32cd32"), Hex("ffa500"), Hex("a0522d"), Hex("ff00ff") };
+
+        private Color[] fontColors = { Hex("000000"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("000000"),
+                Hex("000000"), Hex("000000"), Hex("000000"), Hex("000000"), Hex("c8c8c8") };
 
         public Color background, fontColor, textField;
-        public Font font;
+        public Font font = new Font("Dialog", 0, 14);
 
         public void set(int i) {
             this.background = backgrounds[i];
             this.fontColor = fontColors[i];
-            // this.textField = textFields[i];
-            this.font = fonts[i];
         }
     }
 }
