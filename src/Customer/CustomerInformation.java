@@ -1,9 +1,7 @@
 package Customer;
 
 import javax.swing.*;
-
 import java.awt.*;
-import java.io.*;
 
 public class CustomerInformation extends JPanel {
     private static final long serialVersionUID = 2890759138378508204L;
