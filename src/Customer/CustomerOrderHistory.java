@@ -52,12 +52,12 @@ public class CustomerOrderHistory extends JPanel {
         setVisible(true);
     }
 
-    private void show(JButton b) {
+    public void show(JButton b) {
         int index = (b.getY() - 50) / 60;
         showOrder(currentUser.pastOrders[index]);
     }
 
-    private void showOrder(Order o) {
+    public void showOrder(Order o) {
         try {
             int length = o.products.length + 2;
             long totalPrice = 0;
