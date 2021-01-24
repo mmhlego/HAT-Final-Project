@@ -6,14 +6,13 @@ import java.awt.*;
 import General.User;
 import Login.*;
 
-public class CustomerChargeBalance extends JDialog
-{
+public class CustomerChargeBalance extends JDialog {
+    private static final long serialVersionUID = -6587387237451064081L;
+
     User currentUser;
     JFrame parent;
-    
-    
-    public CustomerChargeBalance(/*User u , JFrame p*/)
-    {
+
+    public CustomerChargeBalance(/*User u , JFrame p*/) {
         //parent = p;
         //currentUser = u;
         setLayout(null);
@@ -21,20 +20,20 @@ public class CustomerChargeBalance extends JDialog
         setLocationRelativeTo(null);
         setTitle("Charge Balance");
 
-        JTextField CardNumber1 =new JTextField();
+        JTextField CardNumber1 = new JTextField();
         CardNumber1.setBounds(130, 30, 40, 30);
         CardNumber1.setDocument(new Limitter(4));
-        JTextField CardNumber2 =new JTextField();
+        JTextField CardNumber2 = new JTextField();
         CardNumber2.setBounds(200, 30, 40, 30);
         CardNumber2.setDocument(new Limitter(4));
-        JTextField CardNumber3 =new JTextField();
+        JTextField CardNumber3 = new JTextField();
         CardNumber3.setBounds(270, 30, 40, 30);
         CardNumber3.setDocument(new Limitter(4));
-        JTextField CardNumber4 =new JTextField();
+        JTextField CardNumber4 = new JTextField();
         CardNumber4.setBounds(340, 30, 40, 30);
         CardNumber4.setDocument(new Limitter(4));
         JTextField CVV2TF = new JTextField();
-        CVV2TF.setBounds(130, 80, 70, 30); 
+        CVV2TF.setBounds(130, 80, 70, 30);
         CVV2TF.setDocument(new Limitter(4));
         JTextField ValidateTF = new JTextField();
         ValidateTF.setBounds(130, 130, 70, 30);
@@ -48,13 +47,13 @@ public class CustomerChargeBalance extends JDialog
         JButton SendOTP = new JButton("Request SMS OTP ");
         SendOTP.setBounds(220, 180, 150, 30);
         JButton Proceed = new JButton("Proceed");
-        Proceed.setBounds(220 , 300 , 160 , 30);
+        Proceed.setBounds(220, 300, 160, 30);
         JButton Cancel = new JButton("Cancel");
-        Cancel.setBounds(20 , 300 , 160 , 30);
+        Cancel.setBounds(20, 300, 160, 30);
 
         JLabel CardNumber = new JLabel("Card Number");
         CardNumber.setBounds(20, 30, 90, 30);
-        JLabel CVV  = new JLabel ("CVV2");
+        JLabel CVV = new JLabel("CVV2");
         CVV.setBounds(20, 80, 40, 30);
         JLabel Validate = new JLabel("Enter Captcha");
         Validate.setBounds(20, 130, 150, 30);
@@ -66,14 +65,12 @@ public class CustomerChargeBalance extends JDialog
         ShowCaptha.setBounds(220, 130, 70, 30);
         ShowCaptha.setBorder(new LineBorder(Color.BLACK, 1));
 
-
         int x = 180;
-        for(int i = 0; i <3; i++)
-        {
+        for (int i = 0; i < 3; i++) {
             JLabel Line = new JLabel("-");
             Line.setBounds(x, 38, 10, 10);
             add(Line);
-            x+=70;
+            x += 70;
         }
 
         add(ShowCaptha);
@@ -94,5 +91,5 @@ public class CustomerChargeBalance extends JDialog
         add(CardNumber4);
         add(CardNumber);
         setVisible(true);
-    }    
+    }
 }

@@ -76,7 +76,7 @@ public class CustomTheme extends JDialog {
             //    currentUser.theme.sidePanel.setTheme();*/
 
             sidePanel.setBackground(spc);
-            exitPanel.setBackground(currentUser.theme.sidePanel.exit);
+            exitPanel.setBackground(currentUser.theme.sidePanel.exitColor);
             mainPanel.setBackground(bcgc);
             dialogPanel.setBackground(dlgc);
             repaint();

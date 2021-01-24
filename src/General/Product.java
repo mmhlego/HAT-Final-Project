@@ -23,8 +23,20 @@ public class Product implements Serializable {
         price = p;
         index = counter++;
 
-        if (r.nextInt(3) == 0) {
-            this.discount = (1 + r.nextInt(12)) * 5;
+        if (r.nextInt(4) > 0) {
+            if (amount > 100) {
+                this.discount = (1 + r.nextInt(8)); //8
+            } else if (amount > 50) {
+                this.discount = (1 + r.nextInt(7)) * 2; //14
+            } else if (amount > 30) {
+                this.discount = (1 + r.nextInt(9)) * 3; //27
+            } else if (amount > 20) {
+                this.discount = (1 + r.nextInt(10)) * 4; //40
+            } else if (amount > 10) {
+                this.discount = (1 + r.nextInt(11)) * 5; //55
+            } else {
+
+            }
         }
     }
 
