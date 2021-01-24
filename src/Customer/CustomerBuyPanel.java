@@ -13,7 +13,7 @@ public class CustomerBuyPanel extends JDialog {
     JButton addButton, removeButton, buyButton, Cancel;
     JPanel buy = new JPanel();
     Customer currentUser;
-    int count = 0;
+    int count = 1;
     long lastAmount = -1;
     Product[] allProducts;
     Product currentProduct;
@@ -77,6 +77,38 @@ public class CustomerBuyPanel extends JDialog {
         }
         ProductPicture.setVisible(true);
 
+        JLabel DiscountShow = new JLabel();
+        DiscountShow.setBounds(365, 10, 128, 128);
+
+        if (currentProduct.amount == 0) {
+            DiscountShow.setIcon(new ImageIcon(
+                    System.getProperty("user.dir") + "\\Images\\Products Icons\\Events\\Out Of Stock.png"));
+            JLabel LowAmount = new JLabel("Out Of Stock !", 0);
+            LowAmount.setFont(new Font("Dialog", Font.BOLD, 16));
+            LowAmount.setForeground(currentUser.theme.main.fontColor);
+            LowAmount.setBounds(365, 148, 128, 30);
+            buy.add(LowAmount);
+        } else if (currentProduct.discount >= 15) {
+            DiscountShow.setIcon(
+                    new ImageIcon(System.getProperty("user.dir") + "\\Images\\Products Icons\\Events\\Hot Sale.png"));
+            JLabel LowAmount = new JLabel("Special Offer !", 0);
+            LowAmount.setFont(new Font("Dialog", Font.BOLD, 16));
+            LowAmount.setForeground(currentUser.theme.main.fontColor);
+            LowAmount.setBounds(365, 148, 128, 30);
+            buy.add(LowAmount);
+        } else if (currentProduct.amount <= 10) {
+            DiscountShow.setIcon(
+                    new ImageIcon(System.getProperty("user.dir") + "\\Images\\Products Icons\\Events\\Shelf.png"));
+        }
+
+        if (currentProduct.amount >= 1 && currentProduct.amount <= 10) {
+            JLabel LowAmount = new JLabel("Only " + currentProduct.amount + " Left !", 0);
+            LowAmount.setFont(new Font("Dialog", Font.BOLD, 16));
+            LowAmount.setForeground(currentUser.theme.main.fontColor);
+            LowAmount.setBounds(365, 148, 128, 30);
+            buy.add(LowAmount);
+        }
+
         description.setText(currentProduct.description);
         description.setBackground(currentUser.theme.main.background);
         description.setEditable(false);
@@ -115,7 +147,7 @@ public class CustomerBuyPanel extends JDialog {
         addButton.addActionListener(e -> {
             int tempCount = Integer.parseInt(buyAmount.getText());
             buyAmount.setText(String.valueOf(++tempCount));
-            removeButton.setEnabled(Long.parseLong(buyAmount.getText()) != 0);
+            removeButton.setEnabled(Long.parseLong(buyAmount.getText()) >= 2);
             addButton.setEnabled(tempCount != currentProduct.amount);
         });
 
@@ -125,7 +157,7 @@ public class CustomerBuyPanel extends JDialog {
         removeButton.addActionListener(e -> {
             int tempCount = Integer.parseInt(buyAmount.getText());
             buyAmount.setText(String.valueOf(--tempCount));
-            removeButton.setEnabled(Long.parseLong(buyAmount.getText()) != 0);
+            removeButton.setEnabled(Long.parseLong(buyAmount.getText()) >= 2);
             addButton.setEnabled(tempCount != currentProduct.amount);
         });
 
@@ -149,12 +181,17 @@ public class CustomerBuyPanel extends JDialog {
             dispose();
         });
 
+        if (currentProduct.amount == 0) {
+            buyAmount.setText("0");
+        }
+
         buy.add(removeButton);
         buy.add(addButton);
         buy.add(buyButton);
         buy.setLayout(null);
         buy.setBackground(currentUser.theme.main.background);
         buy.add(ProductPicture);
+        buy.add(DiscountShow);
         buy.setVisible(true);
         buy.add(name);
         buy.add(nameShow);
