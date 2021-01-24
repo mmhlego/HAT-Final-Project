@@ -7,14 +7,16 @@ import General.*;
 public class CustomerTheme extends JDialog {
     private static final long serialVersionUID = -7114970084885205201L;
 
+    CustomerFrame parent;
     Customer currentUser;
-    CustomerSetting parent;
+    CustomerSetting root;
     Color bcgc, spc, dlgc;
     Theme currentTheme = new Theme();
 
-    public CustomerTheme(CustomerSetting f, Customer u) {
+    public CustomerTheme(CustomerFrame p, CustomerSetting r, Customer u) {
+        parent = p;
         currentUser = u;
-        parent = f;
+        root = r;
 
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(100, 20, 300, 300);
@@ -89,7 +91,10 @@ public class CustomerTheme extends JDialog {
             int dialogPanelIndex = dialogTheme.getSelectedIndex();
 
             currentUser.theme.setTheme(siedPanelIndex, backgroundPanelIndex, dialogPanelIndex);
-            parent.openAndSaveData(currentUser);
+            root.openAndSaveData(currentUser);
+            dispose();
+            parent.dispose();
+            new CustomerFrame(currentUser);
         });
 
         this.setBackground(currentUser.theme.dialog.background);

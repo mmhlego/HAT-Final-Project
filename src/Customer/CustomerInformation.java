@@ -36,8 +36,9 @@ public class CustomerInformation extends JPanel {
         increase.setBackground(null);
         increase.setBorder(null);
         increase.setBounds(611, 570, 35, 35);
+        increase.addActionListener((e) -> new CustomerChargeBalance(parent, currentUser));
         increase.setIcon(new ImageIcon(
-                System.getProperty("user.dir") + "\\Images\\Icons\\" + currentUser.theme.main.icon + "Addb.png"));
+                System.getProperty("user.dir") + "\\Images\\Icons\\Main\\" + currentUser.theme.main.icon + "Add.png"));
 
         JLabel userName = new JLabel("Username:", 0);
         JTextField userNameShow = new JTextField(currentUser.username);

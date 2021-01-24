@@ -7,14 +7,16 @@ import General.*;
 public class EmployeeTheme extends JDialog {
     private static final long serialVersionUID = -7114970084885205201L;
 
+    EmployeeFrame parent;
     Employee currentUser;
-    EmployeeSetting parent;
+    EmployeeSetting root;
     Color bcgc, spc, dlgc;
     Theme currentTheme = new Theme();
 
-    public EmployeeTheme(EmployeeSetting f, Employee u) {
+    public EmployeeTheme(EmployeeFrame p, EmployeeSetting r, Employee u) {
+        parent = p;
         currentUser = u;
-        parent = f;
+        root = r;
 
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(100, 20, 300, 300);
@@ -89,7 +91,10 @@ public class EmployeeTheme extends JDialog {
             int dialogPanelIndex = dialogTheme.getSelectedIndex();
 
             currentUser.theme.setTheme(siedPanelIndex, backgroundPanelIndex, dialogPanelIndex);
-            parent.openAndSaveData(currentUser);
+            root.openAndSaveData(currentUser);
+            dispose();
+            parent.dispose();
+            new EmployeeFrame(currentUser);
         });
 
         this.setBackground(currentUser.theme.dialog.background);

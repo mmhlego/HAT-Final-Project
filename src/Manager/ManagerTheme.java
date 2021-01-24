@@ -8,13 +8,15 @@ public class ManagerTheme extends JDialog {
     private static final long serialVersionUID = -7114970084885205201L;
 
     Manager currentUser;
-    ManagerSetting parent;
+    ManagerFrame parent;
+    ManagerSetting root;
     Color bcgc, spc, dlgc;
     Theme currentTheme = new Theme();
 
-    public ManagerTheme(ManagerSetting f, Manager u) {
+    public ManagerTheme(ManagerFrame p, ManagerSetting r, Manager u) {
+        parent = p;
         currentUser = u;
-        parent = f;
+        root = r;
 
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(100, 20, 300, 300);
@@ -89,7 +91,10 @@ public class ManagerTheme extends JDialog {
             int dialogPanelIndex = dialogTheme.getSelectedIndex();
 
             currentUser.theme.setTheme(siedPanelIndex, backgroundPanelIndex, dialogPanelIndex);
-            parent.openAndSaveData(currentUser);
+            root.openAndSaveData(currentUser);
+            dispose();
+            parent.dispose();
+            new ManagerFrame(currentUser);
         });
 
         this.setBackground(currentUser.theme.dialog.background);
