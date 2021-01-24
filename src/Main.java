@@ -1,4 +1,4 @@
-import General.*;
+import Login.*;
 import Manager.*;
 
 public class Main {
