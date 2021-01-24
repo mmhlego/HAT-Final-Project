@@ -1,31 +1,35 @@
 package General;
 
+import java.awt.Color;
+
 import javax.swing.*;
-import java.awt.*;
+import javax.swing.border.LineBorder;
 
 public class ThemePanel extends JPanel {
     private static final long serialVersionUID = 6166827639711132804L;
 
     JSeparator separator = new JSeparator();
+    JLabel sample;
     User currentUser;
     JFrame parent;
+    int index = 0;
 
     public ThemePanel(JFrame p, User u) {
         parent = p;
         currentUser = u;
 
-        JPanel sample = new JPanel();
-        sample.setBackground(Color.yellow);
+        sample = new JLabel("Previw", 0);
+        sample.setBorder(new LineBorder(Color.black, 1));
         sample.setBounds(365, 195, 300, 233);
         add(sample);
 
         separator.setOrientation(SwingConstants.VERTICAL);
         separator.setBounds(340, 20, 3, 580);
         add(separator);
-        int height = 60;
+
         for (int i = 0; i < 5; i++) {
             JButton themeButton = new JButton();
-            themeButton.setBounds(30, height, 230, 60);
+            themeButton.setBounds(30, 60 + i * 120, 230, 60);
             themeButton.addActionListener((e) -> {
                 changeTheme(themeButton);
             });
@@ -49,8 +53,16 @@ public class ThemePanel extends JPanel {
             }
 
             add(themeButton);
-            height += 120;
         }
+
+        JButton apply = new JButton("Apply Selected Theme");
+        apply.setBackground(currentUser.theme.submitColor);
+        apply.setBounds(365, 540, 300, 60);
+        apply.addActionListener((e) -> {
+            currentUser.theme.setAll(index);
+        });
+        add(apply);
+
         setBackground(currentUser.theme.main.background);
 
         this.setLayout(null);
@@ -59,9 +71,14 @@ public class ThemePanel extends JPanel {
     }
 
     public void changeTheme(JButton b) {
-        int index = (b.getY() - 60) / 120;
+        index = (b.getY() - 60) / 120;
+        if (index == 4) {
+            return;
+        }
 
-        currentUser.theme.main.set(index);
+        String[] names = { "LightTheme.png", "DarkTheme.png", "ClassicThemee.png", "ModernTheme.png" };
+
+        sample.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Themes\\" + names[index]));
 
         parent.revalidate();
         parent.repaint();

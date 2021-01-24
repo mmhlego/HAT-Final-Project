@@ -12,9 +12,16 @@ public class Theme implements Serializable {
     public MainTheme main = new MainTheme();
     public SidePanelTheme sidePanel = new SidePanelTheme();
     public DialogTheme dialog = new DialogTheme();
+    public Color submitColor = new Color(111, 207, 151), cancelColor = Hex("fa4e00");
 
     public Theme() {
-        setTheme("default");
+        setTheme("modern");
+    }
+
+    public void setTheme(int a, int b, int c) {
+        sidePanel.set(a);
+        main.set(b);
+        dialog.set(c);
     }
 
     public void setTheme(String type) {
@@ -50,7 +57,8 @@ public class Theme implements Serializable {
             case "magenta":
                 setAll(9);
                 break;
-
+            default:
+                setAll(0);
         }
     }
 
@@ -97,12 +105,14 @@ public class Theme implements Serializable {
         public Color background, fontColor, exitColor = Hex("fa4343");
         public Font font;
         public String icon;
+        public int mode = 0;
 
         public void set(int i) {
             this.background = backgrounds[i];
             this.fontColor = fontColors[i];
             this.font = new Font("Dialog", 0, 16);
             this.icon = icons[i];
+            this.mode = i;
         }
     }
 
@@ -123,12 +133,14 @@ public class Theme implements Serializable {
         public Color background, fontColor, buttonColor;
         public Font font = new Font("Dialog", 0, 16);
         public String icon;
+        public int mode = 0;
 
         public void set(int i) {
             this.background = backgrounds[i];
             this.fontColor = fontColors[i];
             this.buttonColor = buttonColors[i];
             this.icon = icons[i];
+            this.mode = i;
         }
     }
 
@@ -141,12 +153,14 @@ public class Theme implements Serializable {
         private Color[] fontColors = { Hex("000000"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("000000"),
                 Hex("000000"), Hex("000000"), Hex("000000"), Hex("000000"), Hex("c8c8c8") };
 
-        public Color background, fontColor, textField;
+        public Color background, fontColor;
         public Font font = new Font("Dialog", 0, 14);
+        public int mode = 0;
 
         public void set(int i) {
             this.background = backgrounds[i];
             this.fontColor = fontColors[i];
+            this.mode = i;
         }
     }
 }

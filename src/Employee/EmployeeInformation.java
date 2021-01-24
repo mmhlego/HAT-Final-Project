@@ -9,12 +9,14 @@ public class EmployeeInformation extends JPanel {
     JLabel label = new JLabel();
     JButton btn = new JButton();
     JPasswordField passwordField = new JPasswordField();
-
+    EmployeeFrame parent;
     Employee currentUser;
+    EmployeeSetting root;
 
-    public EmployeeInformation(Employee u) {
-
+    public EmployeeInformation(EmployeeFrame p, Employee u, EmployeeSetting r) {
+        parent = p;
         currentUser = u;
+        root = r;
 
         label.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\EditSettings.png"));
         label.setBounds(220, 7, 300, 250);
@@ -40,9 +42,9 @@ public class EmployeeInformation extends JPanel {
         JTextField lastNameShow = new JTextField(currentUser.lastName);
         JLabel phoneNumber = new JLabel("Phone Number:", 0);
         JTextField phoneNumberShow = new JTextField(currentUser.phoneNumber);
-        JLabel ID = new JLabel("ID:",0);
+        JLabel ID = new JLabel("ID:", 0);
         JTextField IDShow = new JTextField(currentUser.ID);
-        
+
         userName.setFont(currentUser.theme.main.font);
         userNameShow.setFont(currentUser.theme.main.font);
         password.setFont(currentUser.theme.main.font);
@@ -55,7 +57,6 @@ public class EmployeeInformation extends JPanel {
         phoneNumberShow.setFont(currentUser.theme.main.font);
         ID.setFont(currentUser.theme.main.font);
         IDShow.setFont(currentUser.theme.main.font);
-        
 
         userName.setForeground(currentUser.theme.main.fontColor);
         userNameShow.setForeground(currentUser.theme.main.fontColor);
@@ -98,12 +99,11 @@ public class EmployeeInformation extends JPanel {
         phoneNumberShow.setBounds(291, 510, 320, 35);
         ID.setBounds(50, 570, 240, 35);
         IDShow.setBounds(291, 570, 320, 35);
-        
 
         passwordField.setBackground(currentUser.theme.main.background);
         passwordField.setFont(currentUser.theme.main.font);
         passwordField.setForeground(currentUser.theme.main.fontColor);
-        passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.black));
+        passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         passwordField.setBounds(291, 330, 320, 35);
 
         userNameShow.setHorizontalAlignment(SwingConstants.CENTER);
@@ -141,7 +141,7 @@ public class EmployeeInformation extends JPanel {
                 lastNameShow.setEditable(true);
                 phoneNumberShow.setEditable(true);
                 showPassword.setVisible(true);
-                IDShow.setEditable(true);
+                IDShow.setEditable(false);
                 passwordField.setVisible(false);
                 btn.setText("Save Information");
             } else {
@@ -154,6 +154,16 @@ public class EmployeeInformation extends JPanel {
                 IDShow.setEditable(false);
                 passwordField.setVisible(true);
                 btn.setText("Edit Information");
+
+                currentUser.username = userNameShow.getText();
+                currentUser.password = showPassword.getText();
+                currentUser.name = firstNameShow.getText();
+                currentUser.lastName = lastNameShow.getText();
+                currentUser.phoneNumber = phoneNumberShow.getText();
+
+                root.openAndSaveData(currentUser);
+                parent.dispose();
+                new EmployeeFrame(currentUser);
             }
         });
         passwordField.setEditable(false);
@@ -177,5 +187,4 @@ public class EmployeeInformation extends JPanel {
         this.setLayout(null);
         this.setVisible(true);
     }
-
 }
