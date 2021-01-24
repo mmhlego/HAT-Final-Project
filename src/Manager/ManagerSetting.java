@@ -14,7 +14,7 @@ public class ManagerSetting extends JPanel {
         parent = p;
         currentUser = u;
 
-        InformationChangePanel changePanel = new InformationChangePanel(currentUser);
+        ManagerInformation changePanel = new ManagerInformation(currentUser);
         changePanel.setBackground(currentUser.theme.main.background);
         ThemePanel themePanel = new ThemePanel(parent, currentUser);
         themePanel.setBackground(currentUser.theme.main.background);

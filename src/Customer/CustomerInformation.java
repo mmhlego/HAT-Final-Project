@@ -1,18 +1,19 @@
-package General;
+package Customer;
 
 import javax.swing.*;
 import java.awt.*;
+import General.*;
 
-public class InformationChangePanel extends JPanel {
-    private static final long serialVersionUID = 743221474354971601L;
-
-    JLabel label = new JLabel();
+public class CustomerInformation extends JPanel {
+	private static final long serialVersionUID = 2890759138378508204L;
+	
+	JLabel label = new JLabel();
     JButton btn = new JButton();
     JPasswordField passwordField = new JPasswordField();
 
-    User currentUser;
+    Customer currentUser;
 
-    public InformationChangePanel(User u) {
+    public CustomerInformation(Customer u) {
 
         currentUser = u;
 
@@ -86,7 +87,10 @@ public class InformationChangePanel extends JPanel {
         phoneNumber.setBounds(50, 510, 240, 35);
         phoneNumberShow.setBounds(291, 510, 320, 35);
 
-        passwordField.setBackground(Color.white);
+        passwordField.setBackground(currentUser.theme.main.background);
+        passwordField.setFont(currentUser.theme.main.font);
+        passwordField.setForeground(currentUser.theme.main.fontColor);
+        passwordField.setBorder(BorderFactory.createMatteBorder(0,0, 1, 0, Color.black));
         passwordField.setBounds(291, 330, 320, 35);
 
         userNameShow.setHorizontalAlignment(SwingConstants.CENTER);
@@ -135,7 +139,7 @@ public class InformationChangePanel extends JPanel {
         });
         passwordField.setEditable(false);
         passwordField.setHorizontalAlignment(SwingConstants.CENTER);
-        passwordField.setBorder(null);
+        
         this.add(userName);
         this.add(userNameShow);
         this.add(password);
@@ -154,3 +158,4 @@ public class InformationChangePanel extends JPanel {
     }
 
 }
+
