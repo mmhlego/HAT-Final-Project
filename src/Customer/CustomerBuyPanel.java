@@ -17,8 +17,11 @@ public class CustomerBuyPanel extends JDialog {
     long lastAmount = -1;
     Product[] allProducts;
     Product currentProduct;
+    CustomerProducts parent;
 
-    CustomerBuyPanel(Customer user, Product p) {
+    CustomerBuyPanel(Customer user, Product p, CustomerProducts pa) {
+        parent = pa;
+
         readProductsFromFile();
 
         currentProduct = p;
@@ -106,7 +109,7 @@ public class CustomerBuyPanel extends JDialog {
 
         addButton = new JButton("+");
         addButton.setBounds(275, 420, 50, 50);
-        if (currentProduct.amount == 0) {
+        if (currentProduct.amount <= 0) {
             addButton.setEnabled(false);
         }
         addButton.addActionListener(e -> {
@@ -136,6 +139,7 @@ public class CustomerBuyPanel extends JDialog {
             if (Long.parseLong(buyAmount.getText()) > 0) {
                 addToCart(Long.parseLong(buyAmount.getText()));
             }
+            parent.reloadPage();
             dispose();
         });
 
