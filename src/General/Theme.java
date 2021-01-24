@@ -156,11 +156,15 @@ public class Theme implements Serializable {
         private Color[] buttonBackgrounds = { Hex("E0E0E0"), Hex("E0E0E0"), Hex("E0E0E0"), Hex("E0E0E0"), Hex("20b2aa"),
                 Hex("a9a9a9"), Hex("58c743"), Hex("ff8C00"), Hex("8b4513"), Hex("c300e3") };
 
-        public Color background, fontColor, buttonBackground;
+        private Color[] textFieldBackgrounds = { Hex("E0E0E0"), Hex("E0E0E0"), Hex("E0E0E0"), Hex("E0E0E0"),
+                Hex("20b2aa"), Hex("a9a9a9"), Hex("58c743"), Hex("ff8C00"), Hex("8b4513"), Hex("c300e3") };
+
+        public Color background, fontColor, buttonBackground, textFieldBackground;
         public Font font = new Font("Dialog", 0, 14);
         public int mode = 0;
 
         public void set(int i) {
+            this.textFieldBackground = textFieldBackgrounds[i];
             this.background = backgrounds[i];
             this.fontColor = fontColors[i];
             this.buttonBackground = buttonBackgrounds[i];
