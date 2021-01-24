@@ -37,25 +37,35 @@ public class CustomerBuyPanel extends JDialog {
         JLabel buyAmount = new JLabel("", 0);
         JLabel ProductPicture = new JLabel();
 
-        name.setForeground(currentUser.theme.main.fontColor);
-        nameShow.setForeground(currentUser.theme.main.fontColor);
-        discount.setForeground(currentUser.theme.main.fontColor);
-        discountShow.setForeground(currentUser.theme.main.fontColor);
-        price.setForeground(currentUser.theme.main.fontColor);
-        priceShow.setForeground(currentUser.theme.main.fontColor);
-        amount.setForeground(currentUser.theme.main.fontColor);
-        amountShow.setForeground(currentUser.theme.main.fontColor);
-        buyAmount.setForeground(currentUser.theme.main.fontColor);
+        name.setBackground(currentUser.theme.dialog.background);
+        nameShow.setBackground(currentUser.theme.dialog.background);
+        discount.setBackground(currentUser.theme.dialog.background);
+        discountShow.setBackground(currentUser.theme.dialog.background);
+        price.setBackground(currentUser.theme.dialog.background);
+        priceShow.setBackground(currentUser.theme.dialog.background);
+        amount.setBackground(currentUser.theme.dialog.background);
+        amountShow.setBackground(currentUser.theme.dialog.background);
+        buyAmount.setBackground(currentUser.theme.dialog.background);
 
-        name.setFont(currentUser.theme.main.font);
-        nameShow.setFont(currentUser.theme.main.font);
-        discount.setFont(currentUser.theme.main.font);
-        discountShow.setFont(currentUser.theme.main.font);
-        price.setFont(currentUser.theme.main.font);
-        priceShow.setFont(currentUser.theme.main.font);
-        amount.setFont(currentUser.theme.main.font);
-        amountShow.setFont(currentUser.theme.main.font);
-        buyAmount.setFont(currentUser.theme.main.font);
+        name.setForeground(currentUser.theme.dialog.fontColor);
+        nameShow.setForeground(currentUser.theme.dialog.fontColor);
+        discount.setForeground(currentUser.theme.dialog.fontColor);
+        discountShow.setForeground(currentUser.theme.dialog.fontColor);
+        price.setForeground(currentUser.theme.dialog.fontColor);
+        priceShow.setForeground(currentUser.theme.dialog.fontColor);
+        amount.setForeground(currentUser.theme.dialog.fontColor);
+        amountShow.setForeground(currentUser.theme.dialog.fontColor);
+        buyAmount.setForeground(currentUser.theme.dialog.fontColor);
+
+        name.setFont(currentUser.theme.dialog.font);
+        nameShow.setFont(currentUser.theme.dialog.font);
+        discount.setFont(currentUser.theme.dialog.font);
+        discountShow.setFont(currentUser.theme.dialog.font);
+        price.setFont(currentUser.theme.dialog.font);
+        priceShow.setFont(currentUser.theme.dialog.font);
+        amount.setFont(currentUser.theme.dialog.font);
+        amountShow.setFont(currentUser.theme.dialog.font);
+        buyAmount.setFont(currentUser.theme.dialog.font);
 
         name.setBounds(50, 240, 120, 25);
         nameShow.setBounds(170, 240, 280, 25);
@@ -110,7 +120,8 @@ public class CustomerBuyPanel extends JDialog {
         }
 
         description.setText(currentProduct.description);
-        description.setBackground(currentUser.theme.main.background);
+        description.setBackground(currentUser.theme.dialog.background);
+        description.setBackground(currentUser.theme.dialog.background);
         description.setEditable(false);
         description.setLineWrap(true);
         description.setBounds(50, 335, 400, 50);
