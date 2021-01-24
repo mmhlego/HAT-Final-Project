@@ -59,7 +59,7 @@ public class ManagerLogin extends JPanel {
         UserNameTF.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent fe) {
-                UserNameTF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLUE));
+                UserNameTF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(12, 116, 232)));
             }
 
             @Override
@@ -96,7 +96,7 @@ public class ManagerLogin extends JPanel {
         PassWordPF.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent fe) {
-                PassWordPF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLUE));
+                PassWordPF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(12, 116, 232)));
             }
 
             @Override

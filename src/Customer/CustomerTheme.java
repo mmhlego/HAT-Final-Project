@@ -48,6 +48,16 @@ public class CustomerTheme extends JDialog {
         String[] dialogCombos = { "Light(default)", "Dark", "Classic", "Modern", "Cyan", "Silver", "Lime", "Orange",
                 "Brown", "Magenta" };
 
+        JLabel sideColorLabel = new JLabel("Side Panel Theme:", 0);
+        sideColorLabel.setBounds(20, 320, 140, 30);
+        add(sideColorLabel);
+        JLabel mainColorLabel = new JLabel("Main Panel Theme:", 0);
+        mainColorLabel.setBounds(180, 320, 140, 30);
+        add(mainColorLabel);
+        JLabel dialogColorLabel = new JLabel("Dialog Theme:", 0);
+        dialogColorLabel.setBounds(340, 320, 140, 30);
+        add(dialogColorLabel);
+
         JComboBox<String> sidePanelTheme = new JComboBox<>(sidePanelCombos);
         JComboBox<String> backgroundTheme = new JComboBox<>(backgroundCombos);
         JComboBox<String> dialogTheme = new JComboBox<>(dialogCombos);
@@ -58,12 +68,17 @@ public class CustomerTheme extends JDialog {
         backgroundTheme.setSelectedIndex(currentUser.theme.main.mode);
         dialogTheme.setSelectedIndex(currentUser.theme.dialog.mode);
 
+        setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Theme.png").getImage());
+        setTitle("Custom Theme Creator");
+
         JButton apply = new JButton("Preview");
-        apply.setBounds(50, 400, 200, 25);
+        apply.setBounds(20, 400, 210, 35);
         add(apply);
 
         JButton save = new JButton("Apply");
-        save.setBounds(250, 400, 200, 25);
+        save.setBackground(currentUser.theme.submitColor);
+        save.setBounds(270, 400, 210, 35);
+
         add(save);
         add(sidePanelTheme);
         add(backgroundTheme);

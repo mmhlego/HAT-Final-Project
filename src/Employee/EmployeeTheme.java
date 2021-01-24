@@ -12,6 +12,7 @@ public class EmployeeTheme extends JDialog {
     EmployeeSetting root;
     Color bcgc, spc, dlgc;
     Theme currentTheme = new Theme();
+    int width = 500, height = 500;
 
     public EmployeeTheme(EmployeeFrame p, EmployeeSetting r, Employee u) {
         parent = p;
@@ -21,7 +22,8 @@ public class EmployeeTheme extends JDialog {
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(100, 20, 300, 300);
         layeredPane.setLayout(null);
-        this.setBounds(100, 100, 500, 500);
+        setSize(width + 18, height);
+        setLocationRelativeTo(null);
 
         JPanel sidePanel = new JPanel();
         sidePanel.setToolTipText("Side Panel Prewiew");
@@ -48,6 +50,16 @@ public class EmployeeTheme extends JDialog {
         String[] dialogCombos = { "Light(default)", "Dark", "Classic", "Modern", "Cyan", "Silver", "Lime", "Orange",
                 "Brown", "Magenta" };
 
+        JLabel sideColorLabel = new JLabel("Side Panel Theme:", 0);
+        sideColorLabel.setBounds(20, 320, 140, 30);
+        add(sideColorLabel);
+        JLabel mainColorLabel = new JLabel("Main Panel Theme:", 0);
+        mainColorLabel.setBounds(180, 320, 140, 30);
+        add(mainColorLabel);
+        JLabel dialogColorLabel = new JLabel("Dialog Theme:", 0);
+        dialogColorLabel.setBounds(340, 320, 140, 30);
+        add(dialogColorLabel);
+
         JComboBox<String> sidePanelTheme = new JComboBox<>(sidePanelCombos);
         JComboBox<String> backgroundTheme = new JComboBox<>(backgroundCombos);
         JComboBox<String> dialogTheme = new JComboBox<>(dialogCombos);
@@ -58,12 +70,17 @@ public class EmployeeTheme extends JDialog {
         backgroundTheme.setSelectedIndex(currentUser.theme.main.mode);
         dialogTheme.setSelectedIndex(currentUser.theme.dialog.mode);
 
+        setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Theme.png").getImage());
+        setTitle("Custom Theme Creator");
+
         JButton apply = new JButton("Preview");
-        apply.setBounds(50, 400, 200, 25);
+        apply.setBounds(20, 400, 210, 35);
         add(apply);
 
         JButton save = new JButton("Apply");
-        save.setBounds(250, 400, 200, 25);
+        save.setBackground(currentUser.theme.submitColor);
+        save.setBounds(270, 400, 210, 35);
+
         add(save);
         add(sidePanelTheme);
         add(backgroundTheme);
