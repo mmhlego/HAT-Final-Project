@@ -68,12 +68,17 @@ public class ManagerTheme extends JDialog {
         backgroundTheme.setSelectedIndex(currentUser.theme.main.mode);
         dialogTheme.setSelectedIndex(currentUser.theme.dialog.mode);
 
+        setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Theme.png").getImage());
+        setTitle("Custom Theme Creator");
+
         JButton apply = new JButton("Preview");
-        apply.setBounds(50, 400, 200, 25);
+        apply.setBounds(20, 400, 210, 35);
         add(apply);
 
         JButton save = new JButton("Apply");
-        save.setBounds(250, 400, 200, 25);
+        save.setBackground(currentUser.theme.submitColor);
+        save.setBounds(270, 400, 210, 35);
+
         add(save);
         add(sidePanelTheme);
         add(backgroundTheme);
