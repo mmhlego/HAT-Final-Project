@@ -16,7 +16,7 @@ public class EmployeeSetting extends JPanel {
         parent = p;
         currentUser = u;
 
-        InformationChangePanel changePanel = new InformationChangePanel(currentUser);
+        EmployeeInformation changePanel = new EmployeeInformation(currentUser);
         changePanel.setBackground(currentUser.theme.main.background);
         ThemePanel themePanel = new ThemePanel(parent, currentUser);
         themePanel.setBackground(currentUser.theme.main.background);

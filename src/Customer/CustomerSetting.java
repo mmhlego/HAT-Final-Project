@@ -14,7 +14,7 @@ public class CustomerSetting extends JPanel {
         parent = p;
         currentUser = u;
 
-        InformationChangePanel changePanel = new InformationChangePanel(currentUser);
+        CustomerInformation changePanel = new CustomerInformation(currentUser);
         changePanel.setBackground(currentUser.theme.main.background);
         ThemePanel themePanel = new ThemePanel(parent, currentUser);
         themePanel.setBackground(currentUser.theme.main.background);

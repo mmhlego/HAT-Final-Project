@@ -1,9 +1,8 @@
-import Login.*;
-import Customer.*;
+import Manager.*;
 
 public class Main {
     public static void main(String[] args) {
-        new CustomerCreator();
-        new MainFrame();
+        //new MainFrame();
+        new ManagerFrame(new Manager("", "", "", "", ""));
     }
 }
