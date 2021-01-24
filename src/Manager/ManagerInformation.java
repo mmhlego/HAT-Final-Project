@@ -11,10 +11,13 @@ public class ManagerInformation extends JPanel {
     JPasswordField passwordField = new JPasswordField();
 
     Manager currentUser;
+    ManagerFrame parent;
+    ManagerSetting root;
 
-    public ManagerInformation(Manager u) {
-
+    public ManagerInformation(ManagerFrame p, Manager u, ManagerSetting r) {
+        parent = p;
         currentUser = u;
+        root = r;
 
         label.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\EditSettings.png"));
         label.setBounds(220, 7, 300, 250);
@@ -89,7 +92,7 @@ public class ManagerInformation extends JPanel {
         passwordField.setBackground(currentUser.theme.main.background);
         passwordField.setFont(currentUser.theme.main.font);
         passwordField.setForeground(currentUser.theme.main.fontColor);
-        passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.black));
+        passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         passwordField.setBounds(291, 330, 320, 35);
 
         userNameShow.setHorizontalAlignment(SwingConstants.CENTER);
@@ -134,6 +137,16 @@ public class ManagerInformation extends JPanel {
                 showPassword.setVisible(false);
                 passwordField.setVisible(true);
                 btn.setText("Edit Information");
+
+                currentUser.username = userNameShow.getText();
+                currentUser.password = showPassword.getText();
+                currentUser.name = firstNameShow.getText();
+                currentUser.lastName = lastNameShow.getText();
+                currentUser.phoneNumber = phoneNumberShow.getText();
+
+                root.openAndSaveData(currentUser);
+                parent.dispose();
+                new ManagerFrame(currentUser);
             }
         });
         passwordField.setEditable(false);
@@ -155,5 +168,4 @@ public class ManagerInformation extends JPanel {
         this.setLayout(null);
         this.setVisible(true);
     }
-
 }

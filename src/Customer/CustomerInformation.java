@@ -1,7 +1,9 @@
 package Customer;
 
 import javax.swing.*;
+
 import java.awt.*;
+import java.io.*;
 
 public class CustomerInformation extends JPanel {
     private static final long serialVersionUID = 2890759138378508204L;
@@ -9,12 +11,15 @@ public class CustomerInformation extends JPanel {
     JLabel label = new JLabel();
     JButton btn = new JButton();
     JPasswordField passwordField = new JPasswordField();
-
     Customer currentUser;
+    CustomerFrame parent;
+    CustomerSetting root;
+    Customer[] allCustomers;
 
-    public CustomerInformation(Customer u) {
-
+    public CustomerInformation(CustomerFrame p, Customer u, CustomerSetting r) {
+        parent = p;
         currentUser = u;
+        root = r;
 
         label.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\EditSettings.png"));
         label.setBounds(220, 7, 300, 250);
@@ -25,16 +30,16 @@ public class CustomerInformation extends JPanel {
 
         btn.setBounds(90, 620, 520, 40);
         btn.setBackground(new Color(111, 207, 151));
-        //btn.setForeground(Color.BLACK);
         btn.setText("Edit Information");
         btn.setFont(currentUser.theme.main.font);
         add(btn);
-        
+
         JButton increase = new JButton();
         increase.setBackground(null);
         increase.setBorder(null);
         increase.setBounds(611, 570, 35, 35);
-        increase.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\"+ currentUser.theme.main.icon + "Addb.png"));
+        increase.setIcon(new ImageIcon(
+                System.getProperty("user.dir") + "\\Images\\Icons\\" + currentUser.theme.main.icon + "Addb.png"));
 
         JLabel userName = new JLabel("Username:", 0);
         JTextField userNameShow = new JTextField(currentUser.username);
@@ -46,14 +51,11 @@ public class CustomerInformation extends JPanel {
         JTextField lastNameShow = new JTextField(currentUser.lastName);
         JLabel phoneNumber = new JLabel("Phone Number:", 0);
         JTextField phoneNumberShow = new JTextField(currentUser.phoneNumber);
-        JLabel adress = new JLabel("Address:",0);
+        JLabel adress = new JLabel("Address:", 0);
         JTextField adressShow = new JTextField(currentUser.address);
         JScrollPane adressScroll = new JScrollPane(adressShow);
-        JLabel balance = new JLabel("Balance",0);
+        JLabel balance = new JLabel("Balance", 0);
         JTextField balanceShow = new JTextField(String.valueOf(currentUser.balance));
-        
-       
-        
 
         userName.setFont(currentUser.theme.main.font);
         userNameShow.setFont(currentUser.theme.main.font);
@@ -123,9 +125,9 @@ public class CustomerInformation extends JPanel {
         passwordField.setBackground(currentUser.theme.main.background);
         passwordField.setFont(currentUser.theme.main.font);
         passwordField.setForeground(currentUser.theme.main.fontColor);
-        passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.black));
-        passwordField.setBounds(291, 315, 320, 35);
-        
+        passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
+        passwordField.setBounds(291, 320, 320, 35);
+
         userNameShow.setHorizontalAlignment(SwingConstants.CENTER);
         showPassword.setHorizontalAlignment(SwingConstants.CENTER);
         firstNameShow.setHorizontalAlignment(SwingConstants.CENTER);
@@ -167,7 +169,7 @@ public class CustomerInformation extends JPanel {
                 phoneNumberShow.setEditable(true);
                 showPassword.setVisible(true);
                 adressShow.setEditable(true);
-                balanceShow.setEditable(true);
+                balanceShow.setEditable(false);
                 passwordField.setVisible(false);
                 btn.setText("Save Information");
             } else {
@@ -181,6 +183,17 @@ public class CustomerInformation extends JPanel {
                 showPassword.setVisible(false);
                 passwordField.setVisible(true);
                 btn.setText("Edit Information");
+
+                currentUser.username = userNameShow.getText();
+                currentUser.password = showPassword.getText();
+                currentUser.name = firstNameShow.getText();
+                currentUser.lastName = lastNameShow.getText();
+                currentUser.phoneNumber = phoneNumberShow.getText();
+                currentUser.address = adressShow.getText();
+
+                root.openAndSaveData(currentUser);
+                parent.dispose();
+                new CustomerFrame(currentUser);
             }
         });
         passwordField.setEditable(false);
@@ -207,5 +220,4 @@ public class CustomerInformation extends JPanel {
         this.setLayout(null);
         this.setVisible(true);
     }
-
 }

@@ -1,24 +1,20 @@
-package General;
+package Manager;
 
 import javax.swing.*;
 import java.awt.*;
+import General.*;
 
-public class CustomTheme extends JDialog {
+public class ManagerTheme extends JDialog {
     private static final long serialVersionUID = -7114970084885205201L;
 
-    User currentUser;
-    JFrame parent;
-    Color bcgc;
-    Color spc;
-    Color dlgc;
+    Manager currentUser;
+    ManagerSetting parent;
+    Color bcgc, spc, dlgc;
+    Theme currentTheme = new Theme();
 
-    CustomTheme(User u, JFrame f) {
+    public ManagerTheme(ManagerSetting f, Manager u) {
         currentUser = u;
         parent = f;
-
-        bcgc = currentUser.theme.main.background;
-        spc = currentUser.theme.sidePanel.background;
-        dlgc = currentUser.theme.dialog.background;
 
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(100, 20, 300, 300);
@@ -42,48 +38,58 @@ public class CustomTheme extends JDialog {
         exitPanel.setBounds(0, 280, 50, 20);
         mainPanel.setBounds(50, 0, 250, 300);
         dialogPanel.setBounds(125, 100, 100, 100);
-        String[] sidePanelCombos = { "side panel theme", "cyan", "gray", "lime", "orange", "light", "dark", "brown",
-                "classic", "magenta" };
-        String[] backgroundCombos = { "background theme", "cyan", "gray", "lime", "orange", "light", "dark", "brown",
-                "classic", "magenta" };
-        String[] dialogCombos = { "dialog theme", "cyan", "gray", "lime", "orange", "light", "dark", "brown", "classic",
-                "magenta" };
+
+        String[] sidePanelCombos = { "Light(default)", "Dark", "Classic", "Modern", "Cyan", "Silver", "Lime", "Orange",
+                "Brown", "Magenta" };
+        String[] backgroundCombos = { "Light(default)", "Dark", "Classic", "Modern", "Cyan", "Silver", "Lime", "Orange",
+                "Brown", "Magenta" };
+        String[] dialogCombos = { "Light(default)", "Dark", "Classic", "Modern", "Cyan", "Silver", "Lime", "Orange",
+                "Brown", "Magenta" };
+
         JComboBox<String> sidePanelTheme = new JComboBox<>(sidePanelCombos);
         JComboBox<String> backgroundTheme = new JComboBox<>(backgroundCombos);
         JComboBox<String> dialogTheme = new JComboBox<>(dialogCombos);
         sidePanelTheme.setBounds(20, 350, 140, 25);
         backgroundTheme.setBounds(180, 350, 140, 25);
         dialogTheme.setBounds(340, 350, 140, 25);
+        sidePanelTheme.setSelectedIndex(currentUser.theme.sidePanel.mode);
+        backgroundTheme.setSelectedIndex(currentUser.theme.main.mode);
+        dialogTheme.setSelectedIndex(currentUser.theme.dialog.mode);
 
-        JButton apply = new JButton("Apply");
+        JButton apply = new JButton("Preview");
         apply.setBounds(50, 400, 200, 25);
         add(apply);
 
-        JButton save = new JButton("Save");
+        JButton save = new JButton("Apply");
         save.setBounds(250, 400, 200, 25);
         add(save);
-
         add(sidePanelTheme);
         add(backgroundTheme);
         add(dialogTheme);
 
         apply.addActionListener(e -> {
 
-            //int siedPanelIndex = sidePanelTheme.getSelectedIndex();
-            //int backgroundPanelIndex = backgroundTheme.getSelectedIndex();
-            //int dialogPanelIndex = dialogTheme.getSelectedIndex();
+            int siedPanelIndex = sidePanelTheme.getSelectedIndex();
+            int backgroundPanelIndex = backgroundTheme.getSelectedIndex();
+            int dialogPanelIndex = dialogTheme.getSelectedIndex();
 
-            //    currentUser.theme.sidePanel.setTheme();*/
+            currentTheme.setTheme(siedPanelIndex, backgroundPanelIndex, dialogPanelIndex);
 
-            sidePanel.setBackground(spc);
-            exitPanel.setBackground(currentUser.theme.sidePanel.exitColor);
-            mainPanel.setBackground(bcgc);
-            dialogPanel.setBackground(dlgc);
+            sidePanel.setBackground(currentTheme.sidePanel.background);
+            exitPanel.setBackground(currentTheme.sidePanel.exitColor);
+            mainPanel.setBackground(currentTheme.main.background);
+            dialogPanel.setBackground(currentTheme.dialog.background);
             repaint();
             revalidate();
 
         });
-        save.addActionListener(e -> {//    currentUser.theme.sidePanel.setTheme(spc.getSelectedItem,bcg.getSelectedItem,dlg.getSelectedItem)
+        save.addActionListener(e -> {
+            int siedPanelIndex = sidePanelTheme.getSelectedIndex();
+            int backgroundPanelIndex = backgroundTheme.getSelectedIndex();
+            int dialogPanelIndex = dialogTheme.getSelectedIndex();
+
+            currentUser.theme.setTheme(siedPanelIndex, backgroundPanelIndex, dialogPanelIndex);
+            parent.openAndSaveData(currentUser);
         });
 
         this.setBackground(currentUser.theme.dialog.background);
