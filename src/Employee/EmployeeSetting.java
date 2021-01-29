@@ -113,7 +113,7 @@ class ThemePanel extends JPanel {
             return;
         }
 
-        String[] names = { "LightTheme.png", "DarkTheme.png", "ClassicThemee.png", "ModernTheme.png" };
+        String[] names = { "LightTheme.png", "DarkTheme.png", "ClassicTheme.png", "ModernTheme.png" };
 
         sample.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Themes\\" + names[index]));
 

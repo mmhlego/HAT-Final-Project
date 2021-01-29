@@ -106,7 +106,7 @@ public class ManagerTheme extends JDialog {
             int dialogPanelIndex = dialogTheme.getSelectedIndex();
 
             currentUser.theme.setTheme(siedPanelIndex, backgroundPanelIndex, dialogPanelIndex);
-            root.openAndSaveData(currentUser);
+            new ManagerWriter(currentUser);
             dispose();
             parent.dispose();
             new ManagerFrame(currentUser);

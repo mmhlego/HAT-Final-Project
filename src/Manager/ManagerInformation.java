@@ -144,7 +144,7 @@ public class ManagerInformation extends JPanel {
                 currentUser.lastName = lastNameShow.getText();
                 currentUser.phoneNumber = phoneNumberShow.getText();
 
-                root.openAndSaveData(currentUser);
+                new ManagerWriter(currentUser);
                 parent.dispose();
                 new ManagerFrame(currentUser);
             }

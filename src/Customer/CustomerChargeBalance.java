@@ -1,8 +1,7 @@
 package Customer;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import javax.swing.event.*;
+import javax.swing.border.*;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -16,7 +15,7 @@ public class CustomerChargeBalance extends JDialog {
     Customer currentUser;
     JPanel captchaPanel;
     String captchaAnswer;
-    int min , sec;
+    int min, sec;
     Timer TimeToCancel;
     boolean flag = true;
 
@@ -31,8 +30,7 @@ public class CustomerChargeBalance extends JDialog {
         setTitle("Charge Balance");
         setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Pay.png").getImage());
 
-        
-        String[] ChargeData = {" -Amounts- " , "10000" , "20000" , "50000" , "100000"}; 
+        String[] ChargeData = { " -Amounts- ", "10000", "20000", "50000", "100000" };
 
         JTextField CardNumber1 = new JTextField();
         CardNumber1.setBounds(130, 80, 40, 30);
@@ -60,7 +58,6 @@ public class CustomerChargeBalance extends JDialog {
         JTextField CustomChargeAmount = new JTextField();
         CustomChargeAmount.setBounds(130, 30, 110, 30);
         CustomChargeAmount.setDocument(new Limitter(9));
-        
 
         JButton SendOTP = new JButton("Request SMS OTP ");
         SendOTP.setBounds(220, 230, 160, 30);
@@ -97,27 +94,26 @@ public class CustomerChargeBalance extends JDialog {
         Email.setBounds(20, 280, 150, 30);
         JLabel ChargeText = new JLabel("Charge");
         ChargeText.setBounds(20, 30, 50, 30);
-        JLabel ShowChoosedCharge = new JLabel("" , 2);
+        JLabel ShowChoosedCharge = new JLabel("", 2);
         ShowChoosedCharge.setBounds(315, 320, 65, 30);
         JLabel ChargeBalanceShow = new JLabel("Charge Balance :");
         ChargeBalanceShow.setBounds(220, 320, 110, 30);
         JLabel SecureIcon = new JLabel();
         SecureIcon.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Secure.png"));
         SecureIcon.setBounds(310, 395, 20, 20);
-        JLabel SecuredBy = new JLabel(" All Purchases Are Secured By H. A. T. " , 0);
+        JLabel SecuredBy = new JLabel(" All Purchases Are Secured By H. A. T. ", 0);
         SecuredBy.setBounds(90, 390, 220, 30);
         SecuredBy.setForeground(new Color(85, 40, 111));
         CustomChargeAmount.addKeyListener(new KeyListener() {
 
             @Override
-            public void keyTyped(KeyEvent e) 
-            {
-                
+            public void keyTyped(KeyEvent e) {
+
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-                
+
             }
 
             @Override
@@ -125,93 +121,76 @@ public class CustomerChargeBalance extends JDialog {
                 ShowChoosedCharge.setText(CustomChargeAmount.getText());
             }
         });
-        JLabel Minute = new JLabel("05" , 0);
+        JLabel Minute = new JLabel("05", 0);
         Minute.setBounds(0, 0, 20, 20);
         Minute.setForeground(Color.BLACK);
         Minute.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
-        JLabel Doubledot = new JLabel(":" , 0);
+        JLabel Doubledot = new JLabel(":", 0);
         Doubledot.setBounds(15, 0, 10, 20);
         Doubledot.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
-        JLabel Second = new JLabel("00" , 0);
+        JLabel Second = new JLabel("00", 0);
         Second.setBounds(22, 0, 20, 20);
         Second.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, Color.BLACK));
         Second.setForeground(Color.BLACK);
         min = Integer.parseInt(Minute.getText());
         sec = Integer.parseInt(Second.getText());
-        TimeToCancel = new Timer(1000, new ActionListener()
-        {
+        TimeToCancel = new Timer(1000, new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) 
-            {
-                if (sec==0) 
-                {
+            public void actionPerformed(ActionEvent e) {
+                if (sec == 0) {
                     sec = 60;
-                    min--;    
+                    min--;
                 }
 
-                if (min == 0) 
-                {
+                if (min == 0) {
                     Minute.setForeground(Color.RED);
-                    Second.setForeground(Color.RED); 
+                    Second.setForeground(Color.RED);
                 }
-                if (min < 0) 
-                {
+                if (min < 0) {
                     JOptionPane.showMessageDialog(null, "Operation Cancelled", "Time Out", JOptionPane.ERROR_MESSAGE);
                     min = 0;
                     sec = 0;
-                    dispose(); 
+                    dispose();
                     TimeToCancel.stop();
-                }
-                else
-                {
-                    sec--; 
-                    if (sec < 10) 
-                    {
+                } else {
+                    sec--;
+                    if (sec < 10) {
                         Second.setText("0" + sec);
                         flag = false;
                     }
-                    if (min < 10) 
-                    {
-                        Minute.setText("0" + min);  
-                        if (sec < 10) 
-                        {
-                            Second.setText("0" + sec);      
-                        }
-                        else
-                        {
+                    if (min < 10) {
+                        Minute.setText("0" + min);
+                        if (sec < 10) {
+                            Second.setText("0" + sec);
+                        } else {
                             Second.setText("" + sec);
                             flag = false;
                         }
                     }
-                    if (flag )
-                    {
-                        Minute.setText(""+min);
-                        Second.setText(""+sec);
+                    if (flag) {
+                        Minute.setText("" + min);
+                        Second.setText("" + sec);
                     }
                 }
             }
-            
+
         });
         TimeToCancel.start();
 
         JComboBox<String> ChargeAmount = new JComboBox<String>(ChargeData);
         ChargeAmount.setBounds(270, 30, 110, 30);
-        ((JLabel)ChargeAmount.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
-        ChargeAmount.addItemListener((e) -> 
-        {
-            String Value = (String)ChargeAmount.getSelectedItem();
-            if (Value.equals(" -Amounts- ")) 
-            {
-                CustomChargeAmount.setText("");  
-                ShowChoosedCharge.setText("");  
-            }
-            else
-            {
+        ((JLabel) ChargeAmount.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        ChargeAmount.addItemListener((e) -> {
+            String Value = (String) ChargeAmount.getSelectedItem();
+            if (Value.equals(" -Amounts- ")) {
+                CustomChargeAmount.setText("");
+                ShowChoosedCharge.setText("");
+            } else {
                 CustomChargeAmount.setText(Value);
                 ShowChoosedCharge.setText(Value);
             }
         });
-        
+
         int x = 180;
         for (int i = 0; i < 3; i++) {
             JLabel Line = new JLabel("-");
@@ -223,14 +202,11 @@ public class CustomerChargeBalance extends JDialog {
         Proceed.addActionListener((e) -> {
             if (CardNumber1.getText().length() != 4 || CardNumber2.getText().length() != 4
                     || CardNumber3.getText().length() != 4 || CardNumber4.getText().length() != 4) {
-                JOptionPane.showMessageDialog(null, "Check Your Card Details !", "Warning",
-                        2);
-            } else if (new String (CVV2TF.getPassword()).length() == 0) {
-                JOptionPane.showMessageDialog(null, "CVV2 Field is empty !", "Warning",
-                        2);
+                JOptionPane.showMessageDialog(null, "Check Your Card Details !", "Warning", 2);
+            } else if (new String(CVV2TF.getPassword()).length() == 0) {
+                JOptionPane.showMessageDialog(null, "CVV2 Field is empty !", "Warning", 2);
             } else if (ValidateTF.getText().length() == 0) {
-                JOptionPane.showMessageDialog(null, "Captch Field is empty !", "Warning",
-                        2);
+                JOptionPane.showMessageDialog(null, "Captch Field is empty !", "Warning", 2);
             } else if (new String(CVVTF.getPassword()).length() == 0) {
                 JOptionPane.showMessageDialog(null, "CVV Field is empty !", "Warning", 2);
             } else {
