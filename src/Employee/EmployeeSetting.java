@@ -1,7 +1,6 @@
 package Employee;
 
 import java.awt.*;
-import java.io.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -34,24 +33,6 @@ public class EmployeeSetting extends JPanel {
 
         setBackground(currentUser.theme.main.background);
         setVisible(true);
-    }
-
-    public void openAndSaveData(Employee m) {
-        try {
-            ObjectInputStream reader = new ObjectInputStream(
-                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Employees.dat"));
-            Employee[] allEmployees = (Employee[]) reader.readObject();
-            reader.close();
-
-            allEmployees[m.index] = m;
-
-            ObjectOutputStream writer = new ObjectOutputStream(
-                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Employees.dat"));
-            writer.writeObject(allEmployees);
-            writer.close();
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
     }
 }
 
@@ -112,7 +93,8 @@ class ThemePanel extends JPanel {
         apply.setBounds(365, 540, 300, 60);
         apply.addActionListener((e) -> {
             currentUser.theme.setAll(index);
-            root.openAndSaveData(currentUser);
+            //root.openAndSaveData(currentUser);
+            new EmployeeWriter(currentUser);
             parent.dispose();
             new EmployeeFrame(currentUser);
         });

@@ -1,7 +1,12 @@
 package Customer;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+import javax.swing.event.*;
+
 import java.awt.*;
+import java.awt.event.*;
+
 import Login.*;
 
 public class CustomerChargeBalance extends JDialog {
@@ -11,73 +16,206 @@ public class CustomerChargeBalance extends JDialog {
     Customer currentUser;
     JPanel captchaPanel;
     String captchaAnswer;
+    int min , sec;
+    Timer TimeToCancel;
+    boolean flag = true;
 
     public CustomerChargeBalance(CustomerFrame p, Customer c) {
+        setUndecorated(true);
+        getRootPane().setBorder(new LineBorder(Color.BLACK, 1));
         parent = p;
         currentUser = c;
         setLayout(null);
-        setSize(420, 390);
+        setSize(400, 420);
         setLocationRelativeTo(null);
         setTitle("Charge Balance");
         setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Pay.png").getImage());
 
+        
+        String[] ChargeData = {" -Amounts- " , "10000" , "20000" , "50000" , "100000"}; 
+
         JTextField CardNumber1 = new JTextField();
-        CardNumber1.setBounds(130, 30, 40, 30);
+        CardNumber1.setBounds(130, 80, 40, 30);
         CardNumber1.setDocument(new Limitter(4));
         JTextField CardNumber2 = new JTextField();
-        CardNumber2.setBounds(200, 30, 40, 30);
+        CardNumber2.setBounds(200, 80, 40, 30);
         CardNumber2.setDocument(new Limitter(4));
         JTextField CardNumber3 = new JTextField();
-        CardNumber3.setBounds(270, 30, 40, 30);
+        CardNumber3.setBounds(270, 80, 40, 30);
         CardNumber3.setDocument(new Limitter(4));
         JTextField CardNumber4 = new JTextField();
-        CardNumber4.setBounds(340, 30, 40, 30);
+        CardNumber4.setBounds(340, 80, 40, 30);
         CardNumber4.setDocument(new Limitter(4));
-        JTextField CVV2TF = new JTextField();
-        CVV2TF.setBounds(130, 80, 70, 30);
+        JPasswordField CVV2TF = new JPasswordField();
+        CVV2TF.setBounds(130, 130, 70, 30);
         CVV2TF.setDocument(new Limitter(4));
         JTextField ValidateTF = new JTextField();
-        ValidateTF.setBounds(130, 130, 70, 30);
+        ValidateTF.setBounds(130, 180, 70, 30);
         ValidateTF.setDocument(new Limitter(4));
-        JTextField CVVTF = new JTextField();
-        CVVTF.setBounds(130, 180, 70, 30);
+        JPasswordField CVVTF = new JPasswordField();
+        CVVTF.setBounds(130, 230, 70, 30);
         CVVTF.setDocument(new Limitter(7));
         JTextField EmailTF = new JTextField();
-        EmailTF.setBounds(130, 230, 250, 30);
+        EmailTF.setBounds(130, 280, 250, 30);
+        JTextField CustomChargeAmount = new JTextField();
+        CustomChargeAmount.setBounds(130, 30, 110, 30);
+        CustomChargeAmount.setDocument(new Limitter(9));
+        
 
         JButton SendOTP = new JButton("Request SMS OTP ");
-        SendOTP.setBounds(220, 180, 160, 30);
+        SendOTP.setBounds(220, 230, 160, 30);
         SendOTP.setBackground(new Color(238, 186, 11));
         SendOTP.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\OTP.png"));
         SendOTP.setBorder(null);
         JButton Proceed = new JButton("Proceed");
-        Proceed.setBounds(220, 300, 160, 30);
+        Proceed.setBounds(220, 350, 160, 30);
         Proceed.setBackground(new Color(111, 207, 151));
         JButton Cancel = new JButton("Cancel");
-        Cancel.setBounds(20, 300, 160, 30);
+        Cancel.setBounds(20, 350, 160, 30);
         Cancel.setBackground(new Color(250, 67, 67));
         JButton Refresh = new JButton();
-        Refresh.setBounds(360, 135, 20, 20);
+        Refresh.setBounds(360, 185, 20, 20);
         Refresh.setBackground(new Color(238, 238, 238));
         Refresh.setBorder(null);
         Refresh.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Refresh.png"));
         Refresh.addActionListener((e) -> createCaptcha());
+        JButton SecureKeyBoard = new JButton("Secure Num Pad");
+        SecureKeyBoard.setBounds(220, 130, 160, 30);
+        SecureKeyBoard.setBorder(null);
+        SecureKeyBoard.setBackground(new Color(87, 184, 255));
+        SecureKeyBoard.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Keyboard.png"));
 
         JLabel CardNumber = new JLabel("Card Number");
-        CardNumber.setBounds(20, 30, 90, 30);
+        CardNumber.setBounds(20, 80, 90, 30);
         JLabel CVV = new JLabel("CVV2");
-        CVV.setBounds(20, 80, 40, 30);
+        CVV.setBounds(20, 130, 40, 30);
         JLabel Validate = new JLabel("Enter Captcha");
-        Validate.setBounds(20, 130, 80, 30);
+        Validate.setBounds(20, 180, 80, 30);
         JLabel CVV2 = new JLabel("CVV");
-        CVV2.setBounds(20, 180, 40, 30);
+        CVV2.setBounds(20, 230, 40, 30);
         JLabel Email = new JLabel("Email (Optional) ");
-        Email.setBounds(20, 230, 150, 30);
+        Email.setBounds(20, 280, 150, 30);
+        JLabel ChargeText = new JLabel("Charge");
+        ChargeText.setBounds(20, 30, 50, 30);
+        JLabel ShowChoosedCharge = new JLabel("" , 2);
+        ShowChoosedCharge.setBounds(315, 320, 65, 30);
+        JLabel ChargeBalanceShow = new JLabel("Charge Balance :");
+        ChargeBalanceShow.setBounds(220, 320, 110, 30);
+        JLabel SecureIcon = new JLabel();
+        SecureIcon.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Secure.png"));
+        SecureIcon.setBounds(310, 395, 20, 20);
+        JLabel SecuredBy = new JLabel(" All Purchases Are Secured By H. A. T. " , 0);
+        SecuredBy.setBounds(90, 390, 220, 30);
+        SecuredBy.setForeground(new Color(85, 40, 111));
+        CustomChargeAmount.addKeyListener(new KeyListener() {
 
+            @Override
+            public void keyTyped(KeyEvent e) 
+            {
+                
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                ShowChoosedCharge.setText(CustomChargeAmount.getText());
+            }
+        });
+        JLabel Minute = new JLabel("05" , 0);
+        Minute.setBounds(0, 0, 20, 20);
+        Minute.setForeground(Color.BLACK);
+        Minute.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        JLabel Doubledot = new JLabel(":" , 0);
+        Doubledot.setBounds(15, 0, 10, 20);
+        Doubledot.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        JLabel Second = new JLabel("00" , 0);
+        Second.setBounds(22, 0, 20, 20);
+        Second.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, Color.BLACK));
+        Second.setForeground(Color.BLACK);
+        min = Integer.parseInt(Minute.getText());
+        sec = Integer.parseInt(Second.getText());
+        TimeToCancel = new Timer(1000, new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+                if (sec==0) 
+                {
+                    sec = 60;
+                    min--;    
+                }
+
+                if (min == 0) 
+                {
+                    Minute.setForeground(Color.RED);
+                    Second.setForeground(Color.RED); 
+                }
+                if (min < 0) 
+                {
+                    JOptionPane.showMessageDialog(null, "Operation Cancelled", "Time Out", JOptionPane.ERROR_MESSAGE);
+                    min = 0;
+                    sec = 0;
+                    dispose(); 
+                    TimeToCancel.stop();
+                }
+                else
+                {
+                    sec--; 
+                    if (sec < 10) 
+                    {
+                        Second.setText("0" + sec);
+                        flag = false;
+                    }
+                    if (min < 10) 
+                    {
+                        Minute.setText("0" + min);  
+                        if (sec < 10) 
+                        {
+                            Second.setText("0" + sec);      
+                        }
+                        else
+                        {
+                            Second.setText("" + sec);
+                            flag = false;
+                        }
+                    }
+                    if (flag )
+                    {
+                        Minute.setText(""+min);
+                        Second.setText(""+sec);
+                    }
+                }
+            }
+            
+        });
+        TimeToCancel.start();
+
+        JComboBox<String> ChargeAmount = new JComboBox<String>(ChargeData);
+        ChargeAmount.setBounds(270, 30, 110, 30);
+        ((JLabel)ChargeAmount.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        ChargeAmount.addItemListener((e) -> 
+        {
+            String Value = (String)ChargeAmount.getSelectedItem();
+            if (Value.equals(" -Amounts- ")) 
+            {
+                CustomChargeAmount.setText("");  
+                ShowChoosedCharge.setText("");  
+            }
+            else
+            {
+                CustomChargeAmount.setText(Value);
+                ShowChoosedCharge.setText(Value);
+            }
+        });
+        
         int x = 180;
         for (int i = 0; i < 3; i++) {
             JLabel Line = new JLabel("-");
-            Line.setBounds(x, 38, 10, 10);
+            Line.setBounds(x, 88, 10, 10);
             add(Line);
             x += 70;
         }
@@ -86,26 +224,39 @@ public class CustomerChargeBalance extends JDialog {
             if (CardNumber1.getText().length() != 4 || CardNumber2.getText().length() != 4
                     || CardNumber3.getText().length() != 4 || CardNumber4.getText().length() != 4) {
                 JOptionPane.showMessageDialog(null, "Check Your Card Details !", "Warning",
-                        JOptionPane.INFORMATION_MESSAGE);
-            } else if (CVV2TF.getText().length() == 0) {
+                        2);
+            } else if (new String (CVV2TF.getPassword()).length() == 0) {
                 JOptionPane.showMessageDialog(null, "CVV2 Field is empty !", "Warning",
-                        JOptionPane.INFORMATION_MESSAGE);
+                        2);
             } else if (ValidateTF.getText().length() == 0) {
                 JOptionPane.showMessageDialog(null, "Captch Field is empty !", "Warning",
-                        JOptionPane.INFORMATION_MESSAGE);
-            } else if (CVVTF.getText().length() == 0) {
-                JOptionPane.showMessageDialog(null, "CVV Field is empty !", "Warning", JOptionPane.INFORMATION_MESSAGE);
+                        2);
+            } else if (new String(CVVTF.getPassword()).length() == 0) {
+                JOptionPane.showMessageDialog(null, "CVV Field is empty !", "Warning", 2);
             } else {
 
             }
+            TimeToCancel.stop();
         });
         Cancel.addActionListener((e) -> {
             dispose();
+            TimeToCancel.stop();
         });
         SendOTP.addActionListener((e) -> {
 
         });
 
+        add(SecuredBy);
+        add(SecureKeyBoard);
+        add(SecureIcon);
+        add(ChargeBalanceShow);
+        add(ShowChoosedCharge);
+        add(Minute);
+        add(Second);
+        add(Doubledot);
+        add(ChargeText);
+        add(CustomChargeAmount);
+        add(ChargeAmount);
         add(Refresh);
         add(Proceed);
         add(Cancel);
@@ -124,7 +275,7 @@ public class CustomerChargeBalance extends JDialog {
         add(CardNumber4);
         add(CardNumber);
         setVisible(true);
-
+        setResizable(false);
         createCaptcha();
     }
 
@@ -136,7 +287,7 @@ public class CustomerChargeBalance extends JDialog {
         captchaPanel = new Captcha(currentUser);
         captchaAnswer = captchaPanel.getName();
         System.out.println(captchaAnswer);
-        captchaPanel.setBounds(220, 130, 136, 30);
+        captchaPanel.setBounds(220, 180, 136, 30);
         add(captchaPanel);
         captchaPanel.revalidate();
         captchaPanel.repaint();

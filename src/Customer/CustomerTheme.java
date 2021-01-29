@@ -106,7 +106,7 @@ public class CustomerTheme extends JDialog {
             int dialogPanelIndex = dialogTheme.getSelectedIndex();
 
             currentUser.theme.setTheme(siedPanelIndex, backgroundPanelIndex, dialogPanelIndex);
-            root.openAndSaveData(currentUser);
+            new CustomerWriter(currentUser);
             dispose();
             parent.dispose();
             new CustomerFrame(currentUser);

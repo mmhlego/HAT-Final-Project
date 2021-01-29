@@ -223,7 +223,8 @@ public class CustomerCart extends JPanel {
             currentUser.order.count[i - 1] = temp.count[i];
         }
 
-        updateCurrentUser();
+        //updateCurrentUser();
+        new CustomerWriter(currentUser);
         writeProductsToFile();
         parent.addPanel(new CustomerCart(currentUser, parent));
     }
@@ -235,7 +236,8 @@ public class CustomerCart extends JPanel {
         allProducts[p.index].amount -= 1;
         l.setText(Integer.toString(currentUser.order.count[index]));
 
-        updateCurrentUser();
+        //updateCurrentUser();
+        new CustomerWriter(currentUser);
 
         checkAvailability(addButton, removeButton);
         updatePrice();
@@ -248,7 +250,7 @@ public class CustomerCart extends JPanel {
         allProducts[p.index].amount += 1;
         l.setText(Integer.toString(currentUser.order.count[index]));
 
-        updateCurrentUser();
+        //updateCurrentUser();
 
         checkAvailability(addButton, removeButton);
         updatePrice();
@@ -346,25 +348,9 @@ public class CustomerCart extends JPanel {
         }
     }
 
-    public void updateCurrentUser() {
-        try {
-            ObjectInputStream reader = new ObjectInputStream(
-                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
-            Customer[] allCustomers = (Customer[]) reader.readObject();
-            reader.close();
-
-            allCustomers[currentUser.index] = currentUser;
-
-            ObjectOutputStream writer = new ObjectOutputStream(
-                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
-            writer.writeObject(allCustomers);
-            writer.close();
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-    }
-
     public void buyProducts() {
+        new CreateInvoice(currentUser.order, totalDiscount, total);
+
         JOptionPane.showMessageDialog(this, "Purchase Successful", "Success", 1);
 
         currentUser.balance -= total;
@@ -380,7 +366,8 @@ public class CustomerCart extends JPanel {
         }
 
         currentUser.order = new Order();
-        updateCurrentUser();
+        // updateCurrentUser();
+        new CustomerWriter(currentUser);
         parent.UpdateBalance();
         parent.addPanel(new CustomerCart(currentUser, parent));
     }

@@ -4,12 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import Customer.*;
+import General.*;
 import java.awt.event.*;
 
 public class CustomerLogin extends JPanel {
     private static final long serialVersionUID = 8713185903009843822L;
 
-    JTextField UserNameTF;
+    CustomTextField UserNameTF;
     JPasswordField PassWordPF;
     JButton Login;
     MainFrame parent;
@@ -45,23 +46,8 @@ public class CustomerLogin extends JPanel {
         Passtext.setBackground(new Color(238, 238, 238));
         Passtext.setOpaque(true);
 
-        UserNameTF = new JTextField();
-        UserNameTF.setBounds(195, 160, 595, 60);
-        UserNameTF.setFont(new Font("Tahoma", Font.BOLD, 24));
-        UserNameTF.setDocument(new Limitter(20));
-        UserNameTF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
-        UserNameTF.setBackground(new Color(238, 238, 238));
-        UserNameTF.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent fe) {
-                UserNameTF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(12, 116, 232)));
-            }
-
-            @Override
-            public void focusLost(FocusEvent fe) {
-                UserNameTF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
-            }
-        });
+        UserNameTF = new CustomTextField(195, 160, 595, 60, new Font("Tahoma", Font.BOLD, 24), new Color(238, 238, 238),
+                Color.BLACK, "");
 
         UserNameTF.addKeyListener(new KeyListener() {
             @Override
@@ -387,5 +373,4 @@ public class CustomerLogin extends JPanel {
         RightClicked.add(RightItemExit);
         this.add(RightClicked);
     }
-
 }

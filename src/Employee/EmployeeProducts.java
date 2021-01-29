@@ -391,5 +391,4 @@ public class EmployeeProducts extends JPanel {
     public void reloadPage() {
         parent.addPanel(new EmployeeProducts(currentUser, parent));
     }
-
 }

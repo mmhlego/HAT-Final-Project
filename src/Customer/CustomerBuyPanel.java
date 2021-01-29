@@ -278,24 +278,6 @@ public class CustomerBuyPanel extends JDialog {
 
         allProducts[currentProduct.index].amount -= c;
         writeProductsToFile();
-        updateCurrentUser();
-    }
-
-    public void updateCurrentUser() {
-        try {
-            ObjectInputStream reader = new ObjectInputStream(
-                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
-            Customer[] allCustomers = (Customer[]) reader.readObject();
-            reader.close();
-
-            allCustomers[currentUser.index] = currentUser;
-
-            ObjectOutputStream writer = new ObjectOutputStream(
-                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
-            writer.writeObject(allCustomers);
-            writer.close();
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
+        new CustomerWriter(currentUser);
     }
 }

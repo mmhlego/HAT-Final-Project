@@ -1,6 +1,9 @@
 package Customer;
 
 import javax.swing.*;
+
+import General.CustomTextField;
+
 import java.awt.*;
 
 public class CustomerInformation extends JPanel {
@@ -41,7 +44,10 @@ public class CustomerInformation extends JPanel {
                 System.getProperty("user.dir") + "\\Images\\Icons\\Main\\" + currentUser.theme.main.icon + "Add.png"));
 
         JLabel userName = new JLabel("Username:", 0);
-        JTextField userNameShow = new JTextField(currentUser.username);
+        //JTextField userNameShow = new JTextField(currentUser.username);
+        CustomTextField userNameShow = new CustomTextField(291, 270, 320, 25, currentUser.theme.main,
+                currentUser.username);
+        userNameShow.setAlignmentX(JLabel.CENTER);
         JLabel password = new JLabel("Password:", 0);
         JTextField showPassword = new JTextField(currentUser.password);
         JLabel firstName = new JLabel("First Name:", 0);
@@ -57,7 +63,7 @@ public class CustomerInformation extends JPanel {
         JTextField balanceShow = new JTextField(String.valueOf(currentUser.balance));
 
         userName.setFont(currentUser.theme.main.font);
-        userNameShow.setFont(currentUser.theme.main.font);
+        //userNameShow.setFont(currentUser.theme.main.font);
         password.setFont(currentUser.theme.main.font);
         showPassword.setFont(currentUser.theme.main.font);
         firstName.setFont(currentUser.theme.main.font);
@@ -73,7 +79,7 @@ public class CustomerInformation extends JPanel {
         balanceShow.setFont(currentUser.theme.main.font);
 
         userName.setForeground(currentUser.theme.main.fontColor);
-        userNameShow.setForeground(currentUser.theme.main.fontColor);
+        //userNameShow.setForeground(currentUser.theme.main.fontColor);
         password.setForeground(currentUser.theme.main.fontColor);
         showPassword.setForeground(currentUser.theme.main.fontColor);
         firstName.setForeground(currentUser.theme.main.fontColor);
@@ -88,7 +94,7 @@ public class CustomerInformation extends JPanel {
         balance.setForeground(currentUser.theme.main.fontColor);
         balanceShow.setForeground(currentUser.theme.main.fontColor);
 
-        userNameShow.setBackground(currentUser.theme.main.background);
+        //userNameShow.setBackground(currentUser.theme.main.background);
         showPassword.setBackground(currentUser.theme.main.background);
         firstNameShow.setBackground(currentUser.theme.main.background);
         lastNameShow.setBackground(currentUser.theme.main.background);
@@ -97,7 +103,7 @@ public class CustomerInformation extends JPanel {
         adressScroll.setBackground(currentUser.theme.main.background);
         balanceShow.setBackground(currentUser.theme.main.background);
 
-        userNameShow.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
+        //userNameShow.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         showPassword.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         firstNameShow.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         lastNameShow.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
@@ -107,7 +113,7 @@ public class CustomerInformation extends JPanel {
         balanceShow.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
 
         userName.setBounds(50, 270, 240, 35);
-        userNameShow.setBounds(291, 270, 320, 35);
+        //userNameShow.setBounds(291, 270, 320, 35);
         password.setBounds(50, 320, 240, 35);
         showPassword.setBounds(291, 320, 320, 35);
         firstName.setBounds(50, 370, 240, 35);
@@ -127,7 +133,7 @@ public class CustomerInformation extends JPanel {
         passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         passwordField.setBounds(291, 320, 320, 35);
 
-        userNameShow.setHorizontalAlignment(SwingConstants.CENTER);
+        //userNameShow.setHorizontalAlignment(SwingConstants.CENTER);
         showPassword.setHorizontalAlignment(SwingConstants.CENTER);
         firstNameShow.setHorizontalAlignment(SwingConstants.CENTER);
         lastNameShow.setHorizontalAlignment(SwingConstants.CENTER);
@@ -136,7 +142,7 @@ public class CustomerInformation extends JPanel {
         balanceShow.setHorizontalAlignment(SwingConstants.CENTER);
 
         userName.setVisible(true);
-        userNameShow.setVisible(true);
+        //userNameShow.setVisible(true);
         password.setVisible(true);
         showPassword.setVisible(false);
         firstName.setVisible(true);
@@ -190,7 +196,7 @@ public class CustomerInformation extends JPanel {
                 currentUser.phoneNumber = phoneNumberShow.getText();
                 currentUser.address = adressShow.getText();
 
-                root.openAndSaveData(currentUser);
+                new CustomerWriter(currentUser);
                 parent.dispose();
                 new CustomerFrame(currentUser);
             }
