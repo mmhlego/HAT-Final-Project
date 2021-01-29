@@ -1,7 +1,6 @@
 package Customer;
 
 import java.awt.*;
-import java.io.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -35,24 +34,6 @@ public class CustomerSetting extends JPanel {
         setBackground(currentUser.theme.main.background);
         setVisible(true);
     }
-
-    public void openAndSaveData(Customer m) {
-        try {
-            ObjectInputStream reader = new ObjectInputStream(
-                    new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
-            Customer[] allCustomers = (Customer[]) reader.readObject();
-            reader.close();
-
-            allCustomers[m.index] = m;
-
-            ObjectOutputStream writer = new ObjectOutputStream(
-                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
-            writer.writeObject(allCustomers);
-            writer.close();
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-    }
 }
 
 class ThemePanel extends JPanel {
@@ -70,7 +51,7 @@ class ThemePanel extends JPanel {
         currentUser = u;
         root = r;
 
-        sample = new JLabel("Previw", 0);
+        sample = new JLabel("Preview", 0);
         sample.setBorder(new LineBorder(Color.black, 1));
         sample.setBounds(365, 195, 300, 233);
         add(sample);
@@ -112,7 +93,7 @@ class ThemePanel extends JPanel {
         apply.setBounds(365, 540, 300, 60);
         apply.addActionListener((e) -> {
             currentUser.theme.setAll(index);
-            root.openAndSaveData(currentUser);
+            new CustomerWriter(currentUser);
             parent.dispose();
             new CustomerFrame(currentUser);
         });
@@ -131,7 +112,7 @@ class ThemePanel extends JPanel {
             return;
         }
 
-        String[] names = { "LightTheme.png", "DarkTheme.png", "ClassicThemee.png", "ModernTheme.png" };
+        String[] names = { "LightTheme.png", "DarkTheme.png", "ClassicTheme.png", "ModernTheme.png" };
 
         sample.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Themes\\" + names[index]));
 

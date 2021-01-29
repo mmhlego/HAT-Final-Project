@@ -161,7 +161,7 @@ public class EmployeeInformation extends JPanel {
                 currentUser.lastName = lastNameShow.getText();
                 currentUser.phoneNumber = phoneNumberShow.getText();
 
-                root.openAndSaveData(currentUser);
+                new EmployeeWriter(currentUser);
                 parent.dispose();
                 new EmployeeFrame(currentUser);
             }

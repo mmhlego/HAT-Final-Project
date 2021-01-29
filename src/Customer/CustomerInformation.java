@@ -190,7 +190,7 @@ public class CustomerInformation extends JPanel {
                 currentUser.phoneNumber = phoneNumberShow.getText();
                 currentUser.address = adressShow.getText();
 
-                root.openAndSaveData(currentUser);
+                new CustomerWriter(currentUser);
                 parent.dispose();
                 new CustomerFrame(currentUser);
             }

@@ -108,7 +108,7 @@ public class EmployeeTheme extends JDialog {
             int dialogPanelIndex = dialogTheme.getSelectedIndex();
 
             currentUser.theme.setTheme(siedPanelIndex, backgroundPanelIndex, dialogPanelIndex);
-            root.openAndSaveData(currentUser);
+            new EmployeeWriter(currentUser);
             dispose();
             parent.dispose();
             new EmployeeFrame(currentUser);
