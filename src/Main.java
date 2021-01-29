@@ -7,7 +7,7 @@ import Manager.ManagerCreator;
 public class Main {
     public static void main(String[] args) {
         
-        //new MainFrame();
-        new CustomerFrame(new Customer("", "", "", "", "" , "" , 12));
+        new MainFrame(); 
+        //new CustomerFrame(new Customer("", "", "", "", "" , "" , 12));
     }
 }
