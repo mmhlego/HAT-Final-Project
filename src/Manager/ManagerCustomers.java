@@ -128,26 +128,44 @@ public class ManagerCustomers extends JPanel {
         JDialog dialog = new JDialog(parent, "Edit Information");
 
         JPanel editPanel = new JPanel();
+        editPanel.setBackground(currentUser.theme.dialog.background);
+        editPanel.setForeground(currentUser.theme.dialog.fontColor);
+        editPanel.setFont(currentUser.theme.dialog.font);
         editPanel.setLayout(null);
         editPanel.setSize(3 * margin + 2 * w, 7 * margin + 6 * h);
 
         JLabel nameLabel = new JLabel("Name:", 4);
+        nameLabel.setBackground(currentUser.theme.dialog.background);
+        nameLabel.setForeground(currentUser.theme.dialog.fontColor);
+        nameLabel.setFont(currentUser.theme.dialog.font);
         nameLabel.setBounds(margin, margin, w, h);
         editPanel.add(nameLabel);
 
         JLabel lastNameLabel = new JLabel("Last Name:", 4);
+        lastNameLabel.setBackground(currentUser.theme.dialog.background);
+        lastNameLabel.setForeground(currentUser.theme.dialog.fontColor);
+        lastNameLabel.setFont(currentUser.theme.dialog.font);
         lastNameLabel.setBounds(margin, 2 * margin + h, w, h);
         editPanel.add(lastNameLabel);
 
         JLabel usernameLabel = new JLabel("Username:", 4);
+        usernameLabel.setBackground(currentUser.theme.dialog.background);
+        usernameLabel.setForeground(currentUser.theme.dialog.fontColor);
+        usernameLabel.setFont(currentUser.theme.dialog.font);
         usernameLabel.setBounds(margin, 3 * margin + 2 * h, w, h);
         editPanel.add(usernameLabel);
 
         JLabel addressLabel = new JLabel("Address:", 4);
+        addressLabel.setBackground(currentUser.theme.dialog.background);
+        addressLabel.setForeground(currentUser.theme.dialog.fontColor);
+        addressLabel.setFont(currentUser.theme.dialog.font);
         addressLabel.setBounds(margin, 4 * margin + 3 * h, w, h);
         editPanel.add(addressLabel);
 
         JLabel phoneLabel = new JLabel("Phone Number:", 4);
+        phoneLabel.setBackground(currentUser.theme.dialog.background);
+        phoneLabel.setForeground(currentUser.theme.dialog.fontColor);
+        phoneLabel.setFont(currentUser.theme.dialog.font);
         phoneLabel.setBounds(margin, 5 * margin + 4 * h + 30, w, h);
         editPanel.add(phoneLabel);
 
@@ -240,14 +258,23 @@ public class ManagerCustomers extends JPanel {
             }
 
             JLabel productLabel = new JLabel("Product", 0);
+            productLabel.setBackground(currentUser.theme.dialog.background);
+            productLabel.setForeground(currentUser.theme.dialog.fontColor);
+            productLabel.setFont(currentUser.theme.dialog.font);
             productLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
             dialog.addLabel(productLabel, 0, 0);
 
             JLabel amountLabel = new JLabel("Amount", 0);
+            amountLabel.setBackground(currentUser.theme.dialog.background);
+            amountLabel.setForeground(currentUser.theme.dialog.fontColor);
+            amountLabel.setFont(currentUser.theme.dialog.font);
             amountLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
             dialog.addLabel(amountLabel, 0, 1);
 
             JLabel priceLabel = new JLabel("Price", 0);
+            priceLabel.setBackground(currentUser.theme.dialog.background);
+            priceLabel.setForeground(currentUser.theme.dialog.fontColor);
+            priceLabel.setFont(currentUser.theme.dialog.font);
             priceLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
             dialog.addLabel(priceLabel, 0, 2);
 
@@ -266,14 +293,23 @@ public class ManagerCustomers extends JPanel {
                 }
             }
             JLabel empty = new JLabel("", 0);
+            empty.setBackground(currentUser.theme.dialog.background);
+            empty.setForeground(currentUser.theme.dialog.fontColor);
+            empty.setFont(currentUser.theme.dialog.font);
             empty.setBorder(new MatteBorder(1, 0, 0, 0, Color.gray));
             dialog.addLabel(empty, length - 1, 0);
 
             JLabel tpl = new JLabel("Total price: ", 0);
+            tpl.setBackground(currentUser.theme.dialog.background);
+            tpl.setForeground(currentUser.theme.dialog.fontColor);
+            tpl.setFont(currentUser.theme.dialog.font);
             tpl.setBorder(new MatteBorder(1, 0, 0, 0, Color.gray));
             dialog.addLabel(tpl, length - 1, 1);
 
             JLabel tp = new JLabel(Long.toString(totalPrice), 0);
+            tp.setBackground(currentUser.theme.dialog.background);
+            tp.setForeground(currentUser.theme.dialog.fontColor);
+            tp.setFont(currentUser.theme.dialog.font);
             tp.setBorder(new MatteBorder(1, 0, 0, 0, Color.gray));
             dialog.addLabel(tp, length - 1, 2);
 
