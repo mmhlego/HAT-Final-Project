@@ -45,6 +45,8 @@ public class EmployeeLogin extends JPanel {
         Passtext.setBackground(new Color(238, 238, 238));
         Passtext.setOpaque(true);
 
+        UserNameTF = new CustomTextField(195, 160, 595, 60, new Font("Tahoma", Font.BOLD, 24), new Color(238, 238, 238),
+                Color.black, "");
         UserNameTF.addKeyListener(new KeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {

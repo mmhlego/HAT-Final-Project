@@ -1,7 +1,6 @@
 package Manager;
 
 import java.awt.*;
-import java.io.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -34,17 +33,6 @@ public class ManagerSetting extends JPanel {
 
         setBackground(currentUser.theme.main.background);
         setVisible(true);
-    }
-
-    public void openAndSaveData(Manager m) {
-        try {
-            ObjectOutputStream writer = new ObjectOutputStream(
-                    new FileOutputStream(System.getProperty("user.dir") + "\\data\\Manager.dat"));
-            writer.writeObject(m);
-            writer.close();
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
     }
 }
 
@@ -105,7 +93,7 @@ class ThemePanel extends JPanel {
         apply.setBounds(365, 540, 300, 60);
         apply.addActionListener((e) -> {
             currentUser.theme.setAll(index);
-            root.openAndSaveData(currentUser);
+            new ManagerWriter(currentUser);
             parent.dispose();
             new ManagerFrame(currentUser);
         });
