@@ -83,7 +83,6 @@ public class Captcha extends JPanel {
 		panel4.setVisible(true);
 
 		this.setLayout(null);
-		this.setBackground(currentUser.theme.main.background);
 		this.setBounds(0, 0, 136, 30);
 		this.setBorder(null);
 		this.setVisible(true);
