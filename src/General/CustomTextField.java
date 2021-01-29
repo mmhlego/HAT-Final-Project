@@ -32,10 +32,11 @@ public class CustomTextField extends JTextField {
 
     public CustomTextField(int x, int y, int w, int h, MainTheme m, String text) {
         setBounds(x, y, w, h);
-        setBackground(m.textFieldBackground);
+        setBackground(m.background);
         setFont(m.font);
         setForeground(m.fontColor);
         setBorder(new MatteBorder(0, 0, 1, 0, m.fontColor));
+        setHorizontalAlignment(0);
         setText(text);
         addFocusListener(new FocusListener() {
             @Override
@@ -53,7 +54,7 @@ public class CustomTextField extends JTextField {
 
     public CustomTextField(int x, int y, int w, int h, MainTheme m) {
         setBounds(x, y, w, h);
-        setBackground(m.textFieldBackground);
+        setBackground(m.background);
         setFont(m.font);
         setForeground(m.fontColor);
         setBorder(new MatteBorder(0, 0, 1, 0, m.fontColor));
@@ -110,11 +111,5 @@ public class CustomTextField extends JTextField {
             }
         });
         setVisible(true);
-    }
-
-    public static final int CENTER = 0, LEFT = 2, RIGHT = 4;
-
-    public void setTextDirection(int x) {
-        setAlignmentX(x);
     }
 }

@@ -132,7 +132,7 @@ public class Theme implements Serializable {
         public Color[] textFieldBackgrounds = { Hex("E0E0E0"), Hex("E0E0E0"), Hex("E0E0E0"), Hex("E0E0E0"),
                 Hex("20b2aa"), Hex("a9a9a9"), Hex("58c743"), Hex("ff8C00"), Hex("8b4513"), Hex("c300e3") };
 
-        public Color background, fontColor, buttonColor, textFieldBackground;
+        public Color background, fontColor, buttonColor;
         public Font font = new Font("Dialog", 0, 16);
         public String icon;
         public int mode = 0;
@@ -142,7 +142,7 @@ public class Theme implements Serializable {
             this.fontColor = fontColors[i];
             this.buttonColor = buttonColors[i];
             this.icon = icons[i];
-            this.textFieldBackground = textFieldBackgrounds[i];
+            //this.textFieldBackground = textFieldBackgrounds[i];
             this.mode = i;
         }
     }
