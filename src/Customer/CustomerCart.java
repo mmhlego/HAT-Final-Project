@@ -349,6 +349,8 @@ public class CustomerCart extends JPanel {
     }
 
     public void buyProducts() {
+        new CreateInvoice(currentUser.order, totalDiscount, total);
+
         JOptionPane.showMessageDialog(this, "Purchase Successful", "Success", 1);
 
         currentUser.balance -= total;
