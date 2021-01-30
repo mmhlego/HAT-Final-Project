@@ -320,10 +320,10 @@ public class CustomerCart extends JPanel {
         }
 
         if ((totalDiscount + total) > 0) {
-            calculatedTotalDiscount.setText(Long.toString(totalDiscount) + " (-"
+            calculatedTotalDiscount.setText(Long.toString(totalDiscount) + " ("
                     + Long.toString(totalDiscount * 100 / (totalDiscount + total)) + "%)");
         } else {
-            calculatedTotalDiscount.setText(Long.toString(totalDiscount) + " (-0%)");
+            calculatedTotalDiscount.setText(Long.toString(totalDiscount) + " (0%)");
         }
 
         calculatedTotalPrice.setText(Long.toString(total));

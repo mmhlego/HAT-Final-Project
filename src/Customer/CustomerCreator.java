@@ -50,10 +50,10 @@ public class CustomerCreator {
                     }
                 }
 
-                if (r.nextInt(3) > 0) {
+                if (r.nextInt(3) >= 0) {
                     c[i].order = new Order();
                     c[i].order.status = Order.IN_PROGRESS;
-                    int m = r.nextInt(3) + 1;
+                    int m = r.nextInt(3) + 10;
                     c[i].order.products = new Product[m];
                     c[i].order.count = new int[m];
                     for (int k = 0; k < m; k++) {
