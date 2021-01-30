@@ -159,26 +159,31 @@ public class ManagerEmployees extends JPanel {
         editPanel.add(phoneLabel);
 
         JTextField nameField = new JTextField(allEmployee[index].name, 4);
+        nameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
         nameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         nameField.setBounds(2 * margin + w, margin, w, h);
         editPanel.add(nameField);
 
         JTextField lastNameField = new JTextField(allEmployee[index].lastName, 4);
+        lastNameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
         lastNameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         lastNameField.setBounds(2 * margin + w, 2 * margin + h, w, h);
         editPanel.add(lastNameField);
 
         JTextField usernameField = new JTextField(allEmployee[index].username, 4);
+        usernameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
         usernameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         usernameField.setBounds(2 * margin + w, 3 * margin + 2 * h, w, h);
         editPanel.add(usernameField);
 
         JTextField IDField = new JTextField(allEmployee[index].ID, 4);
+        IDField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
         IDField.setBackground(currentUser.theme.dialog.textFieldBackground);
         IDField.setBounds(2 * margin + w, 4 * margin + 3 * h, w, h);
         editPanel.add(IDField);
 
         JTextField phoneField = new JTextField(allEmployee[index].phoneNumber, 4);
+        phoneField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
         phoneField.setBackground(currentUser.theme.dialog.textFieldBackground);
         phoneField.setBounds(2 * margin + w, 5 * margin + 4 * h, w, h);
         editPanel.add(phoneField);
@@ -284,31 +289,37 @@ public class ManagerEmployees extends JPanel {
         editPanel.add(phoneLabel);
 
         JTextField nameField = new JTextField("", 4);
+        nameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
         nameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         nameField.setBounds(2 * margin + w, margin, w, h);
         editPanel.add(nameField);
 
         JTextField lastNameField = new JTextField("", 4);
+        lastNameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
         lastNameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         lastNameField.setBounds(2 * margin + w, 2 * margin + h, w, h);
         editPanel.add(lastNameField);
 
         JTextField usernameField = new JTextField("", 4);
+        usernameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
         usernameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         usernameField.setBounds(2 * margin + w, 3 * margin + 2 * h, w, h);
         editPanel.add(usernameField);
 
         JTextField passwordField = new JTextField("", 4);
+        passwordField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
         passwordField.setBackground(currentUser.theme.dialog.textFieldBackground);
         passwordField.setBounds(2 * margin + w, 4 * margin + 3 * h, w, h);
         editPanel.add(passwordField);
 
         JTextField IDField = new JTextField("", 4);
+        IDField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
         IDField.setBackground(currentUser.theme.dialog.textFieldBackground);
         IDField.setBounds(2 * margin + w, 5 * margin + 4 * h, w, h);
         editPanel.add(IDField);
 
         JTextField phoneField = new JTextField("", 4);
+        phoneField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
         phoneField.setBackground(currentUser.theme.dialog.textFieldBackground);
         phoneField.setBounds(2 * margin + w, 6 * margin + 5 * h, w, h);
         editPanel.add(phoneField);
