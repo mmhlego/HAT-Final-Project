@@ -14,10 +14,10 @@ public class ManagerCustomers extends JPanel {
     JPanel Info;
     int Count;
     Customer[] allCustomers;
-    User currentUser;
+    Manager currentUser;
     ManagerFrame parent;
 
-    public ManagerCustomers(User u, ManagerFrame p) {
+    public ManagerCustomers(Manager u, ManagerFrame p) {
         parent = p;
         currentUser = u;
         Info = new JPanel();
@@ -250,7 +250,7 @@ public class ManagerCustomers extends JPanel {
         try {
             int length = o.products.length + 2;
             long totalPrice = 0;
-            CustomScrollDialog dialog = new CustomScrollDialog(length,currentUser);
+            CustomScrollDialog dialog = new CustomScrollDialog(length, currentUser);
 
             if (length == 2) {
                 dialog.addLabel(new JLabel("Cart is empty.", 0), 0, 1);
@@ -314,14 +314,14 @@ public class ManagerCustomers extends JPanel {
             dialog.addLabel(tp, length - 1, 2);
 
         } catch (NullPointerException n) {
-            CustomScrollDialog dialog = new CustomScrollDialog(1,currentUser);
+            CustomScrollDialog dialog = new CustomScrollDialog(1, currentUser);
             dialog.addLabel(new JLabel("Cart is empty.", 0), 0, 1);
         }
     }
 
     public void ShowHistory(JButton b) {
         int index = (b.getY() - 5) / 40;
-        CustomScrollDialog dialog = new CustomScrollDialog(allCustomers[index].pastOrders.length,currentUser);
+        CustomScrollDialog dialog = new CustomScrollDialog(allCustomers[index].pastOrders.length, currentUser);
 
         for (int i = 0; i < allCustomers[index].pastOrders.length; i++) {
             JButton jb = new JButton("Order #" + (i + 1) + " - " + allCustomers[index].pastOrders[i].status);
