@@ -167,11 +167,11 @@ public class EmployeeFrame extends JFrame {
         dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
 
-        JButton Exit = new JButton("   Exit   ");
+        JButton Exit = new JButton("   Exit    ");
         Exit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Exit.png"));
         Exit.setBackground(new Color(215, 38, 61));
         Exit.setFont(new Font("Arial", Font.BOLD, 15));
-        JButton LogOut = new JButton("Log out");
+        JButton LogOut = new JButton(" Log out");
         LogOut.setBackground(new Color(255, 177, 61));
         LogOut.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\LogOut.png"));
         LogOut.setFont(new Font("Arial", Font.BOLD, 15));

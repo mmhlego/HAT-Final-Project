@@ -1,7 +1,6 @@
 package Login;
 
 import java.awt.*;
-import java.awt.Font;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -23,29 +22,59 @@ public class SelectPage extends JPanel {
 	}
 
 	public void design() {
+		JLabel back = new JLabel(new ImageIcon(System.getProperty("user.dir") + "\\Images\\login back.jpg"));
+		back.setBounds(0, 0, 900, 700);
 		setLayout(null);
 		Manager = new JButton("Login As Manager");
 		Manager.setBounds(50, 50, 800, 166);
+
+		Manager.setBorder(null);
+		Manager.setForeground(Color.WHITE);
+		Manager.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\login button.png"));
+		Manager.setHorizontalTextPosition(SwingConstants.CENTER);
+		Manager.setVerticalTextPosition(SwingConstants.CENTER);
+		Manager.setBackground(new Color(238, 238, 238));
 		Manager.setFont(new Font("Tahoma", Font.BOLD, 25));
+		Manager.setOpaque(false);
+		Manager.setContentAreaFilled(false);
+		Manager.setBorderPainted(false);
 
 		Employee = new JButton("Login As Employee");
 		Employee.setBounds(50, 266, 800, 166);
+		Employee.setBorder(null);
+		Employee.setForeground(Color.WHITE);
+		Employee.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\login button.png"));
+		Employee.setHorizontalTextPosition(SwingConstants.CENTER);
+		Employee.setVerticalTextPosition(SwingConstants.CENTER);
+		Employee.setBackground(new Color(238, 238, 238));
 		Employee.setFont(new Font("Tahoma", Font.BOLD, 25));
+		Employee.setOpaque(false);
+		Employee.setContentAreaFilled(false);
+		Employee.setBorderPainted(false);
 
 		Costumer = new JButton("Login As Costumer");
 		Costumer.setBounds(50, 482, 800, 166);
 		Costumer.setFont(new Font("Tahoma", Font.BOLD, 25));
+		Costumer.setBorder(null);
+		Costumer.setForeground(Color.WHITE);
+		Costumer.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\login button.png"));
+		Costumer.setHorizontalTextPosition(SwingConstants.CENTER);
+		Costumer.setVerticalTextPosition(SwingConstants.CENTER);
+		Costumer.setBackground(new Color(238, 238, 238));
+		Costumer.setOpaque(false);
+		Costumer.setContentAreaFilled(false);
+		Costumer.setBorderPainted(false);
 
 		Manager.addActionListener((e) -> parent.addPanel(new ManagerLogin(parent)));
 		Manager.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent arg0) {
 				Manager.setFont(new Font("Tahoma", Font.BOLD, 27));
-				Manager.setForeground(Color.BLACK);
+				Manager.setForeground(Color.WHITE);
 			}
 
 			public void mouseExited(MouseEvent arg0) {
 				Manager.setFont(new Font("Tahoma", Font.BOLD, 25));
-				Manager.setForeground(Color.BLACK);
+				Manager.setForeground(Color.WHITE);
 			}
 		});
 
@@ -53,12 +82,12 @@ public class SelectPage extends JPanel {
 		Employee.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent arg0) {
 				Employee.setFont(new Font("Tahoma", Font.BOLD, 27));
-				Employee.setForeground(Color.BLACK);
+				Employee.setForeground(Color.WHITE);
 			}
 
 			public void mouseExited(MouseEvent arg0) {
 				Employee.setFont(new Font("Tahoma", Font.BOLD, 25));
-				Employee.setForeground(Color.BLACK);
+				Employee.setForeground(Color.WHITE);
 			}
 		});
 
@@ -66,18 +95,19 @@ public class SelectPage extends JPanel {
 		Costumer.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent arg0) {
 				Costumer.setFont(new Font("Tahoma", Font.BOLD, 27));
-				Costumer.setForeground(Color.BLACK);
+				Costumer.setForeground(Color.WHITE);
 			}
 
 			public void mouseExited(MouseEvent arg0) {
 				Costumer.setFont(new Font("Tahoma", Font.BOLD, 25));
-				Costumer.setForeground(Color.BLACK);
+				Costumer.setForeground(Color.WHITE);
 			}
 		});
 
 		add(Manager);
 		add(Employee);
 		add(Costumer);
+		add(back);
 	}
 
 	public void RightClick() {
