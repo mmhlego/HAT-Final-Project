@@ -23,7 +23,7 @@ public class CustomerSetting extends JPanel {
         tabs.setForeground(currentUser.theme.main.fontColor);
         tabs.setBackground(currentUser.theme.main.background);
         tabs.setVisible(true);
-        tabs.add("                              Informations                              ", changePanel);
+        tabs.add("                             Informations                              ", changePanel);
         tabs.add("                                     Theme                                      ", themePanel);
 
         setLayout(null);
