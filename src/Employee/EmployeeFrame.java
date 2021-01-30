@@ -166,15 +166,18 @@ public class EmployeeFrame extends JFrame {
          dialog.setSize(250, 150);
          dialog.setLocationRelativeTo(null);
          dialog.setResizable(false);
+         dialog.setLayout(new GridLayout(1,0));
 
-         JButton Exit = new JButton("   Exit    ");
+         JButton Exit = new JButton("Exit");
          Exit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Exit.png"));
          Exit.setBackground(new Color(215, 38, 61));
-         Exit.setFont(new Font("Arial", Font.BOLD, 15));
-         JButton LogOut = new JButton(" Log out");
+         Exit.setFont(new Font("Arial", Font.BOLD, 13));
+         Exit.setFocusable(false);
+         JButton LogOut = new JButton("Log out");
          LogOut.setBackground(new Color(255, 177, 61));
          LogOut.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\LogOut.png"));
-         LogOut.setFont(new Font("Arial", Font.BOLD, 15));
+         LogOut.setFont(new Font("Arial", Font.BOLD, 13));
+         LogOut.setFocusable(false);
          Exit.addActionListener((e) -> {
              dialog.dispose();
              System.exit(0);
@@ -185,8 +188,9 @@ public class EmployeeFrame extends JFrame {
              new MainFrame();
          });
 
-         dialog.add(LogOut,BorderLayout.EAST);
-         dialog.add(Exit,BorderLayout.WEST);
+         
+         dialog.add(Exit);
+         dialog.add(LogOut);
         dialog.setVisible(true);
     }
 
