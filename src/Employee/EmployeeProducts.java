@@ -184,7 +184,7 @@ public class EmployeeProducts extends JPanel {
         editPanel.add(pricaLabel);
 
         JTextField nameField = new JTextField(allProducts[index].name);
-        nameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        nameField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         nameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         nameField.setBounds(2 * margin + w, margin, w, h);
         editPanel.add(nameField);
@@ -192,18 +192,18 @@ public class EmployeeProducts extends JPanel {
         JTextArea descriptionField = new JTextArea(allProducts[index].description);
         descriptionField.setBackground(currentUser.theme.dialog.textFieldBackground);
         descriptionField.setLineWrap(true);
-        descriptionField.setBorder(new LineBorder(Color.GRAY, 1));
+        descriptionField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         descriptionField.setBounds(2 * margin + w, 2 * margin + h, w, 3 * h);
         editPanel.add(descriptionField);
 
         JTextField amountField = new JTextField(Long.toString(allProducts[index].amount));
-        amountField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        amountField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         amountField.setBackground(currentUser.theme.dialog.textFieldBackground);
         amountField.setBounds(2 * margin + w, 3 * margin + 4 * h, w, h);
         editPanel.add(amountField);
 
         JTextField priceField = new JTextField(Long.toString(allProducts[index].price));
-        priceField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        priceField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         priceField.setBackground(currentUser.theme.dialog.textFieldBackground);
         priceField.setBounds(2 * margin + w, 4 * margin + 5 * h, w, h);
         editPanel.add(priceField);
@@ -295,7 +295,7 @@ public class EmployeeProducts extends JPanel {
         editPanel.add(pricaLabel);
 
         JTextField nameField = new JTextField("");
-        nameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        nameField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         nameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         nameField.setBounds(2 * margin + w, margin, w, h);
         editPanel.add(nameField);
@@ -303,18 +303,18 @@ public class EmployeeProducts extends JPanel {
         JTextArea descriptionField = new JTextArea("");
         descriptionField.setBackground(currentUser.theme.dialog.textFieldBackground);
         descriptionField.setLineWrap(true);
-        descriptionField.setBorder(new LineBorder(Color.GRAY, 1));
+        descriptionField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         descriptionField.setBounds(2 * margin + w, 2 * margin + h, w, 3 * h);
         editPanel.add(descriptionField);
 
         JTextField amoutField = new JTextField("");
-        amoutField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        amoutField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         amoutField.setBackground(currentUser.theme.dialog.textFieldBackground);
         amoutField.setBounds(2 * margin + w, 3 * margin + 4 * h, w, h);
         editPanel.add(amoutField);
 
         JTextField priceField = new JTextField("");
-        priceField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        priceField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         priceField.setBackground(currentUser.theme.dialog.textFieldBackground);
         priceField.setBounds(2 * margin + w, 4 * margin + 5 * h, w, h);
         editPanel.add(priceField);

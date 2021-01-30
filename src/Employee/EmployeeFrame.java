@@ -23,6 +23,7 @@ public class EmployeeFrame extends JFrame {
     }
 
     public void design() {
+        System.out.println(currentUser.theme.dialog.background);
         setLayout(null);
         //===================================================================================
         sidepanel = new JPanel();

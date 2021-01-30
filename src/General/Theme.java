@@ -15,7 +15,7 @@ public class Theme implements Serializable {
     public Color submitColor = new Color(111, 207, 151), cancelColor = Hex("fa4e00");
 
     public Theme() {
-        setTheme("modern");
+        setTheme("default");
     }
 
     public void setTheme(int a, int b, int c) {
