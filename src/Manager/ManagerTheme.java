@@ -21,7 +21,7 @@ public class ManagerTheme extends JDialog {
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(100, 20, 300, 300);
         layeredPane.setLayout(null);
-        this.setBounds(100, 100, 500, 500);
+        setSize(518, 500);
 
         JPanel sidePanel = new JPanel();
         sidePanel.setToolTipText("Side Panel Prewiew");
