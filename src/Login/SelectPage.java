@@ -33,7 +33,7 @@ public class SelectPage extends JPanel {
 		Manager.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\login button.png"));
 		Manager.setHorizontalTextPosition(SwingConstants.CENTER);
 		Manager.setVerticalTextPosition(SwingConstants.CENTER);
-		Manager.setBackground(new Color(238, 238, 238));
+		Manager.setBackground(new Color(238, 238, 237));
 		Manager.setFont(new Font("Tahoma", Font.BOLD, 25));
 		Manager.setOpaque(false);
 		Manager.setContentAreaFilled(false);
