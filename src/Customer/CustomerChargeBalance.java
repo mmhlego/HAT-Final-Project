@@ -258,7 +258,7 @@ public class CustomerChargeBalance extends JDialog {
                 createOTP();
                 KavenegarApi api = new KavenegarApi(
                         "31666C573963674A714E706E31655A786D4E4B66417776304F61787A3771334B563536515842485356446B3D");
-                api.send("1000596446", currentUser.phoneNumber, SMSAnswer);
+                api.send("1000596446", currentUser.phoneNumber, "Your CVV:\n" + SMSAnswer);
                 JOptionPane.showMessageDialog(null, "CVV Sent !", "Success", JOptionPane.INFORMATION_MESSAGE);
             } catch (HttpException ex) {
                 System.out.print("HttpException  : " + ex.getMessage());
