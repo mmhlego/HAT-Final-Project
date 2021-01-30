@@ -117,26 +117,44 @@ public class ManagerEmployees extends JPanel {
         JDialog dialog = new JDialog(parent, "Edit Information");
 
         JPanel editPanel = new JPanel();
+        editPanel.setBackground(currentUser.theme.dialog.background);
+        editPanel.setForeground(currentUser.theme.dialog.fontColor);
+        editPanel.setFont(currentUser.theme.dialog.font);
         editPanel.setLayout(null);
         editPanel.setSize(3 * margin + 2 * w, 7 * margin + 6 * h);
 
         JLabel nameLabel = new JLabel("Name:", 4);
+        nameLabel.setBackground(currentUser.theme.dialog.background);
+        nameLabel.setForeground(currentUser.theme.dialog.fontColor);
+        nameLabel.setFont(currentUser.theme.dialog.font);
         nameLabel.setBounds(margin, margin, w, h);
         editPanel.add(nameLabel);
 
         JLabel lastNameLabel = new JLabel("Last Name:", 4);
+        lastNameLabel.setBackground(currentUser.theme.dialog.background);
+        lastNameLabel.setForeground(currentUser.theme.dialog.fontColor);
+        lastNameLabel.setFont(currentUser.theme.dialog.font);
         lastNameLabel.setBounds(margin, 2 * margin + h, w, h);
         editPanel.add(lastNameLabel);
 
         JLabel usernameLabel = new JLabel("Username:", 4);
+        usernameLabel.setBackground(currentUser.theme.dialog.background);
+        usernameLabel.setForeground(currentUser.theme.dialog.fontColor);
+        usernameLabel.setFont(currentUser.theme.dialog.font);
         usernameLabel.setBounds(margin, 3 * margin + 2 * h, w, h);
         editPanel.add(usernameLabel);
 
         JLabel IDlLabel = new JLabel("ID:", 4);
+        IDlLabel.setBackground(currentUser.theme.dialog.background);
+        IDlLabel.setForeground(currentUser.theme.dialog.fontColor);
+        IDlLabel.setFont(currentUser.theme.dialog.font);
         IDlLabel.setBounds(margin, 4 * margin + 3 * h, w, h);
         editPanel.add(IDlLabel);
 
         JLabel phoneLabel = new JLabel("Phone Number:", 4);
+        phoneLabel.setBackground(currentUser.theme.dialog.background);
+        phoneLabel.setForeground(currentUser.theme.dialog.fontColor);
+        phoneLabel.setFont(currentUser.theme.dialog.font);
         phoneLabel.setBounds(margin, 5 * margin + 4 * h, w, h);
         editPanel.add(phoneLabel);
 
@@ -210,30 +228,51 @@ public class ManagerEmployees extends JPanel {
         JDialog dialog = new JDialog(parent, "Edit Information");
 
         JPanel editPanel = new JPanel();
+        editPanel.setBackground(currentUser.theme.dialog.background);
+        editPanel.setForeground(currentUser.theme.dialog.fontColor);
+        editPanel.setFont(currentUser.theme.dialog.font);
         editPanel.setLayout(null);
         editPanel.setSize(3 * margin + 2 * w, 8 * margin + 7 * h);
 
         JLabel nameLabel = new JLabel("Name:", 4);
+        nameLabel.setBackground(currentUser.theme.dialog.background);
+        nameLabel.setForeground(currentUser.theme.dialog.fontColor);
+        nameLabel.setFont(currentUser.theme.dialog.font);
         nameLabel.setBounds(margin, margin, w, h);
         editPanel.add(nameLabel);
 
         JLabel lastNameLabel = new JLabel("Last Name:", 4);
+        lastNameLabel.setBackground(currentUser.theme.dialog.background);
+        lastNameLabel.setForeground(currentUser.theme.dialog.fontColor);
+        lastNameLabel.setFont(currentUser.theme.dialog.font);
         lastNameLabel.setBounds(margin, 2 * margin + h, w, h);
         editPanel.add(lastNameLabel);
 
         JLabel usernameLabel = new JLabel("Username:", 4);
+        usernameLabel.setBackground(currentUser.theme.dialog.background);
+        usernameLabel.setForeground(currentUser.theme.dialog.fontColor);
+        usernameLabel.setFont(currentUser.theme.dialog.font);
         usernameLabel.setBounds(margin, 3 * margin + 2 * h, w, h);
         editPanel.add(usernameLabel);
 
         JLabel passwordLabel = new JLabel("Password:", 4);
+        passwordLabel.setBackground(currentUser.theme.dialog.background);
+        passwordLabel.setForeground(currentUser.theme.dialog.fontColor);
+        passwordLabel.setFont(currentUser.theme.dialog.font);
         passwordLabel.setBounds(margin, 4 * margin + 3 * h, w, h);
         editPanel.add(passwordLabel);
 
         JLabel IDlLabel = new JLabel("ID:", 4);
+        IDlLabel.setBackground(currentUser.theme.dialog.background);
+        IDlLabel.setForeground(currentUser.theme.dialog.fontColor);
+        IDlLabel.setFont(currentUser.theme.dialog.font);
         IDlLabel.setBounds(margin, 5 * margin + 4 * h, w, h);
         editPanel.add(IDlLabel);
 
         JLabel phoneLabel = new JLabel("Phone Number:", 4);
+        phoneLabel.setBackground(currentUser.theme.dialog.background);
+        phoneLabel.setForeground(currentUser.theme.dialog.fontColor);
+        phoneLabel.setFont(currentUser.theme.dialog.font);
         phoneLabel.setBounds(margin, 6 * margin + 5 * h, w, h);
         editPanel.add(phoneLabel);
 

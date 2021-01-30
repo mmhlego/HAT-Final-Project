@@ -1,7 +1,8 @@
+import java.io.*;
 import Customer.*;
-import Employee.EmployeeCreator;
-import General.ProductCreator;
-import Manager.ManagerCreator;
+import Employee.*;
+import General.*;
+import Manager.*;
 import Login.*;
 
 public class Main {
@@ -10,8 +11,21 @@ public class Main {
 		new EmployeeCreator();
 		new ProductCreator();
 		new CustomerCreator();
-		new MainFrame();
-		//new CustomerFrame(
-		//		new Customer("firstName", "lastNameField", "user", "passwordLabel", "phone", "ad", 999999999));
+		//new MainFrame();
+		invoice();
+	}
+
+	public static void invoice() {
+		try {
+			ObjectInputStream re = new ObjectInputStream(
+					new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
+			Customer[] all = (Customer[]) re.readObject();
+			re.close();
+
+			new InvoiceCreator(all[0].order, 973465, 2931756);
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
 	}
 }

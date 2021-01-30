@@ -149,22 +149,37 @@ public class EmployeeProducts extends JPanel {
         JDialog dialog = new JDialog(parent, "Edit Information");
 
         JPanel editPanel = new JPanel();
+        editPanel.setBackground(currentUser.theme.dialog.background);
+        editPanel.setForeground(currentUser.theme.dialog.fontColor);
+        editPanel.setFont(currentUser.theme.dialog.font);
         editPanel.setLayout(null);
         editPanel.setSize(3 * margin + 2 * w, 8 * margin + 7 * h);
 
         JLabel nameLabel = new JLabel("Name:", 4);
+        nameLabel.setBackground(currentUser.theme.dialog.background);
+        nameLabel.setForeground(currentUser.theme.dialog.fontColor);
+        nameLabel.setFont(currentUser.theme.dialog.font);
         nameLabel.setBounds(margin, margin, w, h);
         editPanel.add(nameLabel);
 
         JLabel descriptionLabel = new JLabel("Description:", 4);
+        descriptionLabel.setBackground(currentUser.theme.dialog.background);
+        descriptionLabel.setForeground(currentUser.theme.dialog.fontColor);
+        descriptionLabel.setFont(currentUser.theme.dialog.font);
         descriptionLabel.setBounds(margin, 2 * margin + h, w, h);
         editPanel.add(descriptionLabel);
 
         JLabel amountLabel = new JLabel("Amount:", 4);
+        amountLabel.setBackground(currentUser.theme.dialog.background);
+        amountLabel.setForeground(currentUser.theme.dialog.fontColor);
+        amountLabel.setFont(currentUser.theme.dialog.font);
         amountLabel.setBounds(margin, 3 * margin + 4 * h, w, h);
         editPanel.add(amountLabel);
 
         JLabel pricaLabel = new JLabel("Price:", 4);
+        pricaLabel.setBackground(currentUser.theme.dialog.background);
+        pricaLabel.setForeground(currentUser.theme.dialog.fontColor);
+        pricaLabel.setFont(currentUser.theme.dialog.font);
         pricaLabel.setBounds(margin, 4 * margin + 5 * h, w, h);
         editPanel.add(pricaLabel);
 
@@ -243,18 +258,30 @@ public class EmployeeProducts extends JPanel {
         editPanel.setSize(3 * margin + 2 * w, 8 * margin + 7 * h);
 
         JLabel nameLabel = new JLabel("Name:", 4);
+        nameLabel.setBackground(currentUser.theme.dialog.background);
+        nameLabel.setForeground(currentUser.theme.dialog.fontColor);
+        nameLabel.setFont(currentUser.theme.dialog.font);
         nameLabel.setBounds(margin, margin, w, h);
         editPanel.add(nameLabel);
 
         JLabel descriptionLabel = new JLabel("Description:", 4);
+        descriptionLabel.setBackground(currentUser.theme.dialog.background);
+        descriptionLabel.setForeground(currentUser.theme.dialog.fontColor);
+        descriptionLabel.setFont(currentUser.theme.dialog.font);
         descriptionLabel.setBounds(margin, 2 * margin + h, w, h);
         editPanel.add(descriptionLabel);
 
         JLabel amountLabel = new JLabel("Amount:", 4);
+        amountLabel.setBackground(currentUser.theme.dialog.background);
+        amountLabel.setForeground(currentUser.theme.dialog.fontColor);
+        amountLabel.setFont(currentUser.theme.dialog.font);
         amountLabel.setBounds(margin, 3 * margin + 4 * h, w, h);
         editPanel.add(amountLabel);
 
         JLabel pricaLabel = new JLabel("Price:", 4);
+        pricaLabel.setBackground(currentUser.theme.dialog.background);
+        pricaLabel.setForeground(currentUser.theme.dialog.fontColor);
+        pricaLabel.setFont(currentUser.theme.dialog.font);
         pricaLabel.setBounds(margin, 4 * margin + 5 * h, w, h);
         editPanel.add(pricaLabel);
 

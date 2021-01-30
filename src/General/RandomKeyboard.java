@@ -8,7 +8,7 @@ import java.awt.event.*;
 public class RandomKeyboard extends JPanel {
     private static final long serialVersionUID = -8368940200296613630L;
 
-    int w = 80, h = 60;
+    int w = 90, h = 40;
     int x, y;
     ArrayList<Integer> nums = new ArrayList<>();
     Robot robot;
@@ -25,7 +25,6 @@ public class RandomKeyboard extends JPanel {
         } catch (Exception er) {
             System.out.println(er.toString());
         }
-
         fillNums();
         design();
     }
@@ -54,6 +53,12 @@ public class RandomKeyboard extends JPanel {
             JButton b = new JButton(Integer.toString(nums.get(i)));
             b.setBounds((i % 3) * w, (i / 3) * h, w, h);
             b.addActionListener((e) -> {
+                b.setFocusPainted(false);
+                b.setFocusable(false);
+                b.setFocusTraversalKeysEnabled(false);
+                b.setFocusTraversalPolicyProvider(false);
+                b.setSelected(false);
+
                 robot.keyPress(48 + (Integer.parseInt(b.getText())));
                 robot.keyRelease(48 + (Integer.parseInt(b.getText())));
             });
@@ -62,6 +67,12 @@ public class RandomKeyboard extends JPanel {
         JButton b = new JButton(Integer.toString(nums.get(9)));
         b.setBounds(w, 3 * h, w, h);
         b.addActionListener((e) -> {
+            b.setFocusPainted(false);
+            b.setFocusable(false);
+            b.setFocusTraversalKeysEnabled(false);
+            b.setFocusTraversalPolicyProvider(false);
+            b.setSelected(false);
+
             robot.keyPress(48 + (Integer.parseInt(b.getText())));
             robot.keyRelease(48 + (Integer.parseInt(b.getText())));
         });
@@ -70,6 +81,12 @@ public class RandomKeyboard extends JPanel {
         JButton next = new JButton("Next");
         next.setBounds(0, 3 * h, w, h);
         next.addActionListener((e) -> {
+            next.setFocusPainted(false);
+            next.setFocusable(false);
+            next.setFocusTraversalKeysEnabled(false);
+            next.setFocusTraversalPolicyProvider(false);
+            next.setSelected(false);
+
             robot.keyPress(KeyEvent.VK_TAB);
             robot.keyRelease(KeyEvent.VK_TAB);
         });
@@ -78,6 +95,12 @@ public class RandomKeyboard extends JPanel {
         JButton backspace = new JButton("Backspace");
         backspace.setBounds(2 * w, 3 * h, w, h);
         backspace.addActionListener((e) -> {
+            backspace.setFocusPainted(false);
+            backspace.setFocusable(false);
+            backspace.setFocusTraversalKeysEnabled(false);
+            backspace.setFocusTraversalPolicyProvider(false);
+            backspace.setSelected(false);
+
             robot.keyPress(KeyEvent.VK_BACK_SPACE);
             robot.keyRelease(KeyEvent.VK_BACK_SPACE);
         });

@@ -3,9 +3,10 @@ package Customer;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import General.RandomKeyboard;
+
 import java.awt.*;
 import java.awt.event.*;
-
 import Login.*;
 
 public class CustomerChargeBalance extends JDialog {
@@ -81,6 +82,13 @@ public class CustomerChargeBalance extends JDialog {
         SecureKeyBoard.setBorder(null);
         SecureKeyBoard.setBackground(new Color(87, 184, 255));
         SecureKeyBoard.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Keyboard.png"));
+        SecureKeyBoard.addActionListener((e) -> {
+            if (getHeight() == 420) {
+                setSize(400, 600);
+            } else {
+                setSize(400, 420);
+            }
+        });
 
         JLabel CardNumber = new JLabel("Card Number");
         CardNumber.setBounds(20, 80, 90, 30);
@@ -105,7 +113,6 @@ public class CustomerChargeBalance extends JDialog {
         SecuredBy.setBounds(90, 390, 220, 30);
         SecuredBy.setForeground(new Color(85, 40, 111));
         CustomChargeAmount.addKeyListener(new KeyListener() {
-
             @Override
             public void keyTyped(KeyEvent e) {
 
@@ -209,10 +216,25 @@ public class CustomerChargeBalance extends JDialog {
                 JOptionPane.showMessageDialog(null, "Captch Field is empty !", "Warning", 2);
             } else if (new String(CVVTF.getPassword()).length() == 0) {
                 JOptionPane.showMessageDialog(null, "CVV Field is empty !", "Warning", 2);
+            } else if (!ValidateTF.getText().equals(captchaAnswer)) {
+                JOptionPane.showMessageDialog(null, "Captcha is wrong !", "Warning", 2);
+            } else if (CustomChargeAmount.getText().length() == 0) {
+                JOptionPane.showMessageDialog(null, "\'Charge amount\' field is empty !", "Warning", 2);
             } else {
+                try {
+                    long amount = Long.parseLong(CustomChargeAmount.getText());
 
+                    TimeToCancel.stop();
+                    currentUser.balance += amount;
+                    new CustomerWriter(currentUser);
+                    parent.dispose();
+                    dispose();
+                    new CustomerFrame(currentUser);
+
+                } catch (Exception er) {
+                    JOptionPane.showMessageDialog(null, "Wrong format in \'charge amount\' field !", "Warning", 2);
+                }
             }
-            TimeToCancel.stop();
         });
         Cancel.addActionListener((e) -> {
             dispose();
@@ -222,6 +244,9 @@ public class CustomerChargeBalance extends JDialog {
 
         });
 
+        JPanel keyboard = new RandomKeyboard(65, 420);
+
+        add(keyboard);
         add(SecuredBy);
         add(SecureKeyBoard);
         add(SecureIcon);
@@ -262,7 +287,6 @@ public class CustomerChargeBalance extends JDialog {
 
         captchaPanel = new Captcha(currentUser);
         captchaAnswer = captchaPanel.getName();
-        System.out.println(captchaAnswer);
         captchaPanel.setBounds(220, 180, 136, 30);
         add(captchaPanel);
         captchaPanel.revalidate();
