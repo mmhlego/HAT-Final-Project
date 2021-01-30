@@ -13,9 +13,7 @@ public class CustomScrollDialog extends JDialog {
     Theme theme;
 
     public CustomScrollDialog(int Count, Theme t) {
-        System.out.println(t.dialog.background);
         theme = t;
-        System.out.println(theme.dialog.background);
 
         setLayout(null);
         setSize(460, 400);
