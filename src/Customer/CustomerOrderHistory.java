@@ -60,7 +60,7 @@ public class CustomerOrderHistory extends JPanel {
         try {
             int length = o.products.length + 2;
             long totalPrice = 0;
-            CustomScrollDialog dialog = new CustomScrollDialog(length,currentUser);
+            CustomScrollDialog dialog = new CustomScrollDialog(length, currentUser.theme);
 
             JLabel productLabel = new JLabel("Product", 0);
             productLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
@@ -118,7 +118,7 @@ public class CustomerOrderHistory extends JPanel {
             dialog.addLabel(tp, length - 1, 2);
 
         } catch (NullPointerException n) {
-            CustomScrollDialog dialog = new CustomScrollDialog(1,currentUser);
+            CustomScrollDialog dialog = new CustomScrollDialog(1, currentUser.theme);
             dialog.addLabel(new JLabel("Cart is empty.", 0), 0, 1);
         }
     }
