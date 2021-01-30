@@ -64,14 +64,22 @@ public class CustomerOrderHistory extends JPanel {
 
             JLabel productLabel = new JLabel("Product", 0);
             productLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
+            productLabel.setBackground(currentUser.theme.dialog.background);
+            productLabel.setFont(currentUser.theme.dialog.font);
             dialog.addLabel(productLabel, 0, 0);
 
             JLabel amountLabel = new JLabel("Amount", 0);
             amountLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
+            amountLabel.setBackground(currentUser.theme.dialog.background);
+            amountLabel.setForeground(currentUser.theme.dialog.fontColor);
+            amountLabel.setFont(currentUser.theme.dialog.font);
             dialog.addLabel(amountLabel, 0, 1);
 
             JLabel priceLabel = new JLabel("Price", 0);
             priceLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
+            priceLabel.setBackground(currentUser.theme.dialog.background);
+            priceLabel.setForeground(currentUser.theme.dialog.fontColor);
+            priceLabel.setFont(currentUser.theme.dialog.font);
             dialog.addLabel(priceLabel, 0, 2);
 
             for (int i = 0; i < length - 2; i++) {
@@ -90,14 +98,23 @@ public class CustomerOrderHistory extends JPanel {
             }
             JLabel empty = new JLabel("", 0);
             empty.setBorder(new MatteBorder(1, 0, 0, 0, Color.gray));
+            empty.setBackground(currentUser.theme.dialog.background);
+            empty.setForeground(currentUser.theme.dialog.fontColor);
+            empty.setFont(currentUser.theme.dialog.font);
             dialog.addLabel(empty, length - 1, 0);
 
             JLabel tpl = new JLabel("Total price: ", 0);
             tpl.setBorder(new MatteBorder(1, 0, 0, 0, Color.gray));
+            tpl.setBackground(currentUser.theme.dialog.background);
+            tpl.setForeground(currentUser.theme.dialog.fontColor);
+            tpl.setFont(currentUser.theme.dialog.font);
             dialog.addLabel(tpl, length - 1, 1);
 
             JLabel tp = new JLabel(Long.toString(totalPrice), 0);
             tp.setBorder(new MatteBorder(1, 0, 0, 0, Color.gray));
+            tp.setBackground(currentUser.theme.dialog.background);
+            tp.setForeground(currentUser.theme.dialog.fontColor);
+            tp.setFont(currentUser.theme.dialog.font);
             dialog.addLabel(tp, length - 1, 2);
 
         } catch (NullPointerException n) {

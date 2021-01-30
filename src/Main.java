@@ -1,10 +1,8 @@
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-
+import java.io.*;
 import Customer.*;
-import Employee.EmployeeCreator;
-import General.ProductCreator;
-import Manager.ManagerCreator;
+import Employee.*;
+import General.*;
+import Manager.*;
 import Login.*;
 
 public class Main {
