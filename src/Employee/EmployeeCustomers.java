@@ -2,7 +2,7 @@ package Employee;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.MatteBorder;
+import javax.swing.border.*;
 
 import General.*;
 import java.io.*;
@@ -22,6 +22,7 @@ public class EmployeeCustomers extends JPanel {
         currentUser = u;
         Info = new JPanel();
         Info.setLayout(null);
+        Info.setBackground(currentUser.theme.main.background);
         Info.setPreferredSize(new Dimension(660, Count * 40));
 
         setLayout(null);
@@ -169,29 +170,35 @@ public class EmployeeCustomers extends JPanel {
         editPanel.add(phoneLabel);
 
         JTextField nameField = new JTextField(allCustomers[index].name, 4);
+        nameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         nameField.setBounds(2 * margin + w, margin, w, h);
         editPanel.add(nameField);
 
         JTextField lastNameField = new JTextField(allCustomers[index].lastName, 4);
+        lastNameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         lastNameField.setBounds(2 * margin + w, 2 * margin + h, w, h);
         editPanel.add(lastNameField);
 
         JTextField usernameField = new JTextField(allCustomers[index].username, 4);
+        usernameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         usernameField.setBounds(2 * margin + w, 3 * margin + 2 * h, w, h);
         editPanel.add(usernameField);
 
         JTextArea addressField = new JTextArea(allCustomers[index].address);
+        addressField.setBackground(currentUser.theme.dialog.textFieldBackground);
         addressField.setBounds(2 * margin + w, 4 * margin + 3 * h, w, 2 * h);
         addressField.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         addressField.setLineWrap(true);
         editPanel.add(addressField);
 
         JTextField phoneField = new JTextField(allCustomers[index].phoneNumber, 4);
+        phoneField.setBackground(currentUser.theme.dialog.textFieldBackground);
         phoneField.setBounds(2 * margin + w, 5 * margin + 4 * h + 30, w, h);
         editPanel.add(phoneField);
 
         JButton save = new JButton("Save");
         save.setBounds(margin, 6 * margin + 5 * h + 30, w, h);
+        save.setBackground(currentUser.theme.dialog.buttonBackground);
         save.addActionListener((e) -> {
 
             readData();
@@ -220,6 +227,7 @@ public class EmployeeCustomers extends JPanel {
 
         JButton cancel = new JButton("Cancel");
         cancel.setBounds(2 * margin + w, 6 * margin + 5 * h + 30, w, h);
+        cancel.setBackground(currentUser.theme.dialog.buttonBackground);
         cancel.addActionListener((e) -> {
             dialog.dispose();
         });
@@ -227,6 +235,7 @@ public class EmployeeCustomers extends JPanel {
         editPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
         dialog.add(editPanel);
+        dialog.setBackground(currentUser.theme.dialog.background);
         dialog.setUndecorated(true);
         dialog.setSize(3 * margin + 2 * w, 7 * margin + 7 * h);
         dialog.setLocationRelativeTo(null);
@@ -326,6 +335,7 @@ public class EmployeeCustomers extends JPanel {
             dialog.addButton(jb);
             jb.setBackground(currentUser.theme.dialog.buttonBackground);
             jb.addActionListener((e) -> ShowOrderData(allCustomers[index], jb));
+            
         }
     }
 
