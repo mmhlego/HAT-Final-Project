@@ -100,7 +100,7 @@ public class ManagerProducts extends JPanel {
 
         JButton addNew = new JButton("Add New Product");
         addNew.setBounds(10, 640, 680, 50);
-        addNew.setBackground(new Color(111, 207, 151));
+        addNew.setBackground(currentUser.theme.submitColor);
         addNew.setBorder(null);
         addNew.addActionListener((e) -> {
             addNewProduct();
@@ -184,24 +184,29 @@ public class ManagerProducts extends JPanel {
         editPanel.add(pricaLabel);
 
         JTextField nameField = new JTextField(allProducts[index].name);
+        nameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         nameField.setBounds(2 * margin + w, margin, w, h);
         editPanel.add(nameField);
 
         JTextArea descriptionField = new JTextArea(allProducts[index].description);
+        descriptionField.setBackground(currentUser.theme.dialog.textFieldBackground);
         descriptionField.setLineWrap(true);
         descriptionField.setBorder(new LineBorder(Color.GRAY, 1));
         descriptionField.setBounds(2 * margin + w, 2 * margin + h, w, 3 * h);
         editPanel.add(descriptionField);
 
         JTextField amountField = new JTextField(Long.toString(allProducts[index].amount));
+        amountField.setBackground(currentUser.theme.dialog.textFieldBackground);
         amountField.setBounds(2 * margin + w, 3 * margin + 4 * h, w, h);
         editPanel.add(amountField);
 
         JTextField priceField = new JTextField(Long.toString(allProducts[index].price));
+        priceField.setBackground(currentUser.theme.dialog.textFieldBackground);
         priceField.setBounds(2 * margin + w, 4 * margin + 5 * h, w, h);
         editPanel.add(priceField);
 
         JButton save = new JButton("Save");
+        save.setBackground(currentUser.theme.dialog.buttonBackground);
         save.setBounds(margin, 5 * margin + 6 * h, w, h);
         save.addActionListener((e) -> {
 
@@ -234,6 +239,7 @@ public class ManagerProducts extends JPanel {
         editPanel.add(save);
 
         JButton cancel = new JButton("Cancel");
+        cancel.setBackground(currentUser.theme.dialog.buttonBackground);
         cancel.setBounds(2 * margin + w, 5 * margin + 6 * h, w, h);
         cancel.addActionListener((e) -> {
             dialog.dispose();
@@ -274,24 +280,29 @@ public class ManagerProducts extends JPanel {
         editPanel.add(pricaLabel);
 
         JTextField nameField = new JTextField("");
+        nameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         nameField.setBounds(2 * margin + w, margin, w, h);
         editPanel.add(nameField);
 
         JTextArea descriptionField = new JTextArea("");
+        descriptionField.setBackground(currentUser.theme.dialog.textFieldBackground);
         descriptionField.setLineWrap(true);
         descriptionField.setBorder(new LineBorder(Color.GRAY, 1));
         descriptionField.setBounds(2 * margin + w, 2 * margin + h, w, 3 * h);
         editPanel.add(descriptionField);
 
         JTextField amoutField = new JTextField("");
+        amoutField.setBackground(currentUser.theme.dialog.textFieldBackground);
         amoutField.setBounds(2 * margin + w, 3 * margin + 4 * h, w, h);
         editPanel.add(amoutField);
 
         JTextField priceField = new JTextField("");
+        priceField.setBackground(currentUser.theme.dialog.textFieldBackground);
         priceField.setBounds(2 * margin + w, 4 * margin + 5 * h, w, h);
         editPanel.add(priceField);
 
         JButton save = new JButton("Save");
+        save.setBackground(currentUser.theme.dialog.buttonBackground);
         save.setBounds(margin, 5 * margin + 6 * h, w, h);
         save.addActionListener((e) -> {
 
@@ -312,6 +323,7 @@ public class ManagerProducts extends JPanel {
         editPanel.add(save);
 
         JButton cancel = new JButton("Cancel");
+        cancel.setBackground(currentUser.theme.dialog.buttonBackground);
         cancel.setBounds(2 * margin + w, 5 * margin + 6 * h, w, h);
         cancel.addActionListener((e) -> {
             dialog.dispose();

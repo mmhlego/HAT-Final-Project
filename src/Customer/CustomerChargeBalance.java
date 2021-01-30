@@ -34,28 +34,240 @@ public class CustomerChargeBalance extends JDialog {
         setLocationRelativeTo(null);
         setTitle("Charge Balance");
         setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Pay.png").getImage());
-
+        
         String[] ChargeData = { " -Amounts- ", "10000", "20000", "50000", "100000" };
 
         JTextField CardNumber1 = new JTextField();
+        CardNumber1.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) 
+            {
+                if (CardNumber1.getText().length() == 4) 
+                {
+                    try 
+                    {
+                        Robot Switcher = new Robot();
+                        Switcher.keyPress(KeyEvent.VK_TAB);
+                        Switcher.keyRelease(KeyEvent.VK_TAB);
+                    } 
+                    catch (AWTException e1)
+                    {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        });
         CardNumber1.setBounds(130, 80, 40, 30);
         CardNumber1.setDocument(new Limitter(4));
         JTextField CardNumber2 = new JTextField();
+        CardNumber2.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) 
+            {
+                if (CardNumber2.getText().length() == 4) 
+                {
+                    try 
+                    {
+                        Robot Switcher = new Robot();
+                        Switcher.keyPress(KeyEvent.VK_TAB);
+                        Switcher.keyRelease(KeyEvent.VK_TAB);
+                    } 
+                    catch (AWTException e1)
+                    {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        });
         CardNumber2.setBounds(200, 80, 40, 30);
         CardNumber2.setDocument(new Limitter(4));
         JTextField CardNumber3 = new JTextField();
+        CardNumber3.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) 
+            {
+                if (CardNumber3.getText().length() == 4) 
+                {
+                    try 
+                    {
+                        Robot Switcher = new Robot();
+                        Switcher.keyPress(KeyEvent.VK_TAB);
+                        Switcher.keyRelease(KeyEvent.VK_TAB);
+                    } 
+                    catch (AWTException e1)
+                    {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        });
         CardNumber3.setBounds(270, 80, 40, 30);
         CardNumber3.setDocument(new Limitter(4));
         JTextField CardNumber4 = new JTextField();
+        CardNumber4.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) 
+            {
+                if (CardNumber4.getText().length() == 4) 
+                {
+                    try 
+                    {
+                        Robot Switcher = new Robot();
+                        Switcher.keyPress(KeyEvent.VK_TAB);
+                        Switcher.keyRelease(KeyEvent.VK_TAB);
+                    } 
+                    catch (AWTException e1)
+                    {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        });
         CardNumber4.setBounds(340, 80, 40, 30);
         CardNumber4.setDocument(new Limitter(4));
         JPasswordField CVV2TF = new JPasswordField();
+        CVV2TF.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) 
+            {
+                if ((new String(CVV2TF.getPassword())).length() == 4) 
+                {
+                    try 
+                    {
+                        Robot Switcher = new Robot();
+                        Switcher.keyPress(KeyEvent.VK_TAB);
+                        Switcher.keyRelease(KeyEvent.VK_TAB);
+                        Thread.sleep(100);
+                        Switcher.keyPress(KeyEvent.VK_TAB);
+                        Switcher.keyRelease(KeyEvent.VK_TAB);
+                    } 
+                    catch (Exception ex)
+                    {
+                        ex.printStackTrace();
+                    } 
+                }
+            }
+        });
         CVV2TF.setBounds(130, 130, 70, 30);
         CVV2TF.setDocument(new Limitter(4));
         JTextField ValidateTF = new JTextField();
+        ValidateTF.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) 
+            {
+                if (ValidateTF.getText().length() == 4) 
+                {
+                    try 
+                    {
+                        Robot Switcher = new Robot();
+                        Switcher.keyPress(KeyEvent.VK_TAB);
+                        Switcher.keyRelease(KeyEvent.VK_TAB);
+                        Thread.sleep(100);
+                        Switcher.keyPress(KeyEvent.VK_TAB);
+                        Switcher.keyRelease(KeyEvent.VK_TAB);
+                    } 
+                    catch (Exception ex)
+                    {
+                        ex.printStackTrace();
+                    } 
+                }
+            }
+        });
         ValidateTF.setBounds(130, 180, 70, 30);
         ValidateTF.setDocument(new Limitter(4));
         JPasswordField CVVTF = new JPasswordField();
+        CVVTF.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) 
+            {
+                if ((new String(CVVTF.getPassword())).length() == 7) 
+                {
+                    try 
+                    {
+                        Robot Switcher = new Robot();
+                        Switcher.keyPress(KeyEvent.VK_TAB);
+                        Switcher.keyRelease(KeyEvent.VK_TAB);
+                        Thread.sleep(100);
+                        Switcher.keyPress(KeyEvent.VK_TAB);
+                        Switcher.keyRelease(KeyEvent.VK_TAB);
+                    } 
+                    catch (Exception ex)
+                    {
+                        ex.printStackTrace();
+                    } 
+                }
+            }
+        });
         CVVTF.setBounds(130, 230, 70, 30);
         CVVTF.setDocument(new Limitter(7));
         CVVTF.setEnabled(false);
