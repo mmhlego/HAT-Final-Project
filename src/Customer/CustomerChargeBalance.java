@@ -2,11 +2,14 @@ package Customer;
 
 import javax.swing.*;
 import javax.swing.border.*;
+import com.kavenegar.sdk.KavenegarApi;
+import com.kavenegar.sdk.excepctions.*;
 
-import General.RandomKeyboard;
-
+import General.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Random;
+
 import Login.*;
 
 public class CustomerChargeBalance extends JDialog {
@@ -16,6 +19,7 @@ public class CustomerChargeBalance extends JDialog {
     Customer currentUser;
     JPanel captchaPanel;
     String captchaAnswer;
+    String SMSAnswer;
     int min, sec;
     Timer TimeToCancel;
     boolean flag = true;
@@ -54,6 +58,7 @@ public class CustomerChargeBalance extends JDialog {
         JPasswordField CVVTF = new JPasswordField();
         CVVTF.setBounds(130, 230, 70, 30);
         CVVTF.setDocument(new Limitter(7));
+        CVVTF.setEnabled(false);
         JTextField EmailTF = new JTextField();
         EmailTF.setBounds(130, 280, 250, 30);
         JTextField CustomChargeAmount = new JTextField();
@@ -220,6 +225,8 @@ public class CustomerChargeBalance extends JDialog {
                 JOptionPane.showMessageDialog(null, "Captcha is wrong !", "Warning", 2);
             } else if (CustomChargeAmount.getText().length() == 0) {
                 JOptionPane.showMessageDialog(null, "\'Charge amount\' field is empty !", "Warning", 2);
+            } else if (!new String(CVVTF.getPassword()).equals(SMSAnswer)) {
+                JOptionPane.showMessageDialog(null, "Wrong CVV !", "Warning", 2);
             } else {
                 try {
                     long amount = Long.parseLong(CustomChargeAmount.getText());
@@ -241,7 +248,23 @@ public class CustomerChargeBalance extends JDialog {
             TimeToCancel.stop();
         });
         SendOTP.addActionListener((e) -> {
+            if (currentUser.phoneNumber.length() != 11) {
+                JOptionPane.showMessageDialog(null, "Wrong phone number !", "Warning", 2);
+                return;
+            }
 
+            CVVTF.setEnabled(true);
+            try {
+                createOTP();
+                KavenegarApi api = new KavenegarApi(
+                        "31666C573963674A714E706E31655A786D4E4B66417776304F61787A3771334B563536515842485356446B3D");
+                api.send("1000596446", currentUser.phoneNumber, SMSAnswer);
+                JOptionPane.showMessageDialog(null, "CVV Sent !", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } catch (HttpException ex) {
+                System.out.print("HttpException  : " + ex.getMessage());
+            } catch (ApiException ex) {
+                System.out.print("ApiException : " + ex.getMessage());
+            }
         });
 
         JPanel keyboard = new RandomKeyboard(65, 420);
@@ -278,6 +301,14 @@ public class CustomerChargeBalance extends JDialog {
         setVisible(true);
         setResizable(false);
         createCaptcha();
+    }
+
+    public void createOTP() {
+        Random r = new Random(System.currentTimeMillis());
+        SMSAnswer = "";
+        for (int i = 0; i < 7; i++) {
+            SMSAnswer += Integer.toString(r.nextInt(10));
+        }
     }
 
     public void createCaptcha() {
