@@ -34,7 +34,7 @@ public class ProductCreator {
                                         10, 1390 * dollar);
                         c[2] = new Product("Samsung Galaxy Note 9", "128 GB SM-N960F\n(Midnight BLACK)", 12,
                                         1106 * dollar);
-                        c[3] = new Product("Samsung Electronics Galaxy Note 20 Ultra 5G",
+                        c[3] = new Product("Samsung Galaxy Note 20 Ultra",
                                         "US Version, 128 GB of Storage \nMobile Gaming Smartphone ,long-Lasting Battery\n(Mystic Bronze",
                                         30, 900 * dollar);
                         c[4] = new Product("Nokia 8.3 5G",
@@ -45,14 +45,14 @@ public class ProductCreator {
                         c[6] = new Product("Sony Headphones",
                                         "Lightweight and Comfortable on ear design\n30 millimeter drivers for rich, full frequency response\n(Black)",
                                         49, 11 * dollar);
-                        c[7] = new Product("Apple EarPods with Lightning Connector",
-                                        "The speakers inside the EarPods have been engineered to maximize sound output and minimize sound loss, which means you get high-quality audio\n(White)",
+                        c[7] = new Product("Apple EarPods",
+                                        "The speakers inside the EarPods have been engineered to maximize sound output and minimize sound loss, which means you get high-quality audio\nwith Lightning Connector\n(White)",
                                         100, 23 * dollar);
-                        c[8] = new Product("ULAK Galaxy Note 10 plus case",
-                                        "Heavy Duty Shockproof Rugged Protection case Transparent Soft TPU Protective Cover for Samsung Galaxy Note 10 Plus\n(Crystal Clear)",
+                        c[8] = new Product("Galaxy Note 10 plus case",
+                                        "ULAK Galaxy Note 10 plus case\nHeavy Duty Shockproof Rugged Protection case Transparent Soft TPU Protective Cover for Samsung Galaxy Note 10 Plus\n(Crystal Clear)",
                                         200, 11 * dollar);
-                        c[9] = new Product("Samsung Galaxy Note 20 Ultra Case",
-                                        "Control with ease. it's simple to answer the calls\n(Black)", 150,
+                        c[9] = new Product("Samsung Note 20 Case",
+                                        "Samsung Galaxy Note 20 Ultra Case\nControl with ease. it's simple to answer the calls\n(Black)", 150,
                                         29 * dollar);
                         c[10] = new Product("Microsoft Surface Book 3",
                                         "13.5\"touch Screen, 10th Gen Intel Core i7-16 GB Memory-256 Gb SSD\n(Silver)",
@@ -70,7 +70,7 @@ public class ProductCreator {
                         c[15] = new Product("PNY Attache USB 2.0 Flash Drive",
                                         "Compatible with PC and Mac laptop and desktop computers.16 GB\n(Silver)", 300,
                                         dollar);
-                        c[16] = new Product("Sandisk USB Flash Drive", "16 GB ,USB 2.0 Enabled \n(Red)", 100,
+                        c[16] = new Product("USB Flash Drive", "Sandisk USB Flash Drive 16 GB ,USB 2.0 Enabled \n(Red)", 100,
                                         2 * dollar - 5000);
                         c[17] = new Product("32 GB memory card",
                                         "New 32 GB micro SDHC TF memory card class 10w/SD \nadapter for smartphones tablet",
@@ -89,17 +89,17 @@ public class ProductCreator {
                                         dollar / 12);
                         c[23] = new Product("Cotton mask", "Cotton mask for coronavirus protection\nWashable", 300,
                                         dollar / 6);
-                        c[24] = new Product("Java how to program book", "Author:Deitel\n", 100, 35 * dollar);
+                        c[24] = new Product("Java learning book", "Full name:Java how to program\nAuthor:Deitel\n", 100, 35 * dollar);
                         c[25] = new Product("Introduction to java programming", "Author:DR.Y.Daniel Liang", 100,
                                         42 * dollar);
                         c[26] = new Product("Windows 10", "Windows 10 home edition", 400, 29 * dollar);
                         c[27] = new Product("Microsoft office",
                                         "For students and families who want classic office 2019\nversions of Word, Excel, Powerpoint and OneNote",
                                         100, 20 * dollar);
-                        c[28] = new Product("Micro SD to SD adapter",
+                        c[28] = new Product("MicroSD to SD adapter",
                                         "Kingston SD adapter\nmicro SD to a full sized SD adapter", 100,
                                         dollar - 200000);
-                        c[29] = new Product("This shop program", "This a HAT team Project programming basics class",
+                        c[29] = new Product("This Program", "This a HAT team Project programming basics class",
                                         100, 10000);
 
                         x.writeObject(c);

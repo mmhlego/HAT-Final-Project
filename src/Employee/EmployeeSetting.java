@@ -28,7 +28,7 @@ public class EmployeeSetting extends JPanel {
 
         setLayout(null);
         tabs.setBorder(null);
-        tabs.setBounds(-3, 0, 800, 700);
+        tabs.setBounds(-2, 0, 800, 720);
         add(tabs);
 
         setBackground(currentUser.theme.main.background);
