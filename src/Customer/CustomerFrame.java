@@ -208,9 +208,9 @@ public class CustomerFrame extends JFrame {
             new MainFrame();
         });
 
-        dialog.add(LogOut,BorderLayout.EAST);
-        dialog.add(Exit,BorderLayout.WEST);
-        
+        dialog.add(LogOut, BorderLayout.EAST);
+        dialog.add(Exit, BorderLayout.WEST);
+
         dialog.setVisible(true);
     }
 

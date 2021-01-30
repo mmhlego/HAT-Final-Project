@@ -117,7 +117,7 @@ public class EmployeeFrame extends JFrame {
         setFont(currentUser.theme.main.font);
         setForeground(currentUser.theme.main.fontColor);
         getContentPane().setBackground(currentUser.theme.main.background);
-        setSize(width + 13, height + 37);
+        setSize(width + 5, height + 33);
         setDefaultCloseOperation(3);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -161,32 +161,32 @@ public class EmployeeFrame extends JFrame {
     }
 
     public void selectExit() {
-    	 JDialog dialog = new JDialog();
-         dialog.setTitle("Exit / LogOut");
-         dialog.setSize(250, 150);
-         dialog.setLocationRelativeTo(null);
-         dialog.setResizable(false);
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Exit / LogOut");
+        dialog.setSize(250, 150);
+        dialog.setLocationRelativeTo(null);
+        dialog.setResizable(false);
 
-         JButton Exit = new JButton("   Exit   ");
-         Exit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Exit.png"));
-         Exit.setBackground(new Color(215, 38, 61));
-         Exit.setFont(new Font("Arial", Font.BOLD, 15));
-         JButton LogOut = new JButton("Log out");
-         LogOut.setBackground(new Color(255, 177, 61));
-         LogOut.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\LogOut.png"));
-         LogOut.setFont(new Font("Arial", Font.BOLD, 15));
-         Exit.addActionListener((e) -> {
-             dialog.dispose();
-             System.exit(0);
-         });
-         LogOut.addActionListener((e) -> {
-             dialog.dispose();
-             dispose();
-             new MainFrame();
-         });
+        JButton Exit = new JButton("   Exit   ");
+        Exit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Exit.png"));
+        Exit.setBackground(new Color(215, 38, 61));
+        Exit.setFont(new Font("Arial", Font.BOLD, 15));
+        JButton LogOut = new JButton("Log out");
+        LogOut.setBackground(new Color(255, 177, 61));
+        LogOut.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\LogOut.png"));
+        LogOut.setFont(new Font("Arial", Font.BOLD, 15));
+        Exit.addActionListener((e) -> {
+            dialog.dispose();
+            System.exit(0);
+        });
+        LogOut.addActionListener((e) -> {
+            dialog.dispose();
+            dispose();
+            new MainFrame();
+        });
 
-         dialog.add(LogOut,BorderLayout.EAST);
-         dialog.add(Exit,BorderLayout.WEST);
+        dialog.add(LogOut, BorderLayout.EAST);
+        dialog.add(Exit, BorderLayout.WEST);
         dialog.setVisible(true);
     }
 
