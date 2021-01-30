@@ -170,16 +170,19 @@ public class EmployeeCustomers extends JPanel {
         editPanel.add(phoneLabel);
 
         JTextField nameField = new JTextField(allCustomers[index].name, 4);
+        nameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
         nameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         nameField.setBounds(2 * margin + w, margin, w, h);
         editPanel.add(nameField);
 
         JTextField lastNameField = new JTextField(allCustomers[index].lastName, 4);
+        lastNameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
         lastNameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         lastNameField.setBounds(2 * margin + w, 2 * margin + h, w, h);
         editPanel.add(lastNameField);
 
         JTextField usernameField = new JTextField(allCustomers[index].username, 4);
+        usernameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
         usernameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         usernameField.setBounds(2 * margin + w, 3 * margin + 2 * h, w, h);
         editPanel.add(usernameField);
@@ -192,6 +195,7 @@ public class EmployeeCustomers extends JPanel {
         editPanel.add(addressField);
 
         JTextField phoneField = new JTextField(allCustomers[index].phoneNumber, 4);
+        phoneField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
         phoneField.setBackground(currentUser.theme.dialog.textFieldBackground);
         phoneField.setBounds(2 * margin + w, 5 * margin + 4 * h + 30, w, h);
         editPanel.add(phoneField);
