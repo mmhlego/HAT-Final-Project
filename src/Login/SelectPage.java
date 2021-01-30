@@ -106,6 +106,7 @@ public class SelectPage extends JPanel {
 				Costumer.setForeground(Color.WHITE);
 			}
 		});
+		//this.setBackground(new Color(226, 255, 255));
 
 		add(Manager);
 		add(Employee);
