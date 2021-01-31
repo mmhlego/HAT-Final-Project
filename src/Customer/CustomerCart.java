@@ -359,9 +359,14 @@ public class CustomerCart extends JPanel {
     }
 
     public void buyProducts() {
-        new receiptCreator(currentUser.order);
-
-        JOptionPane.showMessageDialog(this, "Purchase Successful", "Success", 1);
+        String[] Options = { "Yes", "No" };
+        int reply = JOptionPane.showOptionDialog(this,
+                "     Purchased Successfully ! \n\nDo You Want To Print Receipt ? \n\n", "Successful",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Print.png"), Options, Options[0]);
+        if (reply == JOptionPane.YES_OPTION) {
+            new receiptCreator(currentUser.order);
+        }
 
         currentUser.balance -= total;
         currentUser.order.status = Order.RECIVED;
