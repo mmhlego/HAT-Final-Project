@@ -1,15 +1,15 @@
-import Customer.*;
+import Login.*;
+/*import Customer.*;
 import Employee.*;
 import General.*;
-import Manager.*;
-import Login.*;
+import Manager.*;*/
 
 public class Main {
 	public static void main(String[] args) {
-		//new ManagerCreator();
-		//new EmployeeCreator();
-		//new ProductCreator();
-		//new CustomerCreator();
+		/*new ManagerCreator();
+		new EmployeeCreator();
+		new ProductCreator();
+		new CustomerCreator();*/
 		new MainFrame();
 	}
 }

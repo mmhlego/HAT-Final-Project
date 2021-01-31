@@ -2,9 +2,8 @@ package Customer;
 
 import javax.swing.*;
 import javax.swing.border.*;
-import com.kavenegar.sdk.KavenegarApi;
-import com.kavenegar.sdk.excepctions.*;
-
+import com.kavenegar.Kavenegar.excepctions.*;
+import com.kavenegar.Kavenegar.*;
 import General.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -34,7 +33,7 @@ public class CustomerChargeBalance extends JDialog {
         setLocationRelativeTo(null);
         setTitle("Charge Balance");
         setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Pay.png").getImage());
-        
+
         String[] ChargeData = { " -Amounts- ", "10000", "20000", "50000", "100000" };
 
         JTextField CardNumber1 = new JTextField();
@@ -50,18 +49,13 @@ public class CustomerChargeBalance extends JDialog {
             }
 
             @Override
-            public void keyReleased(KeyEvent e) 
-            {
-                if (CardNumber1.getText().length() == 4) 
-                {
-                    try 
-                    {
+            public void keyReleased(KeyEvent e) {
+                if (CardNumber1.getText().length() == 4) {
+                    try {
                         Robot Switcher = new Robot();
                         Switcher.keyPress(KeyEvent.VK_TAB);
                         Switcher.keyRelease(KeyEvent.VK_TAB);
-                    } 
-                    catch (AWTException e1)
-                    {
+                    } catch (AWTException e1) {
                         e1.printStackTrace();
                     }
                 }
@@ -82,18 +76,13 @@ public class CustomerChargeBalance extends JDialog {
             }
 
             @Override
-            public void keyReleased(KeyEvent e) 
-            {
-                if (CardNumber2.getText().length() == 4) 
-                {
-                    try 
-                    {
+            public void keyReleased(KeyEvent e) {
+                if (CardNumber2.getText().length() == 4) {
+                    try {
                         Robot Switcher = new Robot();
                         Switcher.keyPress(KeyEvent.VK_TAB);
                         Switcher.keyRelease(KeyEvent.VK_TAB);
-                    } 
-                    catch (AWTException e1)
-                    {
+                    } catch (AWTException e1) {
                         e1.printStackTrace();
                     }
                 }
@@ -114,18 +103,13 @@ public class CustomerChargeBalance extends JDialog {
             }
 
             @Override
-            public void keyReleased(KeyEvent e) 
-            {
-                if (CardNumber3.getText().length() == 4) 
-                {
-                    try 
-                    {
+            public void keyReleased(KeyEvent e) {
+                if (CardNumber3.getText().length() == 4) {
+                    try {
                         Robot Switcher = new Robot();
                         Switcher.keyPress(KeyEvent.VK_TAB);
                         Switcher.keyRelease(KeyEvent.VK_TAB);
-                    } 
-                    catch (AWTException e1)
-                    {
+                    } catch (AWTException e1) {
                         e1.printStackTrace();
                     }
                 }
@@ -146,18 +130,13 @@ public class CustomerChargeBalance extends JDialog {
             }
 
             @Override
-            public void keyReleased(KeyEvent e) 
-            {
-                if (CardNumber4.getText().length() == 4) 
-                {
-                    try 
-                    {
+            public void keyReleased(KeyEvent e) {
+                if (CardNumber4.getText().length() == 4) {
+                    try {
                         Robot Switcher = new Robot();
                         Switcher.keyPress(KeyEvent.VK_TAB);
                         Switcher.keyRelease(KeyEvent.VK_TAB);
-                    } 
-                    catch (AWTException e1)
-                    {
+                    } catch (AWTException e1) {
                         e1.printStackTrace();
                     }
                 }
@@ -178,23 +157,18 @@ public class CustomerChargeBalance extends JDialog {
             }
 
             @Override
-            public void keyReleased(KeyEvent e) 
-            {
-                if ((new String(CVV2TF.getPassword())).length() == 4) 
-                {
-                    try 
-                    {
+            public void keyReleased(KeyEvent e) {
+                if ((new String(CVV2TF.getPassword())).length() == 4) {
+                    try {
                         Robot Switcher = new Robot();
                         Switcher.keyPress(KeyEvent.VK_TAB);
                         Switcher.keyRelease(KeyEvent.VK_TAB);
                         Thread.sleep(100);
                         Switcher.keyPress(KeyEvent.VK_TAB);
                         Switcher.keyRelease(KeyEvent.VK_TAB);
-                    } 
-                    catch (Exception ex)
-                    {
+                    } catch (Exception ex) {
                         ex.printStackTrace();
-                    } 
+                    }
                 }
             }
         });
@@ -213,23 +187,18 @@ public class CustomerChargeBalance extends JDialog {
             }
 
             @Override
-            public void keyReleased(KeyEvent e) 
-            {
-                if (ValidateTF.getText().length() == 4) 
-                {
-                    try 
-                    {
+            public void keyReleased(KeyEvent e) {
+                if (ValidateTF.getText().length() == 4) {
+                    try {
                         Robot Switcher = new Robot();
                         Switcher.keyPress(KeyEvent.VK_TAB);
                         Switcher.keyRelease(KeyEvent.VK_TAB);
                         Thread.sleep(100);
                         Switcher.keyPress(KeyEvent.VK_TAB);
                         Switcher.keyRelease(KeyEvent.VK_TAB);
-                    } 
-                    catch (Exception ex)
-                    {
+                    } catch (Exception ex) {
                         ex.printStackTrace();
-                    } 
+                    }
                 }
             }
         });
@@ -248,23 +217,18 @@ public class CustomerChargeBalance extends JDialog {
             }
 
             @Override
-            public void keyReleased(KeyEvent e) 
-            {
-                if ((new String(CVVTF.getPassword())).length() == 7) 
-                {
-                    try 
-                    {
+            public void keyReleased(KeyEvent e) {
+                if ((new String(CVVTF.getPassword())).length() == 7) {
+                    try {
                         Robot Switcher = new Robot();
                         Switcher.keyPress(KeyEvent.VK_TAB);
                         Switcher.keyRelease(KeyEvent.VK_TAB);
                         Thread.sleep(100);
                         Switcher.keyPress(KeyEvent.VK_TAB);
                         Switcher.keyRelease(KeyEvent.VK_TAB);
-                    } 
-                    catch (Exception ex)
-                    {
+                    } catch (Exception ex) {
                         ex.printStackTrace();
-                    } 
+                    }
                 }
             }
         });
@@ -460,17 +424,18 @@ public class CustomerChargeBalance extends JDialog {
             TimeToCancel.stop();
         });
         SendOTP.addActionListener((e) -> {
-            if (currentUser.phoneNumber.length() != 11) {
+            /*if (currentUser.phoneNumber.length() != 11) {
                 JOptionPane.showMessageDialog(null, "Wrong phone number !", "Warning", 2);
                 return;
-            }
+            }*/
 
             CVVTF.setEnabled(true);
             try {
                 createOTP();
                 KavenegarApi api = new KavenegarApi(
                         "31666C573963674A714E706E31655A786D4E4B66417776304F61787A3771334B563536515842485356446B3D");
-                api.send("1000596446", currentUser.phoneNumber, "Your CVV:\n" + SMSAnswer);
+                //api.send("1000596446", currentUser.phoneNumber, "Your CVV:\n" + SMSAnswer);
+                api.send("1000596446", "09146501380", "Your CVV:\n" + SMSAnswer);
                 JOptionPane.showMessageDialog(null, "CVV Sent !", "Success", JOptionPane.INFORMATION_MESSAGE);
             } catch (HttpException ex) {
                 System.out.print("HttpException  : " + ex.getMessage());
