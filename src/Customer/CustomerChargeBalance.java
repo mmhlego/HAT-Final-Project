@@ -17,6 +17,7 @@ public class CustomerChargeBalance extends JDialog {
     JPanel captchaPanel;
     String captchaAnswer;
     String OTPAnswer;
+    int WrongEntered = 0;
     int min, sec;
     Timer TimeToCancel;
     boolean flag = true;
@@ -394,12 +395,16 @@ public class CustomerChargeBalance extends JDialog {
                 JOptionPane.showMessageDialog(null, "Captch Field is empty !", "Warning", 2);
             } else if (new String(CVVTF.getPassword()).length() == 0) {
                 JOptionPane.showMessageDialog(null, "CVV Field is empty !", "Warning", 2);
+                WrongEntered++;
+                CheckWrong(WrongEntered);
             } else if (!ValidateTF.getText().equals(captchaAnswer)) {
                 JOptionPane.showMessageDialog(null, "Captcha is wrong !", "Warning", 2);
             } else if (CustomChargeAmount.getText().length() == 0) {
                 JOptionPane.showMessageDialog(null, "\'Charge amount\' field is empty !", "Warning", 2);
             } else if (!new String(CVVTF.getPassword()).equals(OTPAnswer)) {
                 JOptionPane.showMessageDialog(null, "Wrong CVV !", "Warning", 2);
+                WrongEntered++;
+                CheckWrong(WrongEntered);
             } else {
                 try {
                     long amount = Long.parseLong(CustomChargeAmount.getText());
@@ -494,5 +499,16 @@ public class CustomerChargeBalance extends JDialog {
         captchaPanel.repaint();
         revalidate();
         repaint();
+    }
+
+    public void CheckWrong(int WrongCunt)
+    {
+        if (WrongCunt == 3) 
+        {
+            JOptionPane.showMessageDialog(this, "You Have Entered CVV Wrong For Three Times !", "Purchase Cancelled !",
+                    JOptionPane.ERROR_MESSAGE);
+            TimeToCancel.stop();
+            dispose();
+        }
     }
 }
