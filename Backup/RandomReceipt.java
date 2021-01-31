@@ -1,7 +1,7 @@
 import java.io.*;
 
 public class RandomInvoice {
-    public static void RandomInvoice() {
+    public static void RandomReceipt() {
         try {
             ObjectInputStream re = new ObjectInputStream(
                     new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));

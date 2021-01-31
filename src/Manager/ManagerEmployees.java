@@ -25,6 +25,8 @@ public class ManagerEmployees extends JPanel {
         JButton addNew = new JButton("Add New Employee");
         addNew.setBounds(10, 640, 680, 50);
         addNew.setBackground(currentUser.theme.submitColor);
+        addNew.setForeground(currentUser.theme.main.fontColor);
+        addNew.setFont(currentUser.theme.main.font);
         addNew.setBorder(null);
         addNew.addActionListener((e) -> {
             addNew();
@@ -159,36 +161,48 @@ public class ManagerEmployees extends JPanel {
         editPanel.add(phoneLabel);
 
         JTextField nameField = new JTextField(allEmployee[index].name, 4);
-        nameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        nameField.setForeground(currentUser.theme.main.fontColor);
+        nameField.setFont(currentUser.theme.main.font);
+        nameField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         nameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         nameField.setBounds(2 * margin + w, margin, w, h);
         editPanel.add(nameField);
 
         JTextField lastNameField = new JTextField(allEmployee[index].lastName, 4);
-        lastNameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        lastNameField.setForeground(currentUser.theme.main.fontColor);
+        lastNameField.setFont(currentUser.theme.main.font);
+        lastNameField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         lastNameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         lastNameField.setBounds(2 * margin + w, 2 * margin + h, w, h);
         editPanel.add(lastNameField);
 
         JTextField usernameField = new JTextField(allEmployee[index].username, 4);
-        usernameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        usernameField.setForeground(currentUser.theme.main.fontColor);
+        usernameField.setFont(currentUser.theme.main.font);
+        usernameField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         usernameField.setBackground(currentUser.theme.dialog.textFieldBackground);
         usernameField.setBounds(2 * margin + w, 3 * margin + 2 * h, w, h);
         editPanel.add(usernameField);
 
         JTextField IDField = new JTextField(allEmployee[index].ID, 4);
-        IDField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        IDField.setForeground(currentUser.theme.main.fontColor);
+        IDField.setFont(currentUser.theme.main.font);
+        IDField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         IDField.setBackground(currentUser.theme.dialog.textFieldBackground);
         IDField.setBounds(2 * margin + w, 4 * margin + 3 * h, w, h);
         editPanel.add(IDField);
 
         JTextField phoneField = new JTextField(allEmployee[index].phoneNumber, 4);
-        phoneField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        phoneField.setForeground(currentUser.theme.main.fontColor);
+        phoneField.setFont(currentUser.theme.main.font);
+        phoneField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         phoneField.setBackground(currentUser.theme.dialog.textFieldBackground);
         phoneField.setBounds(2 * margin + w, 5 * margin + 4 * h, w, h);
         editPanel.add(phoneField);
 
         JButton save = new JButton("Save");
+        save.setForeground(currentUser.theme.main.fontColor);
+        save.setFont(currentUser.theme.main.font);
         save.setBackground(currentUser.theme.dialog.buttonBackground);
         save.setBounds(margin, 6 * margin + 5 * h, w, h);
         save.addActionListener((e) -> {
@@ -218,6 +232,8 @@ public class ManagerEmployees extends JPanel {
         editPanel.add(save);
 
         JButton cancel = new JButton("Cancel");
+        cancel.setForeground(currentUser.theme.main.fontColor);
+        cancel.setFont(currentUser.theme.main.font);
         cancel.setBackground(currentUser.theme.dialog.buttonBackground);
         cancel.setBounds(2 * margin + w, 6 * margin + 5 * h, w, h);
         cancel.addActionListener((e) -> {
@@ -289,43 +305,57 @@ public class ManagerEmployees extends JPanel {
         editPanel.add(phoneLabel);
 
         JTextField nameField = new JTextField("", 4);
-        nameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        nameField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         nameField.setBackground(currentUser.theme.dialog.textFieldBackground);
+        nameField.setFont(currentUser.theme.main.font);
+        nameField.setForeground(currentUser.theme.main.fontColor);
         nameField.setBounds(2 * margin + w, margin, w, h);
         editPanel.add(nameField);
 
         JTextField lastNameField = new JTextField("", 4);
-        lastNameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        lastNameField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         lastNameField.setBackground(currentUser.theme.dialog.textFieldBackground);
+        lastNameField.setFont(currentUser.theme.main.font);
+        lastNameField.setForeground(currentUser.theme.main.fontColor);
         lastNameField.setBounds(2 * margin + w, 2 * margin + h, w, h);
         editPanel.add(lastNameField);
 
         JTextField usernameField = new JTextField("", 4);
-        usernameField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        usernameField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         usernameField.setBackground(currentUser.theme.dialog.textFieldBackground);
+        usernameField.setFont(currentUser.theme.main.font);
+        usernameField.setForeground(currentUser.theme.main.fontColor);
         usernameField.setBounds(2 * margin + w, 3 * margin + 2 * h, w, h);
         editPanel.add(usernameField);
 
         JTextField passwordField = new JTextField("", 4);
-        passwordField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         passwordField.setBackground(currentUser.theme.dialog.textFieldBackground);
+        passwordField.setFont(currentUser.theme.main.font);
+        passwordField.setForeground(currentUser.theme.main.fontColor);
         passwordField.setBounds(2 * margin + w, 4 * margin + 3 * h, w, h);
         editPanel.add(passwordField);
 
         JTextField IDField = new JTextField("", 4);
-        IDField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        IDField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         IDField.setBackground(currentUser.theme.dialog.textFieldBackground);
+        IDField.setFont(currentUser.theme.main.font);
+        IDField.setForeground(currentUser.theme.main.fontColor);
         IDField.setBounds(2 * margin + w, 5 * margin + 4 * h, w, h);
         editPanel.add(IDField);
 
         JTextField phoneField = new JTextField("", 4);
-        phoneField.setBorder(BorderFactory.createMatteBorder(0,0,1,0,currentUser.theme.dialog.fontColor));
+        phoneField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         phoneField.setBackground(currentUser.theme.dialog.textFieldBackground);
+        phoneField.setFont(currentUser.theme.main.font);
+        phoneField.setForeground(currentUser.theme.main.fontColor);
         phoneField.setBounds(2 * margin + w, 6 * margin + 5 * h, w, h);
         editPanel.add(phoneField);
 
         JButton save = new JButton("Save");
         save.setBackground(currentUser.theme.dialog.buttonBackground);
+        save.setFont(currentUser.theme.main.font);
+        save.setForeground(currentUser.theme.main.fontColor);
         save.setBounds(margin, 7 * margin + 6 * h, w, h);
         save.addActionListener((e) -> {
             readData();
@@ -340,6 +370,8 @@ public class ManagerEmployees extends JPanel {
 
         JButton cancel = new JButton("Cancel");
         cancel.setBackground(currentUser.theme.dialog.buttonBackground);
+        cancel.setFont(currentUser.theme.main.font);
+        cancel.setForeground(currentUser.theme.main.fontColor);
         cancel.setBounds(2 * margin + w, 7 * margin + 6 * h, w, h);
         cancel.addActionListener((e) -> {
             dialog.dispose();

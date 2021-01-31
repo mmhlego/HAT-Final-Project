@@ -36,7 +36,7 @@ public class EmployeeTheme extends JDialog {
 
         sidePanel.setBounds(0, 0, 50, 280);
         sidePanel.setBackground(currentUser.theme.sidePanel.background);
-        exitPanel.setBackground(Color.red);
+        exitPanel.setBackground(currentTheme.sidePanel.exitColor);
         mainPanel.setBackground(currentUser.theme.main.background);
         dialogPanel.setBackground(currentUser.theme.dialog.background);
         exitPanel.setBounds(0, 280, 50, 20);

@@ -8,12 +8,14 @@ import javax.imageio.ImageIO;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
-public class InvoiceCreator {
+public class receiptCreator {
     int width = 1220, height, count;
 
-    File imageFile = new File("Sales Invoice.png");
+    File imageFile = new File("Sales Receipt.png");
+    long discount = 0;
+    long purchased = 0;
 
-    public InvoiceCreator(Order currentOrder, long discount, long purchased) {
+    public receiptCreator(Order currentOrder) {
         height = 150 + currentOrder.products.length * 40 + 350;
 
         BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -30,7 +32,7 @@ public class InvoiceCreator {
 
         drawer.setColor(Color.black);
         drawer.setFont(new Font("Tahoma", Font.BOLD, 40));
-        drawer.drawString("Sales Invoice", 490, 60);
+        drawer.drawString("Sales Receipt", 480, 60);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd - HH:mm:ss");
         drawer.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -63,8 +65,10 @@ public class InvoiceCreator {
             if (dis == 0) {
                 drawer.drawString("-", 885, i * 40 + 155);
             } else {
+                discount += price * amount * dis / 100;
                 drawer.drawString((Integer.toString(dis)) + " %", 875, i * 40 + 155);
             }
+            purchased += price * amount * (100 - dis) / 100;
             drawer.drawString(Long.toString(price * amount * (100 - dis) / 100), 1025, i * 40 + 155);
         }
 
