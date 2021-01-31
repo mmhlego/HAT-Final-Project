@@ -232,7 +232,6 @@ public class CustomerChargeBalance extends JDialog {
         });
         CVVTF.setBounds(130, 230, 70, 30);
         CVVTF.setDocument(new Limitter(7));
-        CVVTF.setEnabled(false);
         JTextField EmailTF = new JTextField();
         EmailTF.setBounds(130, 280, 250, 30);
         JTextField CustomChargeAmount = new JTextField();
