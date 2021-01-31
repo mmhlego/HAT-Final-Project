@@ -172,23 +172,31 @@ public class ManagerCustomers extends JPanel {
         JTextField nameField = new JTextField(allCustomers[index].name, 4);
         nameField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         nameField.setBackground(currentUser.theme.dialog.textFieldBackground);
+        nameField.setBackground(currentUser.theme.dialog.buttonBackground);
+        nameField.setForeground(currentUser.theme.dialog.fontColor);
         nameField.setBounds(2 * margin + w, margin, w, h);
         editPanel.add(nameField);
 
         JTextField lastNameField = new JTextField(allCustomers[index].lastName, 4);
         lastNameField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         lastNameField.setBackground(currentUser.theme.dialog.textFieldBackground);
+        lastNameField.setBackground(currentUser.theme.dialog.buttonBackground);
+        lastNameField.setForeground(currentUser.theme.dialog.fontColor);
         lastNameField.setBounds(2 * margin + w, 2 * margin + h, w, h);
         editPanel.add(lastNameField);
 
         JTextField usernameField = new JTextField(allCustomers[index].username, 4);
         usernameField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         usernameField.setBackground(currentUser.theme.dialog.textFieldBackground);
+        usernameField.setBackground(currentUser.theme.dialog.buttonBackground);
+        usernameField.setForeground(currentUser.theme.dialog.fontColor);
         usernameField.setBounds(2 * margin + w, 3 * margin + 2 * h, w, h);
         editPanel.add(usernameField);
 
         JTextArea addressField = new JTextArea(allCustomers[index].address);
         addressField.setBackground(currentUser.theme.dialog.textFieldBackground);
+        addressField.setBackground(currentUser.theme.dialog.buttonBackground);
+        addressField.setForeground(currentUser.theme.dialog.fontColor);
         addressField.setBounds(2 * margin + w, 4 * margin + 3 * h, w, 2 * h);
         addressField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         addressField.setLineWrap(true);
@@ -197,11 +205,15 @@ public class ManagerCustomers extends JPanel {
         JTextField phoneField = new JTextField(allCustomers[index].phoneNumber, 4);
         phoneField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         phoneField.setBackground(currentUser.theme.dialog.textFieldBackground);
+        phoneField.setBackground(currentUser.theme.dialog.buttonBackground);
+        phoneField.setForeground(currentUser.theme.dialog.fontColor);
         phoneField.setBounds(2 * margin + w, 5 * margin + 4 * h + 30, w, h);
         editPanel.add(phoneField);
 
         JButton save = new JButton("Save");
         save.setBackground(currentUser.theme.dialog.buttonBackground);
+        save.setForeground(currentUser.theme.dialog.fontColor);
+        save.setFont(currentUser.theme.dialog.font);
         save.setBounds(margin, 6 * margin + 5 * h + 30, w, h);
         save.addActionListener((e) -> {
 
@@ -231,6 +243,8 @@ public class ManagerCustomers extends JPanel {
 
         JButton cancel = new JButton("Cancel");
         cancel.setBackground(currentUser.theme.dialog.buttonBackground);
+        cancel.setForeground(currentUser.theme.dialog.fontColor);
+        cancel.setFont(currentUser.theme.dialog.font);
         cancel.setBounds(2 * margin + w, 6 * margin + 5 * h + 30, w, h);
         cancel.addActionListener((e) -> {
             dialog.dispose();
@@ -336,6 +350,8 @@ public class ManagerCustomers extends JPanel {
 
         for (int i = 0; i < allCustomers[index].pastOrders.length; i++) {
             JButton jb = new JButton("Order #" + (i + 1) + " - " + allCustomers[index].pastOrders[i].status);
+            jb.setForeground(currentUser.theme.dialog.fontColor);
+            jb.setFont(currentUser.theme.dialog.font);
             dialog.addButton(jb);
             jb.setBackground(currentUser.theme.dialog.buttonBackground);
             jb.addActionListener((e) -> ShowOrderData(allCustomers[index], jb));

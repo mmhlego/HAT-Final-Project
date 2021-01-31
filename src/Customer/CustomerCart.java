@@ -123,18 +123,24 @@ public class CustomerCart extends JPanel {
 
         for (int i = 0; i < Count; i++) {
             nameLabel = new JLabel(currentUser.order.products[i].name, 0);
+            nameLabel.setFont(currentUser.theme.main.font);
+            nameLabel.setForeground(currentUser.theme.main.fontColor);
             nameLabel.setBounds(10, 60 + 50 * i, 250, 30);
             nameLabel.setBorder(null);
             Info.add(nameLabel);
 
             long price = currentUser.order.products[i].price;
             priceLabel = new JLabel(Long.toString(price), 0);
+            priceLabel.setFont(currentUser.theme.main.font);
+            priceLabel.setForeground(currentUser.theme.main.fontColor);
             priceLabel.setBounds(260, 60 + 50 * i, 110, 30);
             priceLabel.setBorder(null);
             Info.add(priceLabel);
 
             int amount = currentUser.order.count[i];
             JLabel amountLabel = new JLabel(Integer.toString(amount), 0);
+            amountLabel.setFont(currentUser.theme.main.font);
+            amountLabel.setForeground(currentUser.theme.main.fontColor);
             amountLabel.setBounds(400, 60 + 50 * i, 30, 30);
             amountLabel.setBorder(null);
             Info.add(amountLabel);
@@ -159,12 +165,16 @@ public class CustomerCart extends JPanel {
 
             int discount = currentUser.order.products[i].discount;
             discountLabel = new JLabel(discount + " %", 0);
+            discountLabel.setFont(currentUser.theme.main.font);
+            discountLabel.setForeground(currentUser.theme.main.fontColor);
             discountLabel.setBounds(460, 60 + 50 * i, 70, 30);
             discountLabel.setBorder(null);
             Info.add(discountLabel);
 
             long totalPrice = amount * price * (100 - discount) / 100;
             totalPriceLabels[i] = new JLabel(Long.toString(totalPrice), 0);
+            totalPriceLabels[i].setFont(currentUser.theme.main.font);
+            totalPriceLabels[i].setForeground(currentUser.theme.main.fontColor);
             totalPriceLabels[i].setBounds(530, 60 + 50 * i, 100, 30);
             totalPriceLabels[i].setBorder(null);
             Info.add(totalPriceLabels[i]);
@@ -349,7 +359,7 @@ public class CustomerCart extends JPanel {
     }
 
     public void buyProducts() {
-        new InvoiceCreator(currentUser.order, totalDiscount, total);
+        new receiptCreator(currentUser.order);
 
         JOptionPane.showMessageDialog(this, "Purchase Successful", "Success", 1);
 

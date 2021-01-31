@@ -51,7 +51,7 @@ class ThemePanel extends JPanel {
         currentUser = u;
         root = r;
 
-        sample = new JLabel("Previw", 0);
+        sample = new JLabel("Preview", 0);
         sample.setBorder(new LineBorder(Color.black, 1));
         sample.setBounds(365, 195, 300, 233);
         add(sample);

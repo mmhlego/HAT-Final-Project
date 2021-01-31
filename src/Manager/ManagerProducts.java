@@ -101,6 +101,8 @@ public class ManagerProducts extends JPanel {
         JButton addNew = new JButton("Add New Product");
         addNew.setBounds(10, 640, 680, 50);
         addNew.setBackground(currentUser.theme.submitColor);
+        addNew.setForeground(currentUser.theme.dialog.fontColor);
+        addNew.setFont(currentUser.theme.dialog.font);
         addNew.setBorder(null);
         addNew.addActionListener((e) -> {
             addNewProduct();
@@ -156,21 +158,18 @@ public class ManagerProducts extends JPanel {
         editPanel.setSize(3 * margin + 2 * w, 8 * margin + 7 * h);
 
         JLabel nameLabel = new JLabel("Name:", 4);
-        nameLabel.setBackground(currentUser.theme.dialog.background);
         nameLabel.setForeground(currentUser.theme.dialog.fontColor);
         nameLabel.setFont(currentUser.theme.dialog.font);
         nameLabel.setBounds(margin, margin, w, h);
         editPanel.add(nameLabel);
 
         JLabel descriptionLabel = new JLabel("Description:", 4);
-        descriptionLabel.setBackground(currentUser.theme.dialog.background);
         descriptionLabel.setForeground(currentUser.theme.dialog.fontColor);
         descriptionLabel.setFont(currentUser.theme.dialog.font);
         descriptionLabel.setBounds(margin, 2 * margin + h, w, h);
         editPanel.add(descriptionLabel);
 
         JLabel amountLabel = new JLabel("Amount:", 4);
-        amountLabel.setBackground(currentUser.theme.dialog.background);
         amountLabel.setForeground(currentUser.theme.dialog.fontColor);
         amountLabel.setFont(currentUser.theme.dialog.font);
         amountLabel.setBounds(margin, 3 * margin + 4 * h, w, h);
@@ -186,23 +185,31 @@ public class ManagerProducts extends JPanel {
         JTextField nameField = new JTextField(allProducts[index].name);
         nameField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         nameField.setBackground(currentUser.theme.dialog.textFieldBackground);
+        nameField.setForeground(currentUser.theme.dialog.fontColor);
+        nameField.setFont(currentUser.theme.dialog.font);
         nameField.setBounds(2 * margin + w, margin, w, h);
         editPanel.add(nameField);
 
         JTextArea descriptionField = new JTextArea(allProducts[index].description);
         descriptionField.setBackground(currentUser.theme.dialog.textFieldBackground);
+        descriptionField.setForeground(currentUser.theme.dialog.fontColor);
+        descriptionField.setFont(currentUser.theme.dialog.font);
         descriptionField.setLineWrap(true);
         descriptionField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         descriptionField.setBounds(2 * margin + w, 2 * margin + h, w, 3 * h);
         editPanel.add(descriptionField);
 
         JTextField amountField = new JTextField(Long.toString(allProducts[index].amount));
+        amountField.setForeground(currentUser.theme.dialog.fontColor);
+        amountField.setFont(currentUser.theme.dialog.font);
         amountField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         amountField.setBackground(currentUser.theme.dialog.textFieldBackground);
         amountField.setBounds(2 * margin + w, 3 * margin + 4 * h, w, h);
         editPanel.add(amountField);
 
         JTextField priceField = new JTextField(Long.toString(allProducts[index].price));
+        priceField.setForeground(currentUser.theme.dialog.fontColor);
+        priceField.setFont(currentUser.theme.dialog.font);
         priceField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         priceField.setBackground(currentUser.theme.dialog.textFieldBackground);
         priceField.setBounds(2 * margin + w, 4 * margin + 5 * h, w, h);
@@ -210,6 +217,8 @@ public class ManagerProducts extends JPanel {
 
         JButton save = new JButton("Save");
         save.setBackground(currentUser.theme.dialog.buttonBackground);
+        save.setForeground(currentUser.theme.dialog.fontColor);
+        save.setFont(currentUser.theme.dialog.font);
         save.setBounds(margin, 5 * margin + 6 * h, w, h);
         save.addActionListener((e) -> {
 
@@ -244,9 +253,12 @@ public class ManagerProducts extends JPanel {
         JButton cancel = new JButton("Cancel");
         cancel.setBackground(currentUser.theme.dialog.buttonBackground);
         cancel.setBounds(2 * margin + w, 5 * margin + 6 * h, w, h);
+        cancel.setForeground(currentUser.theme.dialog.fontColor);
+        cancel.setFont(currentUser.theme.dialog.font);
         cancel.addActionListener((e) -> {
             dialog.dispose();
         });
+
         editPanel.add(cancel);
         editPanel.setBorder(new LineBorder(Color.BLACK, 1));
         dialog.add(editPanel);
@@ -265,26 +277,37 @@ public class ManagerProducts extends JPanel {
         JPanel editPanel = new JPanel();
         editPanel.setLayout(null);
         editPanel.setSize(3 * margin + 2 * w, 8 * margin + 7 * h);
+        editPanel.setBackground(currentUser.theme.dialog.background);
 
         JLabel nameLabel = new JLabel("Name:", 4);
         nameLabel.setBounds(margin, margin, w, h);
+        nameLabel.setFont(currentUser.theme.dialog.font);
+        nameLabel.setForeground(currentUser.theme.dialog.fontColor);
         editPanel.add(nameLabel);
 
         JLabel descriptionLabel = new JLabel("Description:", 4);
         descriptionLabel.setBounds(margin, 2 * margin + h, w, h);
+        descriptionLabel.setFont(currentUser.theme.dialog.font);
+        descriptionLabel.setForeground(currentUser.theme.dialog.fontColor);
         editPanel.add(descriptionLabel);
 
         JLabel amountLabel = new JLabel("Amount:", 4);
         amountLabel.setBounds(margin, 3 * margin + 4 * h, w, h);
+        amountLabel.setFont(currentUser.theme.dialog.font);
+        amountLabel.setForeground(currentUser.theme.dialog.fontColor);
         editPanel.add(amountLabel);
 
         JLabel pricaLabel = new JLabel("Price:", 4);
         pricaLabel.setBounds(margin, 4 * margin + 5 * h, w, h);
+        pricaLabel.setFont(currentUser.theme.dialog.font);
+        pricaLabel.setForeground(currentUser.theme.dialog.fontColor);
         editPanel.add(pricaLabel);
 
         JTextField nameField = new JTextField("");
         nameField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
         nameField.setBackground(currentUser.theme.dialog.textFieldBackground);
+        nameField.setFont(currentUser.theme.dialog.font);
+        nameField.setForeground(currentUser.theme.dialog.fontColor);
         nameField.setBounds(2 * margin + w, margin, w, h);
         editPanel.add(nameField);
 
@@ -292,29 +315,36 @@ public class ManagerProducts extends JPanel {
         descriptionField.setBackground(currentUser.theme.dialog.textFieldBackground);
         descriptionField.setLineWrap(true);
         descriptionField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
+        descriptionField.setFont(currentUser.theme.dialog.font);
+        descriptionField.setForeground(currentUser.theme.dialog.fontColor);
         descriptionField.setBounds(2 * margin + w, 2 * margin + h, w, 3 * h);
         editPanel.add(descriptionField);
 
-        JTextField amoutField = new JTextField("");
-        amoutField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
-        amoutField.setBackground(currentUser.theme.dialog.textFieldBackground);
-        amoutField.setBounds(2 * margin + w, 3 * margin + 4 * h, w, h);
-        editPanel.add(amoutField);
+        JTextField amountField = new JTextField("");
+        amountField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
+        amountField.setFont(currentUser.theme.dialog.font);
+        amountField.setForeground(currentUser.theme.dialog.fontColor);
+        amountField.setBackground(currentUser.theme.dialog.textFieldBackground);
+        amountField.setBounds(2 * margin + w, 3 * margin + 4 * h, w, h);
+        editPanel.add(amountField);
 
         JTextField priceField = new JTextField("");
         priceField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, currentUser.theme.dialog.fontColor));
+        priceField.setFont(currentUser.theme.dialog.font);
+        priceField.setForeground(currentUser.theme.dialog.fontColor);
         priceField.setBackground(currentUser.theme.dialog.textFieldBackground);
         priceField.setBounds(2 * margin + w, 4 * margin + 5 * h, w, h);
         editPanel.add(priceField);
 
         JButton save = new JButton("Save");
         save.setBackground(currentUser.theme.dialog.buttonBackground);
+        save.setForeground(currentUser.theme.dialog.fontColor);
+        save.setFont(currentUser.theme.dialog.font);
         save.setBounds(margin, 5 * margin + 6 * h, w, h);
         save.addActionListener((e) -> {
-
             try {
                 Product newProduct = new Product(nameField.getText(), descriptionField.getText(),
-                        Long.parseLong(amoutField.getText()), Long.parseLong(priceField.getText()));
+                        Long.parseLong(amountField.getText()), Long.parseLong(priceField.getText()));
 
                 readData();
 
@@ -330,6 +360,8 @@ public class ManagerProducts extends JPanel {
 
         JButton cancel = new JButton("Cancel");
         cancel.setBackground(currentUser.theme.dialog.buttonBackground);
+        cancel.setForeground(currentUser.theme.dialog.fontColor);
+        cancel.setFont(currentUser.theme.dialog.font);
         cancel.setBounds(2 * margin + w, 5 * margin + 6 * h, w, h);
         cancel.addActionListener((e) -> {
             dialog.dispose();
@@ -339,6 +371,7 @@ public class ManagerProducts extends JPanel {
         dialog.setUndecorated(true);
         dialog.add(editPanel);
         dialog.setSize(3 * margin + 2 * w, 6 * margin + 7 * h);
+        dialog.setBackground(currentUser.theme.dialog.background);
         dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
         dialog.setVisible(true);
@@ -424,5 +457,4 @@ public class ManagerProducts extends JPanel {
     public void reloadPage() {
         parent.addPanel(new ManagerProducts(currentUser, parent));
     }
-
 }
