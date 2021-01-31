@@ -2,8 +2,6 @@ package Customer;
 
 import javax.swing.*;
 import javax.swing.border.*;
-import com.kavenegar.Kavenegar.excepctions.*;
-import com.kavenegar.Kavenegar.*;
 import General.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -18,7 +16,7 @@ public class CustomerChargeBalance extends JDialog {
     Customer currentUser;
     JPanel captchaPanel;
     String captchaAnswer;
-    String SMSAnswer;
+    String OTPAnswer;
     int min, sec;
     Timer TimeToCancel;
     boolean flag = true;
@@ -401,7 +399,7 @@ public class CustomerChargeBalance extends JDialog {
                 JOptionPane.showMessageDialog(null, "Captcha is wrong !", "Warning", 2);
             } else if (CustomChargeAmount.getText().length() == 0) {
                 JOptionPane.showMessageDialog(null, "\'Charge amount\' field is empty !", "Warning", 2);
-            } else if (!new String(CVVTF.getPassword()).equals(SMSAnswer)) {
+            } else if (!new String(CVVTF.getPassword()).equals(OTPAnswer)) {
                 JOptionPane.showMessageDialog(null, "Wrong CVV !", "Warning", 2);
             } else {
                 try {
@@ -432,15 +430,11 @@ public class CustomerChargeBalance extends JDialog {
             CVVTF.setEnabled(true);
             try {
                 createOTP();
-                KavenegarApi api = new KavenegarApi(
-                        "31666C573963674A714E706E31655A786D4E4B66417776304F61787A3771334B563536515842485356446B3D");
-                //api.send("1000596446", currentUser.phoneNumber, "Your CVV:\n" + SMSAnswer);
-                api.send("1000596446", "09146501380", "Your CVV:\n" + SMSAnswer);
-                JOptionPane.showMessageDialog(null, "CVV Sent !", "Success", JOptionPane.INFORMATION_MESSAGE);
-            } catch (HttpException ex) {
-                System.out.print("HttpException  : " + ex.getMessage());
-            } catch (ApiException ex) {
-                System.out.print("ApiException : " + ex.getMessage());
+
+                System.out.println(OTPAnswer);
+
+            } catch (Exception er) {
+                System.out.print(er.toString());
             }
         });
 
@@ -482,9 +476,9 @@ public class CustomerChargeBalance extends JDialog {
 
     public void createOTP() {
         Random r = new Random(System.currentTimeMillis());
-        SMSAnswer = "";
+        OTPAnswer = "";
         for (int i = 0; i < 7; i++) {
-            SMSAnswer += Integer.toString(r.nextInt(10));
+            OTPAnswer += Integer.toString(r.nextInt(10));
         }
     }
 
