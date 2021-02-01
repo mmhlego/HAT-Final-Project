@@ -162,9 +162,6 @@ public class CustomerChargeBalance extends JDialog {
                         Robot Switcher = new Robot();
                         Switcher.keyPress(KeyEvent.VK_TAB);
                         Switcher.keyRelease(KeyEvent.VK_TAB);
-                        Thread.sleep(100);
-                        Switcher.keyPress(KeyEvent.VK_TAB);
-                        Switcher.keyRelease(KeyEvent.VK_TAB);
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
@@ -257,13 +254,18 @@ public class CustomerChargeBalance extends JDialog {
         Refresh.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Refresh.png"));
         Refresh.addActionListener((e) -> createCaptcha());
         JButton SecureKeyBoard = new JButton("Secure Num Pad");
+        SecureKeyBoard.setFocusPainted(false);
+        SecureKeyBoard.setFocusable(false);
+        SecureKeyBoard.setFocusTraversalKeysEnabled(false);
+        SecureKeyBoard.setFocusTraversalPolicyProvider(false);
+        SecureKeyBoard.setSelected(false);
         SecureKeyBoard.setBounds(220, 130, 160, 30);
         SecureKeyBoard.setBorder(null);
         SecureKeyBoard.setBackground(new Color(87, 184, 255));
         SecureKeyBoard.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Keyboard.png"));
         SecureKeyBoard.addActionListener((e) -> {
             if (getHeight() == 420) {
-                setSize(400, 600);
+                setSize(400, 550);
             } else {
                 setSize(400, 420);
             }
@@ -408,6 +410,9 @@ public class CustomerChargeBalance extends JDialog {
             } else {
                 try {
                     long amount = Long.parseLong(CustomChargeAmount.getText());
+                    if (amount <= 0) {
+                        throw new Exception();
+                    }
 
                     TimeToCancel.stop();
                     currentUser.balance += amount;
@@ -442,7 +447,7 @@ public class CustomerChargeBalance extends JDialog {
             }
         });
 
-        JPanel keyboard = new RandomKeyboard(65, 420);
+        JPanel keyboard = new RandomKeyboard(80, 420);
 
         add(keyboard);
         add(SecuredBy);
@@ -501,10 +506,8 @@ public class CustomerChargeBalance extends JDialog {
         repaint();
     }
 
-    public void CheckWrong(int WrongCunt)
-    {
-        if (WrongCunt == 3) 
-        {
+    public void CheckWrong(int WrongCunt) {
+        if (WrongCunt == 3) {
             JOptionPane.showMessageDialog(this, "You Have Entered CVV Wrong For Three Times !", "Purchase Cancelled !",
                     JOptionPane.ERROR_MESSAGE);
             TimeToCancel.stop();
