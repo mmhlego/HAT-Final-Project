@@ -129,6 +129,7 @@ public class Theme implements Serializable {
 
         private Color[] buttonColors = { Hex("E0E0E0"), Hex("E0E0E0"), Hex("E0E0E0"), Hex("E0E0E0"), Hex("20b2aa"),
                 Hex("a9a9a9"), Hex("58c743"), Hex("ff8C00"), Hex("8b4513"), Hex("c300e3") };
+
         public Color[] textFieldBackgrounds = { Hex("E0E0E0"), Hex("E0E0E0"), Hex("E0E0E0"), Hex("E0E0E0"),
                 Hex("20b2aa"), Hex("a9a9a9"), Hex("58c743"), Hex("ff8C00"), Hex("8b4513"), Hex("c300e3") };
 
@@ -150,16 +151,16 @@ public class Theme implements Serializable {
     public class DialogTheme implements Serializable {
         private static final long serialVersionUID = -7640849422464760478L;
 
-        private Color[] backgrounds = { Hex("ffffff"), Hex("222831"), Hex("272121"), Hex("222831"), Hex("3ae7ec"),
+        private Color[] backgrounds = { Hex("ffffff"), Hex("222831"), Hex("392626"), Hex("222831"), Hex("3ae7ec"),
                 Hex("c0c0c0"), Hex("32cd32"), Hex("ffa500"), Hex("a0522d"), Hex("ff00ff") };
 
-        private Color[] fontColors = { Hex("000000"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("c8c8c8"), Hex("000000"),
+        private Color[] fontColors = { Hex("000000"), Hex("e2e2e2"), Hex("c8c8c8"), Hex("e2e2e2"), Hex("000000"),
                 Hex("000000"), Hex("000000"), Hex("000000"), Hex("000000"), Hex("c8c8c8") };
 
-        private Color[] buttonBackgroundColors = { Hex("E0E0E0"), Hex("E0E0E0"), Hex("E0E0E0"), Hex("E0E0E0"),
+        private Color[] buttonBackgroundColors = { Hex("E0E0E0"), Hex("393e46"), Hex("574444"), Hex("393e46"),
                 Hex("20b2aa"), Hex("a9a9a9"), Hex("58c743"), Hex("ff8C00"), Hex("8b4513"), Hex("c300e3") };
 
-        public Color[] textFieldBackgrounds = { Hex("E0E0E0"), Hex("E0E0E0"), Hex("E0E0E0"), Hex("E0E0E0"),
+        public Color[] textFieldBackgrounds = { Hex("E0E0E0"), Hex("868c95"), Hex("6b584e"), Hex("868c95"),
                 Hex("20b2aa"), Hex("a9a9a9"), Hex("58c743"), Hex("ff8C00"), Hex("8b4513"), Hex("c300e3") };
 
         public Color background, fontColor, buttonBackground, textFieldBackground;
