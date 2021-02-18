@@ -32,6 +32,7 @@ public class Language implements Serializable {
         String[] phoneList = { "Phone Number", "شماره تلفن" };
         String[] addressList = { "Address", "ادرس" };
         String[] balanceList = { "Balance", "موجودی" };
+        String[] idList = { "ID", "شماره شناسایی" };
         String[] editList = { "Edit Information", "تغییر اطلاعات" };
         String[] saveList = { "Save Information", "اطلاعات را ذخیره کن" };
 
@@ -45,7 +46,7 @@ public class Language implements Serializable {
         String[] applySelectedList = { "Apply Selected Theme", "پوسته انتخاب شده را اعمال کن" };
 
         public String information, useername, password, firstName, lastName, phone, addreess, balance, edit, save,
-                theme, lightTheme, darkTheme, classicTheme, modernTheme, customTheme, preview, applySelected;
+                theme, lightTheme, darkTheme, classicTheme, modernTheme, customTheme, preview, applySelected, id;
 
         public settingsLanguage(int mode) {
             information = informationList[mode];
@@ -56,6 +57,7 @@ public class Language implements Serializable {
             phone = phoneList[mode];
             addreess = addressList[mode];
             balance = balanceList[mode];
+            id = idList[mode];
             edit = editList[mode];
             save = saveList[mode];
             theme = themeList[mode];
