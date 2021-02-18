@@ -40,8 +40,9 @@ class sidePanelLanguage implements Serializable {
     String[] cartList = { "Cart", "سبد خرید" };
     String[] historyList = { "Order History", "تاریخچه خرید" };
     String[] exitList = { "Log Out/Exit", "خروج" };
+    String[] balanceList = { "Balance", "موجودی" };
 
-    String customers, employees, products, cart, settings, toggle, history, exit;
+    String customers, employees, products, cart, settings, toggle, history, exit, balance;
 
     public sidePanelLanguage(int mode) {
         customers = customersList[mode];
@@ -52,6 +53,7 @@ class sidePanelLanguage implements Serializable {
         toggle = toggleList[mode];
         history = historyList[mode];
         exit = exitList[mode];
+        balance = balanceList[mode];
     }
 }
 
