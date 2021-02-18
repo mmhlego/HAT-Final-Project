@@ -1,6 +1,7 @@
 package Customer;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 import Login.*;
@@ -31,7 +32,7 @@ public class CustomerFrame extends JFrame {
         sidepanel.setBackground(currentUser.theme.sidePanel.background);
         sidepanel.setBounds(0, 0, w, height);
         //===================================================================================
-        Change = new JButton("Toggle SidePanel");
+        Change = new JButton(currentUser.language.side.toggle);
         Change.setBounds(0, 0, w, h);
         Change.setFont(currentUser.theme.sidePanel.font);
         Change.setForeground(currentUser.theme.sidePanel.fontColor);
@@ -74,7 +75,7 @@ public class CustomerFrame extends JFrame {
         reDesign(History);
         sidepanel.add(History);
         //===================================================================================
-        Cart = new JButton("Cart");
+        Cart = new JButton(currentUser.language.side.cart);
         Cart.setBounds(0, 2 * h, w, h);
         Cart.setFont(currentUser.theme.sidePanel.font);
         Cart.setForeground(currentUser.theme.sidePanel.fontColor);
@@ -89,7 +90,7 @@ public class CustomerFrame extends JFrame {
         reDesign(Cart);
         sidepanel.add(Cart);
         //===================================================================================
-        Products = new JButton("Products");
+        Products = new JButton(currentUser.language.side.products);
         Products.setBounds(0, 3 * h, w, h);
         Products.setFont(currentUser.theme.sidePanel.font);
         Products.setForeground(currentUser.theme.sidePanel.fontColor);
@@ -103,7 +104,7 @@ public class CustomerFrame extends JFrame {
         reDesign(Products);
         sidepanel.add(Products);
         //===================================================================================
-        Settings = new JButton("Settings");
+        Settings = new JButton(currentUser.language.side.settings);
         Settings.setBounds(0, 4 * h, w, h);
         Settings.setFont(currentUser.theme.sidePanel.font);
         Settings.setForeground(currentUser.theme.sidePanel.fontColor);
@@ -124,7 +125,7 @@ public class CustomerFrame extends JFrame {
         sidepanel.add(BalanceLabel);
         UpdateBalance();
         //===================================================================================
-        Exit = new JButton("Log Out / Exit");
+        Exit = new JButton(currentUser.language.side.exit);
         Exit.setBounds(0, height - h, w, h);
         Exit.setFont(currentUser.theme.sidePanel.font);
         Exit.setForeground(currentUser.theme.sidePanel.fontColor);
@@ -158,7 +159,7 @@ public class CustomerFrame extends JFrame {
         b.setBorder(null);
         b.setForeground(currentUser.theme.sidePanel.fontColor);
         b.setBackground(currentUser.theme.sidePanel.background);
-        if (!b.getText().equals(new String("Toggle SidePanel")))
+        if (!b.getText().equals(new String(currentUser.language.side.toggle)))
             b.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
                     + currentUser.theme.sidePanel.icon + b.getText() + ".png"));
     }
@@ -185,7 +186,7 @@ public class CustomerFrame extends JFrame {
 
     public void selectExit() {
         JDialog dialog = new JDialog();
-        dialog.setTitle("Exit / LogOut");
+        dialog.setTitle(currentUser.language.side.exit);
         dialog.setSize(250, 150);
         dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
@@ -221,7 +222,7 @@ public class CustomerFrame extends JFrame {
     }
 
     public void UpdateBalance() {
-        BalanceLabel.setText("  Balance : " + Long.toString(currentUser.balance) + " Rials");
+        BalanceLabel.setText(currentUser.language.side.balance + ":"+ Long.toString(currentUser.balance) + " Rials");
         revalidate();
         repaint();
     }

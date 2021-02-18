@@ -23,8 +23,10 @@ public class ManagerSetting extends JPanel {
         tabs.setForeground(currentUser.theme.main.fontColor);
         tabs.setBackground(currentUser.theme.main.background);
         tabs.setVisible(true);
-        tabs.add("                             Informations                              ", changePanel);
-        tabs.add("                                     Theme                                      ", themePanel);
+        tabs.add("                             " + currentUser.language.settings.information
+                + "                              ", changePanel);
+        tabs.add("                                     " + currentUser.language.settings.theme
+                + "                                      ", themePanel);
 
         setLayout(null);
         tabs.setBorder(null);
@@ -51,7 +53,7 @@ class ThemePanel extends JPanel {
         currentUser = u;
         root = r;
 
-        sample = new JLabel("Preview", 0);
+        sample = new JLabel(currentUser.language.settings.preview, 0);
         sample.setBorder(new LineBorder(Color.black, 1));
         sample.setBounds(365, 195, 300, 233);
         add(sample);
@@ -68,19 +70,19 @@ class ThemePanel extends JPanel {
             });
             switch (i) {
                 case 0:
-                    themeButton.setText("Light Theme");
+                    themeButton.setText(currentUser.language.settings.lightTheme);
                     break;
                 case 1:
-                    themeButton.setText("Dark Theme");
+                    themeButton.setText(currentUser.language.settings.darkTheme);
                     break;
                 case 2:
-                    themeButton.setText("Classic Theme");
+                    themeButton.setText(currentUser.language.settings.classicTheme);
                     break;
                 case 3:
-                    themeButton.setText("Modern Theme");
+                    themeButton.setText(currentUser.language.settings.modernTheme);
                     break;
                 case 4:
-                    themeButton.setText("Custom Theme");
+                    themeButton.setText(currentUser.language.settings.customTheme);
                     themeButton.addActionListener(e -> new ManagerTheme(parent, root, currentUser));
                     break;
             }
@@ -88,7 +90,7 @@ class ThemePanel extends JPanel {
             add(themeButton);
         }
 
-        JButton apply = new JButton("Apply Selected Theme");
+        JButton apply = new JButton(currentUser.language.settings.applySelected);
         apply.setBackground(currentUser.theme.submitColor);
         apply.setBounds(365, 540, 300, 60);
         apply.addActionListener((e) -> {

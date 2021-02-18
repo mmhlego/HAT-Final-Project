@@ -33,15 +33,15 @@ public class ManagerInformation extends JPanel {
         btn.setFont(currentUser.theme.main.font);
         add(btn);
 
-        JLabel userName = new JLabel("Username:", 0);
+        JLabel userName = new JLabel(currentUser.language.settings.useername+":", 0);
         JTextField userNameShow = new JTextField(currentUser.username);
-        JLabel password = new JLabel("Password:", 0);
+        JLabel password = new JLabel(currentUser.language.settings.password+":", 0);
         JTextField showPassword = new JTextField(currentUser.password);
-        JLabel firstName = new JLabel("First Name:", 0);
+        JLabel firstName = new JLabel(currentUser.language.settings.firstName+":", 0);
         JTextField firstNameShow = new JTextField(currentUser.name);
-        JLabel lastName = new JLabel("Last Name:", 0);
+        JLabel lastName = new JLabel(currentUser.language.settings.lastName+":", 0);
         JTextField lastNameShow = new JTextField(currentUser.lastName);
-        JLabel phoneNumber = new JLabel("Phone Number:", 0);
+        JLabel phoneNumber = new JLabel(currentUser.language.settings.phone+":", 0);
         JTextField phoneNumberShow = new JTextField(currentUser.phoneNumber);
 
         userName.setFont(currentUser.theme.main.font);
@@ -119,7 +119,7 @@ public class ManagerInformation extends JPanel {
         phoneNumberShow.setEditable(false);
 
         btn.addActionListener(e -> {
-            if (btn.getText().equals("Edit Information")) {
+            if (btn.getText().equals(currentUser.language.settings.edit)) {
                 userNameShow.setEditable(true);
                 showPassword.setEditable(true);
                 firstNameShow.setEditable(true);
@@ -127,7 +127,7 @@ public class ManagerInformation extends JPanel {
                 phoneNumberShow.setEditable(true);
                 showPassword.setVisible(true);
                 passwordField.setVisible(false);
-                btn.setText("Save Information");
+                btn.setText(currentUser.language.settings.save);
             } else {
                 userNameShow.setEditable(false);
                 showPassword.setEditable(false);
@@ -136,7 +136,7 @@ public class ManagerInformation extends JPanel {
                 phoneNumberShow.setEditable(false);
                 showPassword.setVisible(false);
                 passwordField.setVisible(true);
-                btn.setText("Edit Information");
+                btn.setText(currentUser.language.settings.edit);
 
                 currentUser.username = userNameShow.getText();
                 currentUser.password = showPassword.getText();
