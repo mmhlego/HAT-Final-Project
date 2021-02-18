@@ -59,7 +59,7 @@ public class CustomerFrame extends JFrame {
         reDesign(Change);
         sidepanel.add(Change);
         //===================================================================================
-        History = new JButton("Order History");
+        History = new JButton(currentUser.language.side.history);
         History.setBounds(0, h, w, h);
         History.setFont(currentUser.theme.sidePanel.font);
         History.setForeground(currentUser.theme.sidePanel.fontColor);

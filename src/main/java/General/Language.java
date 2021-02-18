@@ -12,7 +12,7 @@ public class Language implements Serializable {
     //public dialogLanguage dialog;
 
     public Language() {
-        set(0);
+        set(PERSIAN);
     }
 
     public void set(int mode) {
@@ -44,8 +44,8 @@ public class Language implements Serializable {
         String[] previewList = { "Preview", "پیش نمایش" };
         String[] applySelectedList = { "Apply Selected Theme", "پوسته انتخاب شده را اعمال کن" };
 
-        String information, useername, password, firstName, lastName, phone, addreess, balance, edit, save, theme,
-                lightTheme, darkTheme, classicTheme, moderTheme, customTheme, preview, applySelected;
+        public String information, useername, password, firstName, lastName, phone, addreess, balance, edit, save,
+                theme, lightTheme, darkTheme, classicTheme, modernTheme, customTheme, preview, applySelected;
 
         public settingsLanguage(int mode) {
             information = informationList[mode];
@@ -62,7 +62,7 @@ public class Language implements Serializable {
             lightTheme = lightThemeList[mode];
             darkTheme = darkThemeList[mode];
             classicTheme = classicThemeList[mode];
-            moderTheme = modernThemeList[mode];
+            modernTheme = modernThemeList[mode];
             customTheme = customThemeList[mode];
             preview = previewList[mode];
             applySelected = applySelectedList[mode];
@@ -81,7 +81,7 @@ public class Language implements Serializable {
         String[] exitList = { "Log Out/Exit", "خروج" };
         String[] balanceList = { "Balance", "موجودی" };
 
-        String customers, employees, products, cart, settings, toggle, history, exit, balance;
+        public String customers, employees, products, cart, settings, toggle, history, exit, balance;
 
         public sidePanelLanguage(int mode) {
             customers = customersList[mode];
