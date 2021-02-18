@@ -12,7 +12,7 @@ public class Language implements Serializable {
     //public dialogLanguage dialog;
 
     public Language() {
-        set(0);
+        set(1);
     }
 
     public void set(int mode) {
