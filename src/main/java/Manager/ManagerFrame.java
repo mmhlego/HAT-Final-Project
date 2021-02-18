@@ -30,7 +30,7 @@ public class ManagerFrame extends JFrame {
         sidepanel.setBackground(currentUser.theme.sidePanel.background);
         sidepanel.setBounds(0, 0, w, height);
         // ===================================================================================
-        Change = new JButton("Toggle SidePanel");
+        Change = new JButton(currentUser.language.side.toggle);
         Change.setBounds(0, 0, w, h);
         Change.setFont(currentUser.theme.sidePanel.font);
         Change.setForeground(currentUser.theme.sidePanel.fontColor);
@@ -59,7 +59,7 @@ public class ManagerFrame extends JFrame {
         reDesign(Change);
         sidepanel.add(Change);
         // ===================================================================================
-        Customers = new JButton("Customers");
+        Customers = new JButton(currentUser.language.side.customers);
         Customers.setBounds(0, h, w, h);
         Customers.setFont(currentUser.theme.sidePanel.font);
         Customers.setForeground(currentUser.theme.sidePanel.fontColor);
@@ -73,7 +73,7 @@ public class ManagerFrame extends JFrame {
         reDesign(Customers);
         sidepanel.add(Customers);
         // ===================================================================================
-        Employees = new JButton("Employees");
+        Employees = new JButton(currentUser.language.side.employees);
         Employees.setBounds(0, 2 * h, w, h);
         Employees.setFont(currentUser.theme.sidePanel.font);
         Employees.setForeground(currentUser.theme.sidePanel.fontColor);
@@ -87,7 +87,7 @@ public class ManagerFrame extends JFrame {
         reDesign(Employees);
         sidepanel.add(Employees);
         // ===================================================================================
-        Products = new JButton("Products");
+        Products = new JButton(currentUser.language.side.products);
         Products.setBounds(0, 3 * h, w, h);
         Products.setFont(currentUser.theme.sidePanel.font);
         Products.setForeground(currentUser.theme.sidePanel.fontColor);
@@ -101,7 +101,7 @@ public class ManagerFrame extends JFrame {
         reDesign(Products);
         sidepanel.add(Products);
         // ===================================================================================
-        Settings = new JButton("Settings");
+        Settings = new JButton(currentUser.language.side.settings);
         Settings.setBounds(0, 4 * h, w, h);
         Settings.setFont(currentUser.theme.sidePanel.font);
         Settings.setForeground(currentUser.theme.sidePanel.fontColor);
@@ -115,7 +115,7 @@ public class ManagerFrame extends JFrame {
         reDesign(Settings);
         sidepanel.add(Settings);
         // ===================================================================================
-        Exit = new JButton("Log Out / Exit");
+        Exit = new JButton(currentUser.language.side.exit);
         Exit.setBounds(0, height - h, w, h);
         Exit.setFont(currentUser.theme.sidePanel.font);
         Exit.setForeground(currentUser.theme.sidePanel.fontColor);
@@ -149,7 +149,7 @@ public class ManagerFrame extends JFrame {
         b.setBorder(null);
         b.setForeground(currentUser.theme.sidePanel.fontColor);
         b.setBackground(currentUser.theme.sidePanel.background);
-        if (!b.getText().equals(new String("Toggle SidePanel")))
+        if (!b.getText().equals(new String(currentUser.language.side.toggle)))
             b.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
                     + currentUser.theme.sidePanel.icon + b.getText() + ".png"));
     }
