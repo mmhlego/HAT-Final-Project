@@ -10,7 +10,6 @@ public class Main {
 		new CustomerCreator();
 		new EmployeeCreator();
 		new ManagerCreator();
-
 		new MainFrame();
 	}
 }

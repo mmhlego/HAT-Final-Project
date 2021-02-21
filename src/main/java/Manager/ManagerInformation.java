@@ -33,15 +33,15 @@ public class ManagerInformation extends JPanel {
         btn.setFont(currentUser.theme.main.font);
         add(btn);
 
-        JLabel userName = new JLabel(currentUser.language.settings.useername+":", 0);
+        JLabel userName = new JLabel(currentUser.language.settings.useername, 0);
         JTextField userNameShow = new JTextField(currentUser.username);
-        JLabel password = new JLabel(currentUser.language.settings.password+":", 0);
+        JLabel password = new JLabel(currentUser.language.settings.password, 0);
         JTextField showPassword = new JTextField(currentUser.password);
-        JLabel firstName = new JLabel(currentUser.language.settings.firstName+":", 0);
+        JLabel firstName = new JLabel(currentUser.language.settings.firstName, 0);
         JTextField firstNameShow = new JTextField(currentUser.name);
-        JLabel lastName = new JLabel(currentUser.language.settings.lastName+":", 0);
+        JLabel lastName = new JLabel(currentUser.language.settings.lastName, 0);
         JTextField lastNameShow = new JTextField(currentUser.lastName);
-        JLabel phoneNumber = new JLabel(currentUser.language.settings.phone+":", 0);
+        JLabel phoneNumber = new JLabel(currentUser.language.settings.phone, 0);
         JTextField phoneNumberShow = new JTextField(currentUser.phoneNumber);
 
         userName.setFont(currentUser.theme.main.font);

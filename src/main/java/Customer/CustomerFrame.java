@@ -159,9 +159,8 @@ public class CustomerFrame extends JFrame {
         b.setBorder(null);
         b.setForeground(currentUser.theme.sidePanel.fontColor);
         b.setBackground(currentUser.theme.sidePanel.background);
-        if (!b.getText().equals(new String(currentUser.language.side.toggle)))
-            b.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
-                    + currentUser.theme.sidePanel.icon + b.getText() + ".png"));
+        b.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.sidePanel.icon + b.getText() + ".png"));
     }
 
     public void selectButton(JButton b) {
@@ -222,7 +221,7 @@ public class CustomerFrame extends JFrame {
     }
 
     public void UpdateBalance() {
-        BalanceLabel.setText(currentUser.language.side.balance + ":"+ Long.toString(currentUser.balance) + " Rials");
+        BalanceLabel.setText(currentUser.language.side.balance + ":" + Long.toString(currentUser.balance) + " Rials");
         revalidate();
         repaint();
     }

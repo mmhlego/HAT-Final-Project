@@ -9,7 +9,7 @@ public class Language implements Serializable {
 
     public settingsLanguage settings;
     public sidePanelLanguage side;
-    //public dialogLanguage dialog;
+    public productsLanguage prooducts;
 
     public Language() {
         set(PERSIAN);
@@ -18,7 +18,7 @@ public class Language implements Serializable {
     public void set(int mode) {
         settings = new settingsLanguage(mode);
         side = new sidePanelLanguage(mode);
-        //dialog = new dialogLanguage(mode);
+        prooducts = new productsLanguage(mode);
     }
 
     public class settingsLanguage implements Serializable {
@@ -98,11 +98,32 @@ public class Language implements Serializable {
         }
     }
 
-    /*class dialogLanguage implements Serializable {
-    private static final long serialVersionUID = 2545373340792459048L;
-    
-    public dialogLanguage(int mode) {
-    
+    class productsLanguage implements Serializable {
+        private static final long serialVersionUID = -784625214019987888L;
+
+        String[] backList = { "Back", "بازگشت" };
+        String[] nameList = { "Name", "نام" };
+        String[] descriptionList = { "Description", "توضیحات" };
+        String[] amountList = { "Amount", "تعداد" };
+        String[] priceList = { "Price", "قیمت" };
+        String[] addToCartList = { "Add to Cart", "افزودن به سبد خرید" };
+        String[] specialOfferList = { "Special Offer!", "فروش ویژه!" };
+        String[] onlyList = { "Only ", "تنها " };
+        String[] LeftList = { " Left!", " عدد باقیست!" };
+        String[] outOfStockList = { "Out Of Stock!", "کالا موجود نیست!" };
+        String[] saveList = { "Savee", "ذخیره کن" };
+        String[] cancelList = { "Cancel", "لغو کن" };
+
+        public productsLanguage(int mode) {
+
+        }
     }
+
+    /*class dialogLanguage implements Serializable {
+        private static final long serialVersionUID = 2545373340792459048L;
+        
+        public dialogLanguage(int mode) {
+        
+        }
     }*/
 }

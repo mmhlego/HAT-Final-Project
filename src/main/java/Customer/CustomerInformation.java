@@ -31,7 +31,7 @@ public class CustomerInformation extends JPanel {
 
         btn.setBounds(90, 620, 520, 40);
         btn.setBackground(new Color(111, 207, 151));
-        btn.setText("Edit Information");
+        btn.setText(currentUser.language.settings.edit);
         btn.setFont(currentUser.theme.main.font);
         add(btn);
 
@@ -43,23 +43,23 @@ public class CustomerInformation extends JPanel {
         increase.setIcon(new ImageIcon(
                 System.getProperty("user.dir") + "\\Images\\Icons\\Main\\" + currentUser.theme.main.icon + "Add.png"));
 
-        JLabel userName = new JLabel("Username:", 0);
+        JLabel userName = new JLabel(currentUser.language.settings.useername, 0);
         //JTextField userNameShow = new JTextField(currentUser.username);
         CustomTextField userNameShow = new CustomTextField(291, 270, 320, 25, currentUser.theme.main,
                 currentUser.username);
         userNameShow.setAlignmentX(JLabel.CENTER);
-        JLabel password = new JLabel("Password:", 0);
+        JLabel password = new JLabel(currentUser.language.settings.password, 0);
         JTextField showPassword = new JTextField(currentUser.password);
-        JLabel firstName = new JLabel("First Name:", 0);
+        JLabel firstName = new JLabel(currentUser.language.settings.firstName, 0);
         JTextField firstNameShow = new JTextField(currentUser.name);
-        JLabel lastName = new JLabel("Last Name:", 0);
+        JLabel lastName = new JLabel(currentUser.language.settings.lastName, 0);
         JTextField lastNameShow = new JTextField(currentUser.lastName);
-        JLabel phoneNumber = new JLabel("Phone Number:", 0);
+        JLabel phoneNumber = new JLabel(currentUser.language.settings.phone, 0);
         JTextField phoneNumberShow = new JTextField(currentUser.phoneNumber);
-        JLabel adress = new JLabel("Address:", 0);
+        JLabel adress = new JLabel(currentUser.language.settings.addreess, 0);
         JTextField adressShow = new JTextField(currentUser.address);
         JScrollPane adressScroll = new JScrollPane(adressShow);
-        JLabel balance = new JLabel("Balance", 0);
+        JLabel balance = new JLabel(currentUser.language.settings.balance, 0);
         JTextField balanceShow = new JTextField(String.valueOf(currentUser.balance));
 
         userName.setFont(currentUser.theme.main.font);
@@ -166,7 +166,7 @@ public class CustomerInformation extends JPanel {
         balanceShow.setEditable(false);
 
         btn.addActionListener(e -> {
-            if (btn.getText().equals("Edit Information")) {
+            if (btn.getText().equals(currentUser.language.settings.edit)) {
                 userNameShow.setEditable(true);
                 showPassword.setEditable(true);
                 firstNameShow.setEditable(true);
@@ -176,7 +176,7 @@ public class CustomerInformation extends JPanel {
                 adressShow.setEditable(true);
                 balanceShow.setEditable(false);
                 passwordField.setVisible(false);
-                btn.setText("Save Information");
+                btn.setText(currentUser.language.settings.save);
             } else {
                 userNameShow.setEditable(false);
                 showPassword.setEditable(false);
@@ -187,7 +187,7 @@ public class CustomerInformation extends JPanel {
                 balanceShow.setEditable(false);
                 showPassword.setVisible(false);
                 passwordField.setVisible(true);
-                btn.setText("Edit Information");
+                btn.setText(currentUser.language.settings.edit);
 
                 currentUser.username = userNameShow.getText();
                 currentUser.password = showPassword.getText();

@@ -33,35 +33,35 @@ public class CustomerCart extends JPanel {
         nameLabel.setBounds(10, 20, 250, 30);
         nameLabel.setFont(currentUser.theme.main.font);
         nameLabel.setForeground(currentUser.theme.main.fontColor);
-        nameLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.BLACK));
+        nameLabel.setBorder(new MatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         Info.add(nameLabel);
 
         JLabel priceLabel = new JLabel("Base Price", 0);
         priceLabel.setBounds(260, 20, 110, 30);
         priceLabel.setFont(currentUser.theme.main.font);
         priceLabel.setForeground(currentUser.theme.main.fontColor);
-        priceLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.BLACK));
+        priceLabel.setBorder(new MatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         Info.add(priceLabel);
 
         JLabel topAmountLabel = new JLabel("Amount", 0);
         topAmountLabel.setBounds(370, 20, 90, 30);
         topAmountLabel.setFont(currentUser.theme.main.font);
         topAmountLabel.setForeground(currentUser.theme.main.fontColor);
-        topAmountLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.BLACK));
+        topAmountLabel.setBorder(new MatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         Info.add(topAmountLabel);
 
         JLabel discountLabel = new JLabel("Discount", 0);
         discountLabel.setBounds(460, 20, 70, 30);
         discountLabel.setFont(currentUser.theme.main.font);
         discountLabel.setForeground(currentUser.theme.main.fontColor);
-        discountLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.BLACK));
+        discountLabel.setBorder(new MatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         Info.add(discountLabel);
 
         JLabel totalPriceLabel = new JLabel("Total Price", 0);
         totalPriceLabel.setBounds(530, 20, 100, 30);
         totalPriceLabel.setFont(currentUser.theme.main.font);
         totalPriceLabel.setForeground(currentUser.theme.main.fontColor);
-        totalPriceLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.BLACK));
+        totalPriceLabel.setBorder(new MatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         Info.add(totalPriceLabel);
 
         JLabel calculatedTotalDiscountLabel = new JLabel("Total Discount:", 0);
@@ -200,7 +200,7 @@ public class CustomerCart extends JPanel {
         PanelScroll.getVerticalScrollBar().setBorder(null);
         PanelScroll.getVerticalScrollBar().setUnitIncrement(10);
         PanelScroll.setBackground(currentUser.theme.main.background);
-        PanelScroll.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
+        PanelScroll.setBorder(new MatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
 
         add(PanelScroll);
 
