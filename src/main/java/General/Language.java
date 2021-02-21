@@ -126,14 +126,28 @@ public class Language implements Serializable {
         String[] emptyCartList = { "Cart is Empty", "سبد خرید خالیست" };
         String[] orderList = { "Order", "سفارش" };
         String[] productList = { "Product", "کالا" };
-        String[] addNewList;
-        String[] areYouSureTitleList;
-        String[] areYouSureDescriptionList;
-        String[] removeSuccessTitleList;
-        String[] removeSuccessDescriptionList;
+        String[] addNewList = { "Add New Product", "افزودن کالای جدید" };
+
+        String[] areYouSureTitleList = { "Are you sure?", "آیا مطمئن هستید؟" };
+        String[] areYouSureDescriptionList = { "Are you sure you want to delete product with these information?",
+                "آیا مطمئن هستید که میخواهید کالا با اطلاعات زیر را پاک کنید؟" };
+        String[] removeSuccessTitleList = { "Product Removed", "کالا حذف شد" };
+        String[] removeSuccessDescriptionList = { "Product removed successfully.", "کالا با موفقیت حذف شد." };
+        String[] wrongFormatList = { "Wrong format has been entered.", "فرمت اشتباهی وارد شده است." };
+        String[] howManyItemsTitleList = { "Add Amount", "مقداری که اضافه خواهد شد" };
+        String[] howManyItemsDescriptionList = { "How many items do you want to add to ",
+                "چه تعدادی را میخواهید اضافه کنید به " };
+        String[] updateTitleList = { "Product Updated", "کالا بروز شد" };
+        String[] updateDescriptionList = { "Product information updaated successfully.",
+                "اطلاعات کالا با موفقیت بروزرسانی شد." };
+        String[] amountAddedTitleList = { "Success", "موفقیت آمیز" };
+        String[] amountAddedDescriptionList = { "Amount added successfully.", "تعداد با موفقیت اضافه شد" };
 
         public String back, name, description, amount, basePrice, price, addToCart, specialOffer, only, left,
-                outOfStock, save, cancel, discount, totalPrice, totalDiscount, emptyCart, order, product, addNew;
+                outOfStock, save, cancel, discount, totalPrice, totalDiscount, emptyCart, order, product, addNew,
+                areYouSureTitle, areYouSureDescription, removeSuccessTitle, removeSuccessDescription, wrongFormat,
+                howManyItemsTitle, howManyItemsDescription, updateTitle, updateDescription, amountAddedTitle,
+                amountAddedDescription;
 
         public productsLanguage(int mode) {
             back = backList[mode];
@@ -155,6 +169,17 @@ public class Language implements Serializable {
             emptyCart = emptyCartList[mode];
             order = orderList[mode];
             product = productList[mode];
+            areYouSureTitle = areYouSureTitleList[mode];
+            areYouSureDescription = areYouSureDescriptionList[mode];
+            removeSuccessTitle = removeSuccessTitleList[mode];
+            removeSuccessDescription = removeSuccessDescriptionList[mode];
+            wrongFormat = wrongFormatList[mode];
+            howManyItemsTitle = howManyItemsTitleList[mode];
+            howManyItemsDescription = howManyItemsDescriptionList[mode];
+            updateTitle = updateTitleList[mode];
+            updateDescription = updateDescriptionList[mode];
+            amountAddedTitle = amountAddedTitleList[mode];
+            amountAddedDescription = amountAddedDescriptionList[mode];
         }
     }
 
