@@ -98,7 +98,7 @@ public class Language implements Serializable {
         }
     }
 
-    class productsLanguage implements Serializable {
+    public class productsLanguage implements Serializable {
         private static final long serialVersionUID = -784625214019987888L;
 
         String[] backList = { "Back", "بازگشت" };
@@ -119,7 +119,7 @@ public class Language implements Serializable {
         }
     }
 
-    /*class dialogLanguage implements Serializable {
+    /*public class dialogLanguage implements Serializable {
         private static final long serialVersionUID = 2545373340792459048L;
         
         public dialogLanguage(int mode) {
