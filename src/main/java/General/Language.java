@@ -10,15 +10,21 @@ public class Language implements Serializable {
     public settingsLanguage settings;
     public sidePanelLanguage side;
     public productsLanguage products;
+    public customersLanguage customers;
 
     public Language() {
         set(PERSIAN);
     }
 
+    String[] currencyList = { "Rials", "ريال" };
+    public String currency;
+
     public void set(int mode) {
         settings = new settingsLanguage(mode);
         side = new sidePanelLanguage(mode);
         products = new productsLanguage(mode);
+        customers = new customersLanguage(mode);
+        currency = currencyList[mode];
     }
 
     public class settingsLanguage implements Serializable {
@@ -105,22 +111,36 @@ public class Language implements Serializable {
         String[] nameList = { "Name", "نام" };
         String[] descriptionList = { "Description", "توضیحات" };
         String[] amountList = { "Amount", "تعداد" };
+        String[] basePriceList = { "Base Price", "قیمت پایه" };
         String[] priceList = { "Price", "قیمت" };
         String[] addToCartList = { "Add to Cart", "افزودن به سبد خرید" };
         String[] specialOfferList = { "Special Offer!", "فروش ویژه!" };
         String[] onlyList = { "Only ", "تنها " };
         String[] LeftList = { " Left!", " عدد باقیست!" };
         String[] outOfStockList = { "Out Of Stock!", "کالا موجود نیست!" };
-        String[] saveList = { "Savee", "ذخیره کن" };
+        String[] saveList = { "Save", "ذخیره کن" };
         String[] cancelList = { "Cancel", "لغو کن" };
+        String[] discountList = { "Discount", "تخفیف" };
+        String[] totalPriceList = { "Total Price", "قیمت تمام شده" };
+        String[] totalDiscountList = { "Total Discount", "کل تخفیف ها" };
+        String[] emptyCartList = { "Cart is Empty", "سبد خرید خالیست" };
+        String[] orderList = { "Order", "سفارش" };
+        String[] productList = { "Product", "کالا" };
+        String[] addNewList;
+        String[] areYouSureTitleList;
+        String[] areYouSureDescriptionList;
+        String[] removeSuccessTitleList;
+        String[] removeSuccessDescriptionList;
 
-        String back, name, description, amount, price, addToCart, specialOffer, only, left, outOfStock, save, cancel;
+        public String back, name, description, amount, basePrice, price, addToCart, specialOffer, only, left,
+                outOfStock, save, cancel, discount, totalPrice, totalDiscount, emptyCart, order, product, addNew;
 
         public productsLanguage(int mode) {
             back = backList[mode];
             name = nameList[mode];
             description = descriptionList[mode];
             amount = amountList[mode];
+            basePrice = basePriceList[mode];
             price = priceList[mode];
             addToCart = addToCartList[mode];
             specialOffer = specialOfferList[mode];
@@ -129,6 +149,38 @@ public class Language implements Serializable {
             outOfStock = outOfStockList[mode];
             save = saveList[mode];
             cancel = cancelList[mode];
+            discount = discountList[mode];
+            totalPrice = totalPriceList[mode];
+            totalDiscount = totalDiscountList[mode];
+            emptyCart = emptyCartList[mode];
+            order = orderList[mode];
+            product = productList[mode];
+        }
+    }
+
+    public class customersLanguage implements Serializable {
+        private static final long serialVersionUID = 1L;
+
+        String[] editInfoList = { "Edit Information", "تغییر اطلاعات" };
+        String[] nameList;
+        String[] lastNameList;
+        String[] usernameList;
+        String[] addressList;
+        String[] phoneList;
+        String[] saveList;
+        String[] updateTitleList;
+        String[] updateDescriptionList;
+        String[] cancelList;
+        String[] orderHistoryList;
+        String[] areYouSureTitleList;
+        String[] areYouSureDescriptionList;
+        String[] removeSuccessTitle;
+        String[] removeSuccessDescription;
+
+        public String editInfo;
+
+        public customersLanguage(int mode) {
+            editInfo = editInfoList[mode];
         }
     }
 
