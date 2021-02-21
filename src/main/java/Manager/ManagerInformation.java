@@ -29,7 +29,7 @@ public class ManagerInformation extends JPanel {
         btn.setBounds(90, 570, 520, 40);
         btn.setBackground(new Color(111, 207, 151));
         //btn.setForeground(Color.BLACK);
-        btn.setText("Edit Information");
+        btn.setText(currentUser.language.settings.edit);
         btn.setFont(currentUser.theme.main.font);
         add(btn);
 
