@@ -9,16 +9,22 @@ public class Language implements Serializable {
 
     public settingsLanguage settings;
     public sidePanelLanguage side;
-    public productsLanguage prooducts;
+    public productsLanguage products;
+    public customersLanguage customers;
 
     public Language() {
         set(PERSIAN);
     }
 
+    String[] currencyList = { "Rials", "ريال" };
+    public String currency;
+
     public void set(int mode) {
         settings = new settingsLanguage(mode);
         side = new sidePanelLanguage(mode);
-        prooducts = new productsLanguage(mode);
+        products = new productsLanguage(mode);
+        customers = new customersLanguage(mode);
+        currency = currencyList[mode];
     }
 
     public class settingsLanguage implements Serializable {
@@ -98,28 +104,112 @@ public class Language implements Serializable {
         }
     }
 
-    class productsLanguage implements Serializable {
+    public class productsLanguage implements Serializable {
         private static final long serialVersionUID = -784625214019987888L;
 
         String[] backList = { "Back", "بازگشت" };
         String[] nameList = { "Name", "نام" };
         String[] descriptionList = { "Description", "توضیحات" };
         String[] amountList = { "Amount", "تعداد" };
+        String[] basePriceList = { "Base Price", "قیمت پایه" };
         String[] priceList = { "Price", "قیمت" };
         String[] addToCartList = { "Add to Cart", "افزودن به سبد خرید" };
         String[] specialOfferList = { "Special Offer!", "فروش ویژه!" };
         String[] onlyList = { "Only ", "تنها " };
         String[] LeftList = { " Left!", " عدد باقیست!" };
         String[] outOfStockList = { "Out Of Stock!", "کالا موجود نیست!" };
-        String[] saveList = { "Savee", "ذخیره کن" };
+        String[] saveList = { "Save", "ذخیره کن" };
         String[] cancelList = { "Cancel", "لغو کن" };
+        String[] discountList = { "Discount", "تخفیف" };
+        String[] totalPriceList = { "Total Price", "قیمت تمام شده" };
+        String[] totalDiscountList = { "Total Discount", "کل تخفیف ها" };
+        String[] emptyCartList = { "Cart is Empty", "سبد خرید خالیست" };
+        String[] orderList = { "Order", "سفارش" };
+        String[] productList = { "Product", "کالا" };
+        String[] addNewList = { "Add New Product", "افزودن کالای جدید" };
+
+        String[] areYouSureTitleList = { "Are you sure?", "آیا مطمئن هستید؟" };
+        String[] areYouSureDescriptionList = { "Are you sure you want to delete product with these information?",
+                "آیا مطمئن هستید که میخواهید کالا با اطلاعات زیر را پاک کنید؟" };
+        String[] removeSuccessTitleList = { "Product Removed", "کالا حذف شد" };
+        String[] removeSuccessDescriptionList = { "Product removed successfully.", "کالا با موفقیت حذف شد." };
+        String[] wrongFormatList = { "Wrong format has been entered.", "فرمت اشتباهی وارد شده است." };
+        String[] howManyItemsTitleList = { "Add Amount", "مقداری که اضافه خواهد شد" };
+        String[] howManyItemsDescriptionList = { "How many items do you want to add to ",
+                "چه تعدادی را میخواهید اضافه کنید به " };
+        String[] updateTitleList = { "Product Updated", "کالا بروز شد" };
+        String[] updateDescriptionList = { "Product information updaated successfully.",
+                "اطلاعات کالا با موفقیت بروزرسانی شد." };
+        String[] amountAddedTitleList = { "Success", "موفقیت آمیز" };
+        String[] amountAddedDescriptionList = { "Amount added successfully.", "تعداد با موفقیت اضافه شد" };
+
+        public String back, name, description, amount, basePrice, price, addToCart, specialOffer, only, left,
+                outOfStock, save, cancel, discount, totalPrice, totalDiscount, emptyCart, order, product, addNew,
+                areYouSureTitle, areYouSureDescription, removeSuccessTitle, removeSuccessDescription, wrongFormat,
+                howManyItemsTitle, howManyItemsDescription, updateTitle, updateDescription, amountAddedTitle,
+                amountAddedDescription;
 
         public productsLanguage(int mode) {
-
+            back = backList[mode];
+            name = nameList[mode];
+            description = descriptionList[mode];
+            amount = amountList[mode];
+            basePrice = basePriceList[mode];
+            price = priceList[mode];
+            addToCart = addToCartList[mode];
+            specialOffer = specialOfferList[mode];
+            only = onlyList[mode];
+            left = LeftList[mode];
+            outOfStock = outOfStockList[mode];
+            save = saveList[mode];
+            cancel = cancelList[mode];
+            discount = discountList[mode];
+            totalPrice = totalPriceList[mode];
+            totalDiscount = totalDiscountList[mode];
+            emptyCart = emptyCartList[mode];
+            order = orderList[mode];
+            product = productList[mode];
+            areYouSureTitle = areYouSureTitleList[mode];
+            areYouSureDescription = areYouSureDescriptionList[mode];
+            removeSuccessTitle = removeSuccessTitleList[mode];
+            removeSuccessDescription = removeSuccessDescriptionList[mode];
+            wrongFormat = wrongFormatList[mode];
+            howManyItemsTitle = howManyItemsTitleList[mode];
+            howManyItemsDescription = howManyItemsDescriptionList[mode];
+            updateTitle = updateTitleList[mode];
+            updateDescription = updateDescriptionList[mode];
+            amountAddedTitle = amountAddedTitleList[mode];
+            amountAddedDescription = amountAddedDescriptionList[mode];
         }
     }
 
-    /*class dialogLanguage implements Serializable {
+    public class customersLanguage implements Serializable {
+        private static final long serialVersionUID = 1L;
+
+        String[] editInfoList = { "Edit Information", "تغییر اطلاعات" };
+        String[] nameList;
+        String[] lastNameList;
+        String[] usernameList;
+        String[] addressList;
+        String[] phoneList;
+        String[] saveList;
+        String[] updateTitleList;
+        String[] updateDescriptionList;
+        String[] cancelList;
+        String[] orderHistoryList;
+        String[] areYouSureTitleList;
+        String[] areYouSureDescriptionList;
+        String[] removeSuccessTitle;
+        String[] removeSuccessDescription;
+
+        public String editInfo;
+
+        public customersLanguage(int mode) {
+            editInfo = editInfoList[mode];
+        }
+    }
+
+    /*public class dialogLanguage implements Serializable {
         private static final long serialVersionUID = 2545373340792459048L;
         
         public dialogLanguage(int mode) {
