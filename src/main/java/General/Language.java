@@ -114,7 +114,7 @@ public class Language implements Serializable {
         String[] saveList = { "Savee", "ذخیره کن" };
         String[] cancelList = { "Cancel", "لغو کن" };
 
-        String back, name, description, amount, price, addToCart, specialOffer, only, left, outOfStock, save, cancel;
+        public String back, name, description, amount, price, addToCart, specialOffer, only, left, outOfStock, save, cancel;
 
         public productsLanguage(int mode) {
             back = backList[mode];
