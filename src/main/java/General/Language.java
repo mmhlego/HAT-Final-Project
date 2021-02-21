@@ -9,7 +9,7 @@ public class Language implements Serializable {
 
     public settingsLanguage settings;
     public sidePanelLanguage side;
-    public productsLanguage prooducts;
+    public productsLanguage products;
 
     public Language() {
         set(PERSIAN);
@@ -18,7 +18,7 @@ public class Language implements Serializable {
     public void set(int mode) {
         settings = new settingsLanguage(mode);
         side = new sidePanelLanguage(mode);
-        prooducts = new productsLanguage(mode);
+        products = new productsLanguage(mode);
     }
 
     public class settingsLanguage implements Serializable {
@@ -114,8 +114,21 @@ public class Language implements Serializable {
         String[] saveList = { "Savee", "ذخیره کن" };
         String[] cancelList = { "Cancel", "لغو کن" };
 
-        public productsLanguage(int mode) {
+        String back, name, description, amount, price, addToCart, specialOffer, only, left, outOfStock, save, cancel;
 
+        public productsLanguage(int mode) {
+            back = backList[mode];
+            name = nameList[mode];
+            description = descriptionList[mode];
+            amount = amountList[mode];
+            price = priceList[mode];
+            addToCart = addToCartList[mode];
+            specialOffer = specialOfferList[mode];
+            only = onlyList[mode];
+            left = LeftList[mode];
+            outOfStock = outOfStockList[mode];
+            save = saveList[mode];
+            cancel = cancelList[mode];
         }
     }
 
