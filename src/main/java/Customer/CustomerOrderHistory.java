@@ -27,7 +27,8 @@ public class CustomerOrderHistory extends JPanel {
             button.setBorder(null);
             button.setBounds(50, 50 + i * 60, 560, 40);
             button.addActionListener((e) -> show(button));
-            button.setBackground(currentUser.theme.dialog.buttonBackground);
+            button.setBackground(currentUser.theme.main.buttonColor);
+            button.setForeground(currentUser.theme.main.fontColor);
             button.setFont(currentUser.theme.main.font);
             add(button);
         }

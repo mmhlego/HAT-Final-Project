@@ -134,10 +134,8 @@ public class EmployeeFrame extends JFrame {
         b.setBorder(null);
         b.setForeground(currentUser.theme.sidePanel.fontColor);
         b.setBackground(currentUser.theme.sidePanel.background);
-        if (!b.getText().equals(new String("Toggle SidePanel"))) {
-            b.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
-                    + currentUser.theme.sidePanel.icon + b.getText() + ".png"));
-        }
+        b.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
+                + currentUser.theme.sidePanel.icon + b.getText() + ".png"));
     }
 
     public void selectButton(JButton b) {
