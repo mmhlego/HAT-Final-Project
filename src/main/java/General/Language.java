@@ -12,7 +12,7 @@ public class Language implements Serializable {
     public productsLanguage prooducts;
 
     public Language() {
-        set(ENGLISH);
+        set(PERSIAN);
     }
 
     public void set(int mode) {
