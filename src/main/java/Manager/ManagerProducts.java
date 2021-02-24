@@ -165,13 +165,13 @@ public class ManagerProducts extends JPanel {
         nameLabel.setBounds(margin, margin, w, h);
         editPanel.add(nameLabel);
 
-        JLabel descriptionLabel = new JLabel(currentUser.language.products.description ,4);
+        JLabel descriptionLabel = new JLabel(currentUser.language.products.description, 4);
         descriptionLabel.setForeground(currentUser.theme.dialog.fontColor);
         descriptionLabel.setFont(currentUser.theme.dialog.font);
         descriptionLabel.setBounds(margin, 2 * margin + h, w, h);
         editPanel.add(descriptionLabel);
 
-        JLabel amountLabel = new JLabel(currentUser.language.products.amount , 4);
+        JLabel amountLabel = new JLabel(currentUser.language.products.amount, 4);
         amountLabel.setForeground(currentUser.theme.dialog.fontColor);
         amountLabel.setFont(currentUser.theme.dialog.font);
         amountLabel.setBounds(margin, 3 * margin + 4 * h, w, h);

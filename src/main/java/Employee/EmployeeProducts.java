@@ -128,8 +128,10 @@ public class EmployeeProducts extends JPanel {
     public void sure(JButton b) {
         int index = (b.getY() - 5) / 40;
 
-        String data = "\n" + currentUser.language.products.name + allProducts[index].name + "\n " + currentUser.language.products.description + allProducts[index].description
-                + "\n " +  currentUser.language.products.amount + allProducts[index].amount + "\n " +  currentUser.language.products.price + allProducts[index].price;
+        String data = "\n" + currentUser.language.products.name + allProducts[index].name + "\n "
+                + currentUser.language.products.description + allProducts[index].description + "\n "
+                + currentUser.language.products.amount + allProducts[index].amount + "\n "
+                + currentUser.language.products.price + allProducts[index].price;
         int ans = JOptionPane.showConfirmDialog(this,
                 "Are you sure you want to delete product with these information?" + data, "Are you sure",
                 JOptionPane.YES_NO_OPTION);
@@ -215,7 +217,7 @@ public class EmployeeProducts extends JPanel {
         priceField.setBounds(2 * margin + w, 4 * margin + 5 * h, w, h);
         editPanel.add(priceField);
 
-        JButton save = new JButton("Save");
+        JButton save = new JButton(currentUser.language.products.save);
         save.setBackground(currentUser.theme.dialog.buttonBackground);
         save.setForeground(currentUser.theme.dialog.fontColor);
         save.setFont(currentUser.theme.dialog.font);
