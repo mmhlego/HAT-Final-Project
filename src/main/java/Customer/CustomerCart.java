@@ -43,7 +43,7 @@ public class CustomerCart extends JPanel {
         priceLabel.setBorder(new MatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         Info.add(priceLabel);
 
-        JLabel topAmountLabel = new JLabel("Amount", 0);
+        JLabel topAmountLabel = new JLabel(currentUser.language.products.amount , 0);
         topAmountLabel.setBounds(370, 20, 90, 30);
         topAmountLabel.setFont(currentUser.theme.main.font);
         topAmountLabel.setForeground(currentUser.theme.main.fontColor);

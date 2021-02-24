@@ -128,8 +128,10 @@ public class EmployeeProducts extends JPanel {
     public void sure(JButton b) {
         int index = (b.getY() - 5) / 40;
 
-        String data = "\nName: " + allProducts[index].name + "\nDescription: " + allProducts[index].description
-                + "\nAmount: " + allProducts[index].amount + "\nPrice: " + allProducts[index].price;
+        String data = "\n" + currentUser.language.products.name + allProducts[index].name + "\n "
+                + currentUser.language.products.description + allProducts[index].description + "\n "
+                + currentUser.language.products.amount + allProducts[index].amount + "\n "
+                + currentUser.language.products.price + allProducts[index].price;
         int ans = JOptionPane.showConfirmDialog(this,
                 "Are you sure you want to delete product with these information?" + data, "Are you sure",
                 JOptionPane.YES_NO_OPTION);
@@ -157,25 +159,25 @@ public class EmployeeProducts extends JPanel {
         editPanel.setLayout(null);
         editPanel.setSize(3 * margin + 2 * w, 8 * margin + 7 * h);
 
-        JLabel nameLabel = new JLabel("Name:", 4);
+        JLabel nameLabel = new JLabel(currentUser.language.products.name, 4);
         nameLabel.setForeground(currentUser.theme.dialog.fontColor);
         nameLabel.setFont(currentUser.theme.dialog.font);
         nameLabel.setBounds(margin, margin, w, h);
         editPanel.add(nameLabel);
 
-        JLabel descriptionLabel = new JLabel("Description:", 4);
+        JLabel descriptionLabel = new JLabel(currentUser.language.products.description, 4);
         descriptionLabel.setForeground(currentUser.theme.dialog.fontColor);
         descriptionLabel.setFont(currentUser.theme.dialog.font);
         descriptionLabel.setBounds(margin, 2 * margin + h, w, h);
         editPanel.add(descriptionLabel);
 
-        JLabel amountLabel = new JLabel("Amount:", 4);
+        JLabel amountLabel = new JLabel(currentUser.language.products.amount, 4);
         amountLabel.setForeground(currentUser.theme.dialog.fontColor);
         amountLabel.setFont(currentUser.theme.dialog.font);
         amountLabel.setBounds(margin, 3 * margin + 4 * h, w, h);
         editPanel.add(amountLabel);
 
-        JLabel pricaLabel = new JLabel("Price:", 4);
+        JLabel pricaLabel = new JLabel(currentUser.language.products.price, 4);
         pricaLabel.setBackground(currentUser.theme.dialog.background);
         pricaLabel.setForeground(currentUser.theme.dialog.fontColor);
         pricaLabel.setFont(currentUser.theme.dialog.font);
@@ -215,7 +217,7 @@ public class EmployeeProducts extends JPanel {
         priceField.setBounds(2 * margin + w, 4 * margin + 5 * h, w, h);
         editPanel.add(priceField);
 
-        JButton save = new JButton("Save");
+        JButton save = new JButton(currentUser.language.products.save);
         save.setBackground(currentUser.theme.dialog.buttonBackground);
         save.setForeground(currentUser.theme.dialog.fontColor);
         save.setFont(currentUser.theme.dialog.font);
@@ -250,7 +252,7 @@ public class EmployeeProducts extends JPanel {
         });
         editPanel.add(save);
 
-        JButton cancel = new JButton("Cancel");
+        JButton cancel = new JButton(currentUser.language.products.cancel);
         cancel.setBackground(currentUser.theme.dialog.buttonBackground);
         cancel.setBounds(2 * margin + w, 5 * margin + 6 * h, w, h);
         cancel.setForeground(currentUser.theme.dialog.fontColor);
@@ -279,25 +281,25 @@ public class EmployeeProducts extends JPanel {
         editPanel.setSize(3 * margin + 2 * w, 8 * margin + 7 * h);
         editPanel.setBackground(currentUser.theme.dialog.background);
 
-        JLabel nameLabel = new JLabel("Name:", 4);
+        JLabel nameLabel = new JLabel(currentUser.language.products.name, 4);
         nameLabel.setBounds(margin, margin, w, h);
         nameLabel.setFont(currentUser.theme.dialog.font);
         nameLabel.setForeground(currentUser.theme.dialog.fontColor);
         editPanel.add(nameLabel);
 
-        JLabel descriptionLabel = new JLabel("Description:", 4);
+        JLabel descriptionLabel = new JLabel(currentUser.language.products.description, 4);
         descriptionLabel.setBounds(margin, 2 * margin + h, w, h);
         descriptionLabel.setFont(currentUser.theme.dialog.font);
         descriptionLabel.setForeground(currentUser.theme.dialog.fontColor);
         editPanel.add(descriptionLabel);
 
-        JLabel amountLabel = new JLabel("Amount:", 4);
+        JLabel amountLabel = new JLabel(currentUser.language.products.amount, 4);
         amountLabel.setBounds(margin, 3 * margin + 4 * h, w, h);
         amountLabel.setFont(currentUser.theme.dialog.font);
         amountLabel.setForeground(currentUser.theme.dialog.fontColor);
         editPanel.add(amountLabel);
 
-        JLabel pricaLabel = new JLabel("Price:", 4);
+        JLabel pricaLabel = new JLabel(currentUser.language.products.price, 4);
         pricaLabel.setBounds(margin, 4 * margin + 5 * h, w, h);
         pricaLabel.setFont(currentUser.theme.dialog.font);
         pricaLabel.setForeground(currentUser.theme.dialog.fontColor);
@@ -336,7 +338,7 @@ public class EmployeeProducts extends JPanel {
         priceField.setBounds(2 * margin + w, 4 * margin + 5 * h, w, h);
         editPanel.add(priceField);
 
-        JButton save = new JButton("Save");
+        JButton save = new JButton(currentUser.language.products.save);
         save.setBackground(currentUser.theme.dialog.buttonBackground);
         save.setForeground(currentUser.theme.dialog.fontColor);
         save.setFont(currentUser.theme.dialog.font);
@@ -358,7 +360,7 @@ public class EmployeeProducts extends JPanel {
         });
         editPanel.add(save);
 
-        JButton cancel = new JButton("Cancel");
+        JButton cancel = new JButton(currentUser.language.products.cancel);
         cancel.setBackground(currentUser.theme.dialog.buttonBackground);
         cancel.setForeground(currentUser.theme.dialog.fontColor);
         cancel.setFont(currentUser.theme.dialog.font);

@@ -1,15 +1,15 @@
-import Customer.CustomerCreator;
-import Employee.EmployeeCreator;
-import General.ProductCreator;
+// import Customer.CustomerCreator;
+// import Employee.EmployeeCreator;
+// import General.ProductCreator;
+// import Manager.ManagerCreator;
 import Login.*;
-import Manager.ManagerCreator;
 
 public class Main {
 	public static void main(String[] args) {
-		new ProductCreator();
-		new CustomerCreator();
-		new EmployeeCreator();
-		new ManagerCreator();
+		// new ProductCreator();
+		// new CustomerCreator();
+		// new EmployeeCreator();
+		// new ManagerCreator();
 		new MainFrame();
 	}
 }

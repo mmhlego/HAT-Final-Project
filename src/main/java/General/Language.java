@@ -118,8 +118,8 @@ public class Language implements Serializable {
         String[] onlyList = { "Only ", "تنها " };
         String[] LeftList = { " Left!", " عدد باقیست!" };
         String[] outOfStockList = { "Out Of Stock!", "کالا موجود نیست!" };
-        String[] saveList = { "Save", "ذخیره کن" };
-        String[] cancelList = { "Cancel", "لغو کن" };
+        String[] saveList = { "Save", "ذخیره" };
+        String[] cancelList = { "Cancel", "لغو" };
         String[] discountList = { "Discount", "تخفیف" };
         String[] totalPriceList = { "Total Price", "قیمت تمام شده" };
         String[] totalDiscountList = { "Total Discount", "کل تخفیف ها" };
@@ -187,25 +187,43 @@ public class Language implements Serializable {
         private static final long serialVersionUID = 1L;
 
         String[] editInfoList = { "Edit Information", "تغییر اطلاعات" };
-        String[] nameList;
-        String[] lastNameList;
-        String[] usernameList;
-        String[] addressList;
-        String[] phoneList;
-        String[] saveList;
-        String[] updateTitleList;
-        String[] updateDescriptionList;
-        String[] cancelList;
-        String[] orderHistoryList;
-        String[] areYouSureTitleList;
-        String[] areYouSureDescriptionList;
-        String[] removeSuccessTitle;
-        String[] removeSuccessDescription;
+        String[] nameList = { "Name", "نام" };
+        String[] lastNameList = { "Last Name", "نام خانوادگی" };
+        String[] userNameList = { "Username", "نام کاربری" };
+        String[] addressList = { "Address", "ادرس" };
+        String[] phoneList = { "Phone number", "شماره تلفن" };
+        String[] saveList = { "Save", "ذخیره" };
+        String[] updateTitleList = { "Customer Updated", "اطلاعات بروز شد" };
+        String[] updateDescriptionList = { "Customer information updated successfully",
+                "اطلاعات مشتری با موفقیت بروزرسانی شد" };
+        String[] cancelList = { "Cancel", "لغو" };
+        String[] orderHistoryList = { "Order ", "سفارش شماره ی" };
+        String[] areYouSureTitleList = { "Are you sure?", "آیا مطمئن هستید؟" };
+        String[] areYouSureDescriptionList = { "Are you sure you want to delete customer with this information?",
+                "آیا مطمئن هستید که میخواهید مشتری با اطلاعات زیر را پاک کنید؟" };
+        String[] removeSuccessTitleList = { "Customer Removed", "مشتری حذف شد" };
+        String[] removeSuccessDescriptionList = { "Customer removed sucessfully.", "اطلاعات مشتری با موفقیت حذف شد" };
 
-        public String editInfo;
+        public String editInfo, name, lastName, userName, address, phone, save, updateTitle, updateDescription, cancel,
+                orderHistory, areYouSureTitle, areYouSureDescription, removeSuccessTitle, removeSuccessDescription;
 
         public customersLanguage(int mode) {
             editInfo = editInfoList[mode];
+            name = nameList[mode];
+            lastName = lastNameList[mode];
+            address = addressList[mode];
+            userName = userNameList[mode];
+            phone = phoneList[mode];
+            save = saveList[mode];
+            updateTitle = updateTitleList[mode];
+            updateDescription = updateDescriptionList[mode];
+            cancel = cancelList[mode];
+            orderHistory = orderHistoryList[mode];
+            areYouSureDescription = areYouSureDescriptionList[mode];
+            areYouSureTitle = areYouSureTitleList[mode];
+            removeSuccessTitle = removeSuccessTitleList[mode];
+            removeSuccessDescription = removeSuccessDescriptionList[mode];
+
         }
     }
 

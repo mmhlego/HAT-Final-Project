@@ -134,7 +134,7 @@ public class ManagerCustomers extends JPanel {
         editPanel.setLayout(null);
         editPanel.setSize(3 * margin + 2 * w, 7 * margin + 6 * h);
 
-        JLabel nameLabel = new JLabel("Name:", 4);
+        JLabel nameLabel = new JLabel(currentUser.language.products.name, 4);
         nameLabel.setBackground(currentUser.theme.dialog.background);
         nameLabel.setForeground(currentUser.theme.dialog.fontColor);
         nameLabel.setFont(currentUser.theme.dialog.font);

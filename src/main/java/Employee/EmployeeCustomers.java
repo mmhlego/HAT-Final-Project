@@ -289,14 +289,14 @@ public class EmployeeCustomers extends JPanel {
             productLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
             dialog.addLabel(productLabel, 0, 0);
 
-            JLabel amountLabel = new JLabel("Amount", 0);
+            JLabel amountLabel = new JLabel(currentUser.language.products.amount, 0);
             amountLabel.setBackground(currentUser.theme.dialog.background);
             amountLabel.setForeground(currentUser.theme.dialog.fontColor);
             amountLabel.setFont(currentUser.theme.dialog.font);
             amountLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
             dialog.addLabel(amountLabel, 0, 1);
 
-            JLabel priceLabel = new JLabel("Price", 0);
+            JLabel priceLabel = new JLabel(currentUser.language.products.price, 0);
             priceLabel.setBackground(currentUser.theme.dialog.background);
             priceLabel.setForeground(currentUser.theme.dialog.fontColor);
             priceLabel.setFont(currentUser.theme.dialog.font);
