@@ -69,14 +69,14 @@ public class CustomerOrderHistory extends JPanel {
             productLabel.setFont(currentUser.theme.dialog.font);
             dialog.addLabel(productLabel, 0, 0);
 
-            JLabel amountLabel = new JLabel("Amount", 0);
+            JLabel amountLabel = new JLabel(currentUser.language.products.amount, 0);
             amountLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
             amountLabel.setBackground(currentUser.theme.dialog.background);
             amountLabel.setForeground(currentUser.theme.dialog.fontColor);
             amountLabel.setFont(currentUser.theme.dialog.font);
             dialog.addLabel(amountLabel, 0, 1);
 
-            JLabel priceLabel = new JLabel("Price", 0);
+            JLabel priceLabel = new JLabel(currentUser.language.products.price, 0);
             priceLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
             priceLabel.setBackground(currentUser.theme.dialog.background);
             priceLabel.setForeground(currentUser.theme.dialog.fontColor);
