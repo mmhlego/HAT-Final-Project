@@ -118,8 +118,8 @@ public class Language implements Serializable {
         String[] onlyList = { "Only ", "تنها " };
         String[] LeftList = { " Left!", " عدد باقیست!" };
         String[] outOfStockList = { "Out Of Stock!", "کالا موجود نیست!" };
-        String[] saveList = { "Save", "ذخیره کن" };
-        String[] cancelList = { "Cancel", "لغو کن" };
+        String[] saveList = { "Save", "ذخیره" };
+        String[] cancelList = { "Cancel", "لغو" };
         String[] discountList = { "Discount", "تخفیف" };
         String[] totalPriceList = { "Total Price", "قیمت تمام شده" };
         String[] totalDiscountList = { "Total Discount", "کل تخفیف ها" };
