@@ -98,7 +98,7 @@ public class ManagerProducts extends JPanel {
             Info.add(Product);
         }
 
-        JButton addNew = new JButton("Add New Product");
+        JButton addNew = new JButton(currentUser.language.products.addNew);
         addNew.setBounds(10, 640, 680, 50);
         addNew.setBackground(currentUser.theme.submitColor);
         addNew.setForeground(currentUser.theme.dialog.fontColor);
@@ -133,13 +133,13 @@ public class ManagerProducts extends JPanel {
                 + currentUser.language.products.amount + allProducts[index].amount + "\n "
                 + currentUser.language.products.price + allProducts[index].price;
         int ans = JOptionPane.showConfirmDialog(this,
-                "Are you sure you want to delete product with these information?" + data, "Are you sure",
+                currentUser.language.products.areYouSureDescription + data, currentUser.language.products.areYouSureTitle,
                 JOptionPane.YES_NO_OPTION);
 
         if (ans == 0) {
             writeData(index);
 
-            JOptionPane.showMessageDialog(this, "Product removed successfully.", "Product Rmoved", 1);
+            JOptionPane.showMessageDialog(this, currentUser.language.products.removeSuccessDescription, currentUser.language.products.removeSuccessTitle, 1);
 
             reloadPage();
         }
@@ -235,7 +235,7 @@ public class ManagerProducts extends JPanel {
                 writer.writeObject(allProducts);
                 writer.close();
 
-                JOptionPane.showMessageDialog(dialog, "Product information updated successfully.", "Product Updated",
+                JOptionPane.showMessageDialog(dialog, currentUser.language.products.updateDescription, currentUser.language.products.updateTitle,
                         1);
 
                 dialog.dispose();
@@ -400,7 +400,7 @@ public class ManagerProducts extends JPanel {
             writer.writeObject(allProducts);
             writer.close();
 
-            JOptionPane.showMessageDialog(parent, "Amount added successfully.", "Success",
+            JOptionPane.showMessageDialog(parent, currentUser.language.products.amountAddedDescription, currentUser.language.products.amountAddedTitle,
                     JOptionPane.INFORMATION_MESSAGE);
 
             reloadPage();

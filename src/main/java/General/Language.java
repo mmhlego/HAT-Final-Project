@@ -2,8 +2,6 @@ package General;
 
 import java.io.Serializable;
 
-import javafx.scene.layout.Background;
-
 public class Language implements Serializable {
     private static final long serialVersionUID = -4434878878801701341L;
 
