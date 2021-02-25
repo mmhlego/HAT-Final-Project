@@ -23,7 +23,7 @@ public class CustomerOrderHistory extends JPanel {
         Count = currentUser.pastOrders.length;
 
         for (int i = 0; i < Count; i++) {
-            JButton button = new JButton("Order #" + (Count - i));
+            JButton button = new JButton(currentUser.language.products.order + " #" + (Count - i));
             button.setBorder(null);
             button.setBounds(50, 50 + i * 60, 560, 40);
             button.addActionListener((e) -> show(button));
@@ -61,9 +61,9 @@ public class CustomerOrderHistory extends JPanel {
         try {
             int length = o.products.length + 2;
             long totalPrice = 0;
-            CustomScrollDialog dialog = new CustomScrollDialog(length, currentUser.theme);
+            CustomScrollDialog dialog = new CustomScrollDialog(length, currentUser.theme, currentUser.language.back);
 
-            JLabel productLabel = new JLabel("Product", 0);
+            JLabel productLabel = new JLabel(currentUser.language.products.product, 0);
             productLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
             productLabel.setBackground(currentUser.theme.dialog.background);
             productLabel.setFont(currentUser.theme.dialog.font);
@@ -104,7 +104,7 @@ public class CustomerOrderHistory extends JPanel {
             empty.setFont(currentUser.theme.dialog.font);
             dialog.addLabel(empty, length - 1, 0);
 
-            JLabel tpl = new JLabel("Total price: ", 0);
+            JLabel tpl = new JLabel(currentUser.language.products.totalPrice, 0);
             tpl.setBorder(new MatteBorder(1, 0, 0, 0, Color.gray));
             tpl.setBackground(currentUser.theme.dialog.background);
             tpl.setForeground(currentUser.theme.dialog.fontColor);
@@ -119,8 +119,8 @@ public class CustomerOrderHistory extends JPanel {
             dialog.addLabel(tp, length - 1, 2);
 
         } catch (NullPointerException n) {
-            CustomScrollDialog dialog = new CustomScrollDialog(1, currentUser.theme);
-            dialog.addLabel(new JLabel("Cart is empty.", 0), 0, 1);
+            CustomScrollDialog dialog = new CustomScrollDialog(1, currentUser.theme, currentUser.language.back);
+            dialog.addLabel(new JLabel(currentUser.language.products.emptyCart, 0), 0, 1);
         }
     }
 }

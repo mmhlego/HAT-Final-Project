@@ -276,7 +276,7 @@ public class ManagerCustomers extends JPanel {
         try {
             int length = o.products.length + 2;
             long totalPrice = 0;
-            CustomScrollDialog dialog = new CustomScrollDialog(length, currentUser.theme);
+            CustomScrollDialog dialog = new CustomScrollDialog(length, currentUser.theme, currentUser.language.back);
 
             if (length == 2) {
                 dialog.addLabel(new JLabel(currentUser.language.products.emptyCart, 0), 0, 1);
@@ -340,17 +340,19 @@ public class ManagerCustomers extends JPanel {
             dialog.addLabel(tp, length - 1, 2);
 
         } catch (NullPointerException n) {
-            CustomScrollDialog dialog = new CustomScrollDialog(1, currentUser.theme);
+            CustomScrollDialog dialog = new CustomScrollDialog(1, currentUser.theme, currentUser.language.back);
             dialog.addLabel(new JLabel(currentUser.language.products.emptyCart, 0), 0, 1);
         }
     }
 
     public void ShowHistory(JButton b) {
         int index = (b.getY() - 5) / 40;
-        CustomScrollDialog dialog = new CustomScrollDialog(allCustomers[index].pastOrders.length, currentUser.theme);
+        CustomScrollDialog dialog = new CustomScrollDialog(allCustomers[index].pastOrders.length, currentUser.theme,
+                currentUser.language.back);
 
         for (int i = 0; i < allCustomers[index].pastOrders.length; i++) {
-            JButton jb = new JButton(currentUser.language.customers.orderHistory + (i + 1) + " - " + allCustomers[index].pastOrders[i].status);
+            JButton jb = new JButton(currentUser.language.customers.orderHistory + (i + 1) + " - "
+                    + allCustomers[index].pastOrders[i].status);
             jb.setForeground(currentUser.theme.dialog.fontColor);
             jb.setFont(currentUser.theme.dialog.font);
             dialog.addButton(jb);

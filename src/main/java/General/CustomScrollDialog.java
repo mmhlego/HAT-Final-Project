@@ -12,7 +12,7 @@ public class CustomScrollDialog extends JDialog {
 
     Theme theme;
 
-    public CustomScrollDialog(int Count, Theme t) {
+    public CustomScrollDialog(int Count, Theme t, String returnText) {
         theme = t;
 
         setLayout(null);
@@ -34,7 +34,7 @@ public class CustomScrollDialog extends JDialog {
         Scroller.getVerticalScrollBar().setUnitIncrement(10);
         Scroller.setBackground(theme.dialog.background);
 
-        JButton Return = new JButton("Return");
+        JButton Return = new JButton(returnText);
         Return.setBounds(10, 360, 440, 30);
         Return.setFont(theme.dialog.font);
         Return.setBackground(theme.dialog.buttonBackground);
