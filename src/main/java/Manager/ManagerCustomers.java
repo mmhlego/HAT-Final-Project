@@ -351,8 +351,8 @@ public class ManagerCustomers extends JPanel {
                 currentUser.language.back);
 
         for (int i = 0; i < allCustomers[index].pastOrders.length; i++) {
-            JButton jb = new JButton(currentUser.language.customers.orderHistory + (i + 1) + " - "
-                    + allCustomers[index].pastOrders[i].status);
+            JButton jb = new JButton(currentUser.language.customers.orderHistory
+                    + (i + 1) /*+ " - " + allCustomers[index].pastOrders[i].status*/);
             jb.setForeground(currentUser.theme.dialog.fontColor);
             jb.setFont(currentUser.theme.dialog.font);
             dialog.addButton(jb);
@@ -364,8 +364,8 @@ public class ManagerCustomers extends JPanel {
     public void sure(JButton b) {
         int index = (b.getY() - 5) / 40;
 
-        String data = "\n" + "  " + currentUser.language.customers.name + " :  " + allCustomers[index].name + "\n" + "  "
-                + currentUser.language.customers.lastName + " :  " + allCustomers[index].lastName + "\n" + "  "
+        String data = "\n" + "  " + currentUser.language.customers.name + " :  " + allCustomers[index].name + "\n"
+                + "  " + currentUser.language.customers.lastName + " :  " + allCustomers[index].lastName + "\n" + "  "
                 + currentUser.language.customers.phone + " :  " + allCustomers[index].phoneNumber + "\n" + "  "
                 + currentUser.language.customers.address + " :  " + allCustomers[index].address;
         int ans = JOptionPane.showConfirmDialog(this, currentUser.language.customers.areYouSureDescription + data,

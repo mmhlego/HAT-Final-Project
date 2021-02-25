@@ -351,8 +351,8 @@ public class EmployeeCustomers extends JPanel {
                 currentUser.language.back);
 
         for (int i = 0; i < allCustomers[index].pastOrders.length; i++) {
-            JButton jb = new JButton(currentUser.language.products.order + " #" + (i + 1) + " - "
-                    + allCustomers[index].pastOrders[i].status);
+            JButton jb = new JButton(currentUser.language.products.order + " #"
+                    + (i + 1) /*+ " - " + allCustomers[index].pastOrders[i].status*/);
             jb.setForeground(currentUser.theme.dialog.fontColor);
             jb.setFont(currentUser.theme.dialog.font);
             dialog.addButton(jb);
