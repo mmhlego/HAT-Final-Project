@@ -194,6 +194,7 @@ public class Language implements Serializable {
             howManyItemsTitle = howManyItemsTitleList[mode];
             howManyItemsDescription = howManyItemsDescriptionList[mode];
             updateTitle = updateTitleList[mode];
+            addNew = addNewList[mode];
             updateDescription = updateDescriptionList[mode];
             amountAddedTitle = amountAddedTitleList[mode];
             amountAddedDescription = amountAddedDescriptionList[mode];

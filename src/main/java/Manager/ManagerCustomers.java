@@ -350,7 +350,8 @@ public class ManagerCustomers extends JPanel {
         CustomScrollDialog dialog = new CustomScrollDialog(allCustomers[index].pastOrders.length, currentUser.theme);
 
         for (int i = 0; i < allCustomers[index].pastOrders.length; i++) {
-            JButton jb = new JButton(currentUser.language.customers.orderHistory + (i + 1) + " - " + allCustomers[index].pastOrders[i].status);
+            JButton jb = new JButton(currentUser.language.customers.orderHistory + (i + 1) + " - "
+                    + allCustomers[index].pastOrders[i].status);
             jb.setForeground(currentUser.theme.dialog.fontColor);
             jb.setFont(currentUser.theme.dialog.font);
             dialog.addButton(jb);
@@ -362,10 +363,10 @@ public class ManagerCustomers extends JPanel {
     public void sure(JButton b) {
         int index = (b.getY() - 5) / 40;
 
-        String data = currentUser.language.customers.name + allCustomers[index].name
-                + currentUser.language.customers.lastName + allCustomers[index].lastName
-                + currentUser.language.customers.phone + allCustomers[index].phoneNumber
-                + currentUser.language.customers.address + allCustomers[index].address;
+        String data = "\n" + "  " + currentUser.language.customers.name + " :  " + allCustomers[index].name + "\n" + "  "
+                + currentUser.language.customers.lastName + " :  " + allCustomers[index].lastName + "\n" + "  "
+                + currentUser.language.customers.phone + " :  " + allCustomers[index].phoneNumber + "\n" + "  "
+                + currentUser.language.customers.address + " :  " + allCustomers[index].address;
         int ans = JOptionPane.showConfirmDialog(this, currentUser.language.customers.areYouSureDescription + data,
                 currentUser.language.customers.areYouSureTitle, JOptionPane.YES_NO_OPTION);
 
