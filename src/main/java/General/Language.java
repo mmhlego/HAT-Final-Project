@@ -12,6 +12,8 @@ public class Language implements Serializable {
     public productsLanguage products;
     public customersLanguage customers;
 
+    public String save, cancel, back;
+
     public Language() {
         set(PERSIAN);
     }
@@ -25,6 +27,17 @@ public class Language implements Serializable {
         products = new productsLanguage(mode);
         customers = new customersLanguage(mode);
         currency = currencyList[mode];
+        setIndivs(mode);
+    }
+
+    public void setIndivs(int mode) {
+        String[] saveList = { "Save", "ذخیره" };
+        String[] cancelList = { "Cancel", "لغو" };
+        String[] backList = { "Back", "بازگشت" };
+
+        save = saveList[mode];
+        cancel = cancelList[mode];
+        back = backList[mode];
     }
 
     public class settingsLanguage implements Serializable {
@@ -132,8 +145,9 @@ public class Language implements Serializable {
         String[] areYouSureDescriptionList = { "Are you sure you want to delete product with these information?",
                 "آیا مطمئن هستید که میخواهید کالا با اطلاعات زیر را پاک کنید؟" };
         String[] removeSuccessTitleList = { "Product Removed", "کالا حذف شد" };
+        String[] wrongFormatTitleList = { "Wrong Format", "فرمت نادرست" };
         String[] removeSuccessDescriptionList = { "Product removed successfully.", "کالا با موفقیت حذف شد." };
-        String[] wrongFormatList = { "Wrong format has been entered.", "فرمت اشتباهی وارد شده است." };
+        String[] wrongFormatDescriptionList = { "Wrong format has been entered.", "فرمت اشتباهی وارد شده است." };
         String[] howManyItemsTitleList = { "Add Amount", "مقداری که اضافه خواهد شد" };
         String[] howManyItemsDescriptionList = { "How many items do you want to add to ",
                 "چه تعدادی را میخواهید اضافه کنید به " };
@@ -145,9 +159,9 @@ public class Language implements Serializable {
 
         public String back, name, description, amount, basePrice, price, addToCart, specialOffer, only, left,
                 outOfStock, save, cancel, discount, totalPrice, totalDiscount, emptyCart, order, product, addNew,
-                areYouSureTitle, areYouSureDescription, removeSuccessTitle, removeSuccessDescription, wrongFormat,
-                howManyItemsTitle, howManyItemsDescription, updateTitle, updateDescription, amountAddedTitle,
-                amountAddedDescription;
+                areYouSureTitle, areYouSureDescription, removeSuccessTitle, removeSuccessDescription, wrongFormatTitle,
+                wrongFormatDescription, howManyItemsTitle, howManyItemsDescription, updateTitle, updateDescription,
+                amountAddedTitle, amountAddedDescription;
 
         public productsLanguage(int mode) {
             back = backList[mode];
@@ -173,7 +187,8 @@ public class Language implements Serializable {
             areYouSureDescription = areYouSureDescriptionList[mode];
             removeSuccessTitle = removeSuccessTitleList[mode];
             removeSuccessDescription = removeSuccessDescriptionList[mode];
-            wrongFormat = wrongFormatList[mode];
+            wrongFormatTitle = wrongFormatTitleList[mode];
+            wrongFormatDescription = wrongFormatDescriptionList[mode];
             howManyItemsTitle = howManyItemsTitleList[mode];
             howManyItemsDescription = howManyItemsDescriptionList[mode];
             updateTitle = updateTitleList[mode];
