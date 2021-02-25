@@ -7,11 +7,12 @@ import General.*;
 public class ManagerTheme extends JDialog {
     private static final long serialVersionUID = -7114970084885205201L;
 
-    Manager currentUser;
     ManagerFrame parent;
+    Manager currentUser;
     ManagerSetting root;
     Color bcgc, spc, dlgc;
     Theme currentTheme = new Theme();
+    int width = 500, height = 500;
 
     public ManagerTheme(ManagerFrame p, ManagerSetting r, Manager u) {
         parent = p;
@@ -21,16 +22,17 @@ public class ManagerTheme extends JDialog {
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(100, 20, 300, 300);
         layeredPane.setLayout(null);
-        setSize(518, 500);
+        setSize(width + 18, height);
+        setLocationRelativeTo(null);
 
         JPanel sidePanel = new JPanel();
-        sidePanel.setToolTipText("Side Panel Prewiew");
+        sidePanel.setToolTipText(currentUser.language.theme.sidePreview);
         JPanel exitPanel = new JPanel();
-        exitPanel.setToolTipText("Exit Prewiew");
+        exitPanel.setToolTipText(currentUser.language.theme.exitPreview);
         JPanel mainPanel = new JPanel();
-        mainPanel.setToolTipText("Main Panel Prewiew");
+        mainPanel.setToolTipText(currentUser.language.theme.mainPreview);
         JPanel dialogPanel = new JPanel();
-        dialogPanel.setToolTipText("Dialog Prewiew");
+        dialogPanel.setToolTipText(currentUser.language.theme.dialogPreview);
 
         sidePanel.setBounds(0, 0, 50, 280);
         sidePanel.setBackground(currentUser.theme.sidePanel.background);
@@ -48,13 +50,13 @@ public class ManagerTheme extends JDialog {
         String[] dialogCombos = { "Light(default)", "Dark", "Classic", "Modern", "Cyan", "Silver", "Lime", "Orange",
                 "Brown", "Magenta" };
 
-        JLabel sideColorLabel = new JLabel("Side Panel Theme:", 0);
+        JLabel sideColorLabel = new JLabel(currentUser.language.theme.sideTheme, 0);
         sideColorLabel.setBounds(20, 320, 140, 30);
         add(sideColorLabel);
-        JLabel mainColorLabel = new JLabel("Main Panel Theme:", 0);
+        JLabel mainColorLabel = new JLabel(currentUser.language.theme.mainTheme, 0);
         mainColorLabel.setBounds(180, 320, 140, 30);
         add(mainColorLabel);
-        JLabel dialogColorLabel = new JLabel("Dialog Theme:", 0);
+        JLabel dialogColorLabel = new JLabel(currentUser.language.theme.dialogTheme, 0);
         dialogColorLabel.setBounds(340, 320, 140, 30);
         add(dialogColorLabel);
 
@@ -69,13 +71,13 @@ public class ManagerTheme extends JDialog {
         dialogTheme.setSelectedIndex(currentUser.theme.dialog.mode);
 
         setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Theme.png").getImage());
-        setTitle("Custom Theme Creator");
+        setTitle(currentUser.language.theme.themeCreator);
 
-        JButton apply = new JButton("Preview");
+        JButton apply = new JButton(currentUser.language.theme.preview);
         apply.setBounds(20, 400, 210, 35);
         add(apply);
 
-        JButton save = new JButton("Apply");
+        JButton save = new JButton(currentUser.language.theme.apply);
         save.setBackground(currentUser.theme.submitColor);
         save.setBounds(270, 400, 210, 35);
 
