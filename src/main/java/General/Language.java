@@ -13,13 +13,13 @@ public class Language implements Serializable {
     public customersLanguage customers;
     public EmployeeLanguage employee;
 
-    public String save, cancel, back;
+    public String save, cancel, back, yes, no, exit, logOut;
 
     public Language() {
         set(PERSIAN);
     }
 
-    String[] currencyList = { "Rials", "ريال" };
+    String[] currencyList = { " Rials", " ريال" };
     public String currency;
 
     public void set(int mode) {
@@ -35,10 +35,19 @@ public class Language implements Serializable {
         String[] saveList = { "Save", "ذخیره" };
         String[] cancelList = { "Cancel", "لغو" };
         String[] backList = { "Back", "بازگشت" };
+        String[] yesList = { "Yes", "بلی" };
+        String[] noList = { "No", "خیر" };
+        String[] exitList = { "Exit", "بستن" };
+        String[] logOutList = { "Log out", "خروج" };
 
         save = saveList[mode];
         cancel = cancelList[mode];
         back = backList[mode];
+        yes = yesList[mode];
+        no = noList[mode];
+        exit = exitList[mode];
+        logOut = logOutList[mode];
+
         employee = new EmployeeLanguage(mode);
     }
 
@@ -194,6 +203,7 @@ public class Language implements Serializable {
             howManyItemsTitle = howManyItemsTitleList[mode];
             howManyItemsDescription = howManyItemsDescriptionList[mode];
             updateTitle = updateTitleList[mode];
+            addNew = addNewList[mode];
             updateDescription = updateDescriptionList[mode];
             amountAddedTitle = amountAddedTitleList[mode];
             amountAddedDescription = amountAddedDescriptionList[mode];
@@ -205,8 +215,10 @@ public class Language implements Serializable {
 
         String[] editInfoList = { "Edit Information", "تغییر اطلاعات" };
         String[] nameList = { "Name", "نام" };
+        String[] passwordList = { "Password", "گذرواژه" };
         String[] lastNameList = { "Last Name", "نام خانوادگی" };
         String[] userNameList = { "Username", "نام کاربری" };
+        String[] balanceList = { "Balance", "موجودی" };
         String[] addressList = { "Address", "ادرس" };
         String[] phoneList = { "Phone number", "شماره تلفن" };
         String[] saveList = { "Save", "ذخیره" };
@@ -221,15 +233,18 @@ public class Language implements Serializable {
         String[] removeSuccessTitleList = { "Customer Removed", "مشتری حذف شد" };
         String[] removeSuccessDescriptionList = { "Customer removed sucessfully.", "اطلاعات مشتری با موفقیت حذف شد" };
 
-        public String editInfo, name, lastName, userName, address, phone, save, updateTitle, updateDescription, cancel,
-                orderHistory, areYouSureTitle, areYouSureDescription, removeSuccessTitle, removeSuccessDescription;
+        public String editInfo, name, password, lastName, userName, balance, address, phone, save, updateTitle,
+                updateDescription, cancel, orderHistory, areYouSureTitle, areYouSureDescription, removeSuccessTitle,
+                removeSuccessDescription;
 
         public customersLanguage(int mode) {
             editInfo = editInfoList[mode];
             name = nameList[mode];
+            password = passwordList[mode];
             lastName = lastNameList[mode];
             address = addressList[mode];
             userName = userNameList[mode];
+            balance = balanceList[mode];
             phone = phoneList[mode];
             save = saveList[mode];
             updateTitle = updateTitleList[mode];

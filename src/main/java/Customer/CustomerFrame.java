@@ -191,14 +191,14 @@ public class CustomerFrame extends JFrame {
         dialog.setResizable(false);
         dialog.setLayout(new GridLayout(1, 0));
 
-        JButton Exit = new JButton("Exit");
+        JButton Exit = new JButton(currentUser.language.exit);
         Exit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Exit.png"));
         Exit.setBackground(new Color(215, 38, 61));
         Exit.setFont(new Font("Arial", Font.BOLD, 13));
         Exit.setFocusable(false);
         Exit.setVisible(true);
 
-        JButton LogOut = new JButton("Log out");
+        JButton LogOut = new JButton(currentUser.language.logOut);
         LogOut.setBackground(new Color(255, 177, 61));
         LogOut.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\LogOut.png"));
         LogOut.setFont(new Font("Arial", Font.BOLD, 13));
@@ -221,23 +221,24 @@ public class CustomerFrame extends JFrame {
     }
 
     public void UpdateBalance() {
-        BalanceLabel.setText(currentUser.language.side.balance + ":" + Long.toString(currentUser.balance) + " Rials");
+        BalanceLabel.setText(currentUser.language.side.balance + ":" + Long.toString(currentUser.balance)
+                + currentUser.language.currency);
         revalidate();
         repaint();
     }
 
     public void RightClick() {
         JPopupMenu RightClicked = new JPopupMenu();
-        JMenuItem RightItemOrderHistory = new JMenuItem("Order History");
+        JMenuItem RightItemOrderHistory = new JMenuItem(currentUser.language.side.history);
         RightItemOrderHistory
                 .setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\History.png"));
-        JMenuItem RightItemCart = new JMenuItem("Cart");
+        JMenuItem RightItemCart = new JMenuItem(currentUser.language.side.cart);
         RightItemCart.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Cart.png"));
-        JMenuItem RightItemProducts = new JMenuItem("Products");
+        JMenuItem RightItemProducts = new JMenuItem(currentUser.language.side.products);
         RightItemProducts.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Product.png"));
-        JMenuItem RightItemSettings = new JMenuItem("Settings");
+        JMenuItem RightItemSettings = new JMenuItem(currentUser.language.side.settings);
         RightItemSettings.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Settings.png"));
-        JMenuItem RightItemLogOutExit = new JMenuItem("LogOut / Exit                  ");
+        JMenuItem RightItemLogOutExit = new JMenuItem(currentUser.language.side.exit);
         RightItemLogOutExit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Logout.png"));
         this.addMouseListener(new MouseAdapter() {
             public void mouseReleased(MouseEvent ME) {

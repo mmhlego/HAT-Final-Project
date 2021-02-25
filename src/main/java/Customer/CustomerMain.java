@@ -22,19 +22,19 @@ public class CustomerMain extends JPanel {
         for (int i = 0; i < fields.length; i++)
             fields[i] = new JTextField();
         int hight = 300;
-        fields[0].setText("Username:");
+        fields[0].setText(currentUser.language.customers.userName);
         fields[1].setText(currentUser.username);
-        fields[2].setText("Password:");
+        fields[2].setText(currentUser.language.customers.password);
         fields[3].setText(currentUser.password);
-        fields[4].setText("First Name:");
+        fields[4].setText(currentUser.language.customers.name);
         fields[5].setText(currentUser.name);
-        fields[6].setText("Last Name:");
+        fields[6].setText(currentUser.language.customers.lastName);
         fields[7].setText(currentUser.lastName);
-        fields[8].setText("Phone Number:");
+        fields[8].setText(currentUser.language.customers.phone);
         fields[9].setText(currentUser.phoneNumber);
-        fields[10].setText("Balance:");
+        fields[10].setText(currentUser.language.customers.balance);
         fields[11].setText(Long.toString(currentUser.balance));
-        fields[12].setText("Address:");
+        fields[12].setText(currentUser.language.customers.address);
         fields[13].setText(currentUser.address);
 
         for (int i = 0; i < fields.length; i++) {

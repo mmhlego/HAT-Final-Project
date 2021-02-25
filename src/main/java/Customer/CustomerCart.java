@@ -36,7 +36,7 @@ public class CustomerCart extends JPanel {
         nameLabel.setBorder(new MatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         Info.add(nameLabel);
 
-        JLabel priceLabel = new JLabel("Base Price", 0);
+        JLabel priceLabel = new JLabel(currentUser.language.products.basePrice, 0);
         priceLabel.setBounds(260, 20, 110, 30);
         priceLabel.setFont(currentUser.theme.main.font);
         priceLabel.setForeground(currentUser.theme.main.fontColor);
@@ -50,21 +50,21 @@ public class CustomerCart extends JPanel {
         topAmountLabel.setBorder(new MatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         Info.add(topAmountLabel);
 
-        JLabel discountLabel = new JLabel("Discount", 0);
+        JLabel discountLabel = new JLabel(currentUser.language.products.discount, 0);
         discountLabel.setBounds(460, 20, 70, 30);
         discountLabel.setFont(currentUser.theme.main.font);
         discountLabel.setForeground(currentUser.theme.main.fontColor);
         discountLabel.setBorder(new MatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         Info.add(discountLabel);
 
-        JLabel totalPriceLabel = new JLabel("Total Price", 0);
+        JLabel totalPriceLabel = new JLabel(currentUser.language.products.totalPrice, 0);
         totalPriceLabel.setBounds(530, 20, 100, 30);
         totalPriceLabel.setFont(currentUser.theme.main.font);
         totalPriceLabel.setForeground(currentUser.theme.main.fontColor);
         totalPriceLabel.setBorder(new MatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         Info.add(totalPriceLabel);
 
-        JLabel calculatedTotalDiscountLabel = new JLabel("Total Discount:", 0);
+        JLabel calculatedTotalDiscountLabel = new JLabel(currentUser.language.products.totalDiscount, 0);
         calculatedTotalDiscountLabel.setFont(currentUser.theme.main.font);
         calculatedTotalDiscountLabel.setBounds(410, 510, 120, 30);
         calculatedTotalDiscountLabel.setFont(currentUser.theme.main.font);
@@ -80,7 +80,7 @@ public class CustomerCart extends JPanel {
         calculatedTotalDiscount.setBorder(null);
         add(calculatedTotalDiscount);
 
-        JLabel calculatedTotalPriceLabel = new JLabel("Total Price:", 0);
+        JLabel calculatedTotalPriceLabel = new JLabel(currentUser.language.products.totalPrice, 0);
         calculatedTotalPriceLabel.setFont(currentUser.theme.main.font);
         calculatedTotalPriceLabel.setBounds(410, 540, 120, 30);
         calculatedTotalPriceLabel.setFont(currentUser.theme.main.font);
@@ -348,10 +348,10 @@ public class CustomerCart extends JPanel {
 
         calculatedTotalPrice.setText(Long.toString(total));
 
-        onlinePurchase.setText("Purchase " + Long.toString(total) + " Rials (online)");
+        onlinePurchase.setText("Purchase " + Long.toString(total) + " " + currentUser.language.currency + " (online)");
         onlinePurchase.setEnabled(false);
 
-        purchase.setText("Purchase " + Long.toString(total) + " Rials (from balance)");
+        purchase.setText("Purchase " + Long.toString(total) + " " + currentUser.language.currency + " (from balance)");
         purchase.setEnabled(false);
         if (total > currentUser.balance) {
             error = new JLabel("Low account balance (" + Long.toString(currentUser.balance) + ")");
@@ -361,7 +361,7 @@ public class CustomerCart extends JPanel {
             onlinePurchase.setEnabled(true);
             add(error);
         } else if (Count == 0) {
-            error = new JLabel("Cart is empty.");
+            error = new JLabel(currentUser.language.products.emptyCart);
             error.setBounds(30, 670, 640, 20);
             error.setForeground(Color.RED);
             error.setVisible(true);
@@ -374,7 +374,7 @@ public class CustomerCart extends JPanel {
     }
 
     public void buyProducts() {
-        String[] Options = { "Yes", "No" };
+        String[] Options = { currentUser.language.yes, currentUser.language.no };
         int reply = JOptionPane.showOptionDialog(this,
                 "     Purchased Successfully ! \n\nDo You Want To Print Receipt ? \n\n", "Successful",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,

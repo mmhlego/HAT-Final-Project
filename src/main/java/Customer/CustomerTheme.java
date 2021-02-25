@@ -71,11 +71,11 @@ public class CustomerTheme extends JDialog {
         setIconImage(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Frame Icons\\Theme.png").getImage());
         setTitle("Custom Theme Creator");
 
-        JButton apply = new JButton("Preview");
+        JButton apply = new JButton(currentUser.language.settings.preview);
         apply.setBounds(20, 400, 210, 35);
         add(apply);
 
-        JButton save = new JButton("Apply");
+        JButton save = new JButton(currentUser.language.settings.applySelected);
         save.setBackground(currentUser.theme.submitColor);
         save.setBounds(270, 400, 210, 35);
 
