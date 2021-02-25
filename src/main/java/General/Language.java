@@ -11,7 +11,7 @@ public class Language implements Serializable {
     public sidePanelLanguage side;
     public productsLanguage products;
     public customersLanguage customers;
-
+    public EmployeeLanguage employee;
     public Language() {
         set(PERSIAN);
     }
@@ -25,6 +25,7 @@ public class Language implements Serializable {
         products = new productsLanguage(mode);
         customers = new customersLanguage(mode);
         currency = currencyList[mode];
+        employee=new EmployeeLanguage(mode);
     }
 
     public class settingsLanguage implements Serializable {
@@ -226,6 +227,54 @@ public class Language implements Serializable {
 
         }
     }
+    	public class EmployeeLanguage implements Serializable{
+			private static final long serialVersionUID = 7433904027520906022L;
+			String[] addList= {"Add New Employees","افزودن کارمند جدید"};
+			String[] editList= {"Edit Information","ویرایش اطلاعات"};
+			String[] nameList= {"Name","نام"};
+			String[] lastNameList= {"Last Name","نام خانوادگی"};
+			String[] userNameList= {"Username","نام کاربری"};
+			String[] IDList= {"ID","شناسه"};
+			String[] phoneList= {"Phone Number","شماره تلفن"};
+			String[] saveList= {"Save","ذخیره"};
+			String[] updateDescriptionList= {"Employee information updated successfully.","اطلاعات کارمند با موفقیت بروز رسانی شد"};
+			String[] updateTitleList= {"Employee Updated","اطلاعات بروزرسانی شد"};
+			String[] cancelList= {"Cancel","لغو"};
+			String[] passwordList= {"Password","رمز عبور"};
+			String[] areYouSureDescriptionList= {"Are you sure you want to delete employee with these information?","آیا مطمئن هستید که میخواهید کامندی با اطلاعات زیر را حذف کنید"};
+			String[] areYouSureTitleList= {"Are you sure","آیا مطمئنید"};
+			String[] removeDescriptionList= {"Employee removed successfully.","کارمند با موفقیت حذف شد"};
+			String[] removeTitleList= {"Employee Removed","کارمند حذف شد"};
+			String[] firstNameList= {"First Name","نام"};
+			
+			public String add,edit,name,lastName,userName,ID,phone,save,updateDescription,updateTitle,
+			cancel,password,areYouSureDescription,areYouSureTitle,removeDescription,removeTitle,firstName;
+			
+			public EmployeeLanguage(int mode) {
+				add=addList[mode];
+				edit=editList[mode];
+				name=nameList[mode];
+				lastName=lastNameList[mode];
+				userName=userNameList[mode];
+				ID=IDList[mode];
+				phone=phoneList[mode];
+				save=saveList[mode];
+				updateDescription=updateDescriptionList[mode];
+				updateTitle=updateTitleList[mode];
+				cancel=cancelList[mode];
+				password=passwordList[mode];
+				areYouSureDescription=areYouSureDescriptionList[mode];
+				areYouSureTitle=areYouSureTitleList[mode];
+				removeDescription=removeDescriptionList[mode];
+				removeTitle=removeTitleList[mode];
+				firstName=firstNameList[mode];
+				
+				
+			}
+			
+			
+    		
+    	}
 
     /*public class dialogLanguage implements Serializable {
         private static final long serialVersionUID = 2545373340792459048L;

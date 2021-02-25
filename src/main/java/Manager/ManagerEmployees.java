@@ -22,7 +22,7 @@ public class ManagerEmployees extends JPanel {
 
         showData();
 
-        JButton addNew = new JButton("Add New Employee");
+        JButton addNew = new JButton(currentUser.language.employee.add);
         addNew.setBounds(10, 640, 680, 50);
         addNew.setBackground(currentUser.theme.submitColor);
         addNew.setForeground(currentUser.theme.main.fontColor);
@@ -116,7 +116,7 @@ public class ManagerEmployees extends JPanel {
 
         int h = 30, w = 200, margin = 20;
 
-        JDialog dialog = new JDialog(parent, "Edit Information");
+        JDialog dialog = new JDialog(parent, currentUser.language.employee.edit);
 
         JPanel editPanel = new JPanel();
         editPanel.setBackground(currentUser.theme.dialog.background);
@@ -125,35 +125,35 @@ public class ManagerEmployees extends JPanel {
         editPanel.setLayout(null);
         editPanel.setSize(3 * margin + 2 * w, 7 * margin + 6 * h);
 
-        JLabel nameLabel = new JLabel("Name:", 4);
+        JLabel nameLabel = new JLabel(currentUser.language.employee.name, 4);
         nameLabel.setBackground(currentUser.theme.dialog.background);
         nameLabel.setForeground(currentUser.theme.dialog.fontColor);
         nameLabel.setFont(currentUser.theme.dialog.font);
         nameLabel.setBounds(margin, margin, w, h);
         editPanel.add(nameLabel);
 
-        JLabel lastNameLabel = new JLabel("Last Name:", 4);
+        JLabel lastNameLabel = new JLabel(currentUser.language.employee.lastName, 4);
         lastNameLabel.setBackground(currentUser.theme.dialog.background);
         lastNameLabel.setForeground(currentUser.theme.dialog.fontColor);
         lastNameLabel.setFont(currentUser.theme.dialog.font);
         lastNameLabel.setBounds(margin, 2 * margin + h, w, h);
         editPanel.add(lastNameLabel);
 
-        JLabel usernameLabel = new JLabel("Username:", 4);
+        JLabel usernameLabel = new JLabel(currentUser.language.employee.userName, 4);
         usernameLabel.setBackground(currentUser.theme.dialog.background);
         usernameLabel.setForeground(currentUser.theme.dialog.fontColor);
         usernameLabel.setFont(currentUser.theme.dialog.font);
         usernameLabel.setBounds(margin, 3 * margin + 2 * h, w, h);
         editPanel.add(usernameLabel);
 
-        JLabel IDlLabel = new JLabel("ID:", 4);
+        JLabel IDlLabel = new JLabel(currentUser.language.employee.ID, 4);
         IDlLabel.setBackground(currentUser.theme.dialog.background);
         IDlLabel.setForeground(currentUser.theme.dialog.fontColor);
         IDlLabel.setFont(currentUser.theme.dialog.font);
         IDlLabel.setBounds(margin, 4 * margin + 3 * h, w, h);
         editPanel.add(IDlLabel);
 
-        JLabel phoneLabel = new JLabel("Phone Number:", 4);
+        JLabel phoneLabel = new JLabel(currentUser.language.employee.phone, 4);
         phoneLabel.setBackground(currentUser.theme.dialog.background);
         phoneLabel.setForeground(currentUser.theme.dialog.fontColor);
         phoneLabel.setFont(currentUser.theme.dialog.font);
@@ -200,7 +200,7 @@ public class ManagerEmployees extends JPanel {
         phoneField.setBounds(2 * margin + w, 5 * margin + 4 * h, w, h);
         editPanel.add(phoneField);
 
-        JButton save = new JButton("Save");
+        JButton save = new JButton(currentUser.language.employee.save);
         save.setForeground(currentUser.theme.dialog.fontColor);
         save.setFont(currentUser.theme.dialog.font);
         save.setBackground(currentUser.theme.dialog.buttonBackground);
@@ -224,14 +224,14 @@ public class ManagerEmployees extends JPanel {
 
             }
 
-            JOptionPane.showMessageDialog(dialog, "Employee information updated successfully.", "Employee Updated", 1);
+            JOptionPane.showMessageDialog(dialog, currentUser.language.employee.updateDescription, currentUser.language.employee.updateTitle, 1);
 
             dialog.dispose();
             reloadPage();
         });
         editPanel.add(save);
 
-        JButton cancel = new JButton("Cancel");
+        JButton cancel = new JButton(currentUser.language.employee.cancel);
         cancel.setForeground(currentUser.theme.dialog.fontColor);
         cancel.setFont(currentUser.theme.dialog.font);
         cancel.setBackground(currentUser.theme.dialog.buttonBackground);
@@ -253,7 +253,7 @@ public class ManagerEmployees extends JPanel {
     public void addNew() {
         int h = 30, w = 200, margin = 20;
 
-        JDialog dialog = new JDialog(parent, "Edit Information");
+        JDialog dialog = new JDialog(parent, currentUser.language.employee.edit);
 
         JPanel editPanel = new JPanel();
         editPanel.setBackground(currentUser.theme.dialog.background);
@@ -262,42 +262,42 @@ public class ManagerEmployees extends JPanel {
         editPanel.setLayout(null);
         editPanel.setSize(3 * margin + 2 * w, 8 * margin + 7 * h);
 
-        JLabel nameLabel = new JLabel("Name:", 4);
+        JLabel nameLabel = new JLabel(currentUser.language.employee.name, 4);
         nameLabel.setBackground(currentUser.theme.dialog.background);
         nameLabel.setForeground(currentUser.theme.dialog.fontColor);
         nameLabel.setFont(currentUser.theme.dialog.font);
         nameLabel.setBounds(margin, margin, w, h);
         editPanel.add(nameLabel);
 
-        JLabel lastNameLabel = new JLabel("Last Name:", 4);
+        JLabel lastNameLabel = new JLabel(currentUser.language.employee.lastName, 4);
         lastNameLabel.setBackground(currentUser.theme.dialog.background);
         lastNameLabel.setForeground(currentUser.theme.dialog.fontColor);
         lastNameLabel.setFont(currentUser.theme.dialog.font);
         lastNameLabel.setBounds(margin, 2 * margin + h, w, h);
         editPanel.add(lastNameLabel);
 
-        JLabel usernameLabel = new JLabel("Username:", 4);
+        JLabel usernameLabel = new JLabel(currentUser.language.employee.userName, 4);
         usernameLabel.setBackground(currentUser.theme.dialog.background);
         usernameLabel.setForeground(currentUser.theme.dialog.fontColor);
         usernameLabel.setFont(currentUser.theme.dialog.font);
         usernameLabel.setBounds(margin, 3 * margin + 2 * h, w, h);
         editPanel.add(usernameLabel);
 
-        JLabel passwordLabel = new JLabel("Password:", 4);
+        JLabel passwordLabel = new JLabel(currentUser.language.employee.password, 4);
         passwordLabel.setBackground(currentUser.theme.dialog.background);
         passwordLabel.setForeground(currentUser.theme.dialog.fontColor);
         passwordLabel.setFont(currentUser.theme.dialog.font);
         passwordLabel.setBounds(margin, 4 * margin + 3 * h, w, h);
         editPanel.add(passwordLabel);
 
-        JLabel IDlLabel = new JLabel("ID:", 4);
+        JLabel IDlLabel = new JLabel(currentUser.language.employee.ID, 4);
         IDlLabel.setBackground(currentUser.theme.dialog.background);
         IDlLabel.setForeground(currentUser.theme.dialog.fontColor);
         IDlLabel.setFont(currentUser.theme.dialog.font);
         IDlLabel.setBounds(margin, 5 * margin + 4 * h, w, h);
         editPanel.add(IDlLabel);
 
-        JLabel phoneLabel = new JLabel("Phone Number:", 4);
+        JLabel phoneLabel = new JLabel(currentUser.language.employee.phone, 4);
         phoneLabel.setBackground(currentUser.theme.dialog.background);
         phoneLabel.setForeground(currentUser.theme.dialog.fontColor);
         phoneLabel.setFont(currentUser.theme.dialog.font);
@@ -352,7 +352,7 @@ public class ManagerEmployees extends JPanel {
         phoneField.setBounds(2 * margin + w, 6 * margin + 5 * h, w, h);
         editPanel.add(phoneField);
 
-        JButton save = new JButton("Save");
+        JButton save = new JButton(currentUser.language.employee.save);
         save.setBackground(currentUser.theme.dialog.buttonBackground);
         save.setFont(currentUser.theme.dialog.font);
         save.setForeground(currentUser.theme.dialog.fontColor);
@@ -368,7 +368,7 @@ public class ManagerEmployees extends JPanel {
         });
         editPanel.add(save);
 
-        JButton cancel = new JButton("Cancel");
+        JButton cancel = new JButton(currentUser.language.employee.cancel);
         cancel.setBackground(currentUser.theme.dialog.buttonBackground);
         cancel.setFont(currentUser.theme.dialog.font);
         cancel.setForeground(currentUser.theme.dialog.fontColor);
@@ -390,16 +390,16 @@ public class ManagerEmployees extends JPanel {
     public void sure(JButton b) {
         int index = (b.getY() - 5) / 40;
 
-        String data = "\nName: " + allEmployee[index].name + "\nLast Name: " + allEmployee[index].lastName + "\nID: "
-                + allEmployee[index].ID + "\nPhone number: " + allEmployee[index].phoneNumber;
+        String data = "\n "+currentUser.language.employee.name + allEmployee[index].name + "\n" +currentUser.language.employee.lastName+ allEmployee[index].lastName + "\n "+currentUser.language.employee.ID
+                + allEmployee[index].ID + "\n "+currentUser.language.employee.phone + allEmployee[index].phoneNumber;
         int ans = JOptionPane.showConfirmDialog(this,
-                "Are you sure you want to delete employee with these information?" + data, "Are you sure",
+        		currentUser.language.employee.areYouSureDescription + data, currentUser.language.employee.areYouSureTitle,
                 JOptionPane.YES_NO_OPTION);
 
         if (ans == 0) {
             writeData(index);
 
-            JOptionPane.showMessageDialog(this, "Employee removed successfully.", "Employee Rmoved", 1);
+            JOptionPane.showMessageDialog(this, currentUser.language.employee.removeDescription, currentUser.language.employee.removeTitle, 1);
 
             reloadPage();
         }
