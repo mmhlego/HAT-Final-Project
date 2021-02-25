@@ -12,6 +12,7 @@ public class Language implements Serializable {
     public productsLanguage products;
     public customersLanguage customers;
     public EmployeeLanguage employee;
+    public CustomTheme theme;
 
     public String save, cancel, back, yes, no, exit, logOut;
 
@@ -29,6 +30,7 @@ public class Language implements Serializable {
         customers = new customersLanguage(mode);
         currency = currencyList[mode];
         setIndivs(mode);
+        theme = new CustomTheme(mode);
     }
 
     public void setIndivs(int mode) {
@@ -292,9 +294,10 @@ public class Language implements Serializable {
         String[] removeDescriptionList = { "Employee removed successfully.", "کارمند با موفقیت حذف شد" };
         String[] removeTitleList = { "Employee Removed", "کارمند حذف شد" };
         String[] firstNameList = { "First Name", "نام" };
+        String[] employeeList = { "Employee", "کارمند" };
 
         public String add, edit, name, lastName, userName, ID, phone, save, updateDescription, updateTitle, cancel,
-                password, areYouSureDescription, areYouSureTitle, removeDescription, removeTitle, firstName;
+                password, areYouSureDescription, areYouSureTitle, removeDescription, removeTitle, firstName, employee;
 
         public EmployeeLanguage(int mode) {
             add = addList[mode];
@@ -314,9 +317,42 @@ public class Language implements Serializable {
             removeDescription = removeDescriptionList[mode];
             removeTitle = removeTitleList[mode];
             firstName = firstNameList[mode];
+            employee = employeeList[mode];
 
         }
 
+    }
+
+    public class CustomTheme implements Serializable {
+        private static final long serialVersionUID = 5171766047251248796L;
+
+        String[] sidePreviewList = { "Side Panel Preview", "پیش نمایش پنل کناری" };
+        String[] exitPreviewList = { "Exit Preview", "پیش نمایش خروج" };
+        String[] mainPreviewList = { "Main Panel Preview", "پیش نمایش پنل اصلی" };
+        String[] dialogPreviewList = { "Dialog Preview", "پیش نمایش پنل اطلاعات" };
+        String[] sideThemeList = { "Side Panel Theme", "پوسته پنل کناری" };
+        String[] mainThemeList = { "Main Panel Theme", "پوسته پنل اصلی" };
+        String[] dialogThemeList = { "Dialog Theme", "پوسته پنل اطلاعات" };
+        String[] previewList = { "Preview", "پیش نمایش" };
+        String[] themeCreatorList = { "Custom Theme Creator", "سازنده پوسته شخصی" };
+        String[] applyList = { "Apply", "اعمال" };
+
+        public String sidePreview, exitPreview, mainPreview, dialogPreview, sideTheme, mainTheme, dialogTheme, preview,
+                themeCreator, apply;
+
+        public CustomTheme(int mode) {
+            sidePreview = sidePreviewList[mode];
+            exitPreview = exitPreviewList[mode];
+            mainPreview = mainPreviewList[mode];
+            dialogPreview = dialogPreviewList[mode];
+            sideTheme = sideThemeList[mode];
+            mainTheme = mainThemeList[mode];
+            dialogTheme = dialogThemeList[mode];
+            preview = previewList[mode];
+            themeCreator = themeCreatorList[mode];
+            apply = applyList[mode];
+
+        }
     }
 
     /*

@@ -193,13 +193,13 @@ public class EmployeeFrame extends JFrame {
 
     public void RightClick() {
         JPopupMenu RightClicked = new JPopupMenu();
-        JMenuItem RightItemCustomers = new JMenuItem("Customers");
+        JMenuItem RightItemCustomers = new JMenuItem(currentUser.language.side.customers);
         RightItemCustomers.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Customer.png"));
-        JMenuItem RightItemProducts = new JMenuItem("Products");
+        JMenuItem RightItemProducts = new JMenuItem(currentUser.language.side.products);
         RightItemProducts.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Product.png"));
-        JMenuItem RightItemSettings = new JMenuItem("Settings");
+        JMenuItem RightItemSettings = new JMenuItem(currentUser.language.side.settings);
         RightItemSettings.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Settings.png"));
-        JMenuItem RightItemLogOutExit = new JMenuItem("LogOut / Exit                  ");
+        JMenuItem RightItemLogOutExit = new JMenuItem(currentUser.language.side.exit + "                  ");
         RightItemLogOutExit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Logout.png"));
         this.addMouseListener(new MouseAdapter() {
             public void mouseReleased(MouseEvent ME) {
