@@ -23,15 +23,15 @@ public class ManagerMain extends JPanel {
         for (int i = 0; i < fields.length; i++)
             fields[i] = new JTextField();
         int hight = 300;
-        fields[0].setText("Username:");
+        fields[0].setText(currentUser.language.settings.useername);
         fields[1].setText(currentUser.username);
-        fields[2].setText("Password:");
+        fields[2].setText(currentUser.language.settings.password);
         fields[3].setText(currentUser.password);
-        fields[4].setText("First Name:");
+        fields[4].setText(currentUser.language.settings.firstName);
         fields[5].setText(currentUser.name);
-        fields[6].setText("Last Name:");
+        fields[6].setText(currentUser.language.settings.lastName);
         fields[7].setText(currentUser.lastName);
-        fields[8].setText("Phone Number:");
+        fields[8].setText(currentUser.language.settings.phone);
         fields[9].setText(currentUser.phoneNumber);
 
         for (int i = 0; i < fields.length; i++) {

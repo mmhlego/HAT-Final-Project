@@ -134,35 +134,35 @@ public class ManagerCustomers extends JPanel {
         editPanel.setLayout(null);
         editPanel.setSize(3 * margin + 2 * w, 7 * margin + 6 * h);
 
-        JLabel nameLabel = new JLabel(currentUser.language.products.name, 4);
+        JLabel nameLabel = new JLabel(currentUser.language.customers.name, 4);
         nameLabel.setBackground(currentUser.theme.dialog.background);
         nameLabel.setForeground(currentUser.theme.dialog.fontColor);
         nameLabel.setFont(currentUser.theme.dialog.font);
         nameLabel.setBounds(margin, margin, w, h);
         editPanel.add(nameLabel);
 
-        JLabel lastNameLabel = new JLabel("Last Name:", 4);
+        JLabel lastNameLabel = new JLabel(currentUser.language.customers.lastName, 4);
         lastNameLabel.setBackground(currentUser.theme.dialog.background);
         lastNameLabel.setForeground(currentUser.theme.dialog.fontColor);
         lastNameLabel.setFont(currentUser.theme.dialog.font);
         lastNameLabel.setBounds(margin, 2 * margin + h, w, h);
         editPanel.add(lastNameLabel);
 
-        JLabel usernameLabel = new JLabel("Username:", 4);
+        JLabel usernameLabel = new JLabel(currentUser.language.customers.userName, 4);
         usernameLabel.setBackground(currentUser.theme.dialog.background);
         usernameLabel.setForeground(currentUser.theme.dialog.fontColor);
         usernameLabel.setFont(currentUser.theme.dialog.font);
         usernameLabel.setBounds(margin, 3 * margin + 2 * h, w, h);
         editPanel.add(usernameLabel);
 
-        JLabel addressLabel = new JLabel("Address:", 4);
+        JLabel addressLabel = new JLabel(currentUser.language.customers.address, 4);
         addressLabel.setBackground(currentUser.theme.dialog.background);
         addressLabel.setForeground(currentUser.theme.dialog.fontColor);
         addressLabel.setFont(currentUser.theme.dialog.font);
         addressLabel.setBounds(margin, 4 * margin + 3 * h, w, h);
         editPanel.add(addressLabel);
 
-        JLabel phoneLabel = new JLabel("Phone Number:", 4);
+        JLabel phoneLabel = new JLabel(currentUser.language.customers.phone, 4);
         phoneLabel.setBackground(currentUser.theme.dialog.background);
         phoneLabel.setForeground(currentUser.theme.dialog.fontColor);
         phoneLabel.setFont(currentUser.theme.dialog.font);
@@ -210,7 +210,7 @@ public class ManagerCustomers extends JPanel {
         phoneField.setBounds(2 * margin + w, 5 * margin + 4 * h + 30, w, h);
         editPanel.add(phoneField);
 
-        JButton save = new JButton("Save");
+        JButton save = new JButton(currentUser.language.products.save);
         save.setBackground(currentUser.theme.dialog.buttonBackground);
         save.setForeground(currentUser.theme.dialog.fontColor);
         save.setFont(currentUser.theme.dialog.font);
@@ -234,14 +234,15 @@ public class ManagerCustomers extends JPanel {
 
             }
 
-            JOptionPane.showMessageDialog(dialog, "Customer information updated successfully.", "Customer Updated", 1);
+            JOptionPane.showMessageDialog(dialog, currentUser.language.customers.updateDescription,
+                    currentUser.language.customers.updateTitle, 1);
 
             dialog.dispose();
             reloadPage();
         });
         editPanel.add(save);
 
-        JButton cancel = new JButton("Cancel");
+        JButton cancel = new JButton(currentUser.language.products.cancel);
         cancel.setBackground(currentUser.theme.dialog.buttonBackground);
         cancel.setForeground(currentUser.theme.dialog.fontColor);
         cancel.setFont(currentUser.theme.dialog.font);
@@ -278,25 +279,25 @@ public class ManagerCustomers extends JPanel {
             CustomScrollDialog dialog = new CustomScrollDialog(length, currentUser.theme);
 
             if (length == 2) {
-                dialog.addLabel(new JLabel("Cart is empty.", 0), 0, 1);
+                dialog.addLabel(new JLabel(currentUser.language.products.emptyCart, 0), 0, 1);
                 return;
             }
 
-            JLabel productLabel = new JLabel("Product", 0);
+            JLabel productLabel = new JLabel(currentUser.language.products.product, 0);
             productLabel.setBackground(currentUser.theme.dialog.background);
             productLabel.setForeground(currentUser.theme.dialog.fontColor);
             productLabel.setFont(currentUser.theme.dialog.font);
             productLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
             dialog.addLabel(productLabel, 0, 0);
 
-            JLabel amountLabel = new JLabel("Amount", 0);
+            JLabel amountLabel = new JLabel(currentUser.language.products.amount, 0);
             amountLabel.setBackground(currentUser.theme.dialog.background);
             amountLabel.setForeground(currentUser.theme.dialog.fontColor);
             amountLabel.setFont(currentUser.theme.dialog.font);
             amountLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.gray));
             dialog.addLabel(amountLabel, 0, 1);
 
-            JLabel priceLabel = new JLabel("Price", 0);
+            JLabel priceLabel = new JLabel(currentUser.language.products.price, 0);
             priceLabel.setBackground(currentUser.theme.dialog.background);
             priceLabel.setForeground(currentUser.theme.dialog.fontColor);
             priceLabel.setFont(currentUser.theme.dialog.font);
@@ -324,7 +325,7 @@ public class ManagerCustomers extends JPanel {
             empty.setBorder(new MatteBorder(1, 0, 0, 0, Color.gray));
             dialog.addLabel(empty, length - 1, 0);
 
-            JLabel tpl = new JLabel("Total price: ", 0);
+            JLabel tpl = new JLabel(currentUser.language.products.totalPrice, 0);
             tpl.setBackground(currentUser.theme.dialog.background);
             tpl.setForeground(currentUser.theme.dialog.fontColor);
             tpl.setFont(currentUser.theme.dialog.font);
@@ -340,7 +341,7 @@ public class ManagerCustomers extends JPanel {
 
         } catch (NullPointerException n) {
             CustomScrollDialog dialog = new CustomScrollDialog(1, currentUser.theme);
-            dialog.addLabel(new JLabel("Cart is empty.", 0), 0, 1);
+            dialog.addLabel(new JLabel(currentUser.language.products.emptyCart, 0), 0, 1);
         }
     }
 
@@ -349,7 +350,7 @@ public class ManagerCustomers extends JPanel {
         CustomScrollDialog dialog = new CustomScrollDialog(allCustomers[index].pastOrders.length, currentUser.theme);
 
         for (int i = 0; i < allCustomers[index].pastOrders.length; i++) {
-            JButton jb = new JButton("Order #" + (i + 1) + " - " + allCustomers[index].pastOrders[i].status);
+            JButton jb = new JButton(currentUser.language.customers.orderHistory + (i + 1) + " - " + allCustomers[index].pastOrders[i].status);
             jb.setForeground(currentUser.theme.dialog.fontColor);
             jb.setFont(currentUser.theme.dialog.font);
             dialog.addButton(jb);
@@ -361,15 +362,17 @@ public class ManagerCustomers extends JPanel {
     public void sure(JButton b) {
         int index = (b.getY() - 5) / 40;
 
-        String data = "\nName: " + allCustomers[index].name + "\nLast Name: " + allCustomers[index].lastName
-                + "\nPhone Number: " + allCustomers[index].phoneNumber + "\nAddress: " + allCustomers[index].address;
-        int ans = JOptionPane.showConfirmDialog(this,
-                "Are you sure you want to delete customer with these information?" + data, "Are you sure",
-                JOptionPane.YES_NO_OPTION);
+        String data = currentUser.language.customers.name + allCustomers[index].name
+                + currentUser.language.customers.lastName + allCustomers[index].lastName
+                + currentUser.language.customers.phone + allCustomers[index].phoneNumber
+                + currentUser.language.customers.address + allCustomers[index].address;
+        int ans = JOptionPane.showConfirmDialog(this, currentUser.language.customers.areYouSureDescription + data,
+                currentUser.language.customers.areYouSureTitle, JOptionPane.YES_NO_OPTION);
 
         if (ans == 0) {
             writeData(index);
-            JOptionPane.showMessageDialog(this, "Customer removed successfully.", "Customer Rmoved", 1);
+            JOptionPane.showMessageDialog(this, currentUser.language.customers.removeSuccessDescription,
+                    currentUser.language.products.removeSuccessTitle, 1);
             reloadPage();
         }
     }
