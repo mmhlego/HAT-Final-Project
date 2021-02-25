@@ -289,7 +289,7 @@ public class Language implements Serializable {
         String[] cancelList = { "Cancel", "لغو" };
         String[] passwordList = { "Password", "رمز عبور" };
         String[] areYouSureDescriptionList = { "Are you sure you want to delete employee with these information?",
-                "آیا مطمئن هستید که میخواهید کارمندی با اطلاعات زیر را حذف کنید : " };
+                "آیا مطمئن هستید که میخواهید کارمندی با اطلاعات زیر را حذف کنید ؟ " };
         String[] areYouSureTitleList = { "Are you sure", "آیا مطمئنید" };
         String[] removeDescriptionList = { "Employee removed successfully.", "کارمند با موفقیت حذف شد" };
         String[] removeTitleList = { "Employee Removed", "کارمند حذف شد" };
