@@ -17,7 +17,7 @@ public class CustomerCart extends JPanel {
     Product[] allProducts;
     JLabel calculatedTotalDiscount, calculatedTotalPrice, error = new JLabel();
     JLabel[] totalPriceLabels;
-    JButton submit;
+    JButton purchase, onlinePurchase;
     long total = 0, totalDiscount = 0;
 
     public CustomerCart(Customer c, CustomerFrame p) {
@@ -43,7 +43,7 @@ public class CustomerCart extends JPanel {
         priceLabel.setBorder(new MatteBorder(0, 0, 1, 0, currentUser.theme.main.fontColor));
         Info.add(priceLabel);
 
-        JLabel topAmountLabel = new JLabel(currentUser.language.products.amount , 0);
+        JLabel topAmountLabel = new JLabel(currentUser.language.products.amount, 0);
         topAmountLabel.setBounds(370, 20, 90, 30);
         topAmountLabel.setFont(currentUser.theme.main.font);
         topAmountLabel.setForeground(currentUser.theme.main.fontColor);
@@ -96,15 +96,25 @@ public class CustomerCart extends JPanel {
         calculatedTotalPrice.setBorder(null);
         add(calculatedTotalPrice);
 
-        submit = new JButton();
-        submit.setEnabled(false);
-        submit.setBounds(30, 620, 640, 50);
-        submit.setFont(currentUser.theme.main.font);
-        submit.setForeground(currentUser.theme.main.fontColor);
-        submit.setBackground(new Color(111, 207, 151));
-        submit.setBorder(null);
-        submit.addActionListener((e) -> buyProducts());
-        add(submit);
+        purchase = new JButton();
+        purchase.setEnabled(false);
+        purchase.setBounds(30, 620, 315, 50);
+        purchase.setFont(currentUser.theme.main.font);
+        purchase.setForeground(currentUser.theme.main.fontColor);
+        purchase.setBackground(new Color(111, 207, 151));
+        purchase.setBorder(null);
+        purchase.addActionListener((e) -> buyProducts());
+        add(purchase);
+
+        onlinePurchase = new JButton();
+        onlinePurchase.setEnabled(false);
+        onlinePurchase.setBounds(355, 620, 315, 50);
+        onlinePurchase.setFont(currentUser.theme.main.font);
+        onlinePurchase.setForeground(currentUser.theme.main.fontColor);
+        onlinePurchase.setBackground(new Color(111, 207, 151));
+        onlinePurchase.setBorder(null);
+        onlinePurchase.addActionListener((e) -> buyProductsOnline());
+        add(onlinePurchase);
 
         Count = currentUser.order.products.length;
 
@@ -338,13 +348,17 @@ public class CustomerCart extends JPanel {
 
         calculatedTotalPrice.setText(Long.toString(total));
 
-        submit.setText("Purchase " + Long.toString(total) + " Rials");
-        submit.setEnabled(false);
+        onlinePurchase.setText("Purchase " + Long.toString(total) + " Rials (online)");
+        onlinePurchase.setEnabled(false);
+
+        purchase.setText("Purchase " + Long.toString(total) + " Rials (from balance)");
+        purchase.setEnabled(false);
         if (total > currentUser.balance) {
             error = new JLabel("Low account balance (" + Long.toString(currentUser.balance) + ")");
             error.setBounds(30, 670, 640, 20);
             error.setForeground(Color.RED);
             error.setVisible(true);
+            onlinePurchase.setEnabled(true);
             add(error);
         } else if (Count == 0) {
             error = new JLabel("Cart is empty.");
@@ -353,7 +367,8 @@ public class CustomerCart extends JPanel {
             error.setVisible(true);
             add(error);
         } else {
-            submit.setEnabled(true);
+            purchase.setEnabled(true);
+            onlinePurchase.setEnabled(true);
             error.setVisible(false);
         }
     }
@@ -385,5 +400,19 @@ public class CustomerCart extends JPanel {
         new CustomerWriter(currentUser);
         parent.UpdateBalance();
         parent.addPanel(new CustomerCart(currentUser, parent));
+    }
+
+    public void buyProductsOnline() {
+        CustomerChargeBalance online = new CustomerChargeBalance(parent, currentUser);
+        online.ChargeAmount.setEnabled(false);
+        online.CustomChargeAmount.setEnabled(false);
+        online.CustomChargeAmount.setText(Long.toString(total));
+
+        online.Proceed.addActionListener((e) -> {
+            if (online.check()) {
+                online.dispose();
+                buyProducts();
+            }
+        });
     }
 }

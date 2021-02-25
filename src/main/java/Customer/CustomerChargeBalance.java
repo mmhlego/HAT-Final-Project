@@ -6,7 +6,6 @@ import General.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
-
 import Login.*;
 
 public class CustomerChargeBalance extends JDialog {
@@ -21,6 +20,10 @@ public class CustomerChargeBalance extends JDialog {
     int min, sec;
     Timer TimeToCancel;
     boolean flag = true;
+    public JComboBox<String> ChargeAmount;
+    public JTextField CustomChargeAmount, CardNumber1, CardNumber2, CardNumber3, CardNumber4, ValidateTF;
+    public JButton Proceed;
+    JPasswordField CVV2TF, CVVTF;
 
     public CustomerChargeBalance(CustomerFrame p, Customer c) {
         setUndecorated(true);
@@ -35,7 +38,7 @@ public class CustomerChargeBalance extends JDialog {
 
         String[] ChargeData = { " -Amounts- ", "10000", "20000", "50000", "100000" };
 
-        JTextField CardNumber1 = new JTextField();
+        CardNumber1 = new JTextField();
         CardNumber1.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -62,7 +65,7 @@ public class CustomerChargeBalance extends JDialog {
         });
         CardNumber1.setBounds(130, 80, 40, 30);
         CardNumber1.setDocument(new Limitter(4));
-        JTextField CardNumber2 = new JTextField();
+        CardNumber2 = new JTextField();
         CardNumber2.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -89,7 +92,7 @@ public class CustomerChargeBalance extends JDialog {
         });
         CardNumber2.setBounds(200, 80, 40, 30);
         CardNumber2.setDocument(new Limitter(4));
-        JTextField CardNumber3 = new JTextField();
+        CardNumber3 = new JTextField();
         CardNumber3.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -116,7 +119,7 @@ public class CustomerChargeBalance extends JDialog {
         });
         CardNumber3.setBounds(270, 80, 40, 30);
         CardNumber3.setDocument(new Limitter(4));
-        JTextField CardNumber4 = new JTextField();
+        CardNumber4 = new JTextField();
         CardNumber4.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -143,16 +146,14 @@ public class CustomerChargeBalance extends JDialog {
         });
         CardNumber4.setBounds(340, 80, 40, 30);
         CardNumber4.setDocument(new Limitter(4));
-        JPasswordField CVV2TF = new JPasswordField();
+        CVV2TF = new JPasswordField();
         CVV2TF.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-
             }
 
             @Override
@@ -170,7 +171,7 @@ public class CustomerChargeBalance extends JDialog {
         });
         CVV2TF.setBounds(130, 130, 70, 30);
         CVV2TF.setDocument(new Limitter(4));
-        JTextField ValidateTF = new JTextField();
+        ValidateTF = new JTextField();
         ValidateTF.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -200,7 +201,7 @@ public class CustomerChargeBalance extends JDialog {
         });
         ValidateTF.setBounds(130, 180, 70, 30);
         ValidateTF.setDocument(new Limitter(4));
-        JPasswordField CVVTF = new JPasswordField();
+        CVVTF = new JPasswordField();
         CVVTF.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -232,7 +233,7 @@ public class CustomerChargeBalance extends JDialog {
         CVVTF.setDocument(new Limitter(7));
         JTextField EmailTF = new JTextField();
         EmailTF.setBounds(130, 280, 250, 30);
-        JTextField CustomChargeAmount = new JTextField();
+        CustomChargeAmount = new JTextField();
         CustomChargeAmount.setBounds(130, 30, 110, 30);
         CustomChargeAmount.setDocument(new Limitter(9));
 
@@ -241,7 +242,7 @@ public class CustomerChargeBalance extends JDialog {
         SendOTP.setBackground(new Color(238, 186, 11));
         SendOTP.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\OTP.png"));
         SendOTP.setBorder(null);
-        JButton Proceed = new JButton("Proceed");
+        Proceed = new JButton("Proceed");
         Proceed.setBounds(220, 350, 160, 30);
         Proceed.setBackground(new Color(111, 207, 151));
         JButton Cancel = new JButton("Cancel");
@@ -365,7 +366,7 @@ public class CustomerChargeBalance extends JDialog {
         });
         TimeToCancel.start();
 
-        JComboBox<String> ChargeAmount = new JComboBox<String>(ChargeData);
+        ChargeAmount = new JComboBox<String>(ChargeData);
         ChargeAmount.setBounds(270, 30, 110, 30);
         ((JLabel) ChargeAmount.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         ChargeAmount.addItemListener((e) -> {
@@ -387,45 +388,14 @@ public class CustomerChargeBalance extends JDialog {
             x += 70;
         }
 
-        Proceed.addActionListener((e) -> {
-            if (CardNumber1.getText().length() != 4 || CardNumber2.getText().length() != 4
-                    || CardNumber3.getText().length() != 4 || CardNumber4.getText().length() != 4) {
-                JOptionPane.showMessageDialog(null, "Check Your Card Details !", "Warning", 2);
-            } else if (new String(CVV2TF.getPassword()).length() == 0) {
-                JOptionPane.showMessageDialog(null, "CVV2 Field is empty !", "Warning", 2);
-            } else if (ValidateTF.getText().length() == 0) {
-                JOptionPane.showMessageDialog(null, "Captch Field is empty !", "Warning", 2);
-            } else if (new String(CVVTF.getPassword()).length() == 0) {
-                JOptionPane.showMessageDialog(null, "CVV Field is empty !", "Warning", 2);
-                WrongEntered++;
-                CheckWrong(WrongEntered);
-            } else if (!ValidateTF.getText().equals(captchaAnswer)) {
-                JOptionPane.showMessageDialog(null, "Captcha is wrong !", "Warning", 2);
-            } else if (CustomChargeAmount.getText().length() == 0) {
-                JOptionPane.showMessageDialog(null, "\'Charge amount\' field is empty !", "Warning", 2);
-            } else if (!new String(CVVTF.getPassword()).equals(OTPAnswer)) {
-                JOptionPane.showMessageDialog(null, "Wrong CVV !", "Warning", 2);
-                WrongEntered++;
-                CheckWrong(WrongEntered);
-            } else {
-                try {
-                    long amount = Long.parseLong(CustomChargeAmount.getText());
-                    if (amount <= 0) {
-                        throw new Exception();
-                    }
-
-                    TimeToCancel.stop();
-                    currentUser.balance += amount;
-                    new CustomerWriter(currentUser);
-                    parent.dispose();
-                    dispose();
-                    new CustomerFrame(currentUser);
-
-                } catch (Exception er) {
-                    JOptionPane.showMessageDialog(null, "Wrong format in \'charge amount\' field !", "Warning", 2);
-                }
+        /*Proceed.addActionListener((e) -> {
+            if (check()) {
+                new CustomerWriter(currentUser);
+                parent.dispose();
+                dispose();
+                new CustomerFrame(currentUser);
             }
-        });
+        });*/
         Cancel.addActionListener((e) -> {
             dispose();
             TimeToCancel.stop();
@@ -513,5 +483,44 @@ public class CustomerChargeBalance extends JDialog {
             TimeToCancel.stop();
             dispose();
         }
+    }
+
+    public boolean check() {
+        if (CardNumber1.getText().length() != 4 || CardNumber2.getText().length() != 4
+                || CardNumber3.getText().length() != 4 || CardNumber4.getText().length() != 4) {
+            JOptionPane.showMessageDialog(null, "Check Your Card Details !", "Warning", 2);
+        } else if (new String(CVV2TF.getPassword()).length() == 0) {
+            JOptionPane.showMessageDialog(null, "CVV2 Field is empty !", "Warning", 2);
+        } else if (ValidateTF.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Captch Field is empty !", "Warning", 2);
+        } else if (new String(CVVTF.getPassword()).length() == 0) {
+            JOptionPane.showMessageDialog(null, "CVV Field is empty !", "Warning", 2);
+            WrongEntered++;
+            CheckWrong(WrongEntered);
+        } else if (!ValidateTF.getText().equals(captchaAnswer)) {
+            JOptionPane.showMessageDialog(null, "Captcha is wrong !", "Warning", 2);
+        } else if (CustomChargeAmount.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "\'Charge amount\' field is empty !", "Warning", 2);
+        } else if (!new String(CVVTF.getPassword()).equals(OTPAnswer)) {
+            JOptionPane.showMessageDialog(null, "Wrong CVV !", "Warning", 2);
+            WrongEntered++;
+            CheckWrong(WrongEntered);
+        } else {
+            try {
+                long amount = Long.parseLong(CustomChargeAmount.getText());
+                if (amount <= 0) {
+                    throw new Exception();
+                }
+
+                TimeToCancel.stop();
+                currentUser.balance += amount;
+
+                return true;
+            } catch (Exception er) {
+                JOptionPane.showMessageDialog(null, "Wrong format in \'charge amount\' field !", "Warning", 2);
+            }
+        }
+        return false;
+
     }
 }

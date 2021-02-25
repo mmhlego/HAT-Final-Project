@@ -39,7 +39,18 @@ public class CustomerInformation extends JPanel {
         increase.setBackground(null);
         increase.setBorder(null);
         increase.setBounds(611, 570, 35, 35);
-        increase.addActionListener((e) -> new CustomerChargeBalance(parent, currentUser));
+        increase.addActionListener((e) -> {
+            CustomerChargeBalance x = new CustomerChargeBalance(parent, currentUser);
+
+            x.Proceed.addActionListener((err) -> {
+                if (x.check()) {
+                    new CustomerWriter(currentUser);
+                    parent.dispose();
+                    x.dispose();
+                    new CustomerFrame(currentUser);
+                }
+            });
+        });
         increase.setIcon(new ImageIcon(
                 System.getProperty("user.dir") + "\\Images\\Icons\\Main\\" + currentUser.theme.main.icon + "Add.png"));
 
