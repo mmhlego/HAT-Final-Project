@@ -364,10 +364,10 @@ public class ManagerCustomers extends JPanel {
     public void sure(JButton b) {
         int index = (b.getY() - 5) / 40;
 
-        String data = currentUser.language.customers.name + allCustomers[index].name
-                + currentUser.language.customers.lastName + allCustomers[index].lastName
-                + currentUser.language.customers.phone + allCustomers[index].phoneNumber
-                + currentUser.language.customers.address + allCustomers[index].address;
+        String data = "\n" + "  " + currentUser.language.customers.name + " :  " + allCustomers[index].name + "\n" + "  "
+                + currentUser.language.customers.lastName + " :  " + allCustomers[index].lastName + "\n" + "  "
+                + currentUser.language.customers.phone + " :  " + allCustomers[index].phoneNumber + "\n" + "  "
+                + currentUser.language.customers.address + " :  " + allCustomers[index].address;
         int ans = JOptionPane.showConfirmDialog(this, currentUser.language.customers.areYouSureDescription + data,
                 currentUser.language.customers.areYouSureTitle, JOptionPane.YES_NO_OPTION);
 
