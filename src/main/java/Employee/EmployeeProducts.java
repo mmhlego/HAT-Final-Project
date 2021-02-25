@@ -128,18 +128,18 @@ public class EmployeeProducts extends JPanel {
     public void sure(JButton b) {
         int index = (b.getY() - 5) / 40;
 
-        String data = "\n" + currentUser.language.products.name+":" + allProducts[index].name + "\n "
-                + currentUser.language.products.description +":"+ allProducts[index].description + "\n "
-                + currentUser.language.products.amount+":" + allProducts[index].amount + "\n "
-                + currentUser.language.products.price+":" + allProducts[index].price;
-        int ans = JOptionPane.showConfirmDialog(this,
-        		currentUser.language.products.areYouSureDescription + data, currentUser.language.products.areYouSureTitle,
-                JOptionPane.YES_NO_OPTION);
+        String data = "\n" + currentUser.language.products.name + " : " + allProducts[index].name + "\n "
+                + currentUser.language.products.description + " : " + allProducts[index].description + "\n "
+                + currentUser.language.products.amount + " : " + allProducts[index].amount + "\n "
+                + currentUser.language.products.price + " : " + allProducts[index].price;
+        int ans = JOptionPane.showConfirmDialog(this, currentUser.language.products.areYouSureDescription + data,
+                currentUser.language.products.areYouSureTitle, JOptionPane.YES_NO_OPTION);
 
         if (ans == 0) {
             writeData(index);
 
-            JOptionPane.showMessageDialog(this, currentUser.language.products.removeSuccessDescription, currentUser.language.products.removeSuccessTitle, 1);
+            JOptionPane.showMessageDialog(this, currentUser.language.products.removeSuccessDescription,
+                    currentUser.language.products.removeSuccessTitle, 1);
 
             reloadPage();
         }
@@ -235,14 +235,15 @@ public class EmployeeProducts extends JPanel {
                 writer.writeObject(allProducts);
                 writer.close();
 
-                JOptionPane.showMessageDialog(dialog, currentUser.language.products.updateDescription, currentUser.language.products.updateTitle,
-                        1);
+                JOptionPane.showMessageDialog(dialog, currentUser.language.products.updateDescription,
+                        currentUser.language.products.updateTitle, 1);
 
                 dialog.dispose();
                 reloadPage();
 
             } catch (Exception error) {
-                JOptionPane.showMessageDialog(dialog, currentUser.language.products.wrongFormatDescription, currentUser.language.products.wrongFormatTitle, 0);
+                JOptionPane.showMessageDialog(dialog, currentUser.language.products.wrongFormatDescription,
+                        currentUser.language.products.wrongFormatTitle, 0);
             }
             readData();
 
@@ -355,7 +356,8 @@ public class EmployeeProducts extends JPanel {
                 dialog.dispose();
                 reloadPage();
             } catch (Exception error) {
-                JOptionPane.showMessageDialog(parent, currentUser.language.products.wrongFormatDescription, currentUser.language.products.wrongFormatTitle, 0);
+                JOptionPane.showMessageDialog(parent, currentUser.language.products.wrongFormatDescription,
+                        currentUser.language.products.wrongFormatTitle, 0);
             }
         });
         editPanel.add(save);
@@ -383,8 +385,8 @@ public class EmployeeProducts extends JPanel {
         int index = (b.getY() - 5) / 40;
 
         String ans = JOptionPane.showInputDialog(parent,
-        		currentUser.language.products.howManyItemsDescription + allProducts[index].name + "?", currentUser.language.products.howManyItemsTitle,
-                JOptionPane.QUESTION_MESSAGE);
+                currentUser.language.products.howManyItemsDescription + allProducts[index].name,
+                currentUser.language.products.howManyItemsTitle, JOptionPane.QUESTION_MESSAGE);
 
         if (ans == null) {
             return;
@@ -400,12 +402,13 @@ public class EmployeeProducts extends JPanel {
             writer.writeObject(allProducts);
             writer.close();
 
-            JOptionPane.showMessageDialog(parent, currentUser.language.products.amountAddedDescription,currentUser.language.products.amountAddedTitle,
-                    JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(parent, currentUser.language.products.amountAddedDescription,
+                    currentUser.language.products.amountAddedTitle, JOptionPane.INFORMATION_MESSAGE);
 
             reloadPage();
         } catch (Exception error) {
-            JOptionPane.showMessageDialog(parent, currentUser.language.products.wrongFormatDescription, currentUser.language.products.wrongFormatTitle, 0);
+            JOptionPane.showMessageDialog(parent, currentUser.language.products.wrongFormatDescription,
+                    currentUser.language.products.wrongFormatTitle, 0);
             addAmount(b);
         }
     }

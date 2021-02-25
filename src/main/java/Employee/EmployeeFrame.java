@@ -199,7 +199,7 @@ public class EmployeeFrame extends JFrame {
         RightItemProducts.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Product.png"));
         JMenuItem RightItemSettings = new JMenuItem(currentUser.language.side.settings);
         RightItemSettings.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Settings.png"));
-        JMenuItem RightItemLogOutExit = new JMenuItem(currentUser.language.side.exit + "                  ");
+        JMenuItem RightItemLogOutExit = new JMenuItem(currentUser.language.side.exit);
         RightItemLogOutExit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Logout.png"));
         this.addMouseListener(new MouseAdapter() {
             public void mouseReleased(MouseEvent ME) {
