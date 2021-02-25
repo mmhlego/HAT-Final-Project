@@ -128,10 +128,10 @@ public class ManagerProducts extends JPanel {
     public void sure(JButton b) {
         int index = (b.getY() - 5) / 40;
 
-        String data = "\n" + currentUser.language.products.name + allProducts[index].name + "\n "
-                + currentUser.language.products.description + allProducts[index].description + "\n "
-                + currentUser.language.products.amount + allProducts[index].amount + "\n "
-                + currentUser.language.products.price + allProducts[index].price;
+        String data = "\n" + "  " + currentUser.language.products.name + " :  " + allProducts[index].name + "\n" + "  "
+                + currentUser.language.products.description + " :  " + allProducts[index].description + "\n" + "  "
+                + currentUser.language.products.amount + " :  " + allProducts[index].amount + "\n" + "  "
+                + currentUser.language.products.price + " :  " + allProducts[index].price;
         int ans = JOptionPane.showConfirmDialog(this, currentUser.language.products.areYouSureDescription + data,
                 currentUser.language.products.areYouSureTitle, JOptionPane.YES_NO_OPTION);
 

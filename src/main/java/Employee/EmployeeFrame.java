@@ -24,12 +24,12 @@ public class EmployeeFrame extends JFrame {
 
     public void design() {
         setLayout(null);
-        //===================================================================================
+        // ===================================================================================
         sidepanel = new JPanel();
         sidepanel.setLayout(null);
         sidepanel.setBackground(currentUser.theme.sidePanel.background);
         sidepanel.setBounds(0, 0, w, height);
-        //===================================================================================
+        // ===================================================================================
         Change = new JButton(currentUser.language.side.toggle);
         Change.setBounds(0, 0, w, h);
         Change.setFont(currentUser.theme.sidePanel.font);
@@ -58,7 +58,7 @@ public class EmployeeFrame extends JFrame {
                 + currentUser.theme.sidePanel.icon + "Menu.png"));
         reDesign(Change);
         sidepanel.add(Change);
-        //===================================================================================
+        // ===================================================================================
         Customers = new JButton(currentUser.language.side.customers);
         Customers.setBounds(0, h, w, h);
         Customers.setFont(currentUser.theme.sidePanel.font);
@@ -72,7 +72,7 @@ public class EmployeeFrame extends JFrame {
                 + currentUser.theme.sidePanel.icon + "Customers.png"));
         reDesign(Customers);
         sidepanel.add(Customers);
-        //===================================================================================
+        // ===================================================================================
         Products = new JButton(currentUser.language.side.products);
         Products.setBounds(0, 2 * h, w, h);
         Products.setFont(currentUser.theme.sidePanel.font);
@@ -86,7 +86,7 @@ public class EmployeeFrame extends JFrame {
                 + currentUser.theme.sidePanel.icon + "Products.png"));
         reDesign(Products);
         sidepanel.add(Products);
-        //===================================================================================
+        // ===================================================================================
         Settings = new JButton(currentUser.language.side.settings);
         Settings.setBounds(0, 3 * h, w, h);
         Settings.setFont(currentUser.theme.sidePanel.font);
@@ -100,7 +100,7 @@ public class EmployeeFrame extends JFrame {
                 + currentUser.theme.sidePanel.icon + "Settings.png"));
         reDesign(Settings);
         sidepanel.add(Settings);
-        //===================================================================================
+        // ===================================================================================
         Exit = new JButton(currentUser.language.side.exit);
         Exit.setBounds(0, height - h, w, h);
         Exit.setFont(currentUser.theme.sidePanel.font);
@@ -112,7 +112,7 @@ public class EmployeeFrame extends JFrame {
         Exit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Side\\"
                 + currentUser.theme.sidePanel.icon + "Exit.png"));
         sidepanel.add(Exit);
-        //===================================================================================
+        // ===================================================================================
         add(sidepanel);
         setFont(currentUser.theme.main.font);
         setForeground(currentUser.theme.main.fontColor);
@@ -152,7 +152,7 @@ public class EmployeeFrame extends JFrame {
         }
         main = panel;
         main.setBounds(w, 0, 700, height);
-        //main.setBounds(w, 0, width - w, height);
+        // main.setBounds(w, 0, width - w, height);
         add(main);
         revalidate();
         repaint();
@@ -160,18 +160,18 @@ public class EmployeeFrame extends JFrame {
 
     public void selectExit() {
         JDialog dialog = new JDialog();
-        dialog.setTitle("Exit / LogOut");
+        dialog.setTitle(currentUser.language.side.exit);
         dialog.setSize(250, 150);
         dialog.setLocationRelativeTo(null);
         dialog.setResizable(false);
         dialog.setLayout(new GridLayout(1, 0));
 
-        JButton Exit = new JButton("Exit");
+        JButton Exit = new JButton(currentUser.language.exit);
         Exit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\Exit.png"));
         Exit.setBackground(new Color(215, 38, 61));
         Exit.setFont(new Font("Arial", Font.BOLD, 13));
         Exit.setFocusable(false);
-        JButton LogOut = new JButton("Log out");
+        JButton LogOut = new JButton(currentUser.language.logOut);
         LogOut.setBackground(new Color(255, 177, 61));
         LogOut.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Icons\\LogOut.png"));
         LogOut.setFont(new Font("Arial", Font.BOLD, 13));
@@ -193,13 +193,13 @@ public class EmployeeFrame extends JFrame {
 
     public void RightClick() {
         JPopupMenu RightClicked = new JPopupMenu();
-        JMenuItem RightItemCustomers = new JMenuItem("Customers");
+        JMenuItem RightItemCustomers = new JMenuItem(currentUser.language.side.customers);
         RightItemCustomers.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Customer.png"));
-        JMenuItem RightItemProducts = new JMenuItem("Products");
+        JMenuItem RightItemProducts = new JMenuItem(currentUser.language.side.products);
         RightItemProducts.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Product.png"));
-        JMenuItem RightItemSettings = new JMenuItem("Settings");
+        JMenuItem RightItemSettings = new JMenuItem(currentUser.language.side.settings);
         RightItemSettings.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Settings.png"));
-        JMenuItem RightItemLogOutExit = new JMenuItem("LogOut / Exit                  ");
+        JMenuItem RightItemLogOutExit = new JMenuItem(currentUser.language.side.exit + "                  ");
         RightItemLogOutExit.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Logout.png"));
         this.addMouseListener(new MouseAdapter() {
             public void mouseReleased(MouseEvent ME) {

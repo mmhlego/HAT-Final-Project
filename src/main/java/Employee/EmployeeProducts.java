@@ -98,7 +98,7 @@ public class EmployeeProducts extends JPanel {
             Info.add(Product);
         }
 
-        JButton addNew = new JButton("Add New Product");
+        JButton addNew = new JButton(currentUser.language.products.addNew);
         addNew.setBounds(10, 640, 680, 50);
         addNew.setBackground(currentUser.theme.submitColor);
         addNew.setForeground(currentUser.theme.dialog.fontColor);
@@ -128,18 +128,18 @@ public class EmployeeProducts extends JPanel {
     public void sure(JButton b) {
         int index = (b.getY() - 5) / 40;
 
-        String data = "\n" + currentUser.language.products.name + allProducts[index].name + "\n "
-                + currentUser.language.products.description + allProducts[index].description + "\n "
-                + currentUser.language.products.amount + allProducts[index].amount + "\n "
-                + currentUser.language.products.price + allProducts[index].price;
+        String data = "\n" + currentUser.language.products.name+":" + allProducts[index].name + "\n "
+                + currentUser.language.products.description +":"+ allProducts[index].description + "\n "
+                + currentUser.language.products.amount+":" + allProducts[index].amount + "\n "
+                + currentUser.language.products.price+":" + allProducts[index].price;
         int ans = JOptionPane.showConfirmDialog(this,
-                "Are you sure you want to delete product with these information?" + data, "Are you sure",
+        		currentUser.language.products.areYouSureDescription + data, currentUser.language.products.areYouSureTitle,
                 JOptionPane.YES_NO_OPTION);
 
         if (ans == 0) {
             writeData(index);
 
-            JOptionPane.showMessageDialog(this, "Product removed successfully.", "Product Rmoved", 1);
+            JOptionPane.showMessageDialog(this, currentUser.language.products.removeSuccessDescription, currentUser.language.products.removeSuccessTitle, 1);
 
             reloadPage();
         }
@@ -150,7 +150,7 @@ public class EmployeeProducts extends JPanel {
 
         int h = 30, w = 200, margin = 20;
 
-        JDialog dialog = new JDialog(parent, "Edit Information");
+        JDialog dialog = new JDialog(parent, currentUser.language.employee.edit);
 
         JPanel editPanel = new JPanel();
         editPanel.setBackground(currentUser.theme.dialog.background);
@@ -235,14 +235,14 @@ public class EmployeeProducts extends JPanel {
                 writer.writeObject(allProducts);
                 writer.close();
 
-                JOptionPane.showMessageDialog(dialog, "Product information updated successfully.", "Product Updated",
+                JOptionPane.showMessageDialog(dialog, currentUser.language.products.updateDescription, currentUser.language.products.updateTitle,
                         1);
 
                 dialog.dispose();
                 reloadPage();
 
             } catch (Exception error) {
-                JOptionPane.showMessageDialog(dialog, "Wrong format has been entered.", "Wrong Format", 0);
+                JOptionPane.showMessageDialog(dialog, currentUser.language.products.wrongFormatDescription, currentUser.language.products.wrongFormatTitle, 0);
             }
             readData();
 
@@ -274,7 +274,7 @@ public class EmployeeProducts extends JPanel {
     public void addNewProduct() {
         int h = 30, w = 200, margin = 20;
 
-        JDialog dialog = new JDialog(parent, "Edit Information");
+        JDialog dialog = new JDialog(parent, currentUser.language.employee.edit);
 
         JPanel editPanel = new JPanel();
         editPanel.setLayout(null);
@@ -355,7 +355,7 @@ public class EmployeeProducts extends JPanel {
                 dialog.dispose();
                 reloadPage();
             } catch (Exception error) {
-                JOptionPane.showMessageDialog(parent, "Wrong format has been entered.", "Wrong Format", 0);
+                JOptionPane.showMessageDialog(parent, currentUser.language.products.wrongFormatDescription, currentUser.language.products.wrongFormatTitle, 0);
             }
         });
         editPanel.add(save);
@@ -383,7 +383,7 @@ public class EmployeeProducts extends JPanel {
         int index = (b.getY() - 5) / 40;
 
         String ans = JOptionPane.showInputDialog(parent,
-                "How many items do you want to add to " + allProducts[index].name + "?", "Add Amount",
+        		currentUser.language.products.howManyItemsDescription + allProducts[index].name + "?", currentUser.language.products.howManyItemsTitle,
                 JOptionPane.QUESTION_MESSAGE);
 
         if (ans == null) {
@@ -400,12 +400,12 @@ public class EmployeeProducts extends JPanel {
             writer.writeObject(allProducts);
             writer.close();
 
-            JOptionPane.showMessageDialog(parent, "Amount added successfully.", "Success",
+            JOptionPane.showMessageDialog(parent, currentUser.language.products.amountAddedDescription,currentUser.language.products.amountAddedTitle,
                     JOptionPane.INFORMATION_MESSAGE);
 
             reloadPage();
         } catch (Exception error) {
-            JOptionPane.showMessageDialog(parent, "Wrong format has been entered.", "Wrong Format", 0);
+            JOptionPane.showMessageDialog(parent, currentUser.language.products.wrongFormatDescription, currentUser.language.products.wrongFormatTitle, 0);
             addAmount(b);
         }
     }

@@ -391,10 +391,10 @@ public class ManagerEmployees extends JPanel {
     public void sure(JButton b) {
         int index = (b.getY() - 5) / 40;
 
-        String data = "\n " + currentUser.language.employee.name + allEmployee[index].name + "\n"
-                + currentUser.language.employee.lastName + allEmployee[index].lastName + "\n "
-                + currentUser.language.employee.ID + allEmployee[index].ID + "\n " + currentUser.language.employee.phone
-                + allEmployee[index].phoneNumber;
+        String data = "\n" + "  " + currentUser.language.employee.firstName + " :  " + allEmployee[index].name + "\n"
+                + "  " + currentUser.language.employee.lastName + " :  " + allEmployee[index].lastName + "\n" + "  "
+                + currentUser.language.employee.ID + " :  " + allEmployee[index].ID + "\n" + "  "
+                + currentUser.language.employee.phone + " :  " + allEmployee[index].phoneNumber;
         int ans = JOptionPane.showConfirmDialog(this, currentUser.language.employee.areYouSureDescription + data,
                 currentUser.language.employee.areYouSureTitle, JOptionPane.YES_NO_OPTION);
 
