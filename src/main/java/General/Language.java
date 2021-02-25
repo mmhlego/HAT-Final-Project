@@ -16,7 +16,7 @@ public class Language implements Serializable {
     public String save, cancel, back, yes, no, exit, logOut;
 
     public Language() {
-        set(PERSIAN);
+        set(ENGLISH);
     }
 
     String[] currencyList = { " Rials", " ريال" };
@@ -73,7 +73,7 @@ public class Language implements Serializable {
         String[] modernThemeList = { "Modern Theme", "پوسته مدرن" };
         String[] customThemeList = { "Custom Theme", "شخصی سازی پوسته" };
         String[] previewList = { "Preview", "پیش نمایش" };
-        String[] applySelectedList = { "Apply Selected Theme", "پوسته انتخاب شده را اعمال کن" };
+        String[] applySelectedList = { "Apply Selected Theme", "اعمال پوسته انتخاب شده" };
 
         public String information, useername, password, firstName, lastName, phone, addreess, balance, edit, save,
                 theme, lightTheme, darkTheme, classicTheme, modernTheme, customTheme, preview, applySelected, id;
@@ -110,7 +110,7 @@ public class Language implements Serializable {
         String[] settingsList = { "Settings", "تنظیمات" };
         String[] cartList = { "Cart", "سبد خرید" };
         String[] historyList = { "Order History", "تاریخچه خرید" };
-        String[] exitList = { "Log Out/Exit", "خروج" };
+        String[] exitList = { "Log Out/Exit", " بستن / خروج" };
         String[] balanceList = { "Balance", "موجودی" };
 
         public String customers, employees, products, cart, settings, toggle, history, exit, balance;
@@ -287,7 +287,7 @@ public class Language implements Serializable {
         String[] cancelList = { "Cancel", "لغو" };
         String[] passwordList = { "Password", "رمز عبور" };
         String[] areYouSureDescriptionList = { "Are you sure you want to delete employee with these information?",
-                "آیا مطمئن هستید که میخواهید کامندی با اطلاعات زیر را حذف کنید" };
+                "آیا مطمئن هستید که میخواهید کارمندی با اطلاعات زیر را حذف کنید : " };
         String[] areYouSureTitleList = { "Are you sure", "آیا مطمئنید" };
         String[] removeDescriptionList = { "Employee removed successfully.", "کارمند با موفقیت حذف شد" };
         String[] removeTitleList = { "Employee Removed", "کارمند حذف شد" };
@@ -319,11 +319,12 @@ public class Language implements Serializable {
 
     }
 
-    /*public class dialogLanguage implements Serializable {
-        private static final long serialVersionUID = 2545373340792459048L;
-        
-        public dialogLanguage(int mode) {
-        
-        }
-    }*/
+    /*
+     * public class dialogLanguage implements Serializable { private static final
+     * long serialVersionUID = 2545373340792459048L;
+     * 
+     * public dialogLanguage(int mode) {
+     * 
+     * } }
+     */
 }
