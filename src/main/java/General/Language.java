@@ -167,12 +167,15 @@ public class Language implements Serializable {
                 "اطلاعات کالا با موفقیت بروزرسانی شد." };
         String[] amountAddedTitleList = { "Success", "موفقیت آمیز" };
         String[] amountAddedDescriptionList = { "Amount added successfully.", "تعداد با موفقیت اضافه شد" };
+        String[] receiptTitleList = { "Successful", "موفقیت" };
+        String[] receiptDescriptionList = { "     Purchased Successfully ! \n\nDo You Want To Print Receipt ? \n\n",
+                "     پرداخت با موفقیت انجام شد ! \n\nآیا مایل هستید که رسید چاپ شود ؟ \n\n" };
 
         public String back, name, description, amount, basePrice, price, addToCart, specialOffer, only, left,
                 outOfStock, save, cancel, discount, totalPrice, totalDiscount, emptyCart, order, product, addNew,
                 areYouSureTitle, areYouSureDescription, removeSuccessTitle, removeSuccessDescription, wrongFormatTitle,
                 wrongFormatDescription, howManyItemsTitle, howManyItemsDescription, updateTitle, updateDescription,
-                amountAddedTitle, amountAddedDescription;
+                amountAddedTitle, amountAddedDescription, receiptTitle, receiptDescription;
 
         public productsLanguage(int mode) {
             back = backList[mode];
@@ -207,6 +210,8 @@ public class Language implements Serializable {
             updateDescription = updateDescriptionList[mode];
             amountAddedTitle = amountAddedTitleList[mode];
             amountAddedDescription = amountAddedDescriptionList[mode];
+            receiptTitle = receiptTitleList[mode];
+            receiptDescription = receiptDescriptionList[mode];
         }
     }
 
@@ -232,10 +237,14 @@ public class Language implements Serializable {
                 "آیا مطمئن هستید که میخواهید مشتری با اطلاعات زیر را پاک کنید؟" };
         String[] removeSuccessTitleList = { "Customer Removed", "مشتری حذف شد" };
         String[] removeSuccessDescriptionList = { "Customer removed sucessfully.", "اطلاعات مشتری با موفقیت حذف شد" };
+        String[] lowBalanceList = { "Low account balance", "موجودی کافی نیست" };
+        String[] purchaseList = { "Purchase", "پرداخت" };
+        String[] onlineList = { "online", "اینترنتی" };
+        String[] fromBalanceList = { "from balance", "از موجودی" };
 
         public String editInfo, name, password, lastName, userName, balance, address, phone, save, updateTitle,
                 updateDescription, cancel, orderHistory, areYouSureTitle, areYouSureDescription, removeSuccessTitle,
-                removeSuccessDescription;
+                removeSuccessDescription, lowBalance, purchase, online, fromBalance;
 
         public customersLanguage(int mode) {
             editInfo = editInfoList[mode];
@@ -255,7 +264,10 @@ public class Language implements Serializable {
             areYouSureTitle = areYouSureTitleList[mode];
             removeSuccessTitle = removeSuccessTitleList[mode];
             removeSuccessDescription = removeSuccessDescriptionList[mode];
-
+            lowBalance = lowBalanceList[mode];
+            purchase = purchaseList[mode];
+            online = onlineList[mode];
+            fromBalance = fromBalanceList[mode];
         }
     }
 

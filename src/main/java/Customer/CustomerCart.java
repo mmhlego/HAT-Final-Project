@@ -348,13 +348,16 @@ public class CustomerCart extends JPanel {
 
         calculatedTotalPrice.setText(Long.toString(total));
 
-        onlinePurchase.setText("Purchase " + Long.toString(total) + " " + currentUser.language.currency + " (online)");
+        onlinePurchase.setText(currentUser.language.customers.purchase + " " + Long.toString(total) + " "
+                + currentUser.language.currency + " (" + currentUser.language.customers.online + ")");
         onlinePurchase.setEnabled(false);
 
-        purchase.setText("Purchase " + Long.toString(total) + " " + currentUser.language.currency + " (from balance)");
+        purchase.setText(currentUser.language.customers.purchase + " " + Long.toString(total) + " "
+                + currentUser.language.currency + " (" + currentUser.language.customers.fromBalance + ")");
         purchase.setEnabled(false);
         if (total > currentUser.balance) {
-            error = new JLabel("Low account balance (" + Long.toString(currentUser.balance) + ")");
+            error = new JLabel(
+                    currentUser.language.customers.lowBalance + " (" + Long.toString(currentUser.balance) + ")");
             error.setBounds(30, 670, 640, 20);
             error.setForeground(Color.RED);
             error.setVisible(true);
@@ -375,9 +378,8 @@ public class CustomerCart extends JPanel {
 
     public void buyProducts() {
         String[] Options = { currentUser.language.yes, currentUser.language.no };
-        int reply = JOptionPane.showOptionDialog(this,
-                "     Purchased Successfully ! \n\nDo You Want To Print Receipt ? \n\n", "Successful",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+        int reply = JOptionPane.showOptionDialog(this, currentUser.language.products.receiptDescription,
+                currentUser.language.products.receiptTitle, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                 new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Print.png"), Options, Options[0]);
         if (reply == JOptionPane.YES_OPTION) {
             new receiptCreator(currentUser.order);
