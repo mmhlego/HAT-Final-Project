@@ -16,8 +16,8 @@ public class Language implements Serializable {
 
     public String save, cancel, back, yes, no, exit, logOut;
 
-    public Language() {
-        set(PERSIAN);
+    public Language(User currentUser) {
+       set(PERSIAN);
     }
 
     String[] currencyList = { " Rials", " ريال" };

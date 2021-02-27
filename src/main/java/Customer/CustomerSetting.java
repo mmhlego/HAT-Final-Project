@@ -1,10 +1,9 @@
 package Customer;
 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.xml.stream.events.EndElement;
+import java.awt.Color;
 
+import javax.swing.*;
+import javax.swing.border.LineBorder;
 import General.Language;
 
 public class CustomerSetting extends JPanel {
@@ -52,6 +51,7 @@ class ThemePanel extends JPanel {
     int index = 0;
     JRadioButton persianLang = new JRadioButton("فارسی");
     JRadioButton englishLang = new JRadioButton("English");
+    
 
     public ThemePanel(CustomerFrame p, Customer u, CustomerSetting r) {
         parent = p;
@@ -63,6 +63,7 @@ class ThemePanel extends JPanel {
         sampleText.setText(currentUser.language.settings.sampleText);
         sampleText.setBackground(currentUser.theme.main.background);
         sampleText.setForeground(currentUser.theme.main.fontColor);
+        sampleText.setFont(currentUser.theme.main.font);
         add(sampleText);
 
         sampleTheme = new JLabel(currentUser.language.settings.preview, 0);
@@ -73,22 +74,28 @@ class ThemePanel extends JPanel {
         ButtonGroup group = new ButtonGroup();
         group.add(persianLang);
         group.add(englishLang);
-
+        //maybe this has abug
+        persianLang.setFont(currentUser.theme.main.font);
         persianLang.setBounds(150, 75, 100, 55);
         persianLang.setForeground(currentUser.theme.main.fontColor);
         persianLang.setBackground(currentUser.theme.main.background);
         persianLang.addActionListener((e) -> {
             sampleText.setText(currentUser.language.settings.sampleTextList[Language.PERSIAN]);
+            currentUser.language.set(Language.PERSIAN);
+            
             repaint();
             revalidate();
         });
         add(persianLang);
-
+      
+        englishLang.setFont(currentUser.theme.main.font);
         englishLang.setBounds(150, 20, 100, 55);
         englishLang.setForeground(currentUser.theme.main.fontColor);
         englishLang.setBackground(currentUser.theme.main.background);
         englishLang.addActionListener((e) -> {
             sampleText.setText(currentUser.language.settings.sampleTextList[Language.ENGLISH]);
+            currentUser.language.set(Language.ENGLISH);
+            englishLang.setSelected(true);
             repaint();
             revalidate();
         });
@@ -161,13 +168,8 @@ class ThemePanel extends JPanel {
         String[] names = { "LightTheme.png", "DarkTheme.png", "ClassicTheme.png", "ModernTheme.png" };
 
         sampleTheme.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Themes\\" + names[index]));
-
-        if (persianLang.isSelected()) {
-            currentUser.language.set(Language.PERSIAN);
-        } else if (englishLang.isSelected()) {
-            currentUser.language.set(Language.ENGLISH);
-        }
-
+        
+        
         parent.revalidate();
         parent.repaint();
     }

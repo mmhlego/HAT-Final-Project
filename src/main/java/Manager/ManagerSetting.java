@@ -4,6 +4,8 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import General.Language;
+
 public class ManagerSetting extends JPanel {
     private static final long serialVersionUID = -1888229805702323590L;
 
@@ -41,12 +43,14 @@ public class ManagerSetting extends JPanel {
 class ThemePanel extends JPanel {
     private static final long serialVersionUID = 6166827639711132804L;
 
-    JSeparator separator = new JSeparator();
+    
     JLabel sample;
     ManagerFrame parent;
     Manager currentUser;
     ManagerSetting root;
     int index = 0;
+    JRadioButton persianLang = new JRadioButton("فارسی");
+    JRadioButton englishLang = new JRadioButton("English");
 
     public ThemePanel(ManagerFrame p, Manager u, ManagerSetting r) {
         parent = p;
@@ -55,16 +59,55 @@ class ThemePanel extends JPanel {
 
         sample = new JLabel(currentUser.language.settings.preview, 0);
         sample.setBorder(new LineBorder(Color.black, 1));
-        sample.setBounds(365, 195, 300, 233);
+        sample.setBounds(375, 170, 300, 233);
         add(sample);
 
-        separator.setOrientation(SwingConstants.VERTICAL);
-        separator.setBounds(340, 20, 3, 580);
-        add(separator);
+        JTextArea sampleText = new JTextArea();
+        sampleText.setBounds(375, 20, 300, 110);
+        sampleText.setText(currentUser.language.settings.sampleText);
+        sampleText.setBackground(currentUser.theme.main.background);
+        sampleText.setForeground(currentUser.theme.main.fontColor);
+        sampleText.setFont(currentUser.theme.main.font);
+        add(sampleText);
+        
+        ButtonGroup group = new ButtonGroup();
+        group.add(persianLang);
+        group.add(englishLang);
+
+        persianLang.setFont(currentUser.theme.main.font);
+        persianLang.setBounds(150, 75, 100, 55);
+        persianLang.setForeground(currentUser.theme.main.fontColor);
+        persianLang.setBackground(currentUser.theme.main.background);
+        persianLang.addActionListener((e) -> {
+            sampleText.setText(currentUser.language.settings.sampleTextList[Language.PERSIAN]);
+            currentUser.language.set(Language.PERSIAN);
+            
+            repaint();
+            revalidate();
+        });
+        add(persianLang);
+      
+        englishLang.setFont(currentUser.theme.main.font);
+        englishLang.setBounds(150, 20, 100, 55);
+        englishLang.setForeground(currentUser.theme.main.fontColor);
+        englishLang.setBackground(currentUser.theme.main.background);
+        englishLang.addActionListener((e) -> {
+            sampleText.setText(currentUser.language.settings.sampleTextList[Language.ENGLISH]);
+            currentUser.language.set(Language.ENGLISH);
+            englishLang.setSelected(true);
+            repaint();
+            revalidate();
+        });
+        add(englishLang);
+
+        JSeparator VSeparator = new JSeparator();
+        VSeparator.setOrientation(SwingConstants.HORIZONTAL);
+        VSeparator.setBounds(20, 150, 655, 5);
+        add(VSeparator);
 
         for (int i = 0; i < 5; i++) {
             JButton themeButton = new JButton();
-            themeButton.setBounds(30, 60 + i * 120, 230, 60);
+            themeButton.setBounds(20, 170 + i * 86, 305, 50);
             themeButton.addActionListener((e) -> {
                 changeTheme(themeButton);
             });
@@ -92,7 +135,7 @@ class ThemePanel extends JPanel {
 
         JButton apply = new JButton(currentUser.language.settings.applySelected);
         apply.setBackground(currentUser.theme.submitColor);
-        apply.setBounds(365, 540, 300, 60);
+        apply.setBounds(20, 600, 660, 50);
         apply.addActionListener((e) -> {
             currentUser.theme.setAll(index);
             new ManagerWriter(currentUser);

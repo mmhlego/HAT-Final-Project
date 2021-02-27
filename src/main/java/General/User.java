@@ -11,5 +11,5 @@ public class User implements Serializable {
     public String lastName;
     public String phoneNumber;
     public Theme theme = new Theme();
-    public Language language = new Language();
+    public Language language = new Language(this);
 }
