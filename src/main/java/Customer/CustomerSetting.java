@@ -3,6 +3,9 @@ package Customer;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import javax.xml.stream.events.EndElement;
+
+import General.Language;
 
 public class CustomerSetting extends JPanel {
     private static final long serialVersionUID = -1888229805702323590L;
@@ -23,8 +26,10 @@ public class CustomerSetting extends JPanel {
         tabs.setForeground(currentUser.theme.main.fontColor);
         tabs.setBackground(currentUser.theme.main.background);
         tabs.setVisible(true);
-        tabs.add("                             "+currentUser.language.settings.information+"                              ", changePanel);
-        tabs.add("                                     "+currentUser.language.settings.theme+"                                      ", themePanel);
+        tabs.add("                             " + currentUser.language.settings.information
+                + "                              ", changePanel);
+        tabs.add("                                     " + currentUser.language.settings.theme
+                + "                                      ", themePanel);
 
         setLayout(null);
         tabs.setBorder(null);
@@ -39,30 +44,70 @@ public class CustomerSetting extends JPanel {
 class ThemePanel extends JPanel {
     private static final long serialVersionUID = 6166827639711132804L;
 
-    JSeparator separator = new JSeparator();
-    JLabel sample;
+    //Customer0
+    JLabel sampleTheme;
     CustomerFrame parent;
     Customer currentUser;
     CustomerSetting root;
     int index = 0;
+    JRadioButton persianLang = new JRadioButton("فارسی");
+    JRadioButton englishLang = new JRadioButton("English");
 
     public ThemePanel(CustomerFrame p, Customer u, CustomerSetting r) {
         parent = p;
         currentUser = u;
         root = r;
 
-        sample = new JLabel(currentUser.language.settings.preview, 0);
-        sample.setBorder(new LineBorder(Color.black, 1));
-        sample.setBounds(365, 195, 300, 233);
-        add(sample);
+        JTextArea sampleText = new JTextArea();
+        sampleText.setBounds(375, 20, 300, 110);
+        sampleText.setText(currentUser.language.settings.sampleText);
+        sampleText.setBackground(currentUser.theme.main.background);
+        sampleText.setForeground(currentUser.theme.main.fontColor);
+        add(sampleText);
 
-        separator.setOrientation(SwingConstants.VERTICAL);
-        separator.setBounds(340, 20, 3, 580);
-        add(separator);
+        sampleTheme = new JLabel(currentUser.language.settings.preview, 0);
+        sampleTheme.setBorder(new LineBorder(Color.black, 1));
+        sampleTheme.setBounds(375, 170, 300, 233);
+        add(sampleTheme);
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(persianLang);
+        group.add(englishLang);
+
+        persianLang.setBounds(150, 75, 100, 55);
+        persianLang.setForeground(currentUser.theme.main.fontColor);
+        persianLang.setBackground(currentUser.theme.main.background);
+        persianLang.addActionListener((e) -> {
+            sampleText.setText(currentUser.language.settings.sampleTextList[Language.PERSIAN]);
+            repaint();
+            revalidate();
+        });
+        add(persianLang);
+
+        englishLang.setBounds(150, 20, 100, 55);
+        englishLang.setForeground(currentUser.theme.main.fontColor);
+        englishLang.setBackground(currentUser.theme.main.background);
+        englishLang.addActionListener((e) -> {
+            sampleText.setText(currentUser.language.settings.sampleTextList[Language.ENGLISH]);
+            repaint();
+            revalidate();
+        });
+        add(englishLang);
+
+        JSeparator VSeparator = new JSeparator();
+        VSeparator.setOrientation(SwingConstants.HORIZONTAL);
+        VSeparator.setBounds(20, 150, 655, 5);
+        add(VSeparator);
+
+        /*JSeparator HSeparator = new JSeparator();
+        HSeparator.setOrientation(SwingConstants.VERTICAL);
+        HSeparator.setBounds(349, 20, 3, 545);
+        add(HSeparator);*/
 
         for (int i = 0; i < 5; i++) {
             JButton themeButton = new JButton();
-            themeButton.setBounds(30, 60 + i * 120, 230, 60);
+            themeButton.setBounds(20, 170 + i * 86, 305, 50);
+            themeButton.setBackground(currentUser.theme.main.buttonColor);
             themeButton.addActionListener((e) -> {
                 changeTheme(themeButton);
             });
@@ -90,7 +135,8 @@ class ThemePanel extends JPanel {
 
         JButton apply = new JButton(currentUser.language.settings.applySelected);
         apply.setBackground(currentUser.theme.submitColor);
-        apply.setBounds(365, 540, 300, 60);
+        //apply.setBounds(365, 540, 300, 60);
+        apply.setBounds(20, 600, 660, 50);
         apply.addActionListener((e) -> {
             currentUser.theme.setAll(index);
             new CustomerWriter(currentUser);
@@ -114,7 +160,13 @@ class ThemePanel extends JPanel {
 
         String[] names = { "LightTheme.png", "DarkTheme.png", "ClassicTheme.png", "ModernTheme.png" };
 
-        sample.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Themes\\" + names[index]));
+        sampleTheme.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Themes\\" + names[index]));
+
+        if (persianLang.isSelected()) {
+            currentUser.language.set(Language.PERSIAN);
+        } else if (englishLang.isSelected()) {
+            currentUser.language.set(Language.ENGLISH);
+        }
 
         parent.revalidate();
         parent.repaint();

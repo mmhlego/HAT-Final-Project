@@ -75,10 +75,12 @@ public class Language implements Serializable {
         String[] modernThemeList = { "Modern Theme", "پوسته مدرن" };
         String[] customThemeList = { "Custom Theme", "شخصی سازی پوسته" };
         String[] previewList = { "Preview", "پیش نمایش" };
-        String[] applySelectedList = { "Apply Selected Theme", "اعمال پوسته انتخاب شده" };
+        String[] applySelectedList = { "Apply", "اعمال" };
+        public String[] sampleTextList = { "sample text", "نوشته نمونه" };
 
         public String information, useername, password, firstName, lastName, phone, addreess, balance, edit, save,
-                theme, lightTheme, darkTheme, classicTheme, modernTheme, customTheme, preview, applySelected, id;
+                theme, lightTheme, darkTheme, classicTheme, modernTheme, customTheme, preview, applySelected, id,
+                sampleText;
 
         public settingsLanguage(int mode) {
             information = informationList[mode];
@@ -100,6 +102,7 @@ public class Language implements Serializable {
             customTheme = customThemeList[mode];
             preview = previewList[mode];
             applySelected = applySelectedList[mode];
+            sampleText = sampleTextList[mode];
         }
     }
 
