@@ -51,13 +51,13 @@ class ThemePanel extends JPanel {
     int index = 0;
     JRadioButton persianLang = new JRadioButton("فارسی");
     JRadioButton englishLang = new JRadioButton("English");
-    
 
     public ThemePanel(CustomerFrame p, Customer u, CustomerSetting r) {
         parent = p;
         currentUser = u;
         root = r;
 
+        index = currentUser.theme.mode;
         JTextArea sampleText = new JTextArea();
         sampleText.setBounds(375, 20, 300, 110);
         sampleText.setText(currentUser.language.settings.sampleText);
@@ -81,21 +81,19 @@ class ThemePanel extends JPanel {
         persianLang.setBackground(currentUser.theme.main.background);
         persianLang.addActionListener((e) -> {
             sampleText.setText(currentUser.language.settings.sampleTextList[Language.PERSIAN]);
-            currentUser.language.set(Language.PERSIAN);
-            
+            //currentUser.language.set(Language.PERSIAN);
             repaint();
             revalidate();
         });
         add(persianLang);
-      
+
         englishLang.setFont(currentUser.theme.main.font);
         englishLang.setBounds(150, 20, 100, 55);
         englishLang.setForeground(currentUser.theme.main.fontColor);
         englishLang.setBackground(currentUser.theme.main.background);
         englishLang.addActionListener((e) -> {
             sampleText.setText(currentUser.language.settings.sampleTextList[Language.ENGLISH]);
-            currentUser.language.set(Language.ENGLISH);
-            englishLang.setSelected(true);
+            //currentUser.language.set(Language.ENGLISH);
             repaint();
             revalidate();
         });
@@ -136,7 +134,6 @@ class ThemePanel extends JPanel {
                     themeButton.addActionListener(e -> new CustomerTheme(parent, root, currentUser));
                     break;
             }
-
             add(themeButton);
         }
 
@@ -145,17 +142,21 @@ class ThemePanel extends JPanel {
         //apply.setBounds(365, 540, 300, 60);
         apply.setBounds(20, 600, 660, 50);
         apply.addActionListener((e) -> {
+            if (persianLang.isSelected()) {
+                currentUser.language.set(Language.PERSIAN);
+            } else if (englishLang.isSelected()) {
+                currentUser.language.set(Language.ENGLISH);
+            }
             currentUser.theme.setAll(index);
             new CustomerWriter(currentUser);
             parent.dispose();
             new CustomerFrame(currentUser);
         });
+
         add(apply);
-
         setBackground(currentUser.theme.main.background);
-
-        this.setLayout(null);
-        this.setVisible(true);
+        setLayout(null);
+        setVisible(true);
 
     }
 
@@ -168,8 +169,7 @@ class ThemePanel extends JPanel {
         String[] names = { "LightTheme.png", "DarkTheme.png", "ClassicTheme.png", "ModernTheme.png" };
 
         sampleTheme.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\Themes\\" + names[index]));
-        
-        
+
         parent.revalidate();
         parent.repaint();
     }
