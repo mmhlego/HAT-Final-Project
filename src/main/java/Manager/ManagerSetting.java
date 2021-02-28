@@ -99,6 +99,12 @@ class ThemePanel extends JPanel {
         });
         add(englishLang);
 
+        if (currentUser.language.mode == Language.PERSIAN) {
+            persianLang.setSelected(true);
+        } else if (currentUser.language.mode == Language.ENGLISH) {
+            englishLang.setSelected(true);
+        }
+
         JSeparator VSeparator = new JSeparator();
         VSeparator.setOrientation(SwingConstants.HORIZONTAL);
         VSeparator.setBounds(20, 150, 655, 5);

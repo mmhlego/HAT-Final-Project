@@ -13,24 +13,27 @@ public class Language implements Serializable {
     public customersLanguage customers;
     public EmployeeLanguage employee;
     public CustomTheme theme;
+    public int mode;
 
     public String save, cancel, back, yes, no, exit, logOut;
 
     public Language(User currentUser) {
-       set(PERSIAN);
+        set(PERSIAN);
     }
 
     String[] currencyList = { " Rials", " ريال" };
     public String currency;
 
     public void set(int mode) {
+        this.mode = mode;
+
         settings = new settingsLanguage(mode);
         side = new sidePanelLanguage(mode);
         products = new productsLanguage(mode);
         customers = new customersLanguage(mode);
         currency = currencyList[mode];
-        setIndivs(mode);
         theme = new CustomTheme(mode);
+        setIndivs(mode);
     }
 
     public void setIndivs(int mode) {
