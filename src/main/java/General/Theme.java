@@ -13,6 +13,7 @@ public class Theme implements Serializable {
     public SidePanelTheme sidePanel = new SidePanelTheme();
     public DialogTheme dialog = new DialogTheme();
     public Color submitColor = new Color(111, 207, 151), cancelColor = Hex("fa4e00");
+    public int mode = 0;
 
     public Theme() {
         setTheme("default");
@@ -62,10 +63,11 @@ public class Theme implements Serializable {
         }
     }
 
-    public void setAll(int i) {
-        main.set(i);
-        sidePanel.set(i);
-        dialog.set(i);
+    public void setAll(int mode) {
+        this.mode = mode;
+        main.set(mode);
+        sidePanel.set(mode);
+        dialog.set(mode);
     }
 
     public Color Hex(String s) {
