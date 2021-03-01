@@ -235,8 +235,9 @@ public class CustomerChargeBalance extends JDialog {
         JTextField EmailTF = new JTextField();
         EmailTF.setBounds(130, 280, 250, 30);
         CustomChargeAmount = new JTextField();
+        CustomChargeAmount.setDocument(new Limitter(17));
         CustomChargeAmount.setBounds(130, 30, 110, 30);
-        CustomChargeAmount.setDocument(new Limitter(9));
+        // CustomChargeAmount.setDocument(new Limitter(9));
 
         JButton SendOTP = new JButton("Request SMS OTP ");
         SendOTP.setBounds(220, 230, 160, 30);
@@ -286,8 +287,10 @@ public class CustomerChargeBalance extends JDialog {
         JLabel ChargeText = new JLabel("Charge");
         ChargeText.setBounds(20, 30, 50, 30);
         JLabel ShowChoosedCharge = new JLabel("", 2);
-        ShowChoosedCharge.setBounds(315, 320, 65, 30);
-        JLabel ChargeBalanceShow = new JLabel("Charge Balance :");
+        ShowChoosedCharge.setBounds(295, 320, 105, 30);
+        ShowChoosedCharge.setFont(new Font("monospace", Font.ITALIC + Font.BOLD, 9));
+        JLabel ChargeBalanceShow = new JLabel("Charge Balance:");
+        ChargeBalanceShow.setFont(new Font("monospace", Font.ITALIC + Font.BOLD, 9));
         ChargeBalanceShow.setBounds(220, 320, 110, 30);
         JLabel SecureIcon = new JLabel();
         SecureIcon.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\Images\\MenuItems\\Secure.png"));
@@ -389,30 +392,34 @@ public class CustomerChargeBalance extends JDialog {
             x += 70;
         }
 
-        /*Proceed.addActionListener((e) -> {
-            if (check()) {
-                new CustomerWriter(currentUser);
-                parent.dispose();
-                dispose();
-                new CustomerFrame(currentUser);
-            }
-        });*/
+        /*
+         * Proceed.addActionListener((e) -> { if (check()) { new
+         * CustomerWriter(currentUser); parent.dispose(); dispose(); new
+         * CustomerFrame(currentUser); } });
+         */
         Cancel.addActionListener((e) -> {
             dispose();
             TimeToCancel.stop();
             parent.setEnabled(true);
         });
         SendOTP.addActionListener((e) -> {
-            /*if (currentUser.phoneNumber.length() != 11) {
-                JOptionPane.showMessageDialog(null, "Wrong phone number !", "Warning", 2);
-                return;
-            }*/
+            /*
+             * if (currentUser.phoneNumber.length() != 11) {
+             * JOptionPane.showMessageDialog(null, "Wrong phone number !", "Warning", 2);
+             * return; }
+             */
 
             CVVTF.setEnabled(true);
             try {
-                createOTP();
-
-                System.out.println(OTPAnswer);
+                String pass = JOptionPane.showInputDialog(this, "Enter Your Password To Get OTP", "");
+                if (pass.equals(currentUser.password)) {
+                    createOTP();
+                    JOptionPane.showMessageDialog(this, "Your OTP Is " + OTPAnswer, "Password Confirmed",
+                            JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Wrong Password ! ", "Password Rejected",
+                            JOptionPane.ERROR_MESSAGE);
+                }
 
             } catch (Exception er) {
                 System.out.print(er.toString());

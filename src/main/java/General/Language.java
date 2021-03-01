@@ -118,7 +118,7 @@ public class Language implements Serializable {
         String[] settingsList = { "Settings", "تنظیمات" };
         String[] cartList = { "Cart", "سبد خرید" };
         String[] historyList = { "Order History", "تاریخچه خرید" };
-        String[] exitList = { "Log Out/Exit", " بستن / خروج" };
+        String[] exitList = { "Log Out / Exit                  ", "                 بستن / خروج" };
         String[] balanceList = { "Balance", "موجودی" };
 
         public String customers, employees, products, cart, settings, toggle, history, exit, balance;
