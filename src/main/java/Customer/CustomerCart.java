@@ -412,6 +412,7 @@ public class CustomerCart extends JPanel {
 
         online.Proceed.addActionListener((e) -> {
             if (online.check()) {
+                parent.setEnabled(true);
                 online.dispose();
                 buyProducts();
             }

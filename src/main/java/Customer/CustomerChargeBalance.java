@@ -30,6 +30,7 @@ public class CustomerChargeBalance extends JDialog {
         getRootPane().setBorder(new LineBorder(Color.BLACK, 1));
         parent = p;
         currentUser = c;
+        parent.setEnabled(false);
         setLayout(null);
         setSize(400, 420);
         setLocationRelativeTo(null);
@@ -399,6 +400,7 @@ public class CustomerChargeBalance extends JDialog {
         Cancel.addActionListener((e) -> {
             dispose();
             TimeToCancel.stop();
+            parent.setEnabled(true);
         });
         SendOTP.addActionListener((e) -> {
             /*if (currentUser.phoneNumber.length() != 11) {

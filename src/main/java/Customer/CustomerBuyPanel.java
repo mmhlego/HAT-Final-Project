@@ -157,7 +157,7 @@ public class CustomerBuyPanel extends JDialog {
         addButton.setBackground(currentUser.theme.dialog.buttonBackground);
         addButton.setForeground(currentUser.theme.dialog.fontColor);
         addButton.setFont(currentUser.theme.dialog.font);
-        if (currentProduct.amount <= 0) {
+        if (currentProduct.amount <= 1) {
             addButton.setEnabled(false);
         }
         addButton.addActionListener(e -> {
@@ -189,7 +189,7 @@ public class CustomerBuyPanel extends JDialog {
             lastAmount = currentProduct.amount - Long.parseLong(buyAmount.getText());
             amountShow.setText(String.valueOf(lastAmount));
             if (Long.parseLong(buyAmount.getText()) > 0) {
-                addToCart(Long.parseLong(buyAmount.getText()));
+                check(Long.parseLong(buyAmount.getText()));
             }
             parent.reloadPage();
             dispose();
@@ -204,7 +204,7 @@ public class CustomerBuyPanel extends JDialog {
             dispose();
         });
 
-        if (currentProduct.amount == 0) {
+        if (currentProduct.amount <= 0) {
             buyAmount.setText("0");
         }
 
@@ -260,6 +260,22 @@ public class CustomerBuyPanel extends JDialog {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
+    }
+
+    public void check(long c) {
+        int length = currentUser.order.products.length;
+
+        for (int i = 0; i < length; i++) {
+            if (currentUser.order.products[i].name.equals(currentProduct.name)) {
+                currentUser.order.count[i] += c;
+                allProducts[currentProduct.index].amount -= c;
+                writeProductsToFile();
+                new CustomerWriter(currentUser);
+                return;
+            }
+        }
+
+        addToCart(c);
     }
 
     public void addToCart(long c) {

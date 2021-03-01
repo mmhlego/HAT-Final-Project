@@ -48,7 +48,7 @@ class ThemePanel extends JPanel {
     CustomerFrame parent;
     Customer currentUser;
     CustomerSetting root;
-    int index = 0;
+    int index = -1;
     JRadioButton persianLang = new JRadioButton("فارسی");
     JRadioButton englishLang = new JRadioButton("English");
 
@@ -57,7 +57,6 @@ class ThemePanel extends JPanel {
         currentUser = u;
         root = r;
 
-        index = currentUser.theme.mode;
         JTextArea sampleText = new JTextArea();
         sampleText.setBounds(375, 20, 300, 110);
         sampleText.setText(currentUser.language.settings.sampleText);
@@ -153,7 +152,9 @@ class ThemePanel extends JPanel {
             } else if (englishLang.isSelected()) {
                 currentUser.language.set(Language.ENGLISH);
             }
-            currentUser.theme.setAll(index);
+            if (index >= 0) {
+                currentUser.theme.setAll(index);
+            }
             new CustomerWriter(currentUser);
             parent.dispose();
             new CustomerFrame(currentUser);
@@ -167,7 +168,7 @@ class ThemePanel extends JPanel {
     }
 
     public void changeTheme(JButton b) {
-        index = (b.getY() - 60) / 120;
+        index = (b.getY() - 170) / 86;
         if (index == 4) {
             return;
         }

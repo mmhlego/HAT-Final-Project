@@ -48,6 +48,7 @@ public class CustomerInformation extends JPanel {
                     parent.dispose();
                     x.dispose();
                     new CustomerFrame(currentUser);
+                    parent.setEnabled(true);
                 }
             });
         });
