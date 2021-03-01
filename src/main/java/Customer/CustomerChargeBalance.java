@@ -409,9 +409,15 @@ public class CustomerChargeBalance extends JDialog {
 
             CVVTF.setEnabled(true);
             try {
-                createOTP();
-
-                System.out.println(OTPAnswer);
+                String pass = JOptionPane.showInputDialog(this, "Enter Your Password To Get OTP", "");
+                if (pass.equals(currentUser.password)) {
+                    createOTP();
+                    JOptionPane.showMessageDialog(this, "Your OTP Is " + OTPAnswer, "Password Confirmed",
+                            JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Wrong Password ! ", "Password Rejected",
+                            JOptionPane.ERROR_MESSAGE);
+                }
 
             } catch (Exception er) {
                 System.out.print(er.toString());
