@@ -265,6 +265,12 @@ public class CustomerLogin extends JPanel {
                             new FileInputStream(System.getProperty("user.dir") + "\\data\\Customers.dat"));
 
                     Customer[] allCustomers = (Customer[]) reader.readObject();
+                    for (int i = 0; i < allCustomers.length; i++) {
+						if (usernameField.getText().equals(allCustomers[i].username)) {
+							JOptionPane.showMessageDialog(this,"This Username is Already Exist","Dublicated User",JOptionPane.OK_OPTION);
+							return;
+						}
+					}
                     int length = allCustomers.length;
                     reader.close();
 
