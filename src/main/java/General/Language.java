@@ -62,7 +62,7 @@ public class Language implements Serializable {
         String[] informationList = { "Informations", "اطلاعات" };
         String[] usernameList = { "Username", "نام کاربری" };
         String[] passwordList = { "Password", "رمز عبور" };
-        String[] firstNameList = { "First Name;", "نام" };
+        String[] firstNameList = { "First Name", "نام" };
         String[] lastNameList = { "Last Name", "نام خانوادگی" };
         String[] phoneList = { "Phone Number", "شماره تلفن" };
         String[] addressList = { "Address", "ادرس" };
@@ -118,7 +118,7 @@ public class Language implements Serializable {
         String[] settingsList = { "Settings", "تنظیمات" };
         String[] cartList = { "Cart", "سبد خرید" };
         String[] historyList = { "Order History", "تاریخچه خرید" };
-        String[] exitList = { "Log Out/Exit", " بستن / خروج" };
+        String[] exitList = { "Log Out / Exit                  ", "                 بستن / خروج" };
         String[] balanceList = { "Balance", "موجودی" };
 
         public String customers, employees, products, cart, settings, toggle, history, exit, balance;

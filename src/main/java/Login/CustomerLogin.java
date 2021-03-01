@@ -268,6 +268,14 @@ public class CustomerLogin extends JPanel {
                     int length = allCustomers.length;
                     reader.close();
 
+                    for (int i = 0; i < length; i++) {
+                        if (usernameField.getText().equals(allCustomers[i].username)) {
+                            JOptionPane.showMessageDialog(this, "This Username is Already Exist", "Dublicated User",
+                                    JOptionPane.OK_OPTION);
+                            return;
+                        }
+                    }
+
                     Customer[] newList = new Customer[length + 1];
                     for (int i = 0; i < length; i++) {
                         newList[i] = allCustomers[i];
